@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Faro Propiedades · Corretaje en La Serena y Coquimbo</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#ffffff; --bg-soft:#faf8f3; --ink:#0f262c; --ink-2:#51666b;
+  --line:#ece7dc; --line-2:#e2ddd0; --beam:#c97e16; --beam-soft:#f5b65c;
+  --teal:#1f7a74; --dark:#0c282f; --dark-soft:#11343c; --wa:#25d366;
+  --r:14px; --r-lg:22px; --r-pill:999px;
+  --shadow-sm:0 2px 8px rgba(12,40,47,.06);
+  --shadow:0 14px 40px -18px rgba(12,40,47,.28);
+  --shadow-lg:0 30px 70px -28px rgba(12,40,47,.40);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:"Hanken Grotesk",system-ui,sans-serif;
+  background:var(--bg); color:var(--ink);
+  line-height:1.6; -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+h1,h2,h3,.display{font-family:"Bricolage Grotesque",system-ui,sans-serif;font-weight:800;line-height:1.04;letter-spacing:-.02em}
+a{color:inherit}
+img{display:block;max-width:100%}
+.wrap{max-width:1200px;margin:0 auto;padding:0 clamp(18px,5vw,40px)}
+:focus-visible{outline:3px solid var(--teal);outline-offset:3px;border-radius:6px}
+
+/* ===== DEMO BAR ===== */
+.ef-demobar{position:sticky;top:0;z-index:9999;display:flex;align-items:center;justify-content:space-between;gap:1rem;background:#0c282f;color:#fff;padding:.5rem clamp(14px,4vw,28px);font-family:"Hanken Grotesk",system-ui,sans-serif;font-size:.85rem}
+.ef-demobar .ef-back{color:#cfe0de;font-weight:600;text-decoration:none}.ef-demobar .ef-back:hover{color:#fff}
+.ef-demobar .ef-label{color:#8fb0ac;font-weight:600}@media(max-width:560px){.ef-demobar .ef-label{display:none}}
+.ef-demobar .ef-cta{background:#25d366;color:#06351c;font-weight:700;padding:.4rem .9rem;border-radius:999px;text-decoration:none;white-space:nowrap;transition:transform .2s ease,filter .2s ease}
+.ef-demobar .ef-cta:hover{transform:translateY(-1px);filter:brightness(1.05)}
+
+/* ===== NAV ===== */
+.nav{position:sticky;top:0;z-index:900;background:rgba(255,255,255,.86);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;gap:1.4rem;padding:.85rem 0}
+.brand{display:flex;align-items:center;gap:.6rem;text-decoration:none;color:var(--dark)}
+.brand .logo{width:38px;height:38px;flex:none}
+.brand .bname{display:flex;flex-direction:column;line-height:1}
+.brand .bname b{font-family:"Bricolage Grotesque";font-weight:800;font-size:1.12rem;letter-spacing:-.02em}
+.brand .bname small{font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-2);font-weight:600;margin-top:3px}
+.nav-links{display:flex;align-items:center;gap:1.7rem}
+.nav-links a{text-decoration:none;font-weight:600;font-size:.95rem;color:var(--ink-2);position:relative;transition:color .2s}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:2px;background:var(--teal);transition:width .25s ease}
+.nav-links a:hover{color:var(--ink)}.nav-links a:hover::after{width:100%}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;font-family:inherit;font-weight:700;font-size:.95rem;border:none;cursor:pointer;border-radius:var(--r-pill);padding:.7rem 1.3rem;text-decoration:none;transition:transform .2s ease,box-shadow .25s ease,filter .2s ease;white-space:nowrap}
+.btn-dark{background:var(--dark);color:#fff;box-shadow:0 8px 22px -10px rgba(12,40,47,.6)}
+.btn-dark:hover{transform:translateY(-2px);box-shadow:0 14px 30px -12px rgba(12,40,47,.7)}
+.btn-beam{background:linear-gradient(135deg,var(--beam),var(--beam-soft));color:#3a2405;box-shadow:0 10px 26px -10px rgba(201,126,22,.7)}
+.btn-beam:hover{transform:translateY(-2px);filter:brightness(1.04)}
+.btn-wa{background:var(--wa);color:#06351c}
+.btn-wa:hover{transform:translateY(-2px);filter:brightness(1.05)}
+.btn-ghost{background:#fff;color:var(--ink);border:1px solid var(--line-2)}
+.btn-ghost:hover{border-color:var(--teal);color:var(--teal)}
+.nav-burger{display:none;background:none;border:1px solid var(--line-2);border-radius:10px;width:42px;height:42px;cursor:pointer;align-items:center;justify-content:center}
+.nav-burger span{display:block;width:18px;height:2px;background:var(--ink);position:relative}
+.nav-burger span::before,.nav-burger span::after{content:"";position:absolute;left:0;width:18px;height:2px;background:var(--ink);transition:.25s}
+.nav-burger span::before{top:-6px}.nav-burger span::after{top:6px}
+
+/* ===== HERO ===== */
+.hero{position:relative;color:#fff;overflow:hidden;isolation:isolate}
+.hero-bg{position:absolute;inset:0;z-index:-2}
+.hero-bg img{width:100%;height:100%;object-fit:cover}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(105deg,rgba(12,40,47,.93) 0%,rgba(12,40,47,.74) 46%,rgba(12,40,47,.30) 100%)}
+.hero-inner{padding:clamp(3.5rem,9vw,6.5rem) 0 clamp(3rem,7vw,4.5rem)}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-size:.82rem;font-weight:600;letter-spacing:.04em;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);padding:.4rem .9rem;border-radius:var(--r-pill);margin-bottom:1.4rem;backdrop-filter:blur(4px)}
+.hero-eyebrow b{color:var(--beam-soft)}
+.hero h1{font-size:clamp(2.4rem,6vw,4.4rem);max-width:16ch;text-shadow:0 4px 30px rgba(0,0,0,.25)}
+.hero h1 em{font-style:normal;color:var(--beam-soft)}
+.hero p.lead{font-size:clamp(1.05rem,2vw,1.28rem);max-width:46ch;color:#dceae8;margin-top:1.2rem;font-weight:400}
+
+/* ===== SEARCH BAR ===== */
+.searchbar{margin-top:2.4rem;background:rgba(255,255,255,.97);border-radius:var(--r-lg);padding:1rem;box-shadow:var(--shadow-lg);display:grid;grid-template-columns:repeat(4,1fr) auto;gap:.7rem;max-width:920px}
+.sb-field{display:flex;flex-direction:column;gap:.25rem;text-align:left}
+.sb-field label{font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);padding-left:.3rem}
+.sb-field select{appearance:none;font-family:inherit;font-size:.98rem;font-weight:600;color:var(--ink);background:var(--bg-soft);border:1px solid var(--line-2);border-radius:var(--r);padding:.7rem 2rem .7rem .85rem;cursor:pointer;width:100%;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%231f7a74' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right .85rem center;transition:border-color .2s}
+.sb-field select:hover{border-color:var(--teal)}
+.sb-go{align-self:end}
+.sb-go .btn{width:100%;height:46px}
+@media(max-width:560px){.sb-go .btn{height:48px}}
+
+/* ===== TRUST STRIP ===== */
+.trust{background:var(--dark-soft);color:#cfe0de}
+.trust-inner{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;padding:1.6rem 0;text-align:center}
+.trust-item b{display:block;font-family:"Bricolage Grotesque";font-weight:800;font-size:clamp(1.4rem,3vw,2rem);color:#fff}
+.trust-item span{font-size:.88rem;color:#9fc0bc}
+.trust-item{position:relative}
+.trust-item+.trust-item::before{content:"";position:absolute;left:0;top:18%;height:64%;width:1px;background:rgba(255,255,255,.12)}
+
+/* ===== LISTING ===== */
+.section{padding:clamp(3.2rem,7vw,5rem) 0}
+.sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;margin-bottom:2rem}
+.sec-head h2{font-size:clamp(1.8rem,4vw,2.7rem)}
+.sec-head .kicker{display:block;font-size:.78rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);margin-bottom:.6rem}
+.sec-head p{color:var(--ink-2);max-width:42ch;margin-top:.4rem}
+
+/* filter pills + counter */
+.filterbar{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-bottom:1.6rem}
+.pills{display:inline-flex;background:var(--bg-soft);border:1px solid var(--line);border-radius:var(--r-pill);padding:.3rem}
+.pill{font-family:inherit;font-weight:700;font-size:.9rem;border:none;background:none;cursor:pointer;color:var(--ink-2);padding:.5rem 1.15rem;border-radius:var(--r-pill);transition:.2s}
+.pill[aria-pressed="true"]{background:var(--dark);color:#fff;box-shadow:var(--shadow-sm)}
+.pill:hover:not([aria-pressed="true"]){color:var(--ink)}
+.result-count{font-size:.92rem;color:var(--ink-2);font-weight:600}
+.result-count b{color:var(--ink)}
+
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.card{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;cursor:pointer;display:flex;flex-direction:column;transition:transform .3s cubic-bezier(.2,.7,.3,1),box-shadow .3s ease,border-color .3s ease;text-align:left}
+.card:hover{transform:translateY(-8px);box-shadow:var(--shadow);border-color:var(--line-2)}
+.card:focus-visible{transform:translateY(-8px);box-shadow:var(--shadow)}
+.card-media{position:relative;aspect-ratio:4/3;overflow:hidden;background:var(--bg-soft)}
+.card-media img{width:100%;height:100%;object-fit:cover;transition:transform .55s cubic-bezier(.2,.7,.3,1)}
+.card:hover .card-media img{transform:scale(1.07)}
+.badge{position:absolute;top:.85rem;left:.85rem;font-size:.74rem;font-weight:700;letter-spacing:.04em;padding:.32rem .75rem;border-radius:var(--r-pill);text-transform:uppercase;backdrop-filter:blur(4px)}
+.badge.venta{background:rgba(31,122,116,.95);color:#fff}
+.badge.arriendo{background:rgba(12,40,47,.9);color:#cfe0de}
+.fav{position:absolute;top:.7rem;right:.7rem;width:36px;height:36px;border-radius:50%;border:none;background:rgba(255,255,255,.9);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.2s;color:var(--ink-2)}
+.fav:hover{background:#fff;color:var(--beam);transform:scale(1.08)}
+.card-body{padding:1.1rem 1.2rem 1.3rem;display:flex;flex-direction:column;gap:.5rem;flex:1}
+.card-price{font-family:"Bricolage Grotesque";font-weight:800;font-size:1.45rem;color:var(--beam);letter-spacing:-.02em}
+.card-price small{font-size:.78rem;font-weight:600;color:var(--ink-2);letter-spacing:0}
+.card-title{font-weight:700;font-size:1.06rem;color:var(--ink);line-height:1.25}
+.card-loc{display:flex;align-items:center;gap:.35rem;font-size:.88rem;color:var(--ink-2)}
+.card-loc svg{flex:none}
+.card-specs{display:flex;gap:1rem;margin-top:auto;padding-top:.9rem;border-top:1px solid var(--line);font-size:.85rem;color:var(--ink-2);font-weight:600}
+.card-specs span{display:inline-flex;align-items:center;gap:.35rem}
+.card-specs svg{color:var(--teal)}
+
+/* empty state */
+.empty{display:none;text-align:center;padding:4rem 1rem;border:1.5px dashed var(--line-2);border-radius:var(--r-lg);background:var(--bg-soft)}
+.empty.show{display:block}
+.empty .ico{width:64px;height:64px;margin:0 auto 1.2rem;border-radius:50%;background:#fff;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--teal)}
+.empty h3{font-size:1.3rem;margin-bottom:.5rem}
+.empty p{color:var(--ink-2);max-width:36ch;margin:0 auto 1.4rem}
+
+/* ===== MODAL ===== */
+.modal-backdrop{position:fixed;inset:0;z-index:9000;background:rgba(8,26,30,.55);backdrop-filter:blur(6px);display:none;align-items:flex-start;justify-content:center;padding:clamp(1rem,4vw,3rem) 1rem;overflow-y:auto}
+.modal-backdrop.open{display:flex}
+.modal{background:#fff;border-radius:var(--r-lg);max-width:920px;width:100%;box-shadow:var(--shadow-lg);overflow:hidden;animation:pop .35s cubic-bezier(.2,.8,.3,1)}
+@keyframes pop{from{opacity:0;transform:translateY(24px) scale(.98)}to{opacity:1;transform:none}}
+.modal-close{position:absolute;top:1rem;right:1rem;z-index:3;width:42px;height:42px;border-radius:50%;border:none;background:rgba(255,255,255,.92);cursor:pointer;font-size:1.2rem;display:flex;align-items:center;justify-content:center;color:var(--ink);box-shadow:var(--shadow-sm);transition:.2s}
+.modal-close:hover{background:#fff;transform:rotate(90deg);color:var(--beam)}
+.gallery{position:relative}
+.gallery-main{aspect-ratio:16/9;background:var(--bg-soft);overflow:hidden}
+.gallery-main img{width:100%;height:100%;object-fit:cover}
+.gallery-badge{position:absolute;top:1rem;left:1rem;font-size:.76rem;font-weight:700;letter-spacing:.04em;padding:.34rem .8rem;border-radius:var(--r-pill);text-transform:uppercase}
+.thumbs{display:flex;gap:.5rem;padding:.7rem;background:var(--bg-soft);overflow-x:auto}
+.thumbs img{width:88px;height:62px;object-fit:cover;border-radius:9px;cursor:pointer;flex:none;border:2px solid transparent;opacity:.7;transition:.2s}
+.thumbs img:hover{opacity:1}
+.thumbs img.active{border-color:var(--teal);opacity:1}
+.modal-body{padding:clamp(1.4rem,3vw,2.2rem)}
+.modal-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:2rem}
+.modal-price{font-family:"Bricolage Grotesque";font-weight:800;font-size:2rem;color:var(--beam);letter-spacing:-.02em;line-height:1}
+.modal-price small{font-size:.9rem;font-weight:600;color:var(--ink-2)}
+.modal-title{font-size:clamp(1.4rem,3vw,1.9rem);margin:.6rem 0 .3rem}
+.modal-loc{display:flex;align-items:center;gap:.4rem;color:var(--ink-2);font-weight:600;margin-bottom:1.3rem}
+.modal-specs{display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:1.4rem}
+.spec-chip{display:inline-flex;align-items:center;gap:.4rem;background:var(--bg-soft);border:1px solid var(--line);border-radius:var(--r);padding:.55rem .85rem;font-size:.9rem;font-weight:600}
+.spec-chip svg{color:var(--teal)}
+.modal-desc{color:var(--ink-2);margin-bottom:1.4rem}
+.feat-list{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:.5rem .9rem;margin-bottom:1.5rem}
+.feat-list li{display:flex;align-items:center;gap:.5rem;font-size:.92rem}
+.feat-list svg{color:var(--teal);flex:none}
+.map-sim{position:relative;border-radius:var(--r);overflow:hidden;border:1px solid var(--line);aspect-ratio:16/7;margin-bottom:0}
+.map-sim img{width:100%;height:100%;object-fit:cover;filter:saturate(.85)}
+.map-pin{position:absolute;top:50%;left:50%;transform:translate(-50%,-100%);color:var(--beam);filter:drop-shadow(0 4px 6px rgba(0,0,0,.3))}
+.map-label{position:absolute;bottom:.7rem;left:.7rem;background:rgba(255,255,255,.92);padding:.3rem .7rem;border-radius:var(--r-pill);font-size:.78rem;font-weight:700;color:var(--ink)}
+
+/* visit form */
+.visit{background:var(--bg-soft);border:1px solid var(--line);border-radius:var(--r-lg);padding:1.4rem}
+.visit h3{font-size:1.2rem;margin-bottom:.3rem}
+.visit p.sub{font-size:.86rem;color:var(--ink-2);margin-bottom:1.1rem}
+.field{margin-bottom:.8rem}
+.field label{display:block;font-size:.78rem;font-weight:700;color:var(--ink-2);margin-bottom:.3rem}
+.field input,.field textarea{width:100%;font-family:inherit;font-size:.95rem;color:var(--ink);background:#fff;border:1px solid var(--line-2);border-radius:var(--r);padding:.7rem .85rem;transition:border-color .2s,box-shadow .2s}
+.field input:focus,.field textarea:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 3px rgba(31,122,116,.14)}
+.field textarea{resize:vertical;min-height:74px}
+.visit .btn{width:100%;margin-top:.4rem}
+.visit-ok{display:none;text-align:center;padding:1.4rem .5rem}
+.visit-ok.show{display:block;animation:pop .4s ease}
+.visit-ok .ok-ico{width:56px;height:56px;border-radius:50%;background:var(--teal);color:#fff;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;font-size:1.6rem}
+.visit-ok h3{font-size:1.3rem;margin-bottom:.4rem}
+.visit-ok p{color:var(--ink-2);font-size:.92rem}
+
+/* ===== CTA BAND ===== */
+.cta-band{background:linear-gradient(135deg,var(--dark) 0%,var(--dark-soft) 100%);color:#fff;text-align:center;position:relative;overflow:hidden}
+.cta-band::after{content:"";position:absolute;width:420px;height:420px;background:radial-gradient(circle,rgba(245,182,92,.16),transparent 70%);top:-160px;right:-80px;pointer-events:none}
+.cta-band .wrap{padding:clamp(3rem,7vw,4.5rem) clamp(18px,5vw,40px);position:relative}
+.cta-band h2{font-size:clamp(1.8rem,4.4vw,3rem);max-width:18ch;margin:0 auto 1.6rem}
+.cta-band .btn{font-size:1.05rem;padding:.9rem 1.8rem}
+
+/* ===== FOOTER ===== */
+.footer{background:#081c20;color:#9fc0bc;padding:2.6rem 0 2rem;font-size:.9rem}
+.footer-top{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;margin-bottom:1.4rem;padding-bottom:1.4rem;border-bottom:1px solid rgba(255,255,255,.08)}
+.footer .brand .bname b{color:#fff}.footer .brand .bname small{color:#7fa39e}
+.footer-links{display:flex;gap:1.4rem;flex-wrap:wrap}
+.footer-links a{text-decoration:none;color:#9fc0bc;transition:.2s}.footer-links a:hover{color:#fff}
+.footer-note{font-size:.82rem;color:#5e837e;max-width:60ch}
+.footer-note a{color:var(--beam-soft);text-decoration:none}
+.footer-note .disc{display:block;margin-top:.4rem;font-style:italic}
+
+/* ===== FAB ===== */
+.fab{position:fixed;bottom:22px;right:22px;z-index:8000;display:flex;align-items:center;gap:.6rem;background:var(--wa);color:#06351c;font-weight:700;padding:.8rem 1.1rem;border-radius:var(--r-pill);text-decoration:none;box-shadow:0 14px 32px -10px rgba(37,211,102,.6);transition:transform .25s ease,box-shadow .25s ease}
+.fab:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 20px 40px -10px rgba(37,211,102,.7)}
+.fab svg{flex:none}
+.fab .fab-txt{font-size:.92rem}
+@media(max-width:560px){.fab .fab-txt{display:none}.fab{padding:.85rem}}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:900px){
+  .grid{grid-template-columns:repeat(2,1fr)}
+  .searchbar{grid-template-columns:1fr 1fr;max-width:560px}
+  .sb-go{grid-column:1/-1}
+  .modal-grid{grid-template-columns:1fr;gap:1.4rem}
+  .feat-list{grid-template-columns:1fr}
+}
+@media(max-width:768px){
+  .nav-links{position:fixed;top:0;right:0;bottom:0;width:min(80vw,320px);background:#fff;flex-direction:column;align-items:flex-start;justify-content:center;gap:1.6rem;padding:2.5rem;transform:translateX(100%);transition:transform .3s ease;box-shadow:-20px 0 50px -20px rgba(0,0,0,.3);z-index:950}
+  .nav-links.open{transform:translateX(0)}
+  .nav-links a{font-size:1.25rem;color:var(--ink)}
+  .nav-links .btn{margin-top:.5rem}
+  .nav-burger{display:flex}
+  .nav-burger.active span{background:transparent}
+  .nav-burger.active span::before{top:0;transform:rotate(45deg)}
+  .nav-burger.active span::after{top:0;transform:rotate(-45deg)}
+  .trust-inner{grid-template-columns:1fr;gap:1.4rem}
+  .trust-item+.trust-item::before{display:none}
+}
+@media(max-width:560px){
+  .grid{grid-template-columns:1fr}
+  .searchbar{grid-template-columns:1fr;padding:.9rem}
+  .filterbar{flex-direction:column;align-items:stretch}
+  .pills{justify-content:center}
+  .result-count{text-align:center}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+}
+</style>
+</head>
+<body>
+
+<!-- DEMO BAR -->
+<div class="ef-demobar">
+  <a class="ef-back" href="../index.html#showcase">← Estudio Faro</a>
+  <span class="ef-label">Demo · Inmobiliaria</span>
+  <a class="ef-cta" href="https://wa.me/56971845174?text=Hola%20Estudio%20Faro%2C%20quiero%20un%20portal%20de%20propiedades%20como%20la%20demo" target="_blank" rel="noopener">Quiero uno así</a>
+</div>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="#" aria-label="Faro Propiedades inicio">
+      <svg class="logo" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+        <rect width="48" height="48" rx="12" fill="#0c282f"/>
+        <path d="M24 11l9 8v3h-3v11h-4v-7h-4v7h-4V22h-3v-3l9-8z" fill="#f5b65c"/>
+        <path d="M24 11l9 8v3h-3v11h-4v-7h-4v7h-4V22h-3v-3l9-8z" stroke="#c97e16" stroke-width=".6"/>
+        <circle cx="24" cy="20.5" r="1.7" fill="#1f7a74"/>
+        <path d="M21 16l-3-2M27 16l3-2" stroke="#f5b65c" stroke-width="1.1" stroke-linecap="round" opacity=".7"/>
+      </svg>
+      <span class="bname"><b>Faro Propiedades</b><small>La Serena · Coquimbo</small></span>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#listado" data-op="Venta">Comprar</a>
+      <a href="#listado" data-op="Arriendo">Arrendar</a>
+      <a href="#vender">Vender</a>
+      <a href="#contacto">Contacto</a>
+      <a class="btn btn-beam" href="#contacto">Publicar propiedad</a>
+    </nav>
+    <button class="nav-burger" id="burger" aria-label="Abrir menú" aria-expanded="false"><span></span></button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg">
+    <img src="https://picsum.photos/seed/faroprop-hero-bay/1600/900" width="1600" height="900" alt="Vista de casas frente a la bahía de Coquimbo al atardecer">
+  </div>
+  <div class="wrap hero-inner">
+    <span class="hero-eyebrow">🏠 <b>+200</b> propiedades activas en la región de Coquimbo</span>
+    <h1>Encuentra tu lugar en <em>La Serena y Coquimbo.</em></h1>
+    <p class="lead">Corretaje con 15 años en la región. Casas, departamentos y terrenos verificados, con corredores certificados que te acompañan de principio a fin.</p>
+
+    <!-- SEARCH BAR -->
+    <form class="searchbar" id="searchForm" aria-label="Buscador de propiedades">
+      <div class="sb-field">
+        <label for="fOp">Operación</label>
+        <select id="fOp" name="op">
+          <option value="all">Venta y Arriendo</option>
+          <option value="Venta">Venta</option>
+          <option value="Arriendo">Arriendo</option>
+        </select>
+      </div>
+      <div class="sb-field">
+        <label for="fTipo">Tipo</label>
+        <select id="fTipo" name="tipo">
+          <option value="all">Todos los tipos</option>
+          <option value="Casa">Casa</option>
+          <option value="Depto">Departamento</option>
+          <option value="Oficina">Oficina</option>
+          <option value="Terreno">Terreno</option>
+        </select>
+      </div>
+      <div class="sb-field">
+        <label for="fComuna">Comuna</label>
+        <select id="fComuna" name="comuna">
+          <option value="all">Todas las comunas</option>
+          <option value="La Serena">La Serena</option>
+          <option value="Coquimbo">Coquimbo</option>
+          <option value="Vicuña">Vicuña</option>
+          <option value="Ovalle">Ovalle</option>
+        </select>
+      </div>
+      <div class="sb-field">
+        <label for="fPrecio">Precio</label>
+        <select id="fPrecio" name="precio">
+          <option value="all">Cualquier precio</option>
+          <option value="venta-low">Venta · hasta UF 3.000</option>
+          <option value="venta-mid">Venta · UF 3.000–6.000</option>
+          <option value="venta-high">Venta · sobre UF 6.000</option>
+          <option value="arr-low">Arriendo · hasta $500.000</option>
+          <option value="arr-high">Arriendo · sobre $500.000</option>
+        </select>
+      </div>
+      <div class="sb-go">
+        <button type="submit" class="btn btn-beam">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="M20 20l-3.5-3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          Buscar
+        </button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- TRUST STRIP -->
+<section class="trust">
+  <div class="wrap trust-inner">
+    <div class="trust-item"><b>+200</b><span>propiedades activas en cartera</span></div>
+    <div class="trust-item"><b>15 años</b><span>corretaje en la región de Coquimbo</span></div>
+    <div class="trust-item"><b>Certificados</b><span>corredores inscritos y verificados</span></div>
+  </div>
+</section>
+
+<!-- LISTADO -->
+<section class="section" id="listado">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <span class="kicker">Cartera disponible</span>
+        <h2>Propiedades para ti</h2>
+        <p>Selección actualizada de casas, departamentos y terrenos en La Serena, Coquimbo y el Valle del Elqui.</p>
+      </div>
+    </div>
+
+    <div class="filterbar">
+      <div class="pills" role="group" aria-label="Filtrar por operación">
+        <button class="pill" data-pill="all" aria-pressed="true">Todos</button>
+        <button class="pill" data-pill="Venta" aria-pressed="false">Venta</button>
+        <button class="pill" data-pill="Arriendo" aria-pressed="false">Arriendo</button>
+      </div>
+      <div class="result-count" id="resultCount" aria-live="polite"></div>
+    </div>
+
+    <div class="grid" id="grid"></div>
+
+    <div class="empty" id="empty">
+      <div class="ico">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="M20 20l-3.5-3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </div>
+      <h3>No encontramos propiedades con esos filtros</h3>
+      <p>Prueba ampliar la comuna o el rango de precio. También podemos buscarte algo a medida.</p>
+      <button class="btn btn-dark" id="resetFilters">Limpiar filtros</button>
+    </div>
+  </div>
+</section>
+
+<!-- VENDER / VENDE CON NOSOTROS -->
+<section class="section" id="vender" style="background:var(--bg-soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head" style="margin-bottom:1.2rem">
+      <div>
+        <span class="kicker">Vende o arrienda con nosotros</span>
+        <h2>Tu propiedad en las mejores manos</h2>
+        <p>Tasación real de mercado, fotografía profesional y difusión en todos los portales. Tú decides, nosotros gestionamos.</p>
+      </div>
+      <a class="btn btn-dark" href="#contacto">Publicar propiedad</a>
+    </div>
+    <div class="grid" style="grid-template-columns:repeat(3,1fr)">
+      <div class="card" style="cursor:default" tabindex="-1">
+        <div class="card-body">
+          <div class="card-price" style="font-size:1.1rem">01 · Tasación</div>
+          <p class="card-loc" style="color:var(--ink-2)">Visitamos tu propiedad y te damos un valor de mercado honesto, sin compromiso.</p>
+        </div>
+      </div>
+      <div class="card" style="cursor:default" tabindex="-1">
+        <div class="card-body">
+          <div class="card-price" style="font-size:1.1rem">02 · Difusión</div>
+          <p class="card-loc" style="color:var(--ink-2)">Fotos profesionales y publicación en portales, redes y nuestra cartera de clientes.</p>
+        </div>
+      </div>
+      <div class="card" style="cursor:default" tabindex="-1">
+        <div class="card-body">
+          <div class="card-price" style="font-size:1.1rem">03 · Cierre</div>
+          <p class="card-loc" style="color:var(--ink-2)">Coordinamos visitas, negociación y toda la gestión legal hasta la firma.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cta-band" id="contacto">
+  <div class="wrap">
+    <h2>¿Quieres mostrar tus propiedades así? Hablemos.</h2>
+    <a class="btn btn-wa" href="https://wa.me/56971845174?text=Hola%20Estudio%20Faro%2C%20quiero%20un%20portal%20de%20propiedades%20como%20la%20demo" target="_blank" rel="noopener">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21 5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2zm5.8 14.01c-.24.68-1.41 1.3-1.95 1.38-.5.07-1.13.1-1.83-.11-.42-.13-.96-.31-1.65-.61-2.9-1.25-4.79-4.17-4.94-4.36-.14-.19-1.18-1.57-1.18-2.99s.75-2.12 1.01-2.41c.27-.29.58-.36.78-.36.19 0 .39 0 .56.01.18.01.42-.07.66.5.24.59.82 2.04.89 2.18.07.15.12.32.02.51-.09.19-.14.31-.28.48-.14.17-.29.37-.42.5-.14.14-.28.29-.12.57.16.27.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.21 1.36.27.14.43.11.59-.07.16-.19.68-.79.86-1.06.18-.27.36-.22.61-.13.24.09 1.55.73 1.81.86.27.13.45.2.51.31.07.11.07.62-.17 1.3z"/></svg>
+      Conversemos por WhatsApp
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <a class="brand" href="#">
+        <svg class="logo" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+          <rect width="48" height="48" rx="12" fill="#11343c"/>
+          <path d="M24 11l9 8v3h-3v11h-4v-7h-4v7h-4V22h-3v-3l9-8z" fill="#f5b65c"/>
+          <circle cx="24" cy="20.5" r="1.7" fill="#1f7a74"/>
+        </svg>
+        <span class="bname"><b>Faro Propiedades</b><small>La Serena · Coquimbo</small></span>
+      </a>
+      <nav class="footer-links">
+        <a href="#listado">Comprar</a>
+        <a href="#listado">Arrendar</a>
+        <a href="#vender">Vender</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+    </div>
+    <p class="footer-note">
+      Demo creada por Estudio Faro · <a href="https://estudiofaro.cl" target="_blank" rel="noopener">estudiofaro.cl</a>
+      <span class="disc">Portal de demostración. Propiedades, precios e imágenes ficticios.</span>
+    </p>
+  </div>
+</footer>
+
+<!-- FAB -->
+<a class="fab" href="https://wa.me/56971845174?text=Hola%20Faro%20Propiedades%2C%20vi%20una%20propiedad%20en%20el%20sitio" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21 5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2zm5.8 14.01c-.24.68-1.41 1.3-1.95 1.38-.5.07-1.13.1-1.83-.11-.42-.13-.96-.31-1.65-.61-2.9-1.25-4.79-4.17-4.94-4.36-.14-.19-1.18-1.57-1.18-2.99s.75-2.12 1.01-2.41c.27-.29.58-.36.78-.36.19 0 .39 0 .56.01.18.01.42-.07.66.5.24.59.82 2.04.89 2.18.07.15.12.32.02.51-.09.19-.14.31-.28.48-.14.17-.29.37-.42.5-.14.14-.28.29-.12.57.16.27.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.21 1.36.27.14.43.11.59-.07.16-.19.68-.79.86-1.06.18-.27.36-.22.61-.13.24.09 1.55.73 1.81.86.27.13.45.2.51.31.07.11.07.62-.17 1.3z"/></svg>
+  <span class="fab-txt">WhatsApp</span>
+</a>
+
+<!-- MODAL -->
+<div class="modal-backdrop" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal" role="document">
+    <button class="modal-close" id="modalClose" aria-label="Cerrar">✕</button>
+    <div class="gallery">
+      <div class="gallery-main"><img id="galMain" src="" alt="Foto principal de la propiedad" width="920" height="517"></div>
+      <span class="gallery-badge" id="galBadge"></span>
+      <div class="thumbs" id="thumbs"></div>
+    </div>
+    <div class="modal-body">
+      <div class="modal-grid">
+        <div>
+          <div class="modal-price" id="mPrice"></div>
+          <h2 class="modal-title" id="modalTitle"></h2>
+          <div class="modal-loc">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 21s-6-5.3-6-10a6 6 0 1112 0c0 4.7-6 10-6 10z" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="11" r="2.2" stroke="currentColor" stroke-width="2"/></svg>
+            <span id="mLoc"></span>
+          </div>
+          <div class="modal-specs" id="mSpecs"></div>
+          <p class="modal-desc" id="mDesc"></p>
+          <ul class="feat-list" id="mFeats"></ul>
+          <div class="map-sim">
+            <img id="mMap" src="" alt="Ubicación referencial de la propiedad" width="500" height="220" loading="lazy">
+            <svg class="map-pin" width="34" height="34" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a7 7 0 00-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 00-7-7zm0 9.5A2.5 2.5 0 1112 6.5a2.5 2.5 0 010 5z"/></svg>
+            <span class="map-label" id="mMapLabel"></span>
+          </div>
+        </div>
+        <aside class="visit">
+          <form id="visitForm">
+            <h3>Agendar visita</h3>
+            <p class="sub">Déjanos tus datos y un corredor te contacta dentro del día.</p>
+            <div class="field">
+              <label for="vName">Nombre</label>
+              <input type="text" id="vName" required placeholder="Tu nombre">
+            </div>
+            <div class="field">
+              <label for="vPhone">Teléfono</label>
+              <input type="tel" id="vPhone" required placeholder="+56 9 ...">
+            </div>
+            <div class="field">
+              <label for="vMsg">Mensaje</label>
+              <textarea id="vMsg" placeholder="Quiero coordinar una visita..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-dark">Solicitar visita</button>
+          </form>
+          <div class="visit-ok" id="visitOk">
+            <div class="ok-ico">✓</div>
+            <h3>Solicitud enviada</h3>
+            <p>Gracias, te contactamos muy pronto para coordinar tu visita.</p>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ===== DATA ===== */
+  const props = [
+    {id:1, op:"Venta", tipo:"Casa", comuna:"La Serena", title:"Casa 3D en Las Compañías", price:4500, dorm:3, banos:2, m2:140, seed:"faroprop-casa1", sector:"Las Compañías", desc:"Casa familiar de dos pisos en sector residencial consolidado, con living-comedor amplio, cocina equipada y patio para ampliación. Excelente conectividad a la Ruta 5.", feats:["Estacionamiento 2 autos","Patio 60 m²","Cocina amoblada","Logia independiente","Cerca de colegios","Listo para habitar"]},
+    {id:2, op:"Arriendo", tipo:"Depto", comuna:"Coquimbo", title:"Depto frente al mar, Peñuelas", price:650000, dorm:2, banos:2, m2:78, seed:"faroprop-depto1", sector:"Peñuelas", desc:"Departamento con vista despejada al mar en el sector más conectado de Peñuelas. Amoblado, con terraza y acceso a piscina y gimnasio del edificio.", feats:["Vista al mar","Amoblado","Terraza","Piscina y gimnasio","Estacionamiento","Conserjería 24h"]},
+    {id:3, op:"Venta", tipo:"Depto", comuna:"La Serena", title:"Depto nuevo en Avenida del Mar", price:3200, dorm:2, banos:1, m2:62, seed:"faroprop-depto2", sector:"Avenida del Mar", desc:"Departamento a estrenar a pasos de la playa, ideal para inversión o primera vivienda. Edificio con áreas verdes, quinchos y seguridad.", feats:["A estrenar","A pasos de la playa","Quinchos","Áreas verdes","Bodega","Apto crédito"]},
+    {id:4, op:"Venta", tipo:"Casa", comuna:"Vicuña", title:"Casa con viñedo en el Valle del Elqui", price:6800, dorm:4, banos:3, m2:220, seed:"faroprop-casa2", sector:"Valle del Elqui", desc:"Propiedad única rodeada de parronales con vista a los cielos más limpios de Chile. Casa principal más quincho y pozo de agua. Ideal proyecto turístico.", feats:["Terreno 5.000 m²","Parronales","Pozo de agua","Quincho","Vista a la cordillera","Apto turismo"]},
+    {id:5, op:"Arriendo", tipo:"Oficina", comuna:"La Serena", title:"Oficina céntrica equipada", price:480000, dorm:0, banos:1, m2:55, seed:"faroprop-oficina1", sector:"Centro", desc:"Oficina lista para operar en pleno centro de La Serena, con sala de reuniones, recepción y estacionamiento. A pasos de bancos y notarías.", feats:["Sala de reuniones","Recepción","Estacionamiento","Climatizada","Fibra óptica","Acceso control"]},
+    {id:6, op:"Venta", tipo:"Terreno", comuna:"Ovalle", title:"Terreno agrícola en Limarí", price:2400, dorm:0, banos:0, m2:10000, seed:"faroprop-terreno1", sector:"Valle del Limarí", desc:"Hectárea de terreno plano con derechos de agua y acceso por camino consolidado. Apto para cultivo, parcelación o proyecto habitacional.", feats:["1 hectárea","Derechos de agua","Acceso consolidado","Factibilidad eléctrica","Suelo plano","Apto subdivisión"]},
+    {id:7, op:"Arriendo", tipo:"Casa", comuna:"La Serena", title:"Casa 4D en condominio cerrado", price:850000, dorm:4, banos:3, m2:165, seed:"faroprop-casa3", sector:"El Milagro", desc:"Amplia casa en condominio con seguridad 24/7, áreas comunes y piscina. Patio con quincho y jardín mantenido. Perfecta para familias.", feats:["Condominio cerrado","Seguridad 24/7","Piscina común","Quincho","Jardín mantenido","2 estacionamientos"]},
+    {id:8, op:"Venta", tipo:"Depto", comuna:"Coquimbo", title:"Depto con terraza, La Herradura", price:5200, dorm:3, banos:2, m2:98, seed:"faroprop-depto3", sector:"La Herradura", desc:"Departamento amplio con gran terraza y vista parcial a la bahía de La Herradura. Edificio premium con todas las comodidades.", feats:["Gran terraza","Vista bahía","2 estacionamientos","Bodega","Piscina","Sala multiuso"]},
+    {id:9, op:"Arriendo", tipo:"Depto", comuna:"La Serena", title:"Studio amoblado, centro histórico", price:380000, dorm:1, banos:1, m2:38, seed:"faroprop-depto4", sector:"Centro Histórico", desc:"Studio totalmente amoblado a pasos de la Plaza de Armas, ideal para profesionales o estudiantes. Gastos comunes bajos e internet incluido.", feats:["Totalmente amoblado","Internet incluido","Gastos bajos","Cocina equipada","Cerca de todo","Apto un mes mínimo"]},
+    {id:10, op:"Venta", tipo:"Casa", comuna:"Coquimbo", title:"Casa mediterránea en Tongoy", price:5900, dorm:3, banos:2, m2:155, seed:"faroprop-casa4", sector:"Tongoy", desc:"Casa estilo mediterráneo a tres cuadras de la playa de Tongoy. Espacios luminosos, terraza con vista y bajo mantenimiento. Ideal segunda vivienda.", feats:["A 3 cuadras de la playa","Terraza con vista","Bajo mantenimiento","Estacionamiento","Quincho","Lista para veranear"]},
+    {id:11, op:"Venta", tipo:"Oficina", comuna:"Coquimbo", title:"Oficina comercial en sector puerto", price:2900, dorm:0, banos:2, m2:90, seed:"faroprop-oficina2", sector:"Puerto", desc:"Local de oficinas en zona comercial de alto flujo, apto para empresa, retail o servicios. Dos baños, kitchenette y estacionamientos de visita.", feats:["Alto flujo","Kitchenette","2 baños","Estacionamiento visitas","Vitrina","Apto comercio"]},
+    {id:12, op:"Arriendo", tipo:"Terreno", comuna:"Vicuña", title:"Terreno para evento turístico", price:550000, dorm:0, banos:1, m2:3000, seed:"faroprop-terreno2", sector:"Valle del Elqui", desc:"Terreno habilitado para eventos y astroturismo, con baños, acceso vehicular y vista panorámica del valle. Ideal camping, glamping o ferias.", feats:["Habilitado eventos","Baños instalados","Acceso vehicular","Vista panorámica","Factibilidad agua","Apto glamping"]}
+  ];
+
+  /* ===== HELPERS ===== */
+  const fmt = n => n.toLocaleString("es-CL");
+  const priceLabel = p => p.op === "Venta"
+    ? `UF ${fmt(p.price)}`
+    : `$${fmt(p.price)}<small>/mes</small>`;
+  const tipoLabel = t => ({Casa:"Casa",Depto:"Departamento",Oficina:"Oficina",Terreno:"Terreno"}[t] || t);
+
+  const icoBed = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M3 18V8a2 2 0 012-2h14a2 2 0 012 2v10M3 14h18M7 10h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
+  const icoBath = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 12h16v3a4 4 0 01-4 4H8a4 4 0 01-4-4v-3zM6 12V6a2 2 0 012-2 2 2 0 012 2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
+  const icoArea = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 4h16v16H4zM4 9h5M15 4v5M9 20v-5M20 15h-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
+  const icoPin = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 21s-6-5.3-6-10a6 6 0 1112 0c0 4.7-6 10-6 10z" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="11" r="2.2" stroke="currentColor" stroke-width="2"/></svg>';
+  const icoCheck = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+
+  function specsRow(p){
+    let s = "";
+    if(p.dorm > 0) s += `<span>${icoBed} ${p.dorm} D</span>`;
+    if(p.banos > 0) s += `<span>${icoBath} ${p.banos} B</span>`;
+    s += `<span>${icoArea} ${fmt(p.m2)} m²</span>`;
+    return s;
+  }
+
+  /* ===== RENDER GRID ===== */
+  const grid = document.getElementById("grid");
+  const empty = document.getElementById("empty");
+  const resultCount = document.getElementById("resultCount");
+
+  function cardHTML(p){
+    return `<article class="card" tabindex="0" role="button" aria-label="Ver detalle: ${p.title}" data-id="${p.id}">
+      <div class="card-media">
+        <img src="https://picsum.photos/seed/${p.seed}/600/450" width="600" height="450" loading="lazy" alt="${p.title}, ${p.comuna}">
+        <span class="badge ${p.op === 'Venta' ? 'venta' : 'arriendo'}">${p.op}</span>
+        <button class="fav" aria-label="Guardar favorito" data-fav>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-4.5-9.5-9C1 9 2.5 5 6 5c2 0 3.2 1.3 4 2.4C10.8 6.3 12 5 14 5c3.5 0 5 4 3.5 7-2.5 4.5-9.5 9-9.5 9z" stroke="currentColor" stroke-width="2"/></svg>
+        </button>
+      </div>
+      <div class="card-body">
+        <div class="card-price">${priceLabel(p)}</div>
+        <h3 class="card-title">${p.title}</h3>
+        <div class="card-loc">${icoPin} ${p.comuna} · ${p.sector}</div>
+        <div class="card-specs">${specsRow(p)}</div>
+      </div>
+    </article>`;
+  }
+
+  let state = {op:"all", tipo:"all", comuna:"all", precio:"all"};
+
+  function priceMatch(p){
+    switch(state.precio){
+      case "venta-low": return p.op==="Venta" && p.price <= 3000;
+      case "venta-mid": return p.op==="Venta" && p.price > 3000 && p.price <= 6000;
+      case "venta-high": return p.op==="Venta" && p.price > 6000;
+      case "arr-low": return p.op==="Arriendo" && p.price <= 500000;
+      case "arr-high": return p.op==="Arriendo" && p.price > 500000;
+      default: return true;
+    }
+  }
+
+  function applyFilters(){
+    const list = props.filter(p =>
+      (state.op === "all" || p.op === state.op) &&
+      (state.tipo === "all" || p.tipo === state.tipo) &&
+      (state.comuna === "all" || p.comuna === state.comuna) &&
+      priceMatch(p)
+    );
+    grid.innerHTML = list.map(cardHTML).join("");
+    if(list.length === 0){
+      empty.classList.add("show");
+      grid.style.display = "none";
+      resultCount.innerHTML = "";
+    }else{
+      empty.classList.remove("show");
+      grid.style.display = "";
+      resultCount.innerHTML = `<b>${list.length}</b> ${list.length === 1 ? "propiedad" : "propiedades"} encontradas`;
+    }
+  }
+
+  /* ===== PILLS ===== */
+  const pills = [...document.querySelectorAll(".pill")];
+  function setPills(val){
+    pills.forEach(b => b.setAttribute("aria-pressed", String(b.dataset.pill === val)));
+  }
+  pills.forEach(b => b.addEventListener("click", () => {
+    state.op = b.dataset.pill;
+    document.getElementById("fOp").value = b.dataset.pill === "all" ? "all" : b.dataset.pill;
+    setPills(b.dataset.pill);
+    applyFilters();
+  }));
+
+  /* ===== SEARCH FORM ===== */
+  document.getElementById("searchForm").addEventListener("submit", e => {
+    e.preventDefault();
+    state.op = document.getElementById("fOp").value;
+    state.tipo = document.getElementById("fTipo").value;
+    state.comuna = document.getElementById("fComuna").value;
+    state.precio = document.getElementById("fPrecio").value;
+    setPills(state.op === "all" ? "all" : state.op);
+    applyFilters();
+    document.getElementById("listado").scrollIntoView({behavior:"smooth"});
+  });
+
+  document.getElementById("fOp").addEventListener("change", e => {
+    setPills(e.target.value === "all" ? "all" : e.target.value);
+  });
+
+  /* nav data-op shortcuts */
+  document.querySelectorAll('.nav-links a[data-op]').forEach(a => {
+    a.addEventListener("click", () => {
+      state.op = a.dataset.op;
+      document.getElementById("fOp").value = a.dataset.op;
+      setPills(a.dataset.op);
+      applyFilters();
+      closeMenu();
+    });
+  });
+
+  /* ===== RESET ===== */
+  document.getElementById("resetFilters").addEventListener("click", () => {
+    state = {op:"all", tipo:"all", comuna:"all", precio:"all"};
+    document.getElementById("fOp").value = "all";
+    document.getElementById("fTipo").value = "all";
+    document.getElementById("fComuna").value = "all";
+    document.getElementById("fPrecio").value = "all";
+    setPills("all");
+    applyFilters();
+  });
+
+  /* ===== FAV TOGGLE (stop propagation) ===== */
+  grid.addEventListener("click", e => {
+    const fav = e.target.closest("[data-fav]");
+    if(fav){
+      e.stopPropagation();
+      const active = fav.style.color === "rgb(201, 126, 22)";
+      fav.style.color = active ? "" : "#c97e16";
+      fav.querySelector("path").setAttribute("fill", active ? "none" : "#c97e16");
+      return;
+    }
+    const card = e.target.closest(".card");
+    if(card) openModal(+card.dataset.id);
+  });
+  grid.addEventListener("keydown", e => {
+    if((e.key === "Enter" || e.key === " ") && e.target.classList.contains("card")){
+      e.preventDefault();
+      openModal(+e.target.dataset.id);
+    }
+  });
+
+  /* ===== MODAL ===== */
+  const modal = document.getElementById("modal");
+  const galMain = document.getElementById("galMain");
+  const galBadge = document.getElementById("galBadge");
+  const thumbs = document.getElementById("thumbs");
+  let lastFocus = null;
+
+  function openModal(id){
+    const p = props.find(x => x.id === id);
+    if(!p) return;
+    lastFocus = document.activeElement;
+
+    document.getElementById("mPrice").innerHTML = priceLabel(p);
+    document.getElementById("modalTitle").textContent = p.title;
+    document.getElementById("mLoc").textContent = `${p.comuna} · ${p.sector} · ${tipoLabel(p.tipo)}`;
+    document.getElementById("mSpecs").innerHTML =
+      (p.dorm>0?`<span class="spec-chip">${icoBed} ${p.dorm} dormitorios</span>`:"") +
+      (p.banos>0?`<span class="spec-chip">${icoBath} ${p.banos} baños</span>`:"") +
+      `<span class="spec-chip">${icoArea} ${fmt(p.m2)} m²</span>` +
+      `<span class="spec-chip">${icoPin} ${tipoLabel(p.tipo)}</span>`;
+    document.getElementById("mDesc").textContent = p.desc;
+    document.getElementById("mFeats").innerHTML = p.feats.map(f => `<li>${icoCheck} ${f}</li>`).join("");
+    document.getElementById("mMap").src = `https://picsum.photos/seed/${p.seed}-map/500/220`;
+    document.getElementById("mMapLabel").textContent = `${p.comuna}, ${p.sector}`;
+
+    galBadge.textContent = p.op;
+    galBadge.className = "gallery-badge badge " + (p.op === "Venta" ? "venta" : "arriendo");
+
+    const seeds = ["", "-int1", "-int2", "-ext1"];
+    galMain.src = `https://picsum.photos/seed/${p.seed}/920/517`;
+    galMain.alt = `${p.title} - foto principal`;
+    thumbs.innerHTML = seeds.map((s,i) =>
+      `<img src="https://picsum.photos/seed/${p.seed}${s}/180/120" data-full="https://picsum.photos/seed/${p.seed}${s}/920/517" class="${i===0?'active':''}" alt="Foto ${i+1} de ${p.title}" loading="lazy" width="180" height="120">`
+    ).join("");
+
+    resetVisitForm();
+    modal.classList.add("open");
+    document.body.style.overflow = "hidden";
+    document.getElementById("modalClose").focus();
+  }
+
+  function closeModal(){
+    modal.classList.remove("open");
+    document.body.style.overflow = "";
+    if(lastFocus) lastFocus.focus();
+  }
+
+  thumbs.addEventListener("click", e => {
+    const img = e.target.closest("img");
+    if(!img) return;
+    galMain.src = img.dataset.full;
+    thumbs.querySelectorAll("img").forEach(t => t.classList.remove("active"));
+    img.classList.add("active");
+  });
+
+  document.getElementById("modalClose").addEventListener("click", closeModal);
+  modal.addEventListener("click", e => { if(e.target === modal) closeModal(); });
+  document.addEventListener("keydown", e => {
+    if(e.key === "Escape" && modal.classList.contains("open")) closeModal();
+  });
+
+  /* ===== VISIT FORM ===== */
+  const visitForm = document.getElementById("visitForm");
+  const visitOk = document.getElementById("visitOk");
+  function resetVisitForm(){
+    visitForm.reset();
+    visitForm.style.display = "";
+    visitOk.classList.remove("show");
+  }
+  visitForm.addEventListener("submit", e => {
+    e.preventDefault();
+    visitForm.style.display = "none";
+    visitOk.classList.add("show");
+  });
+
+  /* ===== MOBILE NAV ===== */
+  const burger = document.getElementById("burger");
+  const navLinks = document.getElementById("navLinks");
+  function closeMenu(){
+    navLinks.classList.remove("open");
+    burger.classList.remove("active");
+    burger.setAttribute("aria-expanded", "false");
+  }
+  burger.addEventListener("click", () => {
+    const open = navLinks.classList.toggle("open");
+    burger.classList.toggle("active", open);
+    burger.setAttribute("aria-expanded", String(open));
+  });
+  navLinks.querySelectorAll("a:not([data-op])").forEach(a => a.addEventListener("click", closeMenu));
+
+  /* ===== INIT ===== */
+  applyFilters();
+})();
+</script>
+</body>
+</html>

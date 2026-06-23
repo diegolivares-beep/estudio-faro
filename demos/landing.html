@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Clínica Dental Aurora · La Serena — Agenda tu hora</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#ffffff; --bg-soft:#faf8f3; --ink:#0f262c; --ink-2:#51666b; --line:#ece7dc; --line-2:#e2ddd0;
+  --beam:#c97e16; --beam-soft:#f5b65c; --teal:#1f7a74; --dark:#0c282f; --cream:#f6f2e9; --wa:#25d366;
+  --r:14px; --r-lg:22px; --r-pill:999px;
+  --sh-sm:0 1px 2px rgba(15,38,44,.05), 0 2px 8px rgba(15,38,44,.04);
+  --sh:0 8px 28px -10px rgba(15,38,44,.16), 0 2px 8px rgba(15,38,44,.05);
+  --sh-lg:0 30px 70px -28px rgba(12,40,47,.34), 0 8px 24px -12px rgba(201,126,22,.14);
+  --ease:cubic-bezier(.16,1,.3,1);
+  --maxw:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:"Hanken Grotesk",system-ui,-apple-system,sans-serif;
+  font-size:17px; line-height:1.6; -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important; transition:none!important; scroll-behavior:auto!important}
+}
+h1,h2,h3,h4{font-family:"Bricolage Grotesque",system-ui,sans-serif;font-weight:800;letter-spacing:-.02em;line-height:1.04;margin:0;color:var(--ink)}
+p{margin:0}
+a{color:inherit}
+img{display:block;max-width:100%}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 clamp(18px,4vw,40px)}
+.eyebrow{font-size:.78rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--beam)}
+.muted{color:var(--ink-2)}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:.5rem;font-family:"Hanken Grotesk",sans-serif;font-weight:700;
+  font-size:1rem;border:none;cursor:pointer;border-radius:var(--r-pill);padding:.85rem 1.5rem;text-decoration:none;
+  transition:transform .25s var(--ease),box-shadow .25s var(--ease),background .25s var(--ease);white-space:nowrap}
+.btn:focus-visible{outline:3px solid var(--beam);outline-offset:3px}
+.btn-primary{background:var(--beam);color:#fff;box-shadow:0 10px 24px -10px rgba(201,126,22,.7)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 30px -12px rgba(201,126,22,.78);background:#b66f0f}
+.btn-ghost{background:#fff;color:var(--ink);border:1.5px solid var(--line-2)}
+.btn-ghost:hover{transform:translateY(-2px);border-color:var(--teal);color:var(--teal)}
+.btn-teal{background:var(--teal);color:#fff;box-shadow:0 10px 24px -10px rgba(31,122,116,.6)}
+.btn-teal:hover{transform:translateY(-2px);background:#196661}
+.btn-wa{background:var(--wa);color:#06351c;box-shadow:0 10px 24px -10px rgba(37,211,102,.7)}
+.btn-wa:hover{transform:translateY(-2px);background:#1ec25c}
+
+/* demobar */
+.ef-demobar{position:sticky;top:0;z-index:9999;display:flex;align-items:center;justify-content:space-between;gap:1rem;background:#0c282f;color:#fff;padding:.5rem clamp(14px,4vw,28px);font-family:"Hanken Grotesk",system-ui,sans-serif;font-size:.85rem}
+.ef-demobar .ef-back{color:#cfe0de;font-weight:600;text-decoration:none}.ef-demobar .ef-back:hover{color:#fff}
+.ef-demobar .ef-label{color:#8fb0ac;font-weight:600}@media(max-width:560px){.ef-demobar .ef-label{display:none}}
+.ef-demobar .ef-cta{background:#25d366;color:#06351c;font-weight:700;padding:.4rem .9rem;border-radius:999px;text-decoration:none;white-space:nowrap}
+.ef-demobar .ef-cta:focus-visible{outline:2px solid #fff;outline-offset:2px}
+
+/* nav */
+.nav{position:sticky;top:46px;z-index:900;background:rgba(255,255,255,.82);backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);transition:box-shadow .3s var(--ease)}
+.nav.scrolled{box-shadow:var(--sh-sm)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:70px}
+.logo{display:flex;align-items:center;gap:.55rem;text-decoration:none;font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:1.35rem;letter-spacing:-.03em;color:var(--ink)}
+.logo svg{flex:none}
+.nav-links{display:flex;align-items:center;gap:2rem;list-style:none;margin:0;padding:0}
+.nav-links a{text-decoration:none;font-weight:600;font-size:.96rem;color:var(--ink-2);position:relative;padding:.2rem 0;transition:color .2s var(--ease)}
+.nav-links a:hover{color:var(--ink)}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:-2px;height:2px;width:0;background:var(--beam);transition:width .3s var(--ease)}
+.nav-links a:hover::after{width:100%}
+.nav-right{display:flex;align-items:center;gap:1rem}
+.burger{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px;padding:8px}
+.burger span{width:24px;height:2px;background:var(--ink);border-radius:2px;transition:.3s var(--ease)}
+.burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.burger.open span:nth-child(2){opacity:0}
+.burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* hero */
+.hero{position:relative;background:
+  radial-gradient(1100px 600px at 88% -8%,rgba(245,182,92,.20),transparent 60%),
+  linear-gradient(180deg,var(--bg-soft),var(--bg) 78%);
+  padding:clamp(48px,7vw,96px) 0 clamp(56px,7vw,90px);overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(32px,5vw,72px);align-items:center}
+.hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:#fff;border:1px solid var(--line-2);
+  border-radius:var(--r-pill);padding:.4rem .9rem .4rem .55rem;font-size:.85rem;font-weight:600;color:var(--ink-2);box-shadow:var(--sh-sm);margin-bottom:1.4rem}
+.hero-badge .dot{width:8px;height:8px;border-radius:50%;background:var(--teal);box-shadow:0 0 0 4px rgba(31,122,116,.16)}
+.hero h1{font-size:clamp(2.5rem,6.2vw,4.5rem);margin-bottom:1.2rem}
+.hero h1 .hl{color:var(--beam);position:relative;white-space:nowrap}
+.hero h1 .hl svg{position:absolute;left:-2%;bottom:-.18em;width:104%;height:.4em;color:var(--beam-soft);z-index:-1}
+.hero-sub{font-size:1.18rem;color:var(--ink-2);max-width:30ch;margin-bottom:2rem}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:.85rem;margin-bottom:2.3rem}
+.trust-row{display:flex;gap:1.6rem;flex-wrap:wrap;align-items:center}
+.trust-item{display:flex;flex-direction:column;line-height:1.15}
+.trust-item b{font-family:"Bricolage Grotesque",sans-serif;font-size:1.45rem;color:var(--ink)}
+.trust-item span{font-size:.82rem;color:var(--ink-2)}
+.trust-sep{width:1px;align-self:stretch;background:var(--line-2)}
+.stars{color:var(--beam);letter-spacing:1px}
+
+.hero-media{position:relative}
+.hero-card{position:relative;border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--sh-lg);background:#fff;
+  border:1px solid var(--line);transform:rotate(1.2deg);transition:transform .5s var(--ease)}
+.hero-card:hover{transform:rotate(0deg) translateY(-4px)}
+.hero-card img{width:100%;height:clamp(340px,46vw,480px);object-fit:cover}
+.float-chip{position:absolute;background:#fff;border-radius:var(--r);box-shadow:var(--sh);padding:.7rem 1rem;display:flex;align-items:center;gap:.6rem;font-weight:700;font-size:.92rem;border:1px solid var(--line)}
+.float-chip.a{top:18px;left:-22px;animation:floaty 5s ease-in-out infinite}
+.float-chip.b{bottom:24px;right:-18px;animation:floaty 6s ease-in-out infinite .5s}
+.float-chip .ic{width:34px;height:34px;border-radius:9px;display:grid;place-items:center;color:#fff;flex:none}
+.float-chip.a .ic{background:var(--teal)}
+.float-chip.b .ic{background:var(--beam)}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+
+/* convenios strip */
+.strip{background:var(--dark);color:#cfe0de}
+.strip-in{display:flex;align-items:center;gap:1.4rem;flex-wrap:wrap;justify-content:center;padding:1.1rem 0;font-size:.95rem}
+.strip-in b{color:#fff;font-family:"Bricolage Grotesque",sans-serif;letter-spacing:-.01em}
+.pill-conv{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:var(--r-pill);padding:.3rem .9rem;font-weight:600;color:#eaf2f0}
+
+/* sections */
+section{scroll-margin-top:120px}
+.sec{padding:clamp(56px,8vw,104px) 0}
+.sec-head{max-width:60ch;margin-bottom:clamp(28px,4vw,52px)}
+.sec-head h2{font-size:clamp(2rem,4.4vw,3.1rem);margin:.55rem 0 .8rem}
+.sec-head p{font-size:1.1rem;color:var(--ink-2)}
+
+/* tratamientos */
+.treat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem}
+.treat-grid .feat{grid-column:span 1}
+.tcard{border:1px solid var(--line);border-radius:var(--r-lg);padding:1.6rem;background:#fff;
+  transition:transform .3s var(--ease),box-shadow .3s var(--ease),border-color .3s var(--ease);position:relative;overflow:hidden;display:flex;flex-direction:column}
+.tcard:hover{transform:translateY(-6px);box-shadow:var(--sh);border-color:var(--line-2)}
+.tcard .tic{width:50px;height:50px;border-radius:13px;display:grid;place-items:center;background:var(--cream);color:var(--beam);margin-bottom:1.1rem;transition:.3s var(--ease)}
+.tcard:hover .tic{background:var(--beam);color:#fff;transform:rotate(-6deg)}
+.tcard h3{font-size:1.3rem;margin-bottom:.4rem}
+.tcard p{color:var(--ink-2);font-size:.98rem;margin-bottom:1.2rem;flex:1}
+.price{display:flex;align-items:baseline;gap:.4rem;border-top:1px dashed var(--line-2);padding-top:.9rem;margin-top:auto}
+.price .from{font-size:.8rem;color:var(--ink-2);font-weight:600}
+.price .amt{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:1.5rem;color:var(--ink)}
+.tcard.feat{background:linear-gradient(160deg,var(--dark),#0a3038);color:#eaf2f0;border-color:transparent}
+.tcard.feat h3{color:#fff}.tcard.feat p{color:#bcd4d1}
+.tcard.feat .tic{background:rgba(245,182,92,.2);color:var(--beam-soft)}
+.tcard.feat:hover .tic{background:var(--beam);color:#fff}
+.tcard.feat .price{border-color:rgba(255,255,255,.16)}
+.tcard.feat .price .amt{color:#fff}.tcard.feat .price .from{color:#9bbab6}
+.tcard.feat .tag{position:absolute;top:1.1rem;right:1.1rem;background:var(--beam);color:#fff;font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.25rem .6rem;border-radius:var(--r-pill)}
+
+/* resultados slider */
+.res-wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,4vw,56px);align-items:center}
+.ba{position:relative;width:100%;aspect-ratio:4/3;border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--sh-lg);
+  user-select:none;cursor:ew-resize;border:1px solid var(--line);touch-action:none}
+.ba img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none}
+.ba .after{clip-path:inset(0 0 0 50%)}
+.ba .tag{position:absolute;top:12px;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  background:rgba(12,40,47,.78);color:#fff;padding:.3rem .65rem;border-radius:var(--r-pill);backdrop-filter:blur(3px)}
+.ba .tag.l{left:12px}.ba .tag.r{right:12px;background:rgba(201,126,22,.9)}
+.ba .handle{position:absolute;top:0;bottom:0;left:50%;width:3px;background:#fff;transform:translateX(-50%);box-shadow:0 0 14px rgba(0,0,0,.35)}
+.ba .knob{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:46px;height:46px;border-radius:50%;
+  background:#fff;display:grid;place-items:center;box-shadow:var(--sh);color:var(--beam)}
+.ba .range{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0}
+.res-copy h2{font-size:clamp(1.9rem,4vw,2.8rem);margin-bottom:1rem}
+.res-copy .li{display:flex;gap:.7rem;align-items:flex-start;margin-bottom:.8rem;color:var(--ink-2)}
+.res-copy .li .ck{flex:none;width:24px;height:24px;border-radius:50%;background:rgba(31,122,116,.12);color:var(--teal);display:grid;place-items:center;margin-top:2px}
+.res-hint{font-size:.85rem;color:var(--ink-2);margin-top:1rem;display:flex;align-items:center;gap:.4rem}
+
+/* equipo */
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
+.member{border-radius:var(--r-lg);overflow:hidden;background:#fff;border:1px solid var(--line);transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
+.member:hover{transform:translateY(-6px);box-shadow:var(--sh)}
+.member .ph{position:relative;overflow:hidden}
+.member img{width:100%;height:300px;object-fit:cover;transition:transform .6s var(--ease)}
+.member:hover img{transform:scale(1.05)}
+.member .body{padding:1.2rem 1.3rem 1.4rem}
+.member h3{font-size:1.25rem}
+.member .spec{color:var(--teal);font-weight:600;font-size:.92rem;margin-top:.2rem}
+.member .reg{font-size:.82rem;color:var(--ink-2);margin-top:.5rem}
+
+/* testimonios */
+.tsec{background:var(--bg-soft)}
+.tgrid{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:1.2rem}
+.tquote{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:1.6rem;display:flex;flex-direction:column;gap:1rem;transition:transform .3s var(--ease)}
+.tquote:hover{transform:translateY(-4px)}
+.tquote .stars{font-size:1.05rem}
+.tquote p{font-size:1.02rem;color:var(--ink)}
+.tquote.big p{font-size:1.2rem}
+.tperson{display:flex;align-items:center;gap:.7rem;margin-top:auto}
+.tperson .av{width:42px;height:42px;border-radius:50%;object-fit:cover;border:2px solid #fff;box-shadow:var(--sh-sm)}
+.tperson b{font-size:.95rem}.tperson span{font-size:.82rem;color:var(--ink-2);display:block}
+
+/* agendar */
+.book{background:linear-gradient(165deg,#0c282f,#0a343b 60%,#0c282f);color:#eaf2f0;position:relative;overflow:hidden}
+.book::before{content:"";position:absolute;width:520px;height:520px;border-radius:50%;
+  background:radial-gradient(circle,rgba(245,182,92,.22),transparent 70%);top:-200px;right:-120px}
+.book-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:clamp(32px,5vw,64px);align-items:center;position:relative;z-index:1}
+.book-copy h2{color:#fff;font-size:clamp(2rem,4.4vw,3rem);margin-bottom:1rem}
+.book-copy p{color:#bcd4d1;font-size:1.1rem;margin-bottom:1.6rem}
+.book-copy .bli{display:flex;align-items:center;gap:.7rem;margin-bottom:.8rem;color:#dceae8;font-weight:600}
+.book-copy .bli .ic{color:var(--beam-soft)}
+.form{background:#fff;border-radius:var(--r-lg);padding:clamp(1.4rem,3vw,2.2rem);box-shadow:var(--sh-lg);color:var(--ink)}
+.form h3{font-size:1.5rem;margin-bottom:.3rem}
+.form .fsub{color:var(--ink-2);font-size:.95rem;margin-bottom:1.4rem}
+.fgrid{display:grid;grid-template-columns:1fr 1fr;gap:.9rem}
+.field{display:flex;flex-direction:column;gap:.35rem}
+.field.full{grid-column:1/-1}
+.field label{font-size:.82rem;font-weight:600;color:var(--ink-2)}
+.field input,.field select{font-family:inherit;font-size:1rem;padding:.75rem .85rem;border:1.5px solid var(--line-2);
+  border-radius:var(--r);background:var(--bg-soft);color:var(--ink);transition:border-color .2s var(--ease),box-shadow .2s var(--ease)}
+.field input:focus,.field select:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 4px rgba(31,122,116,.13);background:#fff}
+.field input:focus-visible,.field select:focus-visible{outline:none}
+.form .btn{width:100%;justify-content:center;margin-top:.4rem}
+.form .legal{font-size:.78rem;color:var(--ink-2);text-align:center;margin-top:.9rem}
+.err{font-size:.78rem;color:#c0392b;display:none}
+.field.invalid input,.field.invalid select{border-color:#c0392b;background:#fdf3f2}
+.field.invalid .err{display:block}
+.success{display:none;text-align:center;padding:2rem 1rem;animation:pop .5s var(--ease)}
+.success.show{display:block}
+.success .big{width:72px;height:72px;border-radius:50%;background:rgba(37,211,102,.14);color:var(--wa);display:grid;place-items:center;margin:0 auto 1.1rem}
+.success h3{font-size:1.6rem;margin-bottom:.5rem}
+.success p{color:var(--ink-2);margin-bottom:1.4rem}
+@keyframes pop{0%{transform:scale(.92);opacity:0}100%{transform:scale(1);opacity:1}}
+
+/* faq + mapa */
+.bottom-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,60px);align-items:start}
+.faq details{border:1px solid var(--line);border-radius:var(--r);margin-bottom:.7rem;background:#fff;overflow:hidden;transition:border-color .25s var(--ease)}
+.faq details[open]{border-color:var(--line-2);box-shadow:var(--sh-sm)}
+.faq summary{cursor:pointer;list-style:none;padding:1.05rem 1.2rem;font-weight:700;display:flex;justify-content:space-between;align-items:center;gap:1rem;font-size:1.02rem}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary .pm{flex:none;width:26px;height:26px;border-radius:50%;background:var(--cream);color:var(--beam);display:grid;place-items:center;transition:transform .3s var(--ease);font-size:1.1rem;line-height:1}
+.faq details[open] summary .pm{transform:rotate(45deg);background:var(--beam);color:#fff}
+.faq details p{padding:0 1.2rem 1.2rem;color:var(--ink-2)}
+.map-card{border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--sh)}
+.map-vis{position:relative;height:240px;background:
+  linear-gradient(0deg,rgba(12,40,47,.04),rgba(12,40,47,.04)),
+  url('https://picsum.photos/seed/aurora-map-laserena/800/480') center/cover}
+.map-vis::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(255,255,255,.7))}
+.map-pin{position:absolute;top:46%;left:50%;transform:translate(-50%,-100%);z-index:2;color:var(--beam);filter:drop-shadow(0 6px 8px rgba(12,40,47,.3));animation:floaty 3s ease-in-out infinite}
+.map-info{padding:1.4rem 1.5rem;background:#fff}
+.map-info .row{display:flex;gap:.7rem;align-items:flex-start;margin-bottom:.8rem}
+.map-info .row:last-child{margin-bottom:0}
+.map-info .ic{flex:none;color:var(--teal);margin-top:2px}
+.map-info b{display:block}.map-info span{color:var(--ink-2);font-size:.94rem}
+
+/* cta band */
+.ctaband{background:var(--dark);color:#fff;text-align:center}
+.ctaband-in{padding:clamp(54px,7vw,84px) 0;display:flex;flex-direction:column;align-items:center;gap:1.4rem}
+.ctaband h2{color:#fff;font-size:clamp(2rem,4.6vw,3.1rem);max-width:18ch}
+.ctaband p{color:#bcd4d1;font-size:1.15rem;max-width:46ch}
+
+/* footer */
+.footer{background:#081e23;color:#9bbab6;padding:clamp(36px,5vw,56px) 0;font-size:.92rem}
+.footer-in{display:flex;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;align-items:center}
+.footer .logo{color:#fff}
+.footer a{color:#cfe0de;text-decoration:none;font-weight:600}
+.footer a:hover{color:#fff}
+.footer .disc{font-size:.8rem;color:#5c7d80;margin-top:.6rem;max-width:60ch}
+
+/* fab */
+.fab{position:fixed;right:clamp(16px,3vw,28px);bottom:clamp(16px,3vw,28px);z-index:8000;display:flex;align-items:center;gap:.6rem;
+  background:var(--wa);color:#06351c;font-weight:700;text-decoration:none;padding:.7rem 1.1rem .7rem .7rem;border-radius:var(--r-pill);
+  box-shadow:0 14px 34px -10px rgba(37,211,102,.7);transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
+.fab:hover{transform:translateY(-3px) scale(1.03)}
+.fab:focus-visible{outline:3px solid #06351c;outline-offset:3px}
+.fab .ring{width:38px;height:38px;border-radius:50%;background:#fff;display:grid;place-items:center;flex:none}
+.fab .lbl{font-size:.95rem}
+@media(max-width:560px){.fab .lbl{display:none}.fab{padding:.7rem}}
+
+/* responsive */
+@media(max-width:900px){
+  .hero-grid{grid-template-columns:1fr;gap:48px}
+  .hero-sub{max-width:42ch}
+  .hero-media{max-width:520px}
+  .treat-grid{grid-template-columns:repeat(2,1fr)}
+  .team-grid{grid-template-columns:repeat(3,1fr)}
+  .res-wrap{grid-template-columns:1fr}
+  .book-grid{grid-template-columns:1fr}
+  .tgrid{grid-template-columns:1fr 1fr}
+  .tgrid .big{grid-column:1/-1}
+  .bottom-grid{grid-template-columns:1fr}
+}
+@media(max-width:768px){
+  .nav-links,.nav-right .desk{display:none}
+  .burger{display:flex}
+  .nav.open .nav-links{display:flex;position:absolute;top:70px;left:0;right:0;flex-direction:column;
+    background:#fff;padding:1.2rem;gap:1.2rem;border-bottom:1px solid var(--line);box-shadow:var(--sh)}
+  .nav.open .nav-links a{font-size:1.1rem;color:var(--ink)}
+  .team-grid{grid-template-columns:1fr 1fr}
+  .float-chip.a{left:6px}.float-chip.b{right:6px}
+}
+@media(max-width:560px){
+  body{font-size:16px}
+  .treat-grid{grid-template-columns:1fr}
+  .team-grid{grid-template-columns:1fr}
+  .tgrid{grid-template-columns:1fr}
+  .fgrid{grid-template-columns:1fr}
+  .trust-sep{display:none}
+  .hero-ctas .btn{flex:1;justify-content:center}
+}
+</style>
+</head>
+<body>
+
+<!-- DEMO BAR -->
+<div class="ef-demobar">
+  <a class="ef-back" href="../index.html#showcase">← Estudio Faro</a>
+  <span class="ef-label">Demo · Sitio que convierte</span>
+  <a class="ef-cta" href="https://wa.me/56971845174?text=Hola%20Estudio%20Faro%2C%20quiero%20una%20web%20como%20la%20demo%20de%20Cl%C3%ADnica%20Dental" target="_blank" rel="noopener">Quiero una así</a>
+</div>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a class="logo" href="#top" aria-label="Aurora Clínica Dental">
+      <svg width="30" height="30" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path d="M16 3c4.2 0 7.5 2.4 7.5 7 0 3.5-1.2 7.6-2.6 11-1 2.4-2.1 4-3.3 4-1.1 0-1.4-1.6-1.6-3.2-.1-1.1-.4-1.8-.0-1.8s-.7.7-.8 1.8C14.4 31.4 14.1 25 13 25c-1.2 0-2.3-1.6-3.3-4C8.2 17.6 7 13.5 7 10c0-4.6 3.3-7 7.5-7 .5 0 1 .3 1.5.3s1-.3 0 0z" fill="#c97e16"/>
+        <path d="M24 4.5l.7 1.7 1.8.2-1.3 1.2.4 1.8L24 8.6l-1.6.9.4-1.8-1.3-1.2 1.8-.2.7-1.6z" fill="#1f7a74"/>
+      </svg>
+      Aurora
+    </a>
+    <ul class="nav-links">
+      <li><a href="#tratamientos">Tratamientos</a></li>
+      <li><a href="#equipo">Equipo</a></li>
+      <li><a href="#resultados">Resultados</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+    <div class="nav-right">
+      <a class="btn btn-primary desk" href="#agendar">Agendar hora</a>
+      <button class="burger" id="burger" aria-label="Abrir menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div class="hero-text">
+      <span class="hero-badge"><span class="dot"></span> Atención el mismo día · La Serena</span>
+      <h1>Tu mejor sonrisa empieza con <span class="hl">una hora.
+        <svg viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden="true"><path d="M2 8C40 3 160 2 198 6" stroke="currentColor" stroke-width="5" fill="none" stroke-linecap="round"/></svg>
+      </span></h1>
+      <p class="hero-sub">Odontología cálida, sin dolor y a tu ritmo. Diagnóstico claro, presupuesto sin sorpresas y un equipo que te explica todo.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="#agendar">Agendar hora
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a class="btn btn-ghost" href="#tratamientos">Ver tratamientos</a>
+      </div>
+      <div class="trust-row">
+        <div class="trust-item"><b><span class="stars">★</span> 4,9</b><span>Reseñas Google</span></div>
+        <div class="trust-sep"></div>
+        <div class="trust-item"><b>+1.200</b><span>Pacientes felices</span></div>
+        <div class="trust-sep"></div>
+        <div class="trust-item"><b>12 años</b><span>En la región</span></div>
+      </div>
+    </div>
+    <div class="hero-media">
+      <div class="hero-card">
+        <img src="https://picsum.photos/seed/aurora-clinic-room/720/560" width="720" height="560" loading="eager" alt="Box de atención de Clínica Dental Aurora, luminoso y moderno">
+      </div>
+      <div class="float-chip a">
+        <span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        Convenios isapres
+      </div>
+      <div class="float-chip b">
+        <span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-4.6-9.3-9C1.2 9 2.5 5 6 5c2 0 3.2 1.3 4 2.5C10.8 6.3 12 5 14 5c3.5 0 4.8 4 3.3 7-2.3 4.4-9.3 9-9.3 9z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        Sin dolor
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- CONVENIOS STRIP -->
+<div class="strip">
+  <div class="wrap strip-in">
+    <b>Convenios:</b>
+    <span class="pill-conv">Consalud</span>
+    <span class="pill-conv">Cruz Blanca</span>
+    <span class="pill-conv">Banmédica</span>
+    <span class="pill-conv">Colmena</span>
+    <span class="pill-conv">Fonasa</span>
+  </div>
+</div>
+
+<!-- TRATAMIENTOS -->
+<section class="sec" id="tratamientos">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Tratamientos</span>
+      <h2>Todo lo que tu sonrisa necesita, en un solo lugar</h2>
+      <p>Precios transparentes en pesos chilenos. Coordinamos cuotas sin interés y aplicamos tus convenios.</p>
+    </div>
+    <div class="treat-grid">
+
+      <article class="tcard">
+        <div class="tic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M5 13l3-3 8 8M14 6l4 4M16 4l4 4-2 2-4-4 2-2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h3>Limpieza y prevención</h3>
+        <p>Profilaxis, destartraje y control. La base para mantener tus dientes sanos.</p>
+        <div class="price"><span class="from">desde</span><span class="amt">$25.000</span></div>
+      </article>
+
+      <article class="tcard feat">
+        <span class="tag">Top</span>
+        <div class="tic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 3l2.2 5.6L20 9.2l-4.3 3.7L17 19l-5-3-5 3 1.3-6.1L4 9.2l5.8-.6L12 3z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></div>
+        <h3>Blanqueamiento</h3>
+        <p>Hasta 6 tonos más blanco en una sesión, con gel profesional y resultado real.</p>
+        <div class="price"><span class="from">desde</span><span class="amt">$120.000</span></div>
+      </article>
+
+      <article class="tcard">
+        <div class="tic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="4" y="9" width="16" height="6" rx="3" stroke="currentColor" stroke-width="2"/><path d="M8 9V7M12 9V7M16 9V7M8 15v2M12 15v2M16 15v2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+        <h3>Ortodoncia</h3>
+        <p>Brackets metálicos, estéticos o alineadores. Plan a tu medida y a tu ritmo.</p>
+        <div class="price"><span class="from">desde</span><span class="amt">$890.000</span></div>
+      </article>
+
+      <article class="tcard">
+        <div class="tic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 3c2 0 3 1.5 3 3v3H9V6c0-1.5 1-3 3-3z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M9 9h6l-1 7c-.3 2-.7 5-2 5s-1.7-3-2-5L9 9z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></div>
+        <h3>Implantes dentales</h3>
+        <p>Recupera piezas perdidas con implantes de titanio y corona definitiva.</p>
+        <div class="price"><span class="from">desde</span><span class="amt">$450.000</span></div>
+      </article>
+
+      <article class="tcard">
+        <div class="tic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="2"/><path d="M12 8v4l2.5 2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h3>Urgencias dentales</h3>
+        <p>¿Dolor o accidente? Te atendemos el mismo día y calmamos el dolor primero.</p>
+        <div class="price"><span class="from">desde</span><span class="amt">$30.000</span></div>
+      </article>
+
+      <article class="tcard">
+        <div class="tic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 8c3 0 4-2 8-2s5 2 8 2M4 8v6c0 4 4 6 8 6s8-2 8-6V8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h3>Carillas y estética</h3>
+        <p>Diseño de sonrisa con carillas de resina o porcelana. Mira el antes y después.</p>
+        <div class="price"><span class="from">desde</span><span class="amt">$180.000</span></div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- RESULTADOS / ANTES-DESPUES -->
+<section class="sec" id="resultados" style="background:var(--bg-soft)">
+  <div class="wrap res-wrap">
+    <div class="ba" id="ba" role="group" aria-label="Comparador antes y después">
+      <img class="before" src="https://picsum.photos/seed/aurora-smile-before/800/600" width="800" height="600" loading="lazy" alt="Sonrisa antes del tratamiento">
+      <img class="after" src="https://picsum.photos/seed/aurora-smile-after/800/600" width="800" height="600" loading="lazy" alt="Sonrisa después del tratamiento">
+      <span class="tag l">Antes</span>
+      <span class="tag r">Después</span>
+      <div class="handle" id="handle">
+        <div class="knob"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M9 7l-4 5 4 5M15 7l4 5-4 5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      </div>
+      <input class="range" id="range" type="range" min="0" max="100" value="50" aria-label="Deslizar para comparar antes y después">
+    </div>
+    <div class="res-copy">
+      <span class="eyebrow">Resultados reales</span>
+      <h2>Mueve el control y mira la diferencia</h2>
+      <div class="li"><span class="ck"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Cada tratamiento parte con un diagnóstico fotográfico y un plan a la vista.</div>
+      <div class="li"><span class="ck"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Te mostramos cómo quedará tu sonrisa antes de empezar.</div>
+      <div class="li"><span class="ck"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Seguimiento gratuito durante los 6 meses siguientes.</div>
+      <a class="btn btn-teal" href="#agendar" style="margin-top:1.2rem">Quiero mi diagnóstico</a>
+      <p class="res-hint"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 7l-4 5 4 5M15 7l4 5-4 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Arrastra el círculo o usa la barra</p>
+    </div>
+  </div>
+</section>
+
+<!-- EQUIPO -->
+<section class="sec" id="equipo">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Nuestro equipo</span>
+      <h2>Manos expertas, trato humano</h2>
+      <p>Especialistas con registro vigente y años acompañando sonrisas en la región de Coquimbo.</p>
+    </div>
+    <div class="team-grid">
+      <article class="member">
+        <div class="ph"><img src="https://picsum.photos/seed/aurora-dentist-camila/420/420" width="420" height="420" loading="lazy" alt="Dra. Camila Pizarro"></div>
+        <div class="body">
+          <h3>Dra. Camila Pizarro</h3>
+          <div class="spec">Rehabilitación oral · Implantes</div>
+          <p class="reg">Directora clínica · 12 años de experiencia</p>
+        </div>
+      </article>
+      <article class="member">
+        <div class="ph"><img src="https://picsum.photos/seed/aurora-dentist-matias/420/420" width="420" height="420" loading="lazy" alt="Dr. Matías Rojas"></div>
+        <div class="body">
+          <h3>Dr. Matías Rojas</h3>
+          <div class="spec">Ortodoncia · Alineadores</div>
+          <p class="reg">Especialista en sonrisas adolescentes y adultas</p>
+        </div>
+      </article>
+      <article class="member">
+        <div class="ph"><img src="https://picsum.photos/seed/aurora-dentist-fernanda/420/420" width="420" height="420" loading="lazy" alt="Dra. Fernanda Soto"></div>
+        <div class="body">
+          <h3>Dra. Fernanda Soto</h3>
+          <div class="spec">Odontopediatría · Prevención</div>
+          <p class="reg">La favorita de los más chicos de la casa</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIOS -->
+<section class="sec tsec">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Lo que dicen</span>
+      <h2>Pacientes que volvieron a sonreír tranquilos</h2>
+    </div>
+    <div class="tgrid">
+      <article class="tquote big">
+        <div class="stars" aria-label="5 de 5 estrellas">★★★★★</div>
+        <p>"Le tenía terror al dentista y acá me sentí súper acompañada. Me explicaron cada paso y el presupuesto fue exactamente lo que dijeron. Mi blanqueamiento quedó increíble."</p>
+        <div class="tperson">
+          <img class="av" src="https://picsum.photos/seed/aurora-paciente-valentina/80/80" width="80" height="80" loading="lazy" alt="Valentina A.">
+          <div><b>Valentina A.</b><span>La Serena</span></div>
+        </div>
+      </article>
+      <article class="tquote">
+        <div class="stars" aria-label="5 de 5 estrellas">★★★★★</div>
+        <p>"Llegué de urgencia un domingo con un dolor terrible y me recibieron al tiro. Profesionales y cero letra chica."</p>
+        <div class="tperson">
+          <img class="av" src="https://picsum.photos/seed/aurora-paciente-jorge/80/80" width="80" height="80" loading="lazy" alt="Jorge M.">
+          <div><b>Jorge M.</b><span>Coquimbo</span></div>
+        </div>
+      </article>
+      <article class="tquote">
+        <div class="stars" aria-label="5 de 5 estrellas">★★★★★</div>
+        <p>"Llevo a mis dos hijos donde la Dra. Fernanda. Salen felices y sin miedo. Recomendadísima."</p>
+        <div class="tperson">
+          <img class="av" src="https://picsum.photos/seed/aurora-paciente-paula/80/80" width="80" height="80" loading="lazy" alt="Paula R.">
+          <div><b>Paula R.</b><span>La Serena</span></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- AGENDAR -->
+<section class="book sec" id="agendar">
+  <div class="wrap book-grid">
+    <div class="book-copy">
+      <span class="eyebrow" style="color:var(--beam-soft)">Agenda en 1 minuto</span>
+      <h2>Reserva tu hora hoy mismo</h2>
+      <p>Déjanos tus datos y te confirmamos por WhatsApp. Sin compromiso, sin costo por agendar.</p>
+      <div class="bli"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Confirmación el mismo día</div>
+      <div class="bli"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Primera evaluación sin costo</div>
+      <div class="bli"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Aplicamos tus convenios e isapres</div>
+    </div>
+
+    <div class="form">
+      <form id="bookForm" novalidate>
+        <h3>Solicita tu hora</h3>
+        <p class="fsub">Te contactamos por WhatsApp para confirmar el horario.</p>
+        <div class="fgrid">
+          <div class="field full">
+            <label for="f-name">Nombre y apellido</label>
+            <input type="text" id="f-name" name="name" placeholder="Ej: María Pérez" autocomplete="name">
+            <span class="err">Ingresa tu nombre.</span>
+          </div>
+          <div class="field full">
+            <label for="f-phone">Teléfono / WhatsApp</label>
+            <input type="tel" id="f-phone" name="phone" placeholder="+56 9 1234 5678" autocomplete="tel">
+            <span class="err">Ingresa un teléfono válido (al menos 8 dígitos).</span>
+          </div>
+          <div class="field full">
+            <label for="f-treat">Tratamiento</label>
+            <select id="f-treat" name="treat">
+              <option value="">Selecciona una opción…</option>
+              <option>Limpieza y prevención</option>
+              <option>Blanqueamiento</option>
+              <option>Ortodoncia</option>
+              <option>Implantes dentales</option>
+              <option>Urgencia dental</option>
+              <option>Carillas / estética</option>
+              <option>No estoy seguro/a</option>
+            </select>
+            <span class="err">Elige un tratamiento.</span>
+          </div>
+          <div class="field">
+            <label for="f-date">Fecha preferida</label>
+            <input type="date" id="f-date" name="date">
+            <span class="err">Elige una fecha.</span>
+          </div>
+          <div class="field">
+            <label for="f-time">Hora</label>
+            <select id="f-time" name="time">
+              <option value="">Hora…</option>
+              <option>09:00</option><option>10:00</option><option>11:00</option>
+              <option>12:00</option><option>15:00</option><option>16:00</option>
+              <option>17:00</option><option>18:00</option>
+            </select>
+            <span class="err">Elige una hora.</span>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Solicitar hora
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <p class="legal">Al enviar aceptas que te contactemos por WhatsApp o teléfono.</p>
+      </form>
+
+      <div class="success" id="success" role="status" aria-live="polite">
+        <div class="big"><svg width="36" height="36" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h3>¡Hora solicitada!</h3>
+        <p id="successMsg">Te confirmamos por WhatsApp en los próximos minutos. ¡Gracias por confiar en Aurora!</p>
+        <a class="btn btn-wa" id="successWa" href="https://wa.me/56971845174" target="_blank" rel="noopener">
+          <svg width="20" height="20" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M16 3C9 3 3.3 8.6 3.3 15.6c0 2.4.7 4.7 1.9 6.7L3 29l6.9-2.1c1.9 1 4 1.6 6.1 1.6 7 0 12.7-5.6 12.7-12.6S23 3 16 3zm0 22.8c-1.9 0-3.7-.5-5.3-1.5l-.4-.2-4 1.2 1.2-3.9-.3-.4a10.3 10.3 0 01-1.6-5.6c0-5.7 4.7-10.3 10.4-10.3s10.4 4.6 10.4 10.3-4.7 10.4-10.4 10.4z"/></svg>
+          Escríbenos por WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ + MAPA -->
+<section class="sec" id="contacto">
+  <div class="wrap bottom-grid">
+    <div class="faq">
+      <span class="eyebrow">Preguntas frecuentes</span>
+      <h2 style="font-size:clamp(1.8rem,3.6vw,2.5rem);margin:.5rem 0 1.4rem">Antes de venir</h2>
+      <details open>
+        <summary>¿Atienden urgencias el mismo día? <span class="pm">+</span></summary>
+        <p>Sí. Reservamos cupos diarios para urgencias. Escríbenos por WhatsApp y te damos prioridad para calmar el dolor primero.</p>
+      </details>
+      <details>
+        <summary>¿Trabajan con isapres y Fonasa? <span class="pm">+</span></summary>
+        <p>Tenemos convenio con Consalud, Cruz Blanca, Banmédica, Colmena y atención Fonasa. Te ayudamos con bonos y reembolsos.</p>
+      </details>
+      <details>
+        <summary>¿Puedo pagar en cuotas? <span class="pm">+</span></summary>
+        <p>Sí, ofrecemos cuotas sin interés con tarjetas y planes de financiamiento para tratamientos de ortodoncia e implantes.</p>
+      </details>
+      <details>
+        <summary>¿La primera evaluación tiene costo? <span class="pm">+</span></summary>
+        <p>La primera evaluación de diagnóstico es sin costo. Te entregamos un presupuesto claro y sin sorpresas antes de empezar.</p>
+      </details>
+    </div>
+
+    <div>
+      <span class="eyebrow">Visítanos</span>
+      <h2 style="font-size:clamp(1.8rem,3.6vw,2.5rem);margin:.5rem 0 1.4rem">Estamos en el centro de La Serena</h2>
+      <div class="map-card">
+        <div class="map-vis" role="img" aria-label="Ubicación aproximada de Clínica Dental Aurora">
+          <svg class="map-pin" width="44" height="44" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C7.6 2 4 5.6 4 10c0 5.5 8 12 8 12s8-6.5 8-12c0-4.4-3.6-8-8-8zm0 11a3 3 0 110-6 3 3 0 010 6z"/></svg>
+        </div>
+        <div class="map-info">
+          <div class="row">
+            <span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 2C7.6 2 4 5.6 4 10c0 5.5 8 12 8 12s8-6.5 8-12c0-4.4-3.6-8-8-8z" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="2"/></svg></span>
+            <div><b>Av. Francisco de Aguirre 123</b><span>La Serena, Región de Coquimbo</span></div>
+          </div>
+          <div class="row">
+            <span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3 2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <div><b>Lun a Vie 9:00–19:00 · Sáb 9:00–14:00</b><span>Urgencias también los domingos</span></div>
+          </div>
+          <div class="row">
+            <span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 5h4l2 5-2.5 1.5a11 11 0 005 5L14 14l5 2v4c0 1-1 2-2 2A16 16 0 014 6c0-1 0-1 0-1z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></span>
+            <div><b>+56 9 7184 5174</b><span>WhatsApp y reservas</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="ctaband">
+  <div class="wrap ctaband-in">
+    <span class="eyebrow" style="color:var(--beam-soft)">¿Tienes un negocio?</span>
+    <h2>¿Te imaginas la de tu negocio así?</h2>
+    <p>Esta es una demo de Estudio Faro. Te armamos un sitio que convierte visitas en clientes. Hablemos por WhatsApp.</p>
+    <a class="btn btn-wa" href="https://wa.me/56971845174?text=Hola%20Estudio%20Faro%2C%20quiero%20una%20web%20como%20la%20demo%20de%20Cl%C3%ADnica%20Dental" target="_blank" rel="noopener">
+      <svg width="22" height="22" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M16 3C9 3 3.3 8.6 3.3 15.6c0 2.4.7 4.7 1.9 6.7L3 29l6.9-2.1c1.9 1 4 1.6 6.1 1.6 7 0 12.7-5.6 12.7-12.6S23 3 16 3zm0 22.8c-1.9 0-3.7-.5-5.3-1.5l-.4-.2-4 1.2 1.2-3.9-.3-.4a10.3 10.3 0 01-1.6-5.6c0-5.7 4.7-10.3 10.4-10.3s10.4 4.6 10.4 10.3-4.7 10.4-10.4 10.4z"/></svg>
+      Hablemos por WhatsApp
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="wrap footer-in">
+    <div>
+      <div class="logo">
+        <svg width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M16 3c4.2 0 7.5 2.4 7.5 7 0 3.5-1.2 7.6-2.6 11-1 2.4-2.1 4-3.3 4-1.1 0-1.4-1.6-1.6-3.2C13 25 13 25 13 25c-1.2 0-2.3-1.6-3.3-4C8.2 17.6 7 13.5 7 10c0-4.6 3.3-7 7.5-7z" fill="#f5b65c"/></svg>
+        Aurora
+      </div>
+      <div class="disc">Sitio de demostración. Negocio, textos e imágenes ficticios. Creado para mostrar el trabajo de Estudio Faro.</div>
+    </div>
+    <div style="text-align:right">
+      Demo creada por <a href="../index.html#showcase">Estudio Faro</a> · La Serena–Coquimbo<br>
+      <a href="https://estudiofaro.cl" target="_blank" rel="noopener">estudiofaro.cl</a>
+    </div>
+  </div>
+</footer>
+
+<!-- FAB WHATSAPP -->
+<a class="fab" href="https://wa.me/56971845174?text=Hola%20Aurora%2C%20quiero%20agendar%20una%20hora" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
+  <span class="ring">
+    <svg width="24" height="24" viewBox="0 0 32 32" fill="#25d366" aria-hidden="true"><path d="M16 3C9 3 3.3 8.6 3.3 15.6c0 2.4.7 4.7 1.9 6.7L3 29l6.9-2.1c1.9 1 4 1.6 6.1 1.6 7 0 12.7-5.6 12.7-12.6S23 3 16 3zm0 22.8c-1.9 0-3.7-.5-5.3-1.5l-.4-.2-4 1.2 1.2-3.9-.3-.4a10.3 10.3 0 01-1.6-5.6c0-5.7 4.7-10.3 10.4-10.3s10.4 4.6 10.4 10.3-4.7 10.4-10.4 10.4z"/><path d="M21.7 18.3c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-1.7-.9-2.9-1.6-4-3.6-.3-.5.3-.5.8-1.6.1-.2 0-.4 0-.5 0-.2-.7-1.7-1-2.3-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.2 3.3 5.3 4.7 2 .8 2.7.9 3.7.8.6-.1 1.8-.8 2.1-1.5.3-.7.3-1.4.2-1.5 0-.2-.3-.3-.6-.5z"/></svg>
+  </span>
+  <span class="lbl">WhatsApp</span>
+</a>
+
+<script>
+(function(){
+  "use strict";
+
+  // ---- Nav: scrolled shadow + mobile burger ----
+  var nav = document.getElementById('nav');
+  var burger = document.getElementById('burger');
+  window.addEventListener('scroll', function(){
+    nav.classList.toggle('scrolled', window.scrollY > 8);
+  }, {passive:true});
+  burger.addEventListener('click', function(){
+    var open = nav.classList.toggle('open');
+    burger.classList.toggle('open', open);
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  nav.querySelectorAll('.nav-links a').forEach(function(a){
+    a.addEventListener('click', function(){
+      nav.classList.remove('open');
+      burger.classList.remove('open');
+      burger.setAttribute('aria-expanded','false');
+    });
+  });
+
+  // ---- Before/After slider ----
+  var ba = document.getElementById('ba');
+  var after = ba.querySelector('.after');
+  var handle = document.getElementById('handle');
+  var range = document.getElementById('range');
+  function setPos(pct){
+    pct = Math.max(0, Math.min(100, pct));
+    after.style.clipPath = 'inset(0 0 0 ' + pct + '%)';
+    handle.style.left = pct + '%';
+    range.value = pct;
+  }
+  range.addEventListener('input', function(){ setPos(parseFloat(range.value)); });
+  function pointerMove(clientX){
+    var r = ba.getBoundingClientRect();
+    setPos(((clientX - r.left) / r.width) * 100);
+  }
+  var dragging = false;
+  ba.addEventListener('pointerdown', function(e){
+    dragging = true;
+    ba.setPointerCapture(e.pointerId);
+    pointerMove(e.clientX);
+  });
+  ba.addEventListener('pointermove', function(e){
+    if(dragging) pointerMove(e.clientX);
+  });
+  ba.addEventListener('pointerup', function(){ dragging = false; });
+  ba.addEventListener('pointercancel', function(){ dragging = false; });
+  setPos(50);
+
+  // ---- Booking form ----
+  var form = document.getElementById('bookForm');
+  var success = document.getElementById('success');
+  var successMsg = document.getElementById('successMsg');
+  var successWa = document.getElementById('successWa');
+
+  // minimo: hoy en el date
+  var dateInput = document.getElementById('f-date');
+  var today = new Date();
+  var iso = today.toISOString().split('T')[0];
+  dateInput.min = iso;
+
+  function fieldEl(input){ return input.closest('.field'); }
+  function validate(){
+    var ok = true;
+    var name = form.name, phone = form.phone, treat = form.treat, date = form.date, time = form.time;
+
+    [name, phone, treat, date, time].forEach(function(el){ fieldEl(el).classList.remove('invalid'); });
+
+    if(name.value.trim().length < 2){ fieldEl(name).classList.add('invalid'); ok = false; }
+    var digits = phone.value.replace(/\D/g,'');
+    if(digits.length < 8){ fieldEl(phone).classList.add('invalid'); ok = false; }
+    if(!treat.value){ fieldEl(treat).classList.add('invalid'); ok = false; }
+    if(!date.value){ fieldEl(date).classList.add('invalid'); ok = false; }
+    if(!time.value){ fieldEl(time).classList.add('invalid'); ok = false; }
+    return ok;
+  }
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    if(!validate()){
+      var first = form.querySelector('.field.invalid input, .field.invalid select');
+      if(first) first.focus();
+      return;
+    }
+    var nombre = form.name.value.trim().split(' ')[0];
+    var trat = form.treat.value;
+    var fecha = form.date.value;
+    var hora = form.time.value;
+    successMsg.textContent = '¡Gracias ' + nombre + '! Anotamos tu interés en "' + trat + '" para el ' + fecha + ' a las ' + hora + '. Te confirmamos por WhatsApp en los próximos minutos.';
+    var txt = 'Hola Aurora, soy ' + form.name.value.trim() + '. Quiero agendar ' + trat + ' el ' + fecha + ' a las ' + hora + '.';
+    successWa.href = 'https://wa.me/56971845174?text=' + encodeURIComponent(txt);
+    form.style.display = 'none';
+    success.classList.add('show');
+    success.scrollIntoView({behavior:'smooth', block:'center'});
+  });
+
+  // limpiar invalid al editar
+  form.querySelectorAll('input, select').forEach(function(el){
+    el.addEventListener('input', function(){ fieldEl(el).classList.remove('invalid'); });
+  });
+
+})();
+</script>
+</body>
+</html>

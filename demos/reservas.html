@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Brasa Marina · Mariscos a la brasa frente al mar — La Serena</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#ffffff; --bg-soft:#faf8f3; --ink:#0f262c; --ink-2:#51666b; --line:#ece7dc;
+  --beam:#c97e16; --beam-soft:#f5b65c; --teal:#1f7a74; --dark:#0c282f; --wa:#25d366;
+  --r:14px; --r-lg:22px; --r-pill:999px;
+  --brasa:#b8472e; --brasa-deep:#8f3220; --warm-dark:#2a140d; --warm-dark-2:#3a1c12;
+  --ease:cubic-bezier(.16,1,.3,1);
+  --shadow-warm:0 18px 48px -20px rgba(184,71,46,.45);
+  --shadow-soft:0 14px 40px -22px rgba(15,38,44,.35);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  font-family:"Hanken Grotesk",system-ui,sans-serif;
+  background:var(--bg);color:var(--ink);line-height:1.6;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+h1,h2,h3,.display{font-family:"Bricolage Grotesque",system-ui,sans-serif;line-height:1.02;letter-spacing:-.02em;font-weight:800}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--beam);outline-offset:3px;border-radius:6px}
+.wrap{width:min(1160px,92vw);margin-inline:auto}
+.eyebrow{font-size:.78rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--brasa)}
+
+/* ===== DEMO BAR ===== */
+.ef-demobar{position:sticky;top:0;z-index:9999;display:flex;align-items:center;justify-content:space-between;gap:1rem;background:#0c282f;color:#fff;padding:.5rem clamp(14px,4vw,28px);font-family:"Hanken Grotesk",system-ui,sans-serif;font-size:.85rem}
+.ef-demobar .ef-back{color:#cfe0de;font-weight:600;text-decoration:none}.ef-demobar .ef-back:hover{color:#fff}
+.ef-demobar .ef-label{color:#8fb0ac;font-weight:600}@media(max-width:560px){.ef-demobar .ef-label{display:none}}
+.ef-demobar .ef-cta{background:#25d366;color:#06351c;font-weight:700;padding:.4rem .9rem;border-radius:999px;text-decoration:none;white-space:nowrap;transition:transform .25s var(--ease),box-shadow .25s var(--ease)}
+.ef-demobar .ef-cta:hover{transform:translateY(-1px);box-shadow:0 8px 20px -8px rgba(37,211,102,.7)}
+
+/* ===== NAV ===== */
+.nav{position:sticky;top:0;z-index:900;background:rgba(255,255,255,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);transition:box-shadow .3s var(--ease)}
+.nav.scrolled{box-shadow:0 6px 24px -16px rgba(15,38,44,.4)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;padding:.85rem 0}
+.brand{display:flex;align-items:center;gap:.6rem;text-decoration:none;color:var(--ink);font-family:"Bricolage Grotesque";font-weight:800;font-size:1.2rem;letter-spacing:-.02em}
+.brand svg{flex-shrink:0}
+.nav-links{display:flex;align-items:center;gap:.4rem;list-style:none}
+.nav-links a{text-decoration:none;color:var(--ink-2);font-weight:600;font-size:.95rem;padding:.5rem .8rem;border-radius:var(--r-pill);transition:color .25s var(--ease),background .25s var(--ease)}
+.nav-links a:hover{color:var(--ink);background:var(--bg-soft)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;font-family:"Hanken Grotesk";font-weight:700;font-size:.95rem;border:none;cursor:pointer;text-decoration:none;border-radius:var(--r-pill);padding:.7rem 1.3rem;transition:transform .25s var(--ease),box-shadow .25s var(--ease),background .25s var(--ease),color .25s var(--ease)}
+.btn-primary{background:var(--brasa);color:#fff;box-shadow:var(--shadow-warm)}
+.btn-primary:hover{transform:translateY(-2px);background:var(--brasa-deep);box-shadow:0 22px 50px -18px rgba(184,71,46,.6)}
+.btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+.btn-ghost:hover{border-color:var(--brasa);color:var(--brasa);transform:translateY(-2px)}
+.btn-light{background:rgba(255,255,255,.14);color:#fff;border:1.5px solid rgba(255,255,255,.28);backdrop-filter:blur(6px)}
+.btn-light:hover{background:rgba(255,255,255,.24);transform:translateY(-2px)}
+.btn-wa{background:var(--wa);color:#06351c}
+.btn-wa:hover{transform:translateY(-2px);box-shadow:0 18px 40px -14px rgba(37,211,102,.6)}
+.nav-burger{display:none;background:none;border:1.5px solid var(--line);border-radius:12px;width:46px;height:46px;cursor:pointer;align-items:center;justify-content:center;flex-direction:column;gap:5px}
+.nav-burger span{display:block;width:20px;height:2px;background:var(--ink);border-radius:2px;transition:transform .3s var(--ease),opacity .3s var(--ease)}
+.nav-burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-burger.open span:nth-child(2){opacity:0}
+.nav-burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* ===== HERO ===== */
+.hero{position:relative;min-height:min(88vh,760px);display:flex;align-items:flex-end;color:#fff;overflow:hidden;isolation:isolate}
+.hero img.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;background:
+  linear-gradient(180deg,rgba(42,20,13,.18) 0%,rgba(42,20,13,.55) 55%,rgba(42,20,13,.92) 100%),
+  radial-gradient(120% 80% at 80% 0%,rgba(201,126,22,.35),transparent 55%)}
+.hero-inner{padding:clamp(2rem,6vw,5rem) 0 clamp(2.4rem,5vw,4rem)}
+.hero .eyebrow{color:var(--beam-soft)}
+.hero h1{font-size:clamp(2.6rem,7vw,5.2rem);max-width:14ch;margin:.7rem 0 1rem;text-shadow:0 2px 30px rgba(0,0,0,.4)}
+.hero p.sub{font-size:clamp(1.05rem,2vw,1.35rem);max-width:46ch;color:#f3e9df;font-weight:500}
+.hero-cta{display:flex;flex-wrap:wrap;gap:.8rem;margin:1.8rem 0 1.4rem}
+.hero-meta{display:flex;flex-wrap:wrap;gap:.6rem 1.4rem;align-items:center;font-weight:600;font-size:.95rem;color:#f3e9df}
+.hero-meta .dot{width:5px;height:5px;border-radius:50%;background:var(--beam-soft);display:inline-block}
+.hero-meta .star{color:var(--beam-soft);font-weight:700}
+
+/* ===== SECTION SHELL ===== */
+section{position:relative}
+.sec-pad{padding:clamp(3.5rem,8vw,6.5rem) 0}
+.sec-head{max-width:60ch}
+.sec-head h2{font-size:clamp(2rem,4.5vw,3.2rem);margin:.6rem 0 .8rem}
+.sec-head p{color:var(--ink-2);font-size:1.08rem;max-width:54ch}
+
+/* ===== CARTA ===== */
+#carta{background:var(--bg-soft)}
+.carta-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:1.5rem}
+.tabs{display:flex;gap:.4rem;flex-wrap:wrap;margin:2rem 0 0;border-bottom:1px solid var(--line);padding-bottom:0}
+.tab{font-family:"Hanken Grotesk";font-weight:700;font-size:.98rem;background:none;border:none;cursor:pointer;color:var(--ink-2);padding:.7rem 1.05rem;border-radius:12px 12px 0 0;position:relative;transition:color .25s var(--ease),background .25s var(--ease)}
+.tab:hover{color:var(--ink);background:rgba(184,71,46,.06)}
+.tab[aria-selected="true"]{color:var(--brasa)}
+.tab[aria-selected="true"]::after{content:"";position:absolute;left:.7rem;right:.7rem;bottom:-1px;height:3px;background:var(--brasa);border-radius:3px}
+.panel{display:none;animation:fade .45s var(--ease)}
+.panel.active{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.cat-banner{position:relative;border-radius:var(--r-lg);overflow:hidden;margin:1.8rem 0 1.6rem;box-shadow:var(--shadow-soft)}
+.cat-banner img{width:100%;height:200px;object-fit:cover}
+.cat-banner .cap{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:1.4rem;background:linear-gradient(90deg,rgba(42,20,13,.78),rgba(42,20,13,.15));color:#fff}
+.cat-banner .cap h3{font-size:1.5rem}
+.cat-banner .cap span{font-weight:600;color:#f3e9df;font-size:.95rem}
+.dish{display:flex;align-items:baseline;gap:1rem;padding:1.05rem .2rem;border-bottom:1px dashed var(--line);transition:transform .25s var(--ease),padding-left .25s var(--ease)}
+.dish:hover{transform:translateX(2px);padding-left:.7rem}
+.dish-main{flex:1;min-width:0}
+.dish-name{font-weight:700;font-size:1.1rem;display:flex;align-items:center;gap:.55rem;flex-wrap:wrap}
+.dish-name .leader{flex:1;border-bottom:1px dotted var(--line);height:1px;min-width:1.5rem;transform:translateY(-3px)}
+.dish-desc{color:var(--ink-2);font-size:.95rem;margin-top:.2rem;max-width:60ch}
+.dish-price{font-family:"Bricolage Grotesque";font-weight:700;font-size:1.12rem;color:var(--ink);white-space:nowrap}
+.tag{font-size:.7rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:.22rem .55rem;border-radius:var(--r-pill);white-space:nowrap}
+.tag-rec{background:rgba(201,126,22,.16);color:#9a5e08}
+.tag-hot{background:rgba(184,71,46,.14);color:var(--brasa-deep)}
+
+/* ===== RESERVA ===== */
+#reservas{background:linear-gradient(180deg,var(--warm-dark),var(--warm-dark-2));color:#fff;overflow:hidden}
+#reservas .eyebrow{color:var(--beam-soft)}
+#reservas .sec-head h2{color:#fff}
+#reservas .sec-head p{color:#e8d6c9}
+.reserva-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(1.5rem,4vw,3rem);margin-top:2.4rem;align-items:start}
+.reserva-card{background:rgba(255,255,255,.05);border:1px solid rgba(245,182,92,.18);border-radius:var(--r-lg);padding:clamp(1.4rem,3vw,2.2rem);backdrop-filter:blur(6px)}
+.field{margin-bottom:1.4rem}
+.field > label{display:block;font-weight:700;font-size:.92rem;margin-bottom:.6rem;color:#f6ece3}
+.stepper{display:inline-flex;align-items:center;gap:0;background:rgba(255,255,255,.06);border:1px solid rgba(245,182,92,.25);border-radius:var(--r-pill);overflow:hidden}
+.stepper button{width:48px;height:48px;background:none;border:none;color:#fff;font-size:1.5rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s var(--ease)}
+.stepper button:hover{background:rgba(184,71,46,.5)}
+.stepper button:disabled{opacity:.3;cursor:not-allowed}
+.stepper .val{min-width:64px;text-align:center;font-family:"Bricolage Grotesque";font-weight:800;font-size:1.3rem}
+.stepper .val small{display:block;font-family:"Hanken Grotesk";font-weight:500;font-size:.65rem;color:#cdb9aa;letter-spacing:.05em;text-transform:uppercase}
+input[type=date],input[type=text],input[type=tel]{width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(245,182,92,.25);border-radius:var(--r);color:#fff;font-family:inherit;font-size:1rem;padding:.85rem 1rem;transition:border-color .25s var(--ease),background .25s var(--ease)}
+input::placeholder{color:#b69e8e}
+input:focus{outline:none;border-color:var(--beam-soft);background:rgba(255,255,255,.1)}
+input[type=date]::-webkit-calendar-picker-indicator{filter:invert(.85);cursor:pointer}
+.hours{display:grid;grid-template-columns:repeat(auto-fill,minmax(72px,1fr));gap:.5rem}
+.hour{background:rgba(255,255,255,.05);border:1px solid rgba(245,182,92,.22);border-radius:var(--r-pill);color:#f6ece3;font-family:inherit;font-weight:600;font-size:.95rem;padding:.6rem 0;cursor:pointer;transition:all .25s var(--ease)}
+.hour:hover{border-color:var(--beam-soft);transform:translateY(-2px)}
+.hour[aria-pressed="true"]{background:var(--brasa);border-color:var(--brasa);color:#fff;box-shadow:0 8px 20px -8px rgba(184,71,46,.7)}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.reserva-submit{width:100%;margin-top:.5rem;padding:1rem;font-size:1.05rem}
+.form-err{color:var(--beam-soft);font-size:.9rem;font-weight:600;margin-top:.6rem;min-height:1.2em}
+/* aside reserva */
+.reserva-aside{padding-top:.4rem}
+.reserva-aside h3{font-size:1.6rem;margin-bottom:1rem}
+.bullet{display:flex;gap:.8rem;align-items:flex-start;margin-bottom:1.1rem;color:#e8d6c9}
+.bullet .ic{flex-shrink:0;width:38px;height:38px;border-radius:11px;background:rgba(201,126,22,.18);display:flex;align-items:center;justify-content:center;color:var(--beam-soft)}
+.bullet b{color:#fff;display:block;font-weight:700}
+.aside-img{margin-top:1.6rem;border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow-warm)}
+.aside-img img{width:100%;height:230px;object-fit:cover}
+/* confirmacion */
+.confirm{display:none;text-align:center;padding:1rem 0}
+.confirm.show{display:block;animation:fade .5s var(--ease)}
+.check-wrap{width:96px;height:96px;border-radius:50%;background:rgba(37,211,102,.12);border:2px solid var(--wa);margin:0 auto 1.4rem;display:flex;align-items:center;justify-content:center}
+.check-svg{width:48px;height:48px}
+.check-svg circle{stroke:var(--wa);stroke-width:3;fill:none;stroke-dasharray:166;stroke-dashoffset:166;animation:dash .7s var(--ease) forwards}
+.check-svg path{stroke:var(--wa);stroke-width:4;fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:48;stroke-dashoffset:48;animation:dash .5s .5s var(--ease) forwards}
+@keyframes dash{to{stroke-dashoffset:0}}
+.confirm h3{font-size:1.8rem;margin-bottom:.5rem}
+.confirm .summary{font-size:1.25rem;font-weight:600;color:var(--beam-soft);margin:1rem 0;font-family:"Bricolage Grotesque"}
+.confirm .note{color:#e8d6c9;max-width:38ch;margin:0 auto 1.6rem}
+
+/* ===== GALERIA ===== */
+.bento{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:170px;gap:1rem;margin-top:2.4rem}
+.bento figure{position:relative;overflow:hidden;border-radius:var(--r-lg);box-shadow:var(--shadow-soft)}
+.bento img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
+.bento figure:hover img{transform:scale(1.07)}
+.bento figcaption{position:absolute;left:0;right:0;bottom:0;padding:1rem;background:linear-gradient(transparent,rgba(42,20,13,.85));color:#fff;font-weight:600;font-size:.95rem;opacity:0;transform:translateY(8px);transition:opacity .35s var(--ease),transform .35s var(--ease)}
+.bento figure:hover figcaption{opacity:1;transform:none}
+.b-1{grid-column:span 2;grid-row:span 2}
+.b-2{grid-column:span 2}
+.b-3{grid-column:span 1}
+.b-4{grid-column:span 1}
+
+/* ===== UBICACION ===== */
+#ubicacion{background:var(--bg-soft)}
+.loc-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,4vw,3rem);margin-top:2.4rem;align-items:stretch}
+.map-sim{position:relative;border-radius:var(--r-lg);overflow:hidden;min-height:360px;box-shadow:var(--shadow-soft);background:
+  linear-gradient(135deg,#e7efee,#dce9e7);
+  isolation:isolate}
+.map-sim svg{position:absolute;inset:0;width:100%;height:100%}
+.map-pin{position:absolute;top:46%;left:52%;transform:translate(-50%,-100%);z-index:3;text-align:center}
+.map-pin .marker{width:42px;height:42px;background:var(--brasa);border-radius:50% 50% 50% 0;transform:rotate(-45deg);margin:0 auto;box-shadow:0 10px 22px -8px rgba(184,71,46,.7);display:flex;align-items:center;justify-content:center;animation:bob 2.4s var(--ease) infinite}
+.map-pin .marker span{transform:rotate(45deg);color:#fff;font-size:1.1rem}
+.map-pin .lbl{margin-top:.6rem;background:#fff;border-radius:var(--r-pill);padding:.35rem .9rem;font-weight:700;font-size:.85rem;color:var(--ink);box-shadow:var(--shadow-soft);white-space:nowrap}
+@keyframes bob{0%,100%{transform:rotate(-45deg) translateY(0)}50%{transform:rotate(-45deg) translateY(-7px)}}
+.loc-info{display:flex;flex-direction:column;justify-content:center;gap:.4rem}
+.loc-info h2{font-size:clamp(1.8rem,4vw,2.6rem);margin-bottom:.6rem}
+.loc-row{display:flex;gap:.9rem;align-items:flex-start;padding:1rem 0;border-bottom:1px solid var(--line)}
+.loc-row:last-child{border:none}
+.loc-row .ic{flex-shrink:0;width:42px;height:42px;border-radius:12px;background:rgba(184,71,46,.1);color:var(--brasa);display:flex;align-items:center;justify-content:center}
+.loc-row b{display:block;font-weight:700}
+.loc-row span{color:var(--ink-2);font-size:.95rem}
+
+/* ===== NOSOTROS ===== */
+.nos-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(1.5rem,4vw,3.5rem);align-items:center}
+.nos-grid .nos-img{border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow-soft)}
+.nos-grid .nos-img img{width:100%;height:420px;object-fit:cover}
+.nos-grid h2{font-size:clamp(2rem,4.5vw,3rem);margin-bottom:1rem}
+.nos-grid p{color:var(--ink-2);font-size:1.08rem;margin-bottom:1rem}
+.stats{display:flex;gap:2rem;margin-top:1.6rem;flex-wrap:wrap}
+.stats .s b{font-family:"Bricolage Grotesque";font-size:2rem;color:var(--brasa);display:block}
+.stats .s span{color:var(--ink-2);font-size:.9rem;font-weight:600}
+
+/* ===== CTA BAND ===== */
+.cta-band{background:var(--dark);color:#fff;text-align:center}
+.cta-band .wrap{padding:clamp(3rem,7vw,5rem) 0}
+.cta-band h2{font-size:clamp(1.8rem,4vw,2.8rem);max-width:20ch;margin:0 auto 1.5rem}
+.cta-band p{color:#9fc0bc;margin-bottom:1.5rem;font-size:1.1rem}
+
+/* ===== FOOTER ===== */
+.footer{background:#081e24;color:#7e9a98;padding:2.4rem 0;text-align:center;font-size:.9rem}
+.footer a{color:#cfe0de;text-decoration:none;font-weight:600}
+.footer a:hover{color:#fff}
+.footer .note{margin-top:.6rem;font-size:.8rem;color:#5d7775}
+
+/* ===== FAB ===== */
+.fab{position:fixed;bottom:22px;right:22px;z-index:950;background:var(--wa);color:#06351c;width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 14px 34px -10px rgba(37,211,102,.7);text-decoration:none;transition:transform .3s var(--ease)}
+.fab:hover{transform:scale(1.08) translateY(-2px)}
+.fab svg{width:30px;height:30px}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:900px){
+  .reserva-grid,.loc-grid,.nos-grid{grid-template-columns:1fr}
+  .nos-grid .nos-img{order:-1}
+  .nos-grid .nos-img img{height:300px}
+  .bento{grid-template-columns:repeat(2,1fr);grid-auto-rows:160px}
+  .b-1{grid-column:span 2;grid-row:span 1}
+  .b-2{grid-column:span 2}
+}
+@media(max-width:768px){
+  .nav-links{position:fixed;inset:0 0 auto 0;top:0;flex-direction:column;background:#fff;padding:5rem 1.5rem 2rem;gap:.3rem;transform:translateY(-110%);transition:transform .4s var(--ease);box-shadow:var(--shadow-soft);align-items:stretch;height:auto}
+  .nav-links.open{transform:translateY(0)}
+  .nav-links a{padding:.9rem 1rem;font-size:1.1rem;border-bottom:1px solid var(--line)}
+  .nav-links .btn{margin-top:.6rem;justify-content:center}
+  .nav-burger{display:flex;z-index:10}
+  .nav .btn-primary.desktop-only{display:none}
+}
+@media(max-width:560px){
+  .hero{min-height:78vh}
+  .two-col{grid-template-columns:1fr}
+  .bento{grid-template-columns:1fr;grid-auto-rows:200px}
+  .b-1,.b-2{grid-column:span 1}
+  .tabs{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .tab{white-space:nowrap}
+  .stats{gap:1.4rem}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
+}
+</style>
+</head>
+<body>
+
+<!-- DEMO BAR -->
+<div class="ef-demobar">
+  <a class="ef-back" href="../index.html#showcase">← Estudio Faro</a>
+  <span class="ef-label">Demo · Reservas + Carta digital</span>
+  <a class="ef-cta" href="https://wa.me/56971845174?text=Hola%20Estudio%20Faro%2C%20quiero%20una%20web%20con%20carta%20y%20reservas%20como%20la%20demo" target="_blank" rel="noopener">Quiero una así</a>
+</div>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a href="#" class="brand" aria-label="Brasa Marina inicio">
+      <svg width="30" height="30" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path d="M16 3c2 4 .5 6.5-1.5 8.5C12 14 11 16.5 12.5 19c.6 1 .5 2-.5 2.8C14 21 15 18 14.8 15.5c2 1.5 3.2 3.5 3 6.3 1.8-1.2 2.7-3.4 2.6-5.8C22.8 18 23.7 20.7 22 23c3.4-1.6 5-5.4 3.5-9.2C24 10 20.5 8 19.5 4c-.7 2.4-2.2 3.6-3.5 4.8C16.6 6.7 16.8 4.8 16 3Z" fill="#b8472e"/>
+        <path d="M4 26c3-2 6 1 9-1s5 1 8-1 5 1 7-.5" stroke="#1f7a74" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      Brasa Marina
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#carta">Carta</a></li>
+      <li><a href="#reservas">Reservas</a></li>
+      <li><a href="#nosotros">Nosotros</a></li>
+      <li><a href="#ubicacion">Ubicación</a></li>
+      <li><a href="#reservas" class="btn btn-primary" style="padding:.6rem 1.1rem">Reservar mesa</a></li>
+    </ul>
+    <a href="#reservas" class="btn btn-primary desktop-only" style="padding:.6rem 1.1rem">Reservar mesa</a>
+    <button class="nav-burger" id="burger" aria-label="Abrir menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <img class="hero-bg" src="https://picsum.photos/seed/brasamarina-hero-fire/1600/900" width="1600" height="900" alt="Parrilla con mariscos a la brasa frente al mar en La Serena" fetchpriority="high">
+  <div class="wrap hero-inner">
+    <span class="eyebrow">Cocina de mar y parrilla · La Serena</span>
+    <h1>Mariscos a la brasa, frente al mar.</h1>
+    <p class="sub">Pesca del día sobre fuego de leña, ceviches recién hechos y cortes a la parrilla. Reserva tu mesa con vista a la bahía.</p>
+    <div class="hero-cta">
+      <a href="#reservas" class="btn btn-primary">Reservar mesa</a>
+      <a href="#carta" class="btn btn-light">Ver la carta</a>
+    </div>
+    <div class="hero-meta">
+      <span><span class="star">★ 4.8</span> · 620 reseñas</span>
+      <span class="dot"></span>
+      <span>La Serena, Av. del Mar</span>
+      <span class="dot"></span>
+      <span>Cocina de mar y parrilla</span>
+    </div>
+  </div>
+</header>
+
+<!-- CARTA -->
+<section id="carta" class="sec-pad">
+  <div class="wrap">
+    <div class="carta-head">
+      <div class="sec-head">
+        <span class="eyebrow">Nuestra carta</span>
+        <h2>Lo que sale del fuego hoy</h2>
+        <p>Productos frescos, porciones generosas y el sabor de la leña en cada plato. Precios en pesos chilenos.</p>
+      </div>
+    </div>
+
+    <div class="tabs" role="tablist" aria-label="Categorías de la carta">
+      <button class="tab" role="tab" id="tab-entradas" aria-controls="panel-entradas" aria-selected="true">Entradas</button>
+      <button class="tab" role="tab" id="tab-mariscos" aria-controls="panel-mariscos" aria-selected="false">Pescados y Mariscos</button>
+      <button class="tab" role="tab" id="tab-parrilla" aria-controls="panel-parrilla" aria-selected="false">Parrilla</button>
+      <button class="tab" role="tab" id="tab-postres" aria-controls="panel-postres" aria-selected="false">Postres</button>
+      <button class="tab" role="tab" id="tab-bebidas" aria-controls="panel-bebidas" aria-selected="false">Bebidas</button>
+    </div>
+
+    <!-- ENTRADAS -->
+    <div class="panel active" role="tabpanel" id="panel-entradas" aria-labelledby="tab-entradas">
+      <div class="cat-banner">
+        <img src="https://picsum.photos/seed/brasamarina-entradas/1200/400" width="1200" height="400" loading="lazy" alt="Mesa de entradas marinas para compartir">
+        <div class="cap"><h3>Para empezar</h3><span>Picoteos de mar para compartir</span></div>
+      </div>
+      <div class="dish">
+        <div class="dish-main">
+          <div class="dish-name">Empanada de mariscos <span class="tag tag-rec">★ Recomendado</span><span class="leader"></span></div>
+          <div class="dish-desc">Frita y crujiente, rellena de machas, camarón y queso. Se pide de a dos.</div>
+        </div><div class="dish-price">$4.500</div>
+      </div>
+      <div class="dish">
+        <div class="dish-main">
+          <div class="dish-name">Ceviche de reineta <span class="tag tag-rec">★ Recomendado</span><span class="leader"></span></div>
+          <div class="dish-desc">Pescado fresco curtido en limón de Pica, cebolla morada, cilantro y ají verde.</div>
+        </div><div class="dish-price">$9.900</div>
+      </div>
+      <div class="dish">
+        <div class="dish-main">
+          <div class="dish-name">Machas a la parmesana <span class="leader"></span></div>
+          <div class="dish-desc">Media docena al horno con mantequilla, vino blanco y queso gratinado.</div>
+        </div><div class="dish-price">$8.900</div>
+      </div>
+      <div class="dish">
+        <div class="dish-main">
+          <div class="dish-name">Camarones al ajillo <span class="tag tag-hot">Picante</span><span class="leader"></span></div>
+          <div class="dish-desc">Salteados en aceite de oliva, ajo, merkén y un toque de pebre de la casa.</div>
+        </div><div class="dish-price">$10.500</div>
+      </div>
+      <div class="dish">
+        <div class="dish-main">
+          <div class="dish-name">Tabla del puerto <span class="leader"></span></div>
+          <div class="dish-desc">Surtido para compartir: choritos, ostiones, pulpo y empanaditas. Para 2-3 personas.</div>
+        </div><div class="dish-price">$16.900</div>
+      </div>
+    </div>
+
+    <!-- PESCADOS Y MARISCOS -->
+    <div class="panel" role="tabpanel" id="panel-mariscos" aria-labelledby="tab-mariscos" hidden>
+      <div class="cat-banner">
+        <img src="https://picsum.photos/seed/brasamarina-mar/1200/400" width="1200" height="400" loading="lazy" alt="Pescado fresco a la plancha con limón">
+        <div class="cap"><h3>Pescados y Mariscos</h3><span>De la caleta a la brasa</span></div>
+      </div>
+      <div class="dish">
+        <div class="dish-main">
+          <div class="dish-name">Reineta a la plancha <span class="tag tag-rec">★ Recomendado</span><span class="leader"></span></div>
+          <div class="dish-desc">Filete dorado con mantequilla de hierbas, acompañado de papas doradas y ensalada chilena.</div>
+        </div><div class="dish-price">$12.900</div>
+      </div>
+      <div class="dish">
+        <div class="dish-main">
+          <div class="dish-name">Congrio frito <span class="leader"></span></div>
+          <div class="dish-desc">Apanado en harina de la casa, con arroz graneado y pebre fresco.</div>
+        </div><div class="dish-price">$13.900</div>
+      </div>
+      <div class="dish">
+        <div class="dish-main">
+          <div class="dish-name">Salmón a la brasa <span class="leader"></span></div>
+          <div class="dish-desc">A la leña, glaseado con miel y soya, sobre puré rústico de zapallo camote.</div>
+        </div><div class="dish-price">$14.900</div>
+      </div>
+      <div class="dish">
+        <div class="dish-main">
+          <div class="dish-name">Paila marina <span class="tag tag-rec">★ Recomendado</span><span class="leader"></span></div>
+          <div class="dish-desc">Caldillo bien cargado de mariscos surtidos, perfecto para los días de viento sur.</div>
+        </div><div class="dish-price">$13.500</div>
+      </div>
+      <div class="dish">
+        <div class="dish-main">
+          <div class="dish-name">Pulpo a la parrilla <span class="leader"></span></div>
+          <div class="dish-desc">Tentáculo grillado con chimichurri de cilantro y papas al merkén.</div>
+        </div><div class="dish-price">$16.500</div>
+      </div>
+    </div>
+
+    <!-- PARRILLA -->
+    <div class="panel" role="tabpanel" id="panel-parrilla" aria-labelledby="tab-parrilla" hidden>
+      <div class="cat-banner">
+        <img src="https://picsum.photos/seed/brasamarina-parrilla/1200/400" width="1200" height="400" loading="lazy" alt="Cortes de carne sobre la parrilla a la leña">
+        <div class="cap"><h3>De la parrilla</h3><span>Cortes al fuego de leña</span></div>
+      </div>
+      <div class="dish">
+        <div class="dish-main">
+          <div class="dish-name">Lomo vetado <span class="tag tag-rec">★ Recomendado</span><span class="leader"></span></div>
+          <div class="dish-desc">300 g a punto, jugoso y bien sellado, con papas rústicas y chimichurri.</div>
+        </div><div class="dish-price">$14.500</div>
+      </div>
+      <div class="dish">
+        <div class="dish-main">
+          <div class="dish-name">Entraña a la parrilla <span class="leader"></span></div>
+          <div class="dish-desc">Corte fino y sabroso, acompañado de ensalada a la chilena y pebre.</div>
+        </div><div class="dish-price">$13.900</div>
+      </div>
+      <div class="dish">
+        <div class="dish-main">
+          <div class="dish-name">Costillar de cerdo BBQ <span class="tag tag-hot">Picante</span><span class="leader"></span></div>
+          <div class="dish-desc">Cocción lenta glaseado en salsa BBQ ahumada con merkén, se desprende del hueso.</div>
+        </div><div class="dish-price">$15.900</div>
+      </div>
+      <div class="dish">
+        <div class="dish-main">
+          <div class="dish-name">Mar y tierra <span class="tag tag-rec">★ Recomendado</span><span class="leader"></span></div>
+          <div class="dish-desc">Lomo a la brasa coronado con camarones al ajillo. Lo mejor de los dos mundos.</div>
+        </div><div class="dish-price">$18.900</div>
+      </div>
+      <div class="dish">
+        <div class="dish-main">
+          <div class="dish-name">Pollo a la leña <span class="leader"></span></div>
+          <div class="dish-desc">Medio pollo marinado en hierbas y limón, con papas mayo de la casa.</div>
+        </div><div class="dish-price">$10.900</div>
+      </div>
+    </div>
+
+    <!-- POSTRES -->
+    <div class="panel" role="tabpanel" id="panel-postres" aria-labelledby="tab-postres" hidden>
+      <div class="cat-banner">
+        <img src="https://picsum.photos/seed/brasamarina-postres/1200/400" width="1200" height="400" loading="lazy" alt="Postre artesanal de la casa">
+        <div class="cap"><h3>Para el final</h3><span>Dulces de la casa</span></div>
+      </div>
+      <div class="dish">
+        <div class="dish-main">
+          <div class="dish-name">Leche asada de la abuela <span class="tag tag-rec">★ Recomendado</span><span class="leader"></span></div>
+          <div class="dish-desc">Cremosa, con caramelo casero y un toque de canela.</div>
+        </div><div class="dish-price">$4.500</div>
+      </div>
+      <div class="dish">
+        <div class="dish-main">
+          <div class="dish-name">Cheesecake de maqui <span class="leader"></span></div>
+          <div class="dish-desc">Suave, con salsa de maqui patagónico y galleta de mantequilla.</div>
+        </div><div class="dish-price">$5.200</div>
+      </div>
+      <div class="dish">
+        <div class="dish-main">
+          <div class="dish-name">Brownie con helado <span class="leader"></span></div>
+          <div class="dish-desc">Tibio, de chocolate intenso, con bola de helado de vainilla.</div>
+        </div><div class="dish-price">$4.900</div>
+      </div>
+      <div class="dish">
+        <div class="dish-main">
+          <div class="dish-name">Tabla de frutas de la zona <span class="leader"></span></div>
+          <div class="dish-desc">Selección de frutas frescas del Valle del Elqui. Refrescante para cerrar.</div>
+        </div><div class="dish-price">$5.500</div>
+      </div>
+    </div>
+
+    <!-- BEBIDAS -->
+    <div class="panel" role="tabpanel" id="panel-bebidas" aria-labelledby="tab-bebidas" hidden>
+      <div class="cat-banner">
+        <img src="https://picsum.photos/seed/brasamarina-bebidas/1200/400" width="1200" height="400" loading="lazy" alt="Pisco sour y bebidas de la casa">
+        <div class="cap"><h3>Para acompañar</h3><span>Tragos, vinos y refrescos</span></div>
+      </div>
+      <div class="dish">
+        <div class="dish-main">
+          <div class="dish-name">Pisco sour de la casa <span class="tag tag-rec">★ Recomendado</span><span class="leader"></span></div>
+          <div class="dish-desc">Pisco del Elqui, limón de Pica y espuma perfecta. El clásico.</div>
+        </div><div class="dish-price">$5.500</div>
+      </div>
+      <div class="dish">
+        <div class="dish-main">
+          <div class="dish-name">Borgoña de la temporada <span class="leader"></span></div>
+          <div class="dish-desc">Vino tinto con frutillas frescas. Jarra para compartir.</div>
+        </div><div class="dish-price">$8.900</div>
+      </div>
+      <div class="dish">
+        <div class="dish-main">
+          <div class="dish-name">Copa de vino blanco <span class="leader"></span></div>
+          <div class="dish-desc">Sauvignon blanc del Valle del Limarí, ideal para los mariscos.</div>
+        </div><div class="dish-price">$4.200</div>
+      </div>
+      <div class="dish">
+        <div class="dish-main">
+          <div class="dish-name">Limonada de jengibre y menta <span class="leader"></span></div>
+          <div class="dish-desc">Natural, sin alcohol, bien helada. La favorita del verano.</div>
+        </div><div class="dish-price">$3.500</div>
+      </div>
+      <div class="dish">
+        <div class="dish-main">
+          <div class="dish-name">Bebidas / aguas <span class="leader"></span></div>
+          <div class="dish-desc">Línea Coca-Cola, aguas minerales con y sin gas.</div>
+        </div><div class="dish-price">$2.500</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESERVAS -->
+<section id="reservas" class="sec-pad">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Reserva online</span>
+      <h2>Asegura tu mesa en segundos</h2>
+      <p>Elige cuántos son, el día y la hora. Sin llamadas ni esperas. Te confirmamos al toque.</p>
+    </div>
+
+    <div class="reserva-grid">
+      <!-- FORM -->
+      <div class="reserva-card">
+        <form id="reservaForm" novalidate>
+          <div class="field">
+            <label id="lblPersonas">¿Cuántas personas?</label>
+            <div class="stepper" role="group" aria-labelledby="lblPersonas">
+              <button type="button" id="minus" aria-label="Quitar una persona">−</button>
+              <div class="val"><span id="personasVal">2</span><small>personas</small></div>
+              <button type="button" id="plus" aria-label="Agregar una persona">+</button>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="fecha">Fecha</label>
+            <input type="date" id="fecha" name="fecha" required>
+          </div>
+
+          <div class="field">
+            <label id="lblHora">Hora</label>
+            <div class="hours" id="hours" role="group" aria-labelledby="lblHora"></div>
+          </div>
+
+          <div class="field two-col">
+            <div>
+              <label for="nombre">Tu nombre</label>
+              <input type="text" id="nombre" name="nombre" placeholder="Ej: Camila Rojas" required>
+            </div>
+            <div>
+              <label for="fono">Teléfono</label>
+              <input type="tel" id="fono" name="fono" placeholder="+56 9 1234 5678" required>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary reserva-submit">Confirmar reserva</button>
+          <p class="form-err" id="formErr" role="alert" aria-live="polite"></p>
+        </form>
+
+        <!-- CONFIRMACION -->
+        <div class="confirm" id="confirm" aria-live="polite">
+          <div class="check-wrap">
+            <svg class="check-svg" viewBox="0 0 56 56" aria-hidden="true">
+              <circle cx="28" cy="28" r="26"/>
+              <path d="M16 29l8 8 16-18"/>
+            </svg>
+          </div>
+          <h3>¡Mesa reservada!</h3>
+          <div class="summary" id="confirmSummary"></div>
+          <p class="note" id="confirmNote">Te esperamos en Brasa Marina. Si necesitas cambiar algo, escríbenos por WhatsApp.</p>
+          <button type="button" class="btn btn-ghost" id="newReserva" style="border-color:rgba(245,182,92,.35);color:#fff">Hacer otra reserva</button>
+        </div>
+      </div>
+
+      <!-- ASIDE -->
+      <aside class="reserva-aside">
+        <h3>Por qué reservar con nosotros</h3>
+        <div class="bullet">
+          <div class="ic">✓</div>
+          <div><b>Confirmación inmediata</b>Sin llamadas, sin esperas. Tu mesa queda lista.</div>
+        </div>
+        <div class="bullet">
+          <div class="ic">★</div>
+          <div><b>Las mejores mesas</b>Vista a la bahía para reservas anticipadas (sujeto a disponibilidad).</div>
+        </div>
+        <div class="bullet">
+          <div class="ic">♨</div>
+          <div><b>Cocina recién salida del fuego</b>Avísanos de alergias o cumpleaños en WhatsApp y lo dejamos listo.</div>
+        </div>
+        <div class="aside-img">
+          <img src="https://picsum.photos/seed/brasamarina-amb-vista/800/500" width="800" height="500" loading="lazy" alt="Salón de Brasa Marina con vista al mar al atardecer">
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- NOSOTROS -->
+<section id="nosotros" class="sec-pad">
+  <div class="wrap nos-grid">
+    <div>
+      <span class="eyebrow">Nosotros</span>
+      <h2>Del bote a la mesa, sin escalas</h2>
+      <p>Brasa Marina nació en la costanera de La Serena con una idea simple: comprar la pesca directo a los pescadores de la caleta y cocinarla sobre fuego de leña, como se ha hecho siempre en el norte.</p>
+      <p>Nuestra parrilla es el corazón del local. Acá el mar y la tierra se juntan, y cada plato sale con el sabor del humo y la frescura del día.</p>
+      <div class="stats">
+        <div class="s"><b>+12</b><span>años en la costa</span></div>
+        <div class="s"><b>100%</b><span>pesca local</span></div>
+        <div class="s"><b>★4.8</b><span>en reseñas</span></div>
+      </div>
+    </div>
+    <div class="nos-img">
+      <img src="https://picsum.photos/seed/brasamarina-chef-leña/800/600" width="800" height="600" loading="lazy" alt="Cocinero atendiendo la parrilla a la leña en Brasa Marina">
+    </div>
+  </div>
+</section>
+
+<!-- GALERIA -->
+<section class="sec-pad" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">El ambiente</span>
+      <h2>Un rincón frente al mar</h2>
+      <p>Madera, brasas y la brisa del Pacífico. Así se vive una noche en Brasa Marina.</p>
+    </div>
+    <div class="bento">
+      <figure class="b-1">
+        <img src="https://picsum.photos/seed/brasamarina-amb-1/900/900" width="900" height="900" loading="lazy" alt="Salón principal con luz cálida al atardecer">
+        <figcaption>Salón principal al atardecer</figcaption>
+      </figure>
+      <figure class="b-2">
+        <img src="https://picsum.photos/seed/brasamarina-amb-2/900/450" width="900" height="450" loading="lazy" alt="Terraza con vista a la bahía">
+        <figcaption>Terraza con vista a la bahía</figcaption>
+      </figure>
+      <figure class="b-3">
+        <img src="https://picsum.photos/seed/brasamarina-amb-3/500/450" width="500" height="450" loading="lazy" alt="Detalle de la parrilla encendida">
+        <figcaption>La parrilla encendida</figcaption>
+      </figure>
+      <figure class="b-4">
+        <img src="https://picsum.photos/seed/brasamarina-amb-4/500/450" width="500" height="450" loading="lazy" alt="Mesa servida para compartir">
+        <figcaption>Mesa para compartir</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- UBICACION -->
+<section id="ubicacion" class="sec-pad">
+  <div class="wrap">
+    <div class="loc-grid">
+      <div class="map-sim" role="img" aria-label="Mapa referencial de la ubicación de Brasa Marina en Av. del Mar 1234, La Serena">
+        <svg viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <rect width="600" height="400" fill="#dce9e7"/>
+          <path d="M0 250 Q150 230 300 255 T600 250 L600 400 L0 400 Z" fill="#bcd9d6" opacity=".7"/>
+          <path d="M0 290 Q200 275 400 300 T600 295 L600 400 L0 400 Z" fill="#a8cfca"/>
+          <line x1="0" y1="120" x2="600" y2="150" stroke="#cdd9d0" stroke-width="14"/>
+          <line x1="120" y1="0" x2="180" y2="400" stroke="#cdd9d0" stroke-width="10"/>
+          <line x1="420" y1="0" x2="380" y2="400" stroke="#cdd9d0" stroke-width="10"/>
+          <line x1="0" y1="60" x2="600" y2="75" stroke="#e4ece8" stroke-width="6"/>
+          <rect x="60" y="160" width="70" height="55" fill="#e8efe9" rx="4"/>
+          <rect x="200" y="170" width="90" height="60" fill="#e8efe9" rx="4"/>
+          <rect x="440" y="155" width="80" height="65" fill="#e8efe9" rx="4"/>
+        </svg>
+        <div class="map-pin">
+          <div class="marker"><span>♨</span></div>
+          <div class="lbl">Brasa Marina</div>
+        </div>
+      </div>
+      <div class="loc-info">
+        <span class="eyebrow">Visítanos</span>
+        <h2>Te esperamos frente al mar</h2>
+        <div class="loc-row">
+          <div class="ic">📍</div>
+          <div><b>Dirección</b><span>Av. del Mar 1234, La Serena, Región de Coquimbo</span></div>
+        </div>
+        <div class="loc-row">
+          <div class="ic">🕒</div>
+          <div><b>Horario</b><span>Mar a Dom · 13:00 a 23:00 hrs · Lunes cerrado</span></div>
+        </div>
+        <div class="loc-row">
+          <div class="ic">📞</div>
+          <div><b>Teléfono / reservas</b><span>+56 9 7184 5174</span></div>
+        </div>
+        <a href="#reservas" class="btn btn-primary" style="margin-top:1.4rem;align-self:flex-start">Reservar mesa</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cta-band">
+  <div class="wrap">
+    <span class="eyebrow" style="color:var(--beam-soft)">Estudio Faro</span>
+    <h2>¿Quieres la carta y reservas de tu local así? Hablemos.</h2>
+    <p>Te armamos una web con carta digital y reservas online, lista para recibir clientes.</p>
+    <a class="btn btn-wa" href="https://wa.me/56971845174?text=Hola%20Estudio%20Faro%2C%20quiero%20una%20web%20con%20carta%20y%20reservas%20como%20la%20demo" target="_blank" rel="noopener">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm5.8 14.16c-.24.68-1.42 1.32-1.96 1.36-.5.05-.97.24-3.28-.7-2.78-1.1-4.55-3.96-4.69-4.15-.14-.19-1.13-1.5-1.13-2.86 0-1.36.71-2.03.97-2.3.24-.27.53-.34.71-.34l.5.01c.16.01.38-.06.59.45.24.55.81 1.91.88 2.05.07.14.12.31.02.5-.1.19-.14.31-.29.48-.14.19-.3.41-.43.55-.14.14-.29.3-.12.58.16.27.73 1.2 1.56 1.94 1.07.95 1.97 1.25 2.25 1.39.27.14.43.12.59-.07.16-.19.68-.79.86-1.07.18-.27.36-.22.61-.13.24.09 1.55.73 1.82.86.27.14.45.2.51.31.07.12.07.66-.17 1.34Z"/></svg>
+      Quiero una así
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="wrap">
+    <p>Demo creada por <a href="../index.html#showcase">Estudio Faro</a> · estudiofaro.cl</p>
+    <p class="note">Sitio de demostración. Negocio, platos, precios e imágenes ficticios.</p>
+  </div>
+</footer>
+
+<!-- FAB -->
+<a class="fab" href="https://wa.me/56971845174?text=Hola%20Estudio%20Faro%2C%20quiero%20una%20web%20con%20carta%20y%20reservas%20como%20la%20demo" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm5.8 14.16c-.24.68-1.42 1.32-1.96 1.36-.5.05-.97.24-3.28-.7-2.78-1.1-4.55-3.96-4.69-4.15-.14-.19-1.13-1.5-1.13-2.86 0-1.36.71-2.03.97-2.3.24-.27.53-.34.71-.34l.5.01c.16.01.38-.06.59.45.24.55.81 1.91.88 2.05.07.14.12.31.02.5-.1.19-.14.31-.29.48-.14.19-.3.41-.43.55-.14.14-.29.3-.12.58.16.27.73 1.2 1.56 1.94 1.07.95 1.97 1.25 2.25 1.39.27.14.43.12.59-.07.16-.19.68-.79.86-1.07.18-.27.36-.22.61-.13.24.09 1.55.73 1.82.86.27.14.45.2.51.31.07.12.07.66-.17 1.34Z"/></svg>
+</a>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ---- NAV scroll + burger ---- */
+  var nav = document.getElementById('nav');
+  window.addEventListener('scroll', function(){
+    nav.classList.toggle('scrolled', window.scrollY > 12);
+  }, {passive:true});
+
+  var burger = document.getElementById('burger');
+  var navLinks = document.getElementById('navLinks');
+  burger.addEventListener('click', function(){
+    var open = navLinks.classList.toggle('open');
+    burger.classList.toggle('open', open);
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  navLinks.addEventListener('click', function(e){
+    if(e.target.closest('a')){
+      navLinks.classList.remove('open');
+      burger.classList.remove('open');
+      burger.setAttribute('aria-expanded','false');
+    }
+  });
+
+  /* ---- TABS carta ---- */
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('.tab'));
+  var panels = Array.prototype.slice.call(document.querySelectorAll('.panel'));
+  function selectTab(tab){
+    tabs.forEach(function(t){ t.setAttribute('aria-selected','false'); });
+    panels.forEach(function(p){ p.classList.remove('active'); p.hidden = true; });
+    tab.setAttribute('aria-selected','true');
+    var panel = document.getElementById(tab.getAttribute('aria-controls'));
+    if(panel){ panel.hidden = false; panel.classList.add('active'); }
+  }
+  tabs.forEach(function(tab, i){
+    tab.addEventListener('click', function(){ selectTab(tab); });
+    tab.addEventListener('keydown', function(e){
+      var idx = i;
+      if(e.key === 'ArrowRight'){ idx = (i+1) % tabs.length; }
+      else if(e.key === 'ArrowLeft'){ idx = (i-1+tabs.length) % tabs.length; }
+      else { return; }
+      e.preventDefault();
+      tabs[idx].focus();
+      selectTab(tabs[idx]);
+    });
+  });
+
+  /* ---- STEPPER personas ---- */
+  var personas = 2;
+  var MIN = 1, MAX = 8;
+  var pv = document.getElementById('personasVal');
+  var minus = document.getElementById('minus');
+  var plus = document.getElementById('plus');
+  function renderPersonas(){
+    pv.textContent = personas;
+    pv.parentNode.querySelector('small').textContent = personas === 1 ? 'persona' : 'personas';
+    minus.disabled = personas <= MIN;
+    plus.disabled = personas >= MAX;
+  }
+  minus.addEventListener('click', function(){ if(personas>MIN){personas--; renderPersonas();} });
+  plus.addEventListener('click', function(){ if(personas<MAX){personas++; renderPersonas();} });
+  renderPersonas();
+
+  /* ---- FECHA: mínimo hoy ---- */
+  var fecha = document.getElementById('fecha');
+  var today = new Date();
+  var tzOffset = today.getTimezoneOffset() * 60000;
+  var iso = new Date(today.getTime() - tzOffset).toISOString().slice(0,10);
+  fecha.min = iso;
+  fecha.value = iso;
+
+  /* ---- HORARIOS pills ---- */
+  var horas = [];
+  for(var h=13; h<=22; h++){
+    horas.push((h<10?'0':'')+h+':00');
+    if(h<22) horas.push((h<10?'0':'')+h+':30');
+  }
+  var horasWrap = document.getElementById('hours');
+  var selectedHour = null;
+  horas.forEach(function(hh){
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'hour';
+    b.textContent = hh;
+    b.setAttribute('aria-pressed','false');
+    b.addEventListener('click', function(){
+      Array.prototype.forEach.call(horasWrap.children, function(c){ c.setAttribute('aria-pressed','false'); });
+      b.setAttribute('aria-pressed','true');
+      selectedHour = hh;
+      document.getElementById('formErr').textContent = '';
+    });
+    horasWrap.appendChild(b);
+  });
+
+  /* ---- SUBMIT ---- */
+  var form = document.getElementById('reservaForm');
+  var err = document.getElementById('formErr');
+  var confirm = document.getElementById('confirm');
+  var dias = ['Dom','Lun','Mar','Mié','Jue','Vie','Sáb'];
+  var meses = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    err.textContent = '';
+    var nombre = document.getElementById('nombre').value.trim();
+    var fono = document.getElementById('fono').value.trim();
+
+    if(!fecha.value){ err.textContent = 'Elige una fecha para tu reserva.'; fecha.focus(); return; }
+    if(!selectedHour){ err.textContent = 'Selecciona un horario disponible.'; horasWrap.scrollIntoView({behavior:'smooth',block:'center'}); return; }
+    if(!nombre){ err.textContent = 'Déjanos tu nombre para la reserva.'; document.getElementById('nombre').focus(); return; }
+    if(!fono){ err.textContent = 'Necesitamos un teléfono de contacto.'; document.getElementById('fono').focus(); return; }
+
+    var parts = fecha.value.split('-');
+    var d = new Date(parseInt(parts[0],10), parseInt(parts[1],10)-1, parseInt(parts[2],10));
+    var fechaTxt = dias[d.getDay()] + ' ' + d.getDate() + ' ' + meses[d.getMonth()];
+    var personasTxt = 'Mesa para ' + personas;
+
+    document.getElementById('confirmSummary').textContent =
+      personasTxt + ' · ' + fechaTxt + ' · ' + selectedHour;
+    document.getElementById('confirmNote').textContent =
+      '¡Te esperamos, ' + nombre.split(' ')[0] + '! Confirmamos tu mesa para ' + personas +
+      (personas===1?' persona':' personas') + '. Si necesitas cambiar algo, escríbenos por WhatsApp.';
+
+    form.style.display = 'none';
+    confirm.classList.add('show');
+    confirm.scrollIntoView({behavior:'smooth', block:'center'});
+  });
+
+  document.getElementById('newReserva').addEventListener('click', function(){
+    confirm.classList.remove('show');
+    form.style.display = '';
+    form.reset();
+    fecha.value = iso;
+    personas = 2; renderPersonas();
+    selectedHour = null;
+    Array.prototype.forEach.call(horasWrap.children, function(c){ c.setAttribute('aria-pressed','false'); });
+    err.textContent = '';
+    form.scrollIntoView({behavior:'smooth', block:'center'});
+  });
+})();
+</script>
+</body>
+</html>
