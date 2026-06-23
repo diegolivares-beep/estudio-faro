@@ -1,0 +1,778 @@
+<!doctype html>
+<html lang="es-CL">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Empire Beard · Barbería clásica en La Serena</title>
+<meta name="description" content="Empire Beard · Barbería clásica, estilo europeo y americano en La Serena. Especialistas en barba, afeitado clásico y degradados. Reserva por WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#efe6d2; --paper-2:#e7dabf; --paper-3:#f6efdf; --ink:#2b1d12;
+  --leather:#5b3a25; --leather-2:#74492e; --leather-d:#3f2817;
+  --red:#b3322a; --red-d:#8d271f; --navy:#1f3a5f; --navy-2:#2c4f7d;
+  --line:#cbb98f; --line-2:#b39c6a; --muted:#7d6a4f; --cream-soft:#fbf6ea;
+  --wa:#25d366;
+  --ease:cubic-bezier(.16,1,.3,1);
+  --fd:"Bricolage Grotesque",Georgia,serif; --fb:"Hanken Grotesk",system-ui,sans-serif;
+}
+*{margin:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--paper);color:var(--ink);font-family:var(--fb);line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+  background-image:
+    radial-gradient(circle at 18% 12%,rgba(91,58,37,.05),transparent 38%),
+    radial-gradient(circle at 82% 78%,rgba(31,58,95,.05),transparent 42%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.045'/%3E%3C/svg%3E");
+}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+:focus-visible{outline:2px solid var(--red);outline-offset:3px;border-radius:2px}
+h1,h2,h3,h4{font-family:var(--fd);font-weight:800;letter-spacing:-.01em;line-height:1.05;margin:0;text-wrap:balance}
+.wrap{max-width:1140px;margin:0 auto;padding:0 clamp(18px,5vw,44px)}
+section{position:relative}
+.eyebrow{display:inline-flex;align-items:center;gap:.55rem;font-family:var(--fb);font-weight:700;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--red-d);margin-bottom:1rem}
+.eyebrow::before,.eyebrow::after{content:"";width:22px;height:2px;background:var(--leather)}
+.eyebrow.one::after{display:none}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.55rem;font-family:var(--fb);font-weight:700;font-size:.95rem;letter-spacing:.02em;padding:.85rem 1.5rem;border-radius:2px;cursor:pointer;border:0;transition:transform .25s var(--ease),box-shadow .25s var(--ease),background .25s,color .25s}
+.btn svg{width:1.15em;height:1.15em}
+.btn-red{background:var(--red);color:#fbecd9;box-shadow:0 3px 0 var(--red-d)}
+.btn-red:hover{background:var(--red-d);transform:translateY(-2px);box-shadow:0 5px 0 #6e1d16}
+.btn-ink{background:transparent;color:var(--ink);border:2px solid var(--leather)}
+.btn-ink:hover{background:var(--leather);color:var(--cream-soft);transform:translateY(-2px)}
+.btn-wa{background:var(--wa);color:#06351c;box-shadow:0 3px 0 #119145}
+.btn-wa:hover{transform:translateY(-2px);box-shadow:0 5px 0 #0c7a3a}
+
+/* demo bar */
+.ef-demobar{position:sticky;top:0;z-index:9999;display:flex;align-items:center;justify-content:space-between;gap:1rem;background:#0c282f;color:#fff;padding:.5rem clamp(14px,4vw,28px);font-family:"Hanken Grotesk",system-ui,sans-serif;font-size:.85rem}
+.ef-demobar .ef-back{color:#cfe0de;font-weight:600;text-decoration:none}.ef-demobar .ef-back:hover{color:#fff}
+.ef-demobar .ef-label{color:#8fb0ac;font-weight:600}@media(max-width:560px){.ef-demobar .ef-label{display:none}}
+.ef-demobar .ef-cta{background:#25d366;color:#06351c;font-weight:700;padding:.4rem .9rem;border-radius:999px;text-decoration:none;white-space:nowrap}
+
+/* nav */
+.nav{position:sticky;top:35px;z-index:90;background:rgba(239,230,210,.92);backdrop-filter:blur(8px);border-bottom:2px solid var(--leather)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-top:.55rem;padding-bottom:.55rem}
+.logo{display:flex;align-items:center;gap:.6rem}
+.logo svg{height:50px;width:auto;display:block}
+.nav-links{display:flex;align-items:center;gap:1.7rem;list-style:none}
+.nav-links a{font-weight:600;font-size:.86rem;letter-spacing:.05em;text-transform:uppercase;color:var(--leather);transition:color .2s}
+.nav-links a:hover{color:var(--red)}
+.nav-cta{display:flex;align-items:center;gap:.8rem}
+.burger{display:none;background:none;border:2px solid var(--leather);border-radius:2px;width:42px;height:40px;color:var(--leather);cursor:pointer;flex-direction:column;justify-content:center;align-items:center;gap:4px}
+.burger span{width:18px;height:2px;background:var(--leather);transition:.25s var(--ease)}
+.burger.open span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.burger.open span:nth-child(2){opacity:0}
+.burger.open span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+@media(max-width:880px){
+  .nav-links{position:fixed;inset:0 0 0 auto;top:0;width:min(78vw,300px);height:100vh;flex-direction:column;align-items:flex-start;gap:1.4rem;background:var(--paper-3);border-left:2px solid var(--leather);padding:5rem 2rem 2rem;transform:translateX(105%);transition:transform .35s var(--ease);z-index:120}
+  .nav-links.open{transform:translateX(0)}
+  .nav-links a{font-size:1.05rem}
+  .burger{display:flex}
+  .nav .btn-red{display:none}
+}
+.navscrim{position:fixed;inset:0;background:rgba(43,29,18,.5);opacity:0;visibility:hidden;transition:.3s;z-index:110}
+.navscrim.show{opacity:1;visibility:visible}
+
+/* barber pole */
+.barberpole{background:repeating-linear-gradient(45deg,var(--red) 0 12px,#f4efe3 12px 24px,var(--navy) 24px 36px)}
+
+/* hero */
+.hero{position:relative;overflow:hidden;border-bottom:6px double var(--leather)}
+.hero-inner{display:grid;grid-template-columns:1.05fr .95fr;gap:0;align-items:stretch;min-height:clamp(520px,82vh,720px)}
+@media(max-width:900px){.hero-inner{grid-template-columns:1fr}}
+.hero-copy{display:flex;flex-direction:column;justify-content:center;padding:clamp(40px,6vw,72px) clamp(18px,5vw,64px);position:relative;z-index:3}
+.hero-copy::before{content:"";position:absolute;left:0;top:0;bottom:0;width:8px;background:repeating-linear-gradient(45deg,var(--red) 0 12px,#f4efe3 12px 24px,var(--navy) 24px 36px)}
+@media(max-width:560px){.hero-copy::before{width:5px}}
+.hero h1{font-size:clamp(2.5rem,6.5vw,4.6rem)}
+.hero h1 em{font-style:normal;color:var(--red);position:relative;white-space:nowrap}
+.hero h1 .ul{display:inline-block;color:var(--navy)}
+.hero .lead{font-size:clamp(1.02rem,1.6vw,1.18rem);color:var(--leather-d);max-width:46ch;margin:1.2rem 0 1.8rem}
+.hero-actions{display:flex;flex-wrap:wrap;gap:.8rem}
+.badges{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:2rem}
+.badge{display:inline-flex;align-items:center;gap:.45rem;font-size:.8rem;font-weight:700;color:var(--leather-d);background:var(--paper-3);border:1.5px solid var(--line-2);padding:.42rem .85rem;border-radius:2px}
+.badge .star{color:var(--red)}
+.hero-media{position:relative;overflow:hidden}
+.hero-media img{width:100%;height:100%;object-fit:cover;object-position:center}
+.hero-media::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(43,29,18,.28),transparent 45%),radial-gradient(circle at 50% 50%,transparent 55%,rgba(43,29,18,.42))}
+/* hero stamp */
+.stamp{position:absolute;z-index:4;width:clamp(108px,13vw,150px);height:clamp(108px,13vw,150px)}
+.hero-media .stamp{right:clamp(14px,3vw,28px);bottom:clamp(14px,3vw,28px)}
+.stamp svg{width:100%;height:100%;filter:drop-shadow(0 4px 12px rgba(0,0,0,.35))}
+
+/* generic */
+.shead{margin-bottom:2.6rem;max-width:62ch}
+.shead h2{font-size:clamp(1.9rem,4.2vw,3rem)}
+.shead h2 em{font-style:normal;color:var(--red)}
+.shead p{color:var(--muted);margin-top:.8rem;font-size:1.04rem}
+.sec-pad{padding:clamp(56px,9vw,104px) 0}
+.center{text-align:center;margin-left:auto;margin-right:auto}
+
+/* rule with diamond */
+.rule{display:flex;align-items:center;justify-content:center;gap:.9rem;color:var(--leather);margin:0 auto 2.4rem;max-width:340px}
+.rule::before,.rule::after{content:"";flex:1;height:2px;background:linear-gradient(90deg,transparent,var(--line-2))}
+.rule::after{background:linear-gradient(90deg,var(--line-2),transparent)}
+.rule b{font-family:var(--fd);font-size:1rem}
+.dia{width:9px;height:9px;background:var(--red);transform:rotate(45deg);flex:0 0 auto}
+
+/* services — carta retro */
+#servicios{background:var(--paper-2);border-top:2px solid var(--leather);border-bottom:2px solid var(--leather)}
+.carta{border:2px solid var(--leather);background:var(--paper-3);box-shadow:0 0 0 4px var(--paper-2),0 0 0 6px var(--leather);padding:clamp(1.4rem,3.5vw,2.6rem)}
+.carta-head{text-align:center;margin-bottom:1.8rem}
+.carta-head .est{font-family:var(--fd);font-size:.72rem;letter-spacing:.32em;color:var(--red);font-weight:800}
+.carta-head h3{font-size:clamp(1.5rem,3vw,2rem);margin:.3rem 0 .2rem}
+.carta-head .sub{font-size:.86rem;color:var(--muted);letter-spacing:.04em}
+.svc-list{list-style:none}
+.svc{display:flex;align-items:baseline;gap:.7rem;padding:.95rem 0;border-bottom:1px dashed var(--line-2)}
+.svc:last-child{border-bottom:0}
+.svc-name{font-family:var(--fd);font-weight:700;font-size:1.12rem;color:var(--ink);white-space:nowrap}
+.svc-desc{font-size:.82rem;color:var(--muted);display:block;font-family:var(--fb);font-weight:400;letter-spacing:0;margin-top:.1rem}
+.svc-l{flex:0 1 auto}
+.svc-dots{flex:1 1 auto;border-bottom:2px dotted var(--line-2);transform:translateY(-3px);min-width:18px}
+.svc-price{font-family:var(--fd);font-weight:800;font-size:1.18rem;color:var(--red-d);white-space:nowrap}
+.svc-tag{display:inline-block;font-family:var(--fb);font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--cream-soft);background:var(--navy);padding:.1rem .42rem;border-radius:2px;vertical-align:middle;margin-left:.5rem}
+.svc-cols{display:grid;grid-template-columns:1fr 1fr;gap:0 clamp(2rem,5vw,4rem)}
+@media(max-width:760px){.svc-cols{grid-template-columns:1fr}}
+.svc-note{text-align:center;color:var(--muted);font-size:.85rem;margin-top:1.8rem;font-style:italic}
+
+/* gallery */
+.bento{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:200px;gap:10px}
+.bento a{position:relative;overflow:hidden;border:3px solid var(--leather);display:block;background:var(--leather-d)}
+.bento img{width:100%;height:100%;object-fit:cover;transition:transform .55s var(--ease);filter:sepia(.18) saturate(.94)}
+.bento a:hover img{transform:scale(1.06);filter:sepia(0) saturate(1)}
+.bento a::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(43,29,18,.55));opacity:0;transition:.3s}
+.bento a:hover::after{opacity:1}
+.g-big{grid-column:span 2;grid-row:span 2}
+.g-wide{grid-column:span 2}
+@media(max-width:760px){
+  .bento{grid-template-columns:repeat(2,1fr);grid-auto-rows:150px}
+  .g-big{grid-column:span 2;grid-row:span 2}
+  .g-wide{grid-column:span 2}
+}
+
+/* team */
+#barberos{background:var(--paper-2);border-top:2px solid var(--leather);border-bottom:2px solid var(--leather)}
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+@media(max-width:760px){.team-grid{grid-template-columns:1fr;max-width:380px;margin:0 auto}}
+.member{border:2px solid var(--leather);background:var(--paper-3);transition:transform .3s var(--ease),box-shadow .3s}
+.member:hover{transform:translateY(-5px);box-shadow:0 14px 0 -6px rgba(91,58,37,.35)}
+.member .ph{aspect-ratio:4/5;overflow:hidden;border-bottom:2px solid var(--leather)}
+.member .ph img{width:100%;height:100%;object-fit:cover;filter:sepia(.2) saturate(.92);transition:filter .4s,transform .5s var(--ease)}
+.member:hover .ph img{filter:sepia(0) saturate(1);transform:scale(1.04)}
+.member .mb{padding:1.1rem 1.3rem 1.4rem;text-align:center}
+.member h3{font-size:1.3rem}
+.member .role{color:var(--red);font-size:.74rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-top:.3rem}
+.member p{color:var(--muted);font-size:.88rem;margin-top:.6rem}
+
+/* reviews */
+#resenas{position:relative}
+.rev-top{display:flex;align-items:center;justify-content:center;gap:1.4rem;flex-wrap:wrap;margin-bottom:2.6rem}
+.rev-score{font-family:var(--fd);font-weight:800;font-size:3.2rem;color:var(--red);line-height:1}
+.rev-score span{display:block;font-family:var(--fb);font-size:.75rem;letter-spacing:.1em;color:var(--muted);font-weight:700;margin-top:.3rem;text-transform:uppercase}
+.rev-stars{color:var(--red);font-size:1.5rem;letter-spacing:.1em}
+.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.3rem}
+@media(max-width:860px){.rev-grid{grid-template-columns:1fr;max-width:520px;margin:0 auto}}
+.rev{border:2px solid var(--line-2);background:var(--paper-3);padding:1.6rem 1.6rem 1.7rem;position:relative}
+.rev::before{content:"\201C";position:absolute;top:.2rem;right:1rem;font-family:var(--fd);font-size:3.4rem;color:var(--line);line-height:1}
+.rev .stars{color:var(--red);font-size:.95rem;letter-spacing:.14em;margin-bottom:.7rem}
+.rev p{font-size:.98rem;color:var(--leather-d);line-height:1.6}
+.rev .who{margin-top:1.1rem;display:flex;align-items:center;gap:.7rem}
+.rev .av{width:38px;height:38px;border-radius:50%;background:var(--navy);color:var(--cream-soft);display:flex;align-items:center;justify-content:center;font-weight:800;font-family:var(--fd)}
+.rev .who b{font-size:.9rem}
+.rev .who span{display:block;font-size:.76rem;color:var(--muted)}
+
+/* booking */
+#reservar{background:var(--leather-d);border-top:2px solid var(--leather);color:var(--cream-soft);position:relative;overflow:hidden}
+#reservar::before{content:"";position:absolute;top:0;left:0;right:0;height:8px;background:repeating-linear-gradient(45deg,var(--red) 0 12px,#f4efe3 12px 24px,var(--navy) 24px 36px)}
+.book-wrap{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(2rem,5vw,4rem);align-items:center}
+@media(max-width:860px){.book-wrap{grid-template-columns:1fr}}
+.book-copy .eyebrow{color:#e7b6a4}
+.book-copy .eyebrow::before,.book-copy .eyebrow::after{background:#caa783}
+.book-copy h2{font-size:clamp(1.9rem,4vw,2.9rem);color:var(--cream-soft)}
+.book-copy h2 em{font-style:normal;color:#e89a8d}
+.book-copy p{color:#d8c4a6;margin-top:.9rem;font-size:1.04rem;max-width:46ch}
+.book-points{list-style:none;margin-top:1.5rem;display:grid;gap:.7rem}
+.book-points li{display:flex;align-items:center;gap:.7rem;font-size:.96rem;color:#ecdcc1}
+.book-points .ck{color:#e89a8d;font-weight:800;font-size:1.1rem}
+.book-alt{margin-top:1.6rem;font-size:.9rem;color:#bda57f}
+.book-alt a{color:#e89a8d;font-weight:700}
+.book-form{background:var(--paper-3);border:2px solid var(--leather);color:var(--ink);padding:clamp(1.4rem,3vw,2rem);box-shadow:0 14px 40px -16px rgba(0,0,0,.5)}
+.book-form h3{font-size:1.3rem;margin-bottom:.3rem}
+.book-form .fhint{color:var(--muted);font-size:.85rem;margin-bottom:1.3rem}
+.field{margin-bottom:1rem}
+.field label{display:block;font-size:.74rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--leather);margin-bottom:.4rem}
+.field input,.field select{width:100%;background:var(--cream-soft);border:1.5px solid var(--line-2);color:var(--ink);font-family:var(--fb);font-size:.98rem;padding:.72rem .85rem;border-radius:2px;transition:border-color .2s}
+.field input:focus,.field select:focus{outline:none;border-color:var(--red)}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:.9rem}
+@media(max-width:480px){.field-row{grid-template-columns:1fr}}
+.book-form .btn{width:100%;margin-top:.5rem;font-size:1.02rem;padding:.95rem}
+.book-success{display:none;text-align:center;padding:2rem .5rem}
+.book-success.show{display:block;animation:pop .4s var(--ease)}
+@keyframes pop{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:scale(1)}}
+.book-success .ico{width:60px;height:60px;border-radius:50%;background:rgba(37,211,102,.15);border:2px solid var(--wa);color:#119145;display:flex;align-items:center;justify-content:center;font-size:2rem;margin:0 auto 1rem}
+.book-success h3{color:var(--red);margin-bottom:.5rem}
+.book-success p{color:var(--muted);font-size:.95rem}
+
+/* location */
+.loc-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.6rem,4vw,3rem);align-items:stretch}
+@media(max-width:860px){.loc-grid{grid-template-columns:1fr}}
+.map{position:relative;min-height:360px;border:3px solid var(--leather);overflow:hidden;background:var(--paper-2)}
+.map-grid{position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:46px 46px;opacity:.55}
+.map-road{position:absolute;background:var(--paper-3);border-top:1px solid var(--line-2);border-bottom:1px solid var(--line-2)}
+.map-road.h{left:0;right:0;height:30px;top:48%}
+.map-road.v{top:0;bottom:0;width:26px;left:38%;border-left:1px solid var(--line-2);border-right:1px solid var(--line-2);border-top:0;border-bottom:0}
+.map-pin{position:absolute;top:44%;left:42%;transform:translate(-50%,-100%);z-index:2;text-align:center}
+.map-pin svg{width:44px;height:44px;color:var(--red)}
+.map-pin .lbl{margin-top:.2rem;font-size:.76rem;font-weight:700;color:var(--cream-soft);background:var(--red);padding:.2rem .5rem;border-radius:2px;display:inline-block;white-space:nowrap}
+.map-tag{position:absolute;left:14px;bottom:14px;font-size:.72rem;color:var(--muted);background:rgba(246,239,223,.85);padding:.3rem .55rem;border:1px solid var(--line-2)}
+.loc-info{display:flex;flex-direction:column;gap:1.3rem}
+.loc-row{display:flex;gap:1rem;align-items:flex-start}
+.loc-row .ic{flex:0 0 42px;width:42px;height:42px;border:2px solid var(--leather);display:flex;align-items:center;justify-content:center;color:var(--red);background:var(--paper-3)}
+.loc-row .ic svg{width:20px;height:20px}
+.loc-row h4{font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-family:var(--fb);font-weight:700;margin-bottom:.2rem}
+.loc-row p,.loc-row a{font-size:1rem;color:var(--ink)}
+.loc-row a.lk:hover{color:var(--red)}
+.loc-hours{font-size:.95rem;color:var(--leather-d);line-height:1.85}
+.loc-hours b{color:var(--ink)}
+.loc-hours .closed{color:var(--red-d);font-weight:700}
+.loc-social{display:flex;gap:.7rem;margin-top:.4rem}
+.loc-social a{width:44px;height:44px;border:2px solid var(--leather);display:flex;align-items:center;justify-content:center;color:var(--leather);background:var(--paper-3);transition:.25s}
+.loc-social a:hover{background:var(--red);border-color:var(--red);color:var(--cream-soft);transform:translateY(-2px)}
+.loc-social svg{width:20px;height:20px}
+
+/* footer */
+.foot{background:var(--leather-d);color:#d8c4a6;border-top:6px double var(--leather);padding:clamp(40px,6vw,64px) 0 2.2rem}
+.foot-top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:2rem;align-items:flex-start}
+.foot-brand{max-width:38ch}
+.foot-brand svg{height:56px;width:auto;margin-bottom:1rem}
+.foot-brand p{color:#c2aa83;font-size:.92rem}
+.foot-cols{display:flex;gap:3rem;flex-wrap:wrap}
+.foot-col h5{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:#e89a8d;font-family:var(--fb);font-weight:700;margin-bottom:.9rem}
+.foot-col a,.foot-col p{display:block;color:#c2aa83;font-size:.92rem;margin-bottom:.5rem;transition:color .2s}
+.foot-col a:hover{color:var(--cream-soft)}
+.foot-note{margin-top:2.6rem;padding-top:1.4rem;border-top:1px solid #5b3a25;display:flex;flex-wrap:wrap;justify-content:space-between;gap:.6rem;font-size:.82rem;color:#a98f68}
+.foot-note a{color:#e89a8d;font-weight:600}
+
+/* fab */
+.fab{position:fixed;right:18px;bottom:18px;z-index:80;display:inline-flex;align-items:center;gap:.5rem;background:var(--wa);color:#fff;font-weight:700;font-size:.92rem;padding:.7rem .95rem .7rem .85rem;border-radius:999px;box-shadow:0 12px 32px -10px rgba(37,211,102,.7);transition:transform .25s var(--ease)}
+.fab svg{width:24px;height:24px}
+.fab:hover{transform:scale(1.05)}
+.fab .ftxt{display:inline}
+@media(max-width:560px){.fab .ftxt{display:none}.fab{padding:.7rem;border-radius:50%}}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}.reveal{opacity:1!important;transform:none!important}}
+</style>
+</head>
+<body>
+
+<!-- DEMO BAR -->
+<div class="ef-demobar">
+  <a class="ef-back" href="../../index.html#showcase">← Estudio Faro</a>
+  <span class="ef-label">Demo · Empire Beard — estilo Vintage</span>
+  <a class="ef-cta" href="https://wa.me/56971845174?text=Hola%20Estudio%20Faro%2C%20me%20gust%C3%B3%20el%20estilo%20Vintage%20para%20Empire%20Beard" target="_blank" rel="noopener">Me gusta este estilo</a>
+</div>
+
+<!-- LOGO + STAMP definitions -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <!-- crest / shield logo -->
+    <symbol id="eb-logo" viewBox="0 0 260 70">
+      <g transform="translate(6,4)">
+        <!-- shield -->
+        <path d="M31 2 L58 9 V32 C58 47 46 56 31 62 C16 56 4 47 4 32 V9 Z"
+              fill="none" stroke="#5b3a25" stroke-width="2.4"/>
+        <path d="M31 7 L53 12.6 V32 C53 44 43 51.5 31 56.6 C19 51.5 9 44 9 32 V12.6 Z"
+              fill="#b3322a" opacity=".10" stroke="#b3322a" stroke-width="1.3"/>
+        <!-- crown -->
+        <path d="M18 22 L18 15 L23 19 L31 12 L39 19 L44 15 L44 22 Z"
+              fill="#b3322a" stroke="#8d271f" stroke-width="1"/>
+        <circle cx="18" cy="13.5" r="1.7" fill="#b3322a"/>
+        <circle cx="31" cy="10" r="1.9" fill="#b3322a"/>
+        <circle cx="44" cy="13.5" r="1.7" fill="#b3322a"/>
+        <!-- straight razor -->
+        <path d="M19 33 L43 33 M19 33 C24 38 38 38 43 33" fill="none" stroke="#1f3a5f" stroke-width="2" stroke-linecap="round"/>
+        <text x="31" y="50" text-anchor="middle" font-family="Bricolage Grotesque, serif" font-weight="800" font-size="8.5" letter-spacing="1.5" fill="#5b3a25">EST.</text>
+      </g>
+      <g transform="translate(78,0)">
+        <text x="0" y="32" font-family="Bricolage Grotesque, serif" font-weight="800" font-size="27" letter-spacing="0.5" fill="#2b1d12">EMPIRE</text>
+        <text x="2" y="55" font-family="Bricolage Grotesque, serif" font-weight="800" font-size="22" letter-spacing="6.5" fill="#b3322a">BEARD</text>
+      </g>
+    </symbol>
+    <!-- light logo for footer -->
+    <symbol id="eb-logo-l" viewBox="0 0 260 70">
+      <g transform="translate(6,4)">
+        <path d="M31 2 L58 9 V32 C58 47 46 56 31 62 C16 56 4 47 4 32 V9 Z" fill="none" stroke="#d8c4a6" stroke-width="2.4"/>
+        <path d="M18 22 L18 15 L23 19 L31 12 L39 19 L44 15 L44 22 Z" fill="#e89a8d" stroke="#e89a8d" stroke-width="1"/>
+        <circle cx="18" cy="13.5" r="1.7" fill="#e89a8d"/><circle cx="31" cy="10" r="1.9" fill="#e89a8d"/><circle cx="44" cy="13.5" r="1.7" fill="#e89a8d"/>
+        <path d="M19 33 L43 33 M19 33 C24 38 38 38 43 33" fill="none" stroke="#d8c4a6" stroke-width="2" stroke-linecap="round"/>
+        <text x="31" y="50" text-anchor="middle" font-family="Bricolage Grotesque, serif" font-weight="800" font-size="8.5" letter-spacing="1.5" fill="#c2aa83">EST.</text>
+      </g>
+      <g transform="translate(78,0)">
+        <text x="0" y="32" font-family="Bricolage Grotesque, serif" font-weight="800" font-size="27" letter-spacing="0.5" fill="#f6efdf">EMPIRE</text>
+        <text x="2" y="55" font-family="Bricolage Grotesque, serif" font-weight="800" font-size="22" letter-spacing="6.5" fill="#e89a8d">BEARD</text>
+      </g>
+    </symbol>
+    <!-- circular EST stamp -->
+    <symbol id="eb-stamp" viewBox="0 0 160 160">
+      <circle cx="80" cy="80" r="76" fill="#efe6d2" stroke="#5b3a25" stroke-width="2.5"/>
+      <circle cx="80" cy="80" r="68" fill="none" stroke="#b3322a" stroke-width="1.4"/>
+      <circle cx="80" cy="80" r="46" fill="none" stroke="#5b3a25" stroke-width="1.2"/>
+      <path id="ebTop" d="M80 18 a62 62 0 0 1 0 124" fill="none"/>
+      <path id="ebBot" d="M80 142 a62 62 0 0 1 0 -124" fill="none"/>
+      <text font-family="Bricolage Grotesque, serif" font-weight="800" font-size="11.5" letter-spacing="3" fill="#5b3a25">
+        <textPath href="#ebTop" startOffset="6%">BARBERÍA CLÁSICA</textPath>
+      </text>
+      <text font-family="Bricolage Grotesque, serif" font-weight="800" font-size="11.5" letter-spacing="3" fill="#5b3a25">
+        <textPath href="#ebBot" startOffset="8%">LA SERENA · CHILE</textPath>
+      </text>
+      <g transform="translate(80,56)">
+        <path d="M-13 8 L-13 1 L-8 5 L0 -4 L8 5 L13 1 L13 8 Z" fill="#b3322a"/>
+      </g>
+      <text x="80" y="82" text-anchor="middle" font-family="Bricolage Grotesque, serif" font-weight="800" font-size="20" letter-spacing="1" fill="#b3322a">EMPIRE</text>
+      <text x="80" y="100" text-anchor="middle" font-family="Bricolage Grotesque, serif" font-weight="800" font-size="13" letter-spacing="4" fill="#1f3a5f">BEARD</text>
+      <text x="80" y="120" text-anchor="middle" font-family="Hanken Grotesk, sans-serif" font-weight="700" font-size="9" letter-spacing="2" fill="#5b3a25">★ EST. ★</text>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Empire Beard — inicio">
+      <svg role="img" aria-label="Empire Beard"><use href="#eb-logo"/></svg>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#barberos">Barberos</a></li>
+      <li><a href="#galeria">Galería</a></li>
+      <li><a href="#ubicacion">Ubicación</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a class="btn btn-red" href="#reservar">Reservar</a>
+      <button class="burger" id="burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="navLinks">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+<div class="navscrim" id="navscrim"></div>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <div class="hero-inner">
+    <div class="hero-copy">
+      <span class="eyebrow">Estilo europeo & americano · Est. La Serena</span>
+      <h1>El arte de la <em>barba</em> y el <span class="ul">corte clásico.</span></h1>
+      <p class="lead">En Empire Beard cuidamos cada detalle: tijera, navaja y toalla caliente. Tradición de barbería de toda la vida, con la pulcritud de hoy. Tu barba en las mejores manos de la ciudad.</p>
+      <div class="hero-actions">
+        <a class="btn btn-red" href="#reservar">Reservar hora</a>
+        <a class="btn btn-ink" href="#servicios">Ver la carta</a>
+      </div>
+      <div class="badges">
+        <span class="badge"><span class="star">★</span> 5,0 de calificación</span>
+        <span class="badge">69 reseñas</span>
+        <span class="badge">Clásicos desde hace años</span>
+      </div>
+    </div>
+    <div class="hero-media">
+      <img src="../../assets/barber/b00.jpg" width="1100" height="1000" alt="Sillón clásico de barbero en el interior de Empire Beard, La Serena" fetchpriority="high">
+      <div class="stamp"><svg role="img" aria-label="Sello Empire Beard, barbería clásica"><use href="#eb-stamp"/></svg></div>
+    </div>
+  </div>
+</header>
+
+<!-- SERVICES -->
+<section id="servicios" class="sec-pad">
+  <div class="wrap">
+    <div class="shead center reveal">
+      <span class="eyebrow one center" style="margin-left:auto;margin-right:auto;display:flex;justify-content:center">La carta</span>
+      <h2>Servicios &amp; <em>precios</em></h2>
+      <p style="margin-left:auto;margin-right:auto">Cada servicio incluye asesoría y terminación con productos clásicos. Precios en pesos chilenos.</p>
+    </div>
+    <div class="carta reveal">
+      <div class="carta-head">
+        <div class="est">★ EST. ★</div>
+        <h3>Empire Beard</h3>
+        <div class="sub">Barbería clásica · estilo europeo y americano</div>
+      </div>
+      <div class="svc-cols">
+        <ul class="svc-list">
+          <li class="svc">
+            <span class="svc-l"><span class="svc-name">Corte de pelo<span class="svc-desc">Clásico o moderno, lavado incluido</span></span></span>
+            <span class="svc-dots"></span><span class="svc-price">$10.000</span>
+          </li>
+          <li class="svc">
+            <span class="svc-l"><span class="svc-name">Corte + barba<span class="svc-desc">El combo completo de la casa</span></span><span class="svc-tag">Favorito</span></span>
+            <span class="svc-dots"></span><span class="svc-price">$16.000</span>
+          </li>
+          <li class="svc">
+            <span class="svc-l"><span class="svc-name">Perfilado de barba<span class="svc-desc">Diseño y contorno a navaja</span></span></span>
+            <span class="svc-dots"></span><span class="svc-price">$7.000</span>
+          </li>
+          <li class="svc">
+            <span class="svc-l"><span class="svc-name">Afeitado clásico<span class="svc-desc">Navaja y toalla caliente</span></span><span class="svc-tag">Insignia</span></span>
+            <span class="svc-dots"></span><span class="svc-price">$9.000</span>
+          </li>
+          <li class="svc">
+            <span class="svc-l"><span class="svc-name">Degradado<span class="svc-desc">Fade prolijo a máquina y tijera</span></span></span>
+            <span class="svc-dots"></span><span class="svc-price">$12.000</span>
+          </li>
+        </ul>
+        <ul class="svc-list">
+          <li class="svc">
+            <span class="svc-l"><span class="svc-name">Tratamiento facial<span class="svc-desc">Limpieza e hidratación de piel</span></span></span>
+            <span class="svc-dots"></span><span class="svc-price">$12.000</span>
+          </li>
+          <li class="svc">
+            <span class="svc-l"><span class="svc-name">Ritual de barba<span class="svc-desc">Vapor, aceites y masaje</span></span></span>
+            <span class="svc-dots"></span><span class="svc-price">$8.000</span>
+          </li>
+          <li class="svc">
+            <span class="svc-l"><span class="svc-name">Corte niño<span class="svc-desc">Hasta 12 años, con paciencia</span></span></span>
+            <span class="svc-dots"></span><span class="svc-price">$8.000</span>
+          </li>
+          <li class="svc">
+            <span class="svc-l"><span class="svc-name">Gift card<span class="svc-desc">Regala el ritual Empire Beard</span></span></span>
+            <span class="svc-dots"></span><span class="svc-price">A elección</span>
+          </li>
+        </ul>
+      </div>
+      <p class="svc-note">— Reserva tu hora por WhatsApp y elige tu barbero —</p>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="galeria" class="sec-pad">
+  <div class="wrap">
+    <div class="shead reveal">
+      <span class="eyebrow">El trabajo</span>
+      <h2>Cortes, barbas y <em>terminaciones</em></h2>
+      <p>Una muestra del día a día en la silla. Cada cliente, su estilo.</p>
+    </div>
+    <div class="bento reveal">
+      <a class="g-big" href="#reservar" aria-label="Corte y barba terminados">
+        <img src="../../assets/barber/b01.jpg" width="700" height="700" loading="lazy" alt="Corte clásico terminado en Empire Beard">
+      </a>
+      <a class="g-wide" href="#reservar" aria-label="Detalle de barba a navaja">
+        <img src="../../assets/barber/b02.jpg" width="600" height="300" loading="lazy" alt="Perfilado de barba con tijera y peine">
+      </a>
+      <a href="#reservar" aria-label="Degradado prolijo">
+        <img src="../../assets/barber/b03.jpg" width="350" height="350" loading="lazy" alt="Degradado prolijo en cliente">
+      </a>
+      <a href="#reservar" aria-label="Corte en proceso">
+        <img src="../../assets/barber/b06.jpg" width="350" height="350" loading="lazy" alt="Corte de pelo en proceso">
+      </a>
+      <a href="#reservar" aria-label="Herramientas de barbería">
+        <img src="../../assets/barber/b10.jpg" width="350" height="350" loading="lazy" alt="Herramientas clásicas de barbería">
+      </a>
+      <a href="#reservar" aria-label="Resultado de corte">
+        <img src="../../assets/barber/b09.jpg" width="350" height="350" loading="lazy" alt="Resultado final de corte y peinado">
+      </a>
+      <a class="g-wide" href="#reservar" aria-label="Cuidado de barba">
+        <img src="../../assets/barber/b12.jpg" width="600" height="300" loading="lazy" alt="Cuidado y aceites para la barba">
+      </a>
+      <a href="#reservar" aria-label="Estilo logrado">
+        <img src="../../assets/barber/b13.jpg" width="350" height="350" loading="lazy" alt="Estilo de corte logrado">
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section id="barberos" class="sec-pad">
+  <div class="wrap">
+    <div class="shead center reveal" style="margin-left:auto;margin-right:auto">
+      <span class="eyebrow one" style="margin-left:auto;margin-right:auto;display:flex;justify-content:center">El equipo</span>
+      <h2>Nuestros <em>barberos</em></h2>
+      <p style="margin-left:auto;margin-right:auto">Manos con oficio y vocación de barbería de la vieja escuela.</p>
+    </div>
+    <div class="team-grid reveal">
+      <article class="member">
+        <div class="ph"><img src="../../assets/barber/b04.jpg" width="400" height="500" loading="lazy" alt="Barbero de Empire Beard junto al sillón"></div>
+        <div class="mb">
+          <h3>Cristóbal R.</h3>
+          <div class="role">Maestro barbero</div>
+          <p>Especialista en afeitado clásico a navaja y toalla caliente. El alma de la casa.</p>
+        </div>
+      </article>
+      <article class="member">
+        <div class="ph"><img src="../../assets/barber/b07.jpg" width="400" height="500" loading="lazy" alt="Barbero de Empire Beard en el interior"></div>
+        <div class="mb">
+          <h3>Matías V.</h3>
+          <div class="role">Especialista en barba</div>
+          <p>Perfila, esculpe y cuida cada barba como una obra. Detallista al milímetro.</p>
+        </div>
+      </article>
+      <article class="member">
+        <div class="ph"><img src="../../assets/barber/b08.jpg" width="400" height="500" loading="lazy" alt="Barbero de Empire Beard trabajando"></div>
+        <div class="mb">
+          <h3>Ignacio P.</h3>
+          <div class="role">Degradados &amp; estilo</div>
+          <p>El rey del fade. Cortes modernos con terminación impecable y precisa.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="resenas" class="sec-pad" style="background:var(--paper-2);border-top:2px solid var(--leather);border-bottom:2px solid var(--leather)">
+  <div class="wrap">
+    <div class="rev-top reveal">
+      <div class="rev-score">5,0<span>Calificación</span></div>
+      <div>
+        <div class="rev-stars">★★★★★</div>
+        <p style="color:var(--muted);font-size:.9rem;margin-top:.3rem;font-weight:600">Basado en 69 reseñas de clientes</p>
+      </div>
+    </div>
+    <div class="rule"><span class="dia"></span><b>Lo que dicen</b><span class="dia"></span></div>
+    <div class="rev-grid reveal">
+      <article class="rev">
+        <div class="stars">★★★★★</div>
+        <p>El mejor lugar para la barba en La Serena. El afeitado con toalla caliente es otro nivel, salí como nuevo.</p>
+        <div class="who"><span class="av">JM</span><span><b>Jorge Maldonado</b><span>Cliente frecuente</span></span></div>
+      </article>
+      <article class="rev">
+        <div class="stars">★★★★★</div>
+        <p>Atención impecable y prolija. Te explican todo, te recomiendan el corte y se nota el oficio. 100% recomendado.</p>
+        <div class="who"><span class="av">FA</span><span><b>Felipe Araya</b><span>Vía Google</span></span></div>
+      </article>
+      <article class="rev">
+        <div class="stars">★★★★★</div>
+        <p>Ambiente clásico, música buena y manos que saben. Llevo a mi hijo y a mí, siempre quedamos contentos.</p>
+        <div class="who"><span class="av">RC</span><span><b>Rodrigo Castro</b><span>Cliente desde 2022</span></span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section id="reservar" class="sec-pad">
+  <div class="wrap">
+    <div class="book-wrap">
+      <div class="book-copy reveal">
+        <span class="eyebrow">Reserva tu hora</span>
+        <h2>Pasa por la silla <em>cuando quieras.</em></h2>
+        <p>Déjanos tus datos y te confirmamos por WhatsApp, o escríbenos directo. Lunes a sábado de 8:00 a 20:00.</p>
+        <ul class="book-points">
+          <li><span class="ck">✓</span> Elige día, hora y barbero</li>
+          <li><span class="ck">✓</span> Confirmación rápida por WhatsApp</li>
+          <li><span class="ck">✓</span> Pedro Pablo Muñoz 520, La Serena</li>
+        </ul>
+        <p class="book-alt">¿Prefieres escribir? <a href="https://wa.me/56964211413?text=Hola%20Empire%20Beard%2C%20quiero%20reservar%20una%20hora" target="_blank" rel="noopener">WhatsApp +56 9 6421 1413 →</a></p>
+      </div>
+      <div class="book-form reveal">
+        <form id="bookForm" novalidate>
+          <h3>Solicita tu hora</h3>
+          <p class="fhint">Te respondemos a la brevedad para confirmar.</p>
+          <div class="field">
+            <label for="bf-name">Nombre</label>
+            <input id="bf-name" name="name" type="text" autocomplete="name" placeholder="Tu nombre" required>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="bf-phone">Teléfono</label>
+              <input id="bf-phone" name="phone" type="tel" autocomplete="tel" placeholder="+56 9 ..." required>
+            </div>
+            <div class="field">
+              <label for="bf-service">Servicio</label>
+              <select id="bf-service" name="service" required>
+                <option value="" selected disabled>Elige uno</option>
+                <option>Corte de pelo</option>
+                <option>Corte + barba</option>
+                <option>Perfilado de barba</option>
+                <option>Afeitado clásico</option>
+                <option>Degradado</option>
+                <option>Tratamiento facial</option>
+                <option>Ritual de barba</option>
+                <option>Corte niño</option>
+                <option>Gift card</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label for="bf-day">Día preferido</label>
+            <input id="bf-day" name="day" type="text" placeholder="Ej: sábado en la mañana">
+          </div>
+          <button class="btn btn-wa" type="submit">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.02zM12.05 20.2a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.18 8.18 0 0 1-1.26-4.36c0-4.54 3.7-8.23 8.24-8.23 2.2 0 4.27.86 5.82 2.42a8.16 8.16 0 0 1 2.41 5.82c0 4.54-3.69 8.23-8.23 8.23z"/></svg>
+            Enviar por WhatsApp
+          </button>
+        </form>
+        <div class="book-success" id="bookSuccess" role="status" aria-live="polite">
+          <div class="ico">✓</div>
+          <h3>¡Listo!</h3>
+          <p>Abrimos WhatsApp con tu solicitud. Si no se abrió, escríbenos al <b>+56 9 6421 1413</b> y te confirmamos tu hora.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section id="ubicacion" class="sec-pad" style="background:var(--paper-2);border-top:2px solid var(--leather)">
+  <div class="wrap">
+    <div class="shead reveal">
+      <span class="eyebrow">Visítanos</span>
+      <h2>Dónde <em>encontrarnos</em></h2>
+      <p>En pleno La Serena. Pasa, toma asiento y déjanos lo demás a nosotros.</p>
+    </div>
+    <div class="loc-grid reveal">
+      <div class="map" aria-label="Mapa referencial de la ubicación de Empire Beard">
+        <div class="map-grid"></div>
+        <div class="map-road h"></div>
+        <div class="map-road v"></div>
+        <div class="map-pin">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
+          <div class="lbl">Empire Beard</div>
+        </div>
+        <span class="map-tag">Pedro Pablo Muñoz 520 · La Serena</span>
+      </div>
+      <div class="loc-info">
+        <div class="loc-row">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg></div>
+          <div>
+            <h4>Dirección</h4>
+            <p>Pedro Pablo Muñoz 520, La Serena, Región de Coquimbo</p>
+          </div>
+        </div>
+        <div class="loc-row">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+          <div>
+            <h4>Horario</h4>
+            <p class="loc-hours"><b>Lunes a sábado</b> · 8:00 – 20:00<br><span class="closed">Domingo · Cerrado</span></p>
+          </div>
+        </div>
+        <div class="loc-row">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.02zM12.05 20.2a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.18 8.18 0 0 1-1.26-4.36c0-4.54 3.7-8.23 8.24-8.23 2.2 0 4.27.86 5.82 2.42a8.16 8.16 0 0 1 2.41 5.82c0 4.54-3.69 8.23-8.23 8.23z"/></svg></div>
+          <div>
+            <h4>WhatsApp</h4>
+            <a class="lk" href="https://wa.me/56964211413?text=Hola%20Empire%20Beard%2C%20quiero%20reservar%20una%20hora" target="_blank" rel="noopener">+56 9 6421 1413</a>
+          </div>
+        </div>
+        <div class="loc-social">
+          <a href="https://wa.me/56964211413" target="_blank" rel="noopener" aria-label="WhatsApp Empire Beard">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.02zM12.05 20.2a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.18 8.18 0 0 1-1.26-4.36c0-4.54 3.7-8.23 8.24-8.23 2.2 0 4.27.86 5.82 2.42a8.16 8.16 0 0 1 2.41 5.82c0 4.54-3.69 8.23-8.23 8.23z"/></svg>
+          </a>
+          <a href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="Facebook: Empire Beard Barbería clásica">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5 3.66 9.15 8.44 9.94v-7.03H7.9v-2.9h2.54V9.85c0-2.52 1.5-3.91 3.78-3.91 1.1 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.78-1.63 1.57v1.89h2.78l-.44 2.9h-2.34V22c4.78-.79 8.43-4.94 8.43-9.94z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <svg role="img" aria-label="Empire Beard"><use href="#eb-logo-l"/></svg>
+        <p>Barbería clásica de estilo europeo y americano en La Serena. Especialistas en barba, afeitado a navaja y degradados. Tradición, oficio y buen rato.</p>
+      </div>
+      <div class="foot-cols">
+        <div class="foot-col">
+          <h5>Navegar</h5>
+          <a href="#servicios">Servicios</a>
+          <a href="#barberos">Barberos</a>
+          <a href="#galeria">Galería</a>
+          <a href="#ubicacion">Ubicación</a>
+        </div>
+        <div class="foot-col">
+          <h5>Contacto</h5>
+          <a href="https://wa.me/56964211413" target="_blank" rel="noopener">WhatsApp +56 9 6421 1413</a>
+          <a href="https://www.facebook.com/" target="_blank" rel="noopener">Facebook</a>
+          <p>Pedro Pablo Muñoz 520, La Serena</p>
+        </div>
+        <div class="foot-col">
+          <h5>Horario</h5>
+          <p>Lun a Sáb · 8:00 – 20:00</p>
+          <p>Domingo · Cerrado</p>
+        </div>
+      </div>
+    </div>
+    <div class="foot-note">
+      <span>Demo creada por Estudio Faro · <a href="https://estudiofaro.cl" target="_blank" rel="noopener">estudiofaro.cl</a> · Sitio de demostración.</span>
+      <span>© <span id="yr"></span> Empire Beard</span>
+    </div>
+  </div>
+</footer>
+
+<!-- FAB -->
+<a class="fab" href="https://wa.me/56971845174" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.02zM12.05 20.2a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.18 8.18 0 0 1-1.26-4.36c0-4.54 3.7-8.23 8.24-8.23 2.2 0 4.27.86 5.82 2.42a8.16 8.16 0 0 1 2.41 5.82c0 4.54-3.69 8.23-8.23 8.23z"/></svg>
+  <span class="ftxt">WhatsApp</span>
+</a>
+
+<script>
+(function(){
+  "use strict";
+  // burger menu
+  var burger=document.getElementById("burger");
+  var links=document.getElementById("navLinks");
+  var scrim=document.getElementById("navscrim");
+  function closeMenu(){
+    links.classList.remove("open");
+    burger.classList.remove("open");
+    scrim.classList.remove("show");
+    burger.setAttribute("aria-expanded","false");
+  }
+  burger.addEventListener("click",function(){
+    var open=links.classList.toggle("open");
+    burger.classList.toggle("open",open);
+    scrim.classList.toggle("show",open);
+    burger.setAttribute("aria-expanded",open?"true":"false");
+  });
+  scrim.addEventListener("click",closeMenu);
+  links.querySelectorAll("a").forEach(function(a){a.addEventListener("click",closeMenu);});
+  document.addEventListener("keydown",function(e){if(e.key==="Escape")closeMenu();});
+
+  // year
+  document.getElementById("yr").textContent=new Date().getFullYear();
+
+  // booking form -> WhatsApp
+  var form=document.getElementById("bookForm");
+  var success=document.getElementById("bookSuccess");
+  form.addEventListener("submit",function(e){
+    e.preventDefault();
+    if(!form.checkValidity()){form.reportValidity();return;}
+    var name=document.getElementById("bf-name").value.trim();
+    var phone=document.getElementById("bf-phone").value.trim();
+    var service=document.getElementById("bf-service").value;
+    var day=document.getElementById("bf-day").value.trim();
+    var msg="Hola Empire Beard, quiero reservar una hora."+
+      "\n\nNombre: "+name+
+      "\nServicio: "+service+
+      (day?"\nDía preferido: "+day:"")+
+      (phone?"\nTeléfono: "+phone:"");
+    var url="https://wa.me/56964211413?text="+encodeURIComponent(msg);
+    window.open(url,"_blank","noopener");
+    form.style.display="none";
+    success.classList.add("show");
+  });
+
+  // reveal on scroll
+  var revs=document.querySelectorAll(".reveal");
+  if("IntersectionObserver" in window){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){en.target.classList.add("in");io.unobserve(en.target);}
+      });
+    },{threshold:.12,rootMargin:"0px 0px -8% 0px"});
+    revs.forEach(function(el){io.observe(el);});
+  }else{
+    revs.forEach(function(el){el.classList.add("in");});
+  }
+})();
+</script>
+</body>
+</html>
