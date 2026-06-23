@@ -1,0 +1,531 @@
+<!doctype html>
+<html lang="es-CL">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Central Arranque · Repuestos y servicio automotriz · La Serena</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --carbon:#13151a;
+  --carbon-2:#1c1f26;
+  --carbon-3:#23272f;
+  --orange:#f25c05;
+  --orange-soft:#ff7a2e;
+  --ink:#f4f1ec;
+  --muted:#a3a8b3;
+  --muted-2:#6f747f;
+  --line:rgba(255,255,255,.08);
+  --ease:cubic-bezier(.16,1,.3,1);
+  --shadow:0 18px 50px -20px rgba(242,92,5,.35), 0 10px 30px -15px rgba(0,0,0,.7);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--carbon);
+  color:var(--ink);
+  font-family:"Hanken Grotesk",system-ui,sans-serif;
+  font-size:17px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+h1,h2,h3,.display{font-family:"Bricolage Grotesque",system-ui,sans-serif;font-weight:800;line-height:.96;letter-spacing:-.02em;margin:0}
+a{color:inherit}
+img{display:block;max-width:100%}
+.wrap{max-width:1200px;margin:0 auto;padding:0 clamp(16px,4vw,40px)}
+.eyebrow{font-family:"Hanken Grotesk";font-weight:700;font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;color:var(--orange-soft)}
+
+/* ===== DEMOBAR ===== */
+.ef-demobar{position:sticky;top:0;z-index:9999;display:flex;align-items:center;justify-content:space-between;gap:1rem;background:#0c282f;color:#fff;padding:.5rem clamp(14px,4vw,28px);font-family:"Hanken Grotesk",system-ui,sans-serif;font-size:.85rem}
+.ef-demobar .ef-back{color:#cfe0de;font-weight:600;text-decoration:none}.ef-demobar .ef-back:hover{color:#fff}
+.ef-demobar .ef-label{color:#8fb0ac;font-weight:600}@media(max-width:560px){.ef-demobar .ef-label{display:none}}
+.ef-demobar .ef-cta{background:#25d366;color:#06351c;font-weight:700;padding:.4rem .9rem;border-radius:999px;text-decoration:none;white-space:nowrap;transition:transform .25s var(--ease),box-shadow .25s var(--ease)}
+.ef-demobar .ef-cta:hover{transform:translateY(-1px);box-shadow:0 8px 20px -8px rgba(37,211,102,.6)}
+
+/* ===== NAV ===== */
+.nav{position:sticky;top:0;z-index:900;background:rgba(19,21,26,.72);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;height:74px}
+.brand{display:flex;align-items:center;gap:.65rem;text-decoration:none;font-family:"Bricolage Grotesque";font-weight:800;font-size:1.22rem;letter-spacing:-.02em;color:var(--ink)}
+.brand svg{width:34px;height:34px;flex:none}
+.brand .b-accent{color:var(--orange)}
+.nav-links{display:flex;align-items:center;gap:2rem}
+.nav-links a{text-decoration:none;font-weight:600;font-size:.96rem;color:var(--muted);position:relative;transition:color .25s var(--ease)}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:-6px;height:2px;width:0;background:var(--orange);transition:width .25s var(--ease)}
+.nav-links a:hover{color:var(--ink)}
+.nav-links a:hover::after{width:100%}
+.btn{display:inline-flex;align-items:center;gap:.5rem;font-family:"Hanken Grotesk";font-weight:700;font-size:.95rem;text-decoration:none;cursor:pointer;border:none;border-radius:4px;padding:.7rem 1.2rem;transition:transform .25s var(--ease),box-shadow .25s var(--ease),background .25s var(--ease)}
+.btn-primary{background:var(--orange);color:#1a0c02;box-shadow:0 10px 24px -12px rgba(242,92,5,.8)}
+.btn-primary:hover{background:var(--orange-soft);transform:translateY(-2px);box-shadow:0 16px 32px -12px rgba(242,92,5,.9)}
+.btn-ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btn-ghost:hover{border-color:var(--orange);color:var(--orange-soft);transform:translateY(-2px)}
+.nav .btn{padding:.6rem 1.1rem}
+.burger{display:none;background:none;border:1px solid var(--line);border-radius:6px;width:46px;height:42px;cursor:pointer;color:var(--ink);align-items:center;justify-content:center}
+.burger svg{width:22px;height:22px}
+a:focus-visible,button:focus-visible{outline:3px solid var(--orange-soft);outline-offset:3px;border-radius:4px}
+
+/* ===== HERO ===== */
+.hero{position:relative;min-height:88vh;display:flex;align-items:flex-end;overflow:hidden;border-bottom:1px solid var(--line)}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;filter:grayscale(.35) contrast(1.05)}
+.hero-bg::after{content:"";position:absolute;inset:0;background:
+  linear-gradient(180deg,rgba(19,21,26,.55) 0%,rgba(19,21,26,.4) 35%,rgba(19,21,26,.96) 100%),
+  linear-gradient(75deg,rgba(19,21,26,.92) 8%,rgba(19,21,26,.25) 60%,transparent 100%)}
+.hero-grid{position:absolute;inset:0;z-index:1;opacity:.4;background-image:linear-gradient(transparent 95%,rgba(242,92,5,.18) 95%);background-size:100% 46px}
+.hero-content{position:relative;z-index:2;padding-bottom:clamp(48px,7vw,90px);padding-top:120px;max-width:880px}
+.hero h1{font-size:clamp(2.9rem,8.5vw,6.4rem);text-transform:uppercase}
+.hero h1 .slash{color:var(--orange);display:inline-block}
+.hero p.sub{font-size:clamp(1.05rem,2.2vw,1.35rem);color:var(--muted);max-width:560px;margin:1.4rem 0 2rem;line-height:1.5}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:1rem}
+.hero-ctas .btn{font-size:1.02rem;padding:.95rem 1.6rem}
+.hero-meta{display:flex;flex-wrap:wrap;gap:clamp(1.4rem,4vw,3.2rem);margin-top:2.6rem;padding-top:1.8rem;border-top:1px solid var(--line)}
+.hero-meta .m{display:flex;flex-direction:column}
+.hero-meta .m b{font-family:"Bricolage Grotesque";font-size:1.55rem;color:var(--ink)}
+.hero-meta .m span{font-size:.82rem;color:var(--muted-2);letter-spacing:.04em;text-transform:uppercase;font-weight:600}
+.stars{color:var(--orange);letter-spacing:2px}
+
+/* ===== SECTION SHELL ===== */
+.section{padding:clamp(64px,9vw,120px) 0}
+.section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;margin-bottom:clamp(34px,5vw,56px);flex-wrap:wrap}
+.section-head h2{font-size:clamp(2rem,5vw,3.4rem);text-transform:uppercase}
+.section-head p{color:var(--muted);max-width:440px;margin:0}
+.alt{background:var(--carbon-2)}
+
+/* ===== SERVICIOS ===== */
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.svc{background:var(--carbon);padding:clamp(26px,3.2vw,40px);position:relative;transition:background .25s var(--ease)}
+.svc::before{content:"";position:absolute;left:0;top:0;height:3px;width:0;background:var(--orange);transition:width .3s var(--ease)}
+.svc:hover{background:var(--carbon-3)}
+.svc:hover::before{width:100%}
+.svc .ic{width:52px;height:52px;display:grid;place-items:center;border:1px solid var(--line);border-radius:8px;margin-bottom:1.2rem;color:var(--orange);transition:transform .3s var(--ease),border-color .25s var(--ease)}
+.svc:hover .ic{transform:translateY(-3px) rotate(-4deg);border-color:var(--orange)}
+.svc .ic svg{width:28px;height:28px}
+.svc h3{font-size:1.25rem;margin-bottom:.5rem;letter-spacing:-.01em}
+.svc p{color:var(--muted);font-size:.96rem;margin:0}
+
+/* ===== CATALOGO ===== */
+.cat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem}
+.card{background:var(--carbon-2);border:1px solid var(--line);border-radius:10px;overflow:hidden;display:flex;flex-direction:column;transition:transform .3s var(--ease),border-color .25s var(--ease),box-shadow .3s var(--ease)}
+.card:hover{transform:translateY(-6px);border-color:rgba(242,92,5,.5);box-shadow:var(--shadow)}
+.card .ph{position:relative;aspect-ratio:4/3;overflow:hidden}
+.card .ph img{width:100%;height:100%;object-fit:cover;filter:grayscale(.2) contrast(1.04);transition:transform .5s var(--ease)}
+.card:hover .ph img{transform:scale(1.07)}
+.card .ph::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(19,21,26,.55) 100%)}
+.tag{position:absolute;top:10px;left:10px;z-index:2;background:var(--orange);color:#1a0c02;font-weight:700;font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;padding:.25rem .55rem;border-radius:4px}
+.card .body{padding:1.1rem 1.2rem 1.3rem;display:flex;flex-direction:column;gap:.55rem;flex:1}
+.card h3{font-size:1.08rem;line-height:1.1}
+.card .price{font-family:"Bricolage Grotesque";font-weight:800;font-size:1.2rem;color:var(--orange-soft)}
+.card .price small{font-family:"Hanken Grotesk";font-weight:500;font-size:.72rem;color:var(--muted-2);display:block;letter-spacing:.04em}
+.card .btn{margin-top:auto;width:100%;justify-content:center;font-size:.9rem;padding:.65rem}
+
+/* ===== POR QUE ===== */
+.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem}
+.why{padding:1.6rem;border:1px solid var(--line);border-radius:10px;background:linear-gradient(160deg,var(--carbon-3),var(--carbon-2))}
+.why b{font-family:"Bricolage Grotesque";font-size:2.3rem;color:var(--orange);display:block;line-height:1}
+.why h3{font-size:1.08rem;margin:.7rem 0 .35rem}
+.why p{color:var(--muted);font-size:.92rem;margin:0}
+
+/* ===== RESEÑAS ===== */
+.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+.rev{background:var(--carbon);border:1px solid var(--line);border-left:3px solid var(--orange);border-radius:8px;padding:1.6rem}
+.rev .stars{font-size:1rem;margin-bottom:.8rem;display:block}
+.rev p{margin:0 0 1.1rem;font-size:1.02rem;line-height:1.5}
+.rev .who{display:flex;align-items:center;gap:.7rem}
+.rev .av{width:40px;height:40px;border-radius:50%;background:var(--orange);color:#1a0c02;display:grid;place-items:center;font-family:"Bricolage Grotesque";font-weight:800;flex:none}
+.rev .who b{font-size:.95rem}
+.rev .who span{font-size:.8rem;color:var(--muted-2);display:block}
+
+/* ===== UBICACION ===== */
+.loc{display:grid;grid-template-columns:1.1fr .9fr;gap:0;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.map{position:relative;min-height:420px;background:var(--carbon-3)}
+.map img{width:100%;height:100%;object-fit:cover;filter:grayscale(.7) contrast(1.1) brightness(.7)}
+.map::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 42% 48%,transparent 0,transparent 80px,rgba(19,21,26,.45) 200px)}
+.pin{position:absolute;top:48%;left:42%;transform:translate(-50%,-100%);z-index:3;color:var(--orange);filter:drop-shadow(0 6px 10px rgba(0,0,0,.6))}
+.pin svg{width:42px;height:42px}
+.loc-info{padding:clamp(28px,3vw,44px);background:var(--carbon-2);display:flex;flex-direction:column;gap:1.4rem}
+.loc-info h2{font-size:clamp(1.7rem,3.5vw,2.4rem);text-transform:uppercase}
+.hours{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:.55rem}
+.hours li{display:flex;justify-content:space-between;padding:.55rem 0;border-bottom:1px dashed var(--line);font-size:.96rem}
+.hours li span:first-child{color:var(--muted)}
+.hours li b{font-weight:600}
+.hours li.closed b{color:var(--muted-2)}
+.addr{display:flex;align-items:flex-start;gap:.6rem;color:var(--muted)}
+.addr svg{width:20px;height:20px;color:var(--orange);flex:none;margin-top:2px}
+
+/* ===== BANDA CTA ===== */
+.bandcta{position:relative;text-align:center;padding:clamp(56px,8vw,100px) 0;overflow:hidden;background:var(--orange)}
+.bandcta::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(45deg,rgba(0,0,0,.06) 0 18px,transparent 18px 36px)}
+.bandcta .wrap{position:relative;z-index:2}
+.bandcta h2{font-size:clamp(2rem,6vw,4rem);color:#1a0c02;text-transform:uppercase;max-width:14ch;margin:0 auto 1.4rem}
+.bandcta .btn{background:#13151a;color:var(--ink);font-size:1.05rem;padding:1rem 1.8rem}
+.bandcta .btn:hover{background:#000;transform:translateY(-2px)}
+
+/* ===== FOOTER ===== */
+footer{background:#0e1014;border-top:1px solid var(--line);padding:clamp(48px,6vw,80px) 0 0}
+.foot-top{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:2rem;padding-bottom:2.6rem;border-bottom:1px solid var(--line)}
+.foot-top p{color:var(--muted);font-size:.94rem;max-width:320px}
+.foot-col h4{font-family:"Hanken Grotesk";font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-2);margin:0 0 1rem}
+.foot-col a{display:block;text-decoration:none;color:var(--muted);font-size:.95rem;margin-bottom:.55rem;transition:color .2s var(--ease)}
+.foot-col a:hover{color:var(--orange-soft)}
+.foot-bottom{padding:1.4rem 0 2rem;text-align:center;color:var(--muted-2);font-size:.82rem}
+.foot-bottom a{color:var(--orange-soft);text-decoration:none}
+
+/* ===== FAB ===== */
+.fab{position:fixed;right:18px;bottom:18px;z-index:950;display:flex;align-items:center;gap:.6rem;background:#25d366;color:#06351c;font-weight:700;text-decoration:none;padding:.8rem 1.1rem;border-radius:999px;box-shadow:0 14px 30px -10px rgba(37,211,102,.6);transition:transform .25s var(--ease),box-shadow .25s var(--ease)}
+.fab svg{width:24px;height:24px}
+.fab:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 20px 36px -10px rgba(37,211,102,.75)}
+.fab .txt{font-size:.92rem}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:900px){
+  .svc-grid{grid-template-columns:repeat(2,1fr)}
+  .cat-grid{grid-template-columns:repeat(2,1fr)}
+  .why-grid{grid-template-columns:repeat(2,1fr)}
+  .rev-grid{grid-template-columns:1fr}
+  .loc{grid-template-columns:1fr}
+  .map{min-height:300px}
+  .foot-top{grid-template-columns:1fr 1fr}
+}
+@media(max-width:768px){
+  .nav-links{position:fixed;inset:74px 0 auto 0;flex-direction:column;align-items:stretch;gap:0;background:var(--carbon-2);border-bottom:1px solid var(--line);padding:.5rem 0;transform:translateY(-130%);transition:transform .35s var(--ease);box-shadow:0 20px 40px -20px rgba(0,0,0,.8)}
+  .nav-links.open{transform:translateY(0)}
+  .nav-links a{padding:1rem clamp(16px,4vw,40px);border-bottom:1px solid var(--line)}
+  .nav-links a::after{display:none}
+  .nav-links .btn{margin:.7rem clamp(16px,4vw,40px);justify-content:center}
+  .nav .btn-primary.deskcta{display:none}
+  .burger{display:flex}
+  .hero{min-height:80vh}
+}
+@media(max-width:560px){
+  body{font-size:16px}
+  .svc-grid{grid-template-columns:1fr}
+  .cat-grid{grid-template-columns:1fr}
+  .why-grid{grid-template-columns:1fr}
+  .foot-top{grid-template-columns:1fr}
+  .fab .txt{display:none}
+  .fab{padding:.85rem}
+  .hero-ctas .btn{flex:1;justify-content:center}
+}
+@media(prefers-reduced-motion:reduce){
+  *{transition:none!important;animation:none!important;scroll-behavior:auto!important}
+}
+</style>
+</head>
+<body>
+
+<!-- DEMOBAR -->
+<div class="ef-demobar">
+  <a class="ef-back" href="../../index.html#showcase">← Estudio Faro</a>
+  <span class="ef-label">Demo · Repuestos — estilo Industrial</span>
+  <a class="ef-cta" href="https://wa.me/56971845174?text=Hola%20Estudio%20Faro%2C%20me%20gust%C3%B3%20el%20estilo%20Industrial%20para%20Central%20Arranque" target="_blank" rel="noopener">Me gusta este estilo</a>
+</div>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="#top" aria-label="Central Arranque inicio">
+      <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M24 3l3.3 6.6 7.3-1.1-1.1 7.3L40 19l-6.6 3.3 1.1 7.3-7.3-1.1L24 35l-3.3-6.5-7.3 1.1 1.1-7.3L8 19l6.5-3.2-1-7.3 7.2 1.1L24 3z" stroke="#f25c05" stroke-width="2.4" stroke-linejoin="round"/>
+        <path d="M25 14l-7 11h6l-2 9 9-13h-6l3-7z" fill="#f25c05"/>
+      </svg>
+      Central<span class="b-accent">Arranque</span>
+    </a>
+    <nav class="nav-links" id="navlinks">
+      <a href="#servicios">Servicios</a>
+      <a href="#repuestos">Repuestos</a>
+      <a href="#nosotros">Nosotros</a>
+      <a href="#contacto">Contacto</a>
+      <a class="btn btn-primary" href="https://wa.me/56971845174?text=Hola%20Central%20Arranque%2C%20quiero%20cotizar%20un%20repuesto%2Fservicio" target="_blank" rel="noopener">Cotizar por WhatsApp</a>
+    </nav>
+    <a class="btn btn-primary deskcta" href="https://wa.me/56971845174?text=Hola%20Central%20Arranque%2C%20quiero%20cotizar%20un%20repuesto%2Fservicio" target="_blank" rel="noopener" style="display:none">Cotizar</a>
+    <button class="burger" id="burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="navlinks">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg">
+    <img src="https://picsum.photos/seed/arranque-ind-hero/1800/1100" width="1800" height="1100" alt="Taller mecánico oscuro con motor en reparación" fetchpriority="high">
+  </div>
+  <div class="hero-grid" aria-hidden="true"></div>
+  <div class="wrap hero-content">
+    <span class="eyebrow">Repuestos &amp; servicio automotriz · La Serena</span>
+    <h1>Tu auto, <span class="slash">/</span> de vuelta a la ruta.</h1>
+    <p class="sub">Especialistas en motor de arranque, alternador y baterías. Diagnóstico al toque, repuestos con garantía y mano de obra que no falla.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-primary" href="https://wa.me/56971845174?text=Hola%20Central%20Arranque%2C%20mi%20auto%20no%20parte%2C%20necesito%20ayuda" target="_blank" rel="noopener">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.5 23.5l1.6-5.8A11.4 11.4 0 1112 23.4a11.4 11.4 0 01-5.6-1.5L.5 23.5zM6.8 20l.4.2a9.5 9.5 0 005 1.4 9.5 9.5 0 10-9.5-9.5c0 1.8.5 3.6 1.5 5.1l.2.4-1 3.4 3.4-1zm10.9-5.4c-.1-.2-.5-.3-1-.6-.5-.2-2.9-1.4-3.3-1.6-.5-.1-.8-.2-1 .3-.3.4-1.1 1.4-1.4 1.7-.2.2-.5.3-.9.1-.5-.2-2-.8-3.8-2.4-1.4-1.2-2.4-2.8-2.6-3.2-.3-.5 0-.7.2-1l.6-.7c.2-.2.3-.4.4-.7.1-.2.1-.5 0-.7l-1-2.5c-.3-.6-.6-.5-.8-.5h-.7c-.3 0-.7.1-1 .5C2.4 5.1 2 5.9 2 7.7s1.3 3.6 1.5 3.9c.2.2 2.6 4 6.3 5.6.9.4 1.6.6 2.1.8.9.3 1.7.2 2.3.1.7-.1 2.1-.8 2.4-1.7.3-.8.3-1.5.2-1.7z"/></svg>
+        Cotizar por WhatsApp
+      </a>
+      <a class="btn btn-ghost" href="#servicios">Ver servicios</a>
+    </div>
+    <div class="hero-meta">
+      <div class="m"><b><span class="stars">★</span> 4.8</b><span>120+ reseñas Google</span></div>
+      <div class="m"><b>La Serena</b><span>Zona Industrial</span></div>
+      <div class="m"><b>+15 años</b><span>en la ruta</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section class="section" id="servicios">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">Lo que hacemos</span>
+        <h2>Servicios</h2>
+      </div>
+      <p>De la falla eléctrica al freno chillón: lo resolvemos en el día y con repuesto a mano.</p>
+    </div>
+    <div class="svc-grid">
+      <article class="svc">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3.2"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg></div>
+        <h3>Motor de arranque</h3>
+        <p>Reparación y cambio de bendix, escobillas y solenoide. Lo dejamos partiendo a la primera.</p>
+      </article>
+      <article class="svc">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M13 2L4 14h6l-1 8 9-12h-6l1-8z"/></svg></div>
+        <h3>Alternador</h3>
+        <p>Diagnóstico de carga, rectificadores y regulador. Que tu batería nunca quede a media máquina.</p>
+      </article>
+      <article class="svc">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="7" width="18" height="11" rx="2"/><path d="M7 7V5h4v2M14 7V5h3v2M8 12h2M9 11v2"/></svg></div>
+        <h3>Baterías</h3>
+        <p>Venta, instalación y test de carga gratis. Marcas con garantía y entrega inmediata.</p>
+      </article>
+      <article class="svc">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5"/><path d="M12 3v3.5M12 17.5V21M3 12h3.5M17.5 12H21"/></svg></div>
+        <h3>Frenos</h3>
+        <p>Pastillas, discos y purgado de líquido. Frenado firme y sin ruidos, garantizado.</p>
+      </article>
+      <article class="svc">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4M7 8l2 2-2 2M12 12h4"/></svg></div>
+        <h3>Scanner / Diagnóstico</h3>
+        <p>Lectura de códigos OBD-II y borrado de fallas. Sabemos qué tiene tu auto antes de abrirlo.</p>
+      </article>
+      <article class="svc">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 7l3-3 3 3-3 3M17 4l-7 7M3 21l4-1 9-9-3-3-9 9-1 4z"/></svg></div>
+        <h3>Repuestos</h3>
+        <p>Filtros, correas, bujías, bombas de agua y más. Originales y alternativos a buen precio.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- CATALOGO -->
+<section class="section alt" id="repuestos">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">Stock disponible</span>
+        <h2>Repuestos destacados</h2>
+      </div>
+      <p>Precios referenciales. Cotiza por WhatsApp con la patente o el modelo y te confirmamos al toque.</p>
+    </div>
+    <div class="cat-grid" id="catgrid">
+      <!-- cards inyectadas por JS -->
+    </div>
+  </div>
+</section>
+
+<!-- POR QUE NOSOTROS -->
+<section class="section" id="nosotros">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">Por qué Central Arranque</span>
+        <h2>Trabajo serio</h2>
+      </div>
+      <p>No improvisamos. Repuesto correcto, instalación a la primera y respaldo por escrito.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why"><b>6m</b><h3>Garantía real</h3><p>Mano de obra y repuestos respaldados por escrito en cada boleta.</p></div>
+      <div class="why"><b>OEM</b><h3>Repuestos originales</h3><p>Trabajamos con marcas certificadas; también opción alternativa si buscas ahorrar.</p></div>
+      <div class="why"><b>24h</b><h3>Atención rápida</h3><p>Diagnóstico en el día y la mayoría de los arreglos listos en 24 horas.</p></div>
+      <div class="why"><b>+15</b><h3>Años en la ruta</h3><p>Más de 9.000 autos atendidos en la región de Coquimbo desde 2010.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- RESEÑAS -->
+<section class="section alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">Lo que dicen</span>
+        <h2>Reseñas</h2>
+      </div>
+      <p>Clientes reales de La Serena, Coquimbo y alrededores.</p>
+    </div>
+    <div class="rev-grid">
+      <article class="rev">
+        <span class="stars">★★★★★</span>
+        <p>"Mi camioneta no partía y pensé lo peor. Era el motor de arranque. Me lo repararon el mismo día y a buen precio. Quedé pegado."</p>
+        <div class="who"><div class="av">RM</div><div><b>Rodrigo Muñoz</b><span>Coquimbo</span></div></div>
+      </article>
+      <article class="rev">
+        <span class="stars">★★★★★</span>
+        <p>"Cero vueltas. Les escribí por WhatsApp con la patente, me cotizaron la batería al toque y me la instalaron en 20 minutos."</p>
+        <div class="who"><div class="av">PC</div><div><b>Paola Castro</b><span>La Serena</span></div></div>
+      </article>
+      <article class="rev">
+        <span class="stars">★★★★☆</span>
+        <p>"Buen diagnóstico con el scanner, me explicaron todo sin choreo. El alternador quedó como nuevo. Recomendados."</p>
+        <div class="who"><div class="av">JT</div><div><b>Jorge Tapia</b><span>Vicuña</span></div></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- UBICACION -->
+<section class="section" id="contacto">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">Pásate o escríbenos</span>
+        <h2>Ubicación &amp; horario</h2>
+      </div>
+      <p>Estamos en plena zona industrial de La Serena, con estacionamiento al frente.</p>
+    </div>
+    <div class="loc">
+      <div class="map">
+        <img src="https://picsum.photos/seed/arranque-ind-map/900/700" width="900" height="700" alt="Mapa referencial de la ubicación del taller" loading="lazy">
+        <div class="pin" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a7 7 0 00-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 00-7-7zm0 9.5A2.5 2.5 0 1112 6.5a2.5 2.5 0 010 5z"/></svg>
+        </div>
+      </div>
+      <div class="loc-info">
+        <h2>Te esperamos</h2>
+        <div class="addr">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2a7 7 0 00-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 00-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          <span>Av. Las Industrias 1820, La Serena<br><small style="color:var(--muted-2)">Región de Coquimbo · Frente a estación de servicio</small></span>
+        </div>
+        <ul class="hours">
+          <li><span>Lunes a Viernes</span><b>9:30 – 18:30</b></li>
+          <li><span>Sábado</span><b>9:30 – 14:30</b></li>
+          <li class="closed"><span>Domingo</span><b>Cerrado</b></li>
+        </ul>
+        <a class="btn btn-primary" href="https://wa.me/56971845174?text=Hola%20Central%20Arranque%2C%20quiero%20pasar%20al%20taller%2C%20necesito%20la%20direcci%C3%B3n%20y%20horario" target="_blank" rel="noopener">Cotiza por WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- BANDA CTA -->
+<section class="bandcta">
+  <div class="wrap">
+    <h2>¿Tu auto quedó en pana? Nosotros lo arrancamos.</h2>
+    <a class="btn" href="https://wa.me/56971845174?text=Hola%20Central%20Arranque%2C%20necesito%20ayuda%20con%20mi%20auto%20ahora" target="_blank" rel="noopener">Escríbenos por WhatsApp</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <a class="brand" href="#top" style="margin-bottom:1rem">
+          <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
+            <path d="M24 3l3.3 6.6 7.3-1.1-1.1 7.3L40 19l-6.6 3.3 1.1 7.3-7.3-1.1L24 35l-3.3-6.5-7.3 1.1 1.1-7.3L8 19l6.5-3.2-1-7.3 7.2 1.1L24 3z" stroke="#f25c05" stroke-width="2.4" stroke-linejoin="round"/>
+            <path d="M25 14l-7 11h6l-2 9 9-13h-6l3-7z" fill="#f25c05"/>
+          </svg>
+          Central<span class="b-accent">Arranque</span>
+        </a>
+        <p>Repuestos para automóvil y servicio automotriz en La Serena. Motor de arranque, alternador, baterías, frenos y diagnóstico.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Navegación</h4>
+        <a href="#servicios">Servicios</a>
+        <a href="#repuestos">Repuestos</a>
+        <a href="#nosotros">Nosotros</a>
+        <a href="#contacto">Contacto</a>
+      </div>
+      <div class="foot-col">
+        <h4>Contacto</h4>
+        <a href="https://wa.me/56971845174?text=Hola%20Central%20Arranque" target="_blank" rel="noopener">WhatsApp +56 9 7184 5174</a>
+        <a href="#contacto">Av. Las Industrias 1820, La Serena</a>
+        <a href="#contacto">Lun–Vie 9:30–18:30 · Sáb 9:30–14:30</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      Demo creada por Estudio Faro · <a href="https://estudiofaro.cl" target="_blank" rel="noopener">estudiofaro.cl</a> · Negocio de ejemplo, datos/imágenes ficticios.
+    </div>
+  </div>
+</footer>
+
+<!-- FAB -->
+<a class="fab" href="https://wa.me/56971845174?text=Hola%20Central%20Arranque%2C%20quiero%20cotizar" target="_blank" rel="noopener" aria-label="Cotizar por WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.5 23.5l1.6-5.8A11.4 11.4 0 1112 23.4a11.4 11.4 0 01-5.6-1.5L.5 23.5zM6.8 20l.4.2a9.5 9.5 0 005 1.4 9.5 9.5 0 10-9.5-9.5c0 1.8.5 3.6 1.5 5.1l.2.4-1 3.4 3.4-1zm10.9-5.4c-.1-.2-.5-.3-1-.6-.5-.2-2.9-1.4-3.3-1.6-.5-.1-.8-.2-1 .3-.3.4-1.1 1.4-1.4 1.7-.2.2-.5.3-.9.1-.5-.2-2-.8-3.8-2.4-1.4-1.2-2.4-2.8-2.6-3.2-.3-.5 0-.7.2-1l.6-.7c.2-.2.3-.4.4-.7.1-.2.1-.5 0-.7l-1-2.5c-.3-.6-.6-.5-.8-.5h-.7c-.3 0-.7.1-1 .5C2.4 5.1 2 5.9 2 7.7s1.3 3.6 1.5 3.9c.2.2 2.6 4 6.3 5.6.9.4 1.6.6 2.1.8.9.3 1.7.2 2.3.1.7-.1 2.1-.8 2.4-1.7.3-.8.3-1.5.2-1.7z"/></svg>
+  <span class="txt">Cotizar</span>
+</a>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ---- Nav móvil ---- */
+  var burger = document.getElementById('burger');
+  var links  = document.getElementById('navlinks');
+  if(burger && links){
+    burger.addEventListener('click', function(){
+      var open = links.classList.toggle('open');
+      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    links.addEventListener('click', function(e){
+      if(e.target.tagName === 'A'){
+        links.classList.remove('open');
+        burger.setAttribute('aria-expanded','false');
+      }
+    });
+  }
+
+  /* ---- Catálogo (genera cards + WhatsApp prellenado) ---- */
+  var WA = 'https://wa.me/56971845174?text=';
+  var productos = [
+    {n:'Batería 12V 75Ah', tag:'Más vendido', precio:79990, seed:'arranque-ind-bat'},
+    {n:'Motor de arranque reacondicionado', tag:'Garantía 6m', precio:64990, seed:'arranque-ind-mot'},
+    {n:'Alternador 90A', tag:'OEM', precio:89990, seed:'arranque-ind-alt'},
+    {n:'Kit pastillas de freno', tag:'', precio:34990, seed:'arranque-ind-fre'},
+    {n:'Discos de freno (par)', tag:'', precio:54990, seed:'arranque-ind-dis'},
+    {n:'Kit de filtros (aceite + aire)', tag:'', precio:19990, seed:'arranque-ind-fil'},
+    {n:'Bujías iridium (juego x4)', tag:'', precio:28990, seed:'arranque-ind-buj'},
+    {n:'Bomba de agua', tag:'', precio:42990, seed:'arranque-ind-bom'}
+  ];
+
+  function clp(n){
+    return '$' + n.toLocaleString('es-CL');
+  }
+
+  var grid = document.getElementById('catgrid');
+  if(grid){
+    var html = productos.map(function(p){
+      var tagHtml = p.tag ? '<span class="tag">'+p.tag+'</span>' : '';
+      var msg = encodeURIComponent('Hola Central Arranque, quiero cotizar: ' + p.n + ' (desde ' + clp(p.precio) + '). ¿Tienen stock?');
+      return ''+
+      '<article class="card">'+
+        '<div class="ph">'+ tagHtml +
+          '<img src="https://picsum.photos/seed/'+p.seed+'/600/450" width="600" height="450" loading="lazy" alt="'+p.n+'">'+
+        '</div>'+
+        '<div class="body">'+
+          '<h3>'+p.n+'</h3>'+
+          '<div class="price">'+clp(p.precio)+'<small>desde · precio referencial</small></div>'+
+          '<a class="btn btn-primary" href="'+WA+msg+'" target="_blank" rel="noopener">Cotizar</a>'+
+        '</div>'+
+      '</article>';
+    }).join('');
+    grid.innerHTML = html;
+  }
+})();
+</script>
+
+</body>
+</html>

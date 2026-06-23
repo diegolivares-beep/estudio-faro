@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Central Arranque · Catálogo de repuestos — La Serena</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1a1614;
+  --ink-soft:#5c544f;
+  --line:#e7e1da;
+  --paper:#fbf8f4;
+  --card:#ffffff;
+  --red:#c2331f;
+  --red-deep:#9c2615;
+  --amber:#c97e16;
+  --green:#1e7a3c;
+  --shadow:18px 30px 60px -32px rgba(120,38,18,.32);
+  --shadow-sm:0 2px 8px -2px rgba(120,38,18,.18);
+  --r:16px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:"Hanken Grotesk",system-ui,sans-serif;
+  font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,.display{font-family:"Bricolage Grotesque","Hanken Grotesk",sans-serif;font-weight:800;letter-spacing:-.02em;line-height:1.04;margin:0}
+a{color:inherit}
+img{display:block;max-width:100%}
+.wrap{width:min(1180px,92vw);margin-inline:auto}
+:focus-visible{outline:3px solid var(--amber);outline-offset:3px;border-radius:6px}
+
+/* DEMOBAR */
+.ef-demobar{position:sticky;top:0;z-index:9999;display:flex;align-items:center;justify-content:space-between;gap:1rem;background:#0c282f;color:#fff;padding:.5rem clamp(14px,4vw,28px);font-family:"Hanken Grotesk",system-ui,sans-serif;font-size:.85rem}
+.ef-demobar .ef-back{color:#cfe0de;font-weight:600;text-decoration:none}.ef-demobar .ef-back:hover{color:#fff}
+.ef-demobar .ef-label{color:#8fb0ac;font-weight:600}@media(max-width:560px){.ef-demobar .ef-label{display:none}}
+.ef-demobar .ef-cta{background:#25d366;color:#06351c;font-weight:700;padding:.4rem .9rem;border-radius:999px;text-decoration:none;white-space:nowrap}
+.ef-demobar .ef-cta:hover{filter:brightness(1.05)}
+
+/* HEADER */
+.site-head{position:sticky;top:0;z-index:900;background:rgba(251,248,244,.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.site-head .bar{display:flex;align-items:center;gap:clamp(12px,2vw,28px);padding:.7rem 0}
+.brand{display:flex;align-items:center;gap:.6rem;text-decoration:none;flex:0 0 auto}
+.brand .mark{width:38px;height:38px;border-radius:11px;background:linear-gradient(135deg,var(--red),var(--red-deep));display:grid;place-items:center;color:#fff;font-family:"Bricolage Grotesque";font-weight:800;font-size:1.15rem;box-shadow:var(--shadow-sm);position:relative;overflow:hidden}
+.brand .mark::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 30% 20%,rgba(255,255,255,.4),transparent 55%)}
+.brand b{font-family:"Bricolage Grotesque";font-weight:800;font-size:1.12rem;letter-spacing:-.02em;line-height:1}
+.brand span{display:block;font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--red);font-weight:700;margin-top:2px}
+.nav{display:flex;gap:.3rem;margin-left:auto}
+.nav a{text-decoration:none;font-weight:600;font-size:.94rem;color:var(--ink-soft);padding:.45rem .7rem;border-radius:9px;transition:color .18s,background .18s}
+.nav a:hover{color:var(--ink);background:#f1ebe3}
+.head-search{position:relative;flex:0 1 240px;margin-left:.4rem}
+.head-search input{width:100%;border:1px solid var(--line);background:#fff;border-radius:999px;padding:.5rem .8rem .5rem 2.1rem;font:inherit;font-size:.9rem}
+.head-search input:focus{border-color:var(--amber);outline:none;box-shadow:0 0 0 3px rgba(201,126,22,.18)}
+.head-search svg{position:absolute;left:.7rem;top:50%;transform:translateY(-50%);width:16px;height:16px;color:var(--ink-soft)}
+.burger{display:none;margin-left:auto;background:#fff;border:1px solid var(--line);border-radius:10px;width:42px;height:42px;cursor:pointer;align-items:center;justify-content:center}
+.burger span{display:block;width:18px;height:2px;background:var(--ink);position:relative}
+.burger span::before,.burger span::after{content:"";position:absolute;left:0;width:18px;height:2px;background:var(--ink);transition:.2s}
+.burger span::before{top:-6px}.burger span::after{top:6px}
+
+/* HERO */
+.hero{position:relative;overflow:hidden;padding:clamp(48px,7vw,92px) 0 clamp(40px,5vw,64px);background:
+  radial-gradient(120% 90% at 88% -10%,rgba(194,51,31,.10),transparent 55%),
+  linear-gradient(180deg,#fff,var(--paper))}
+.hero::before{content:"";position:absolute;right:-8%;top:-10%;width:46%;height:140%;background:
+  repeating-linear-gradient(135deg,rgba(201,126,22,.07) 0 2px,transparent 2px 22px);
+  transform:skewX(-12deg);pointer-events:none}
+.hero .eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-weight:700;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--red);background:rgba(194,51,31,.08);padding:.35rem .8rem;border-radius:999px}
+.hero h1{font-size:clamp(2.3rem,6vw,4.2rem);margin:1rem 0 .6rem;max-width:14ch}
+.hero h1 em{font-style:normal;color:var(--red);position:relative}
+.hero p.sub{font-size:clamp(1.02rem,2vw,1.2rem);color:var(--ink-soft);max-width:46ch;margin:0 0 1.6rem}
+.bigsearch{display:flex;gap:.5rem;background:#fff;border:1.5px solid var(--line);border-radius:16px;padding:.5rem;max-width:620px;box-shadow:var(--shadow);transition:border-color .2s,box-shadow .2s}
+.bigsearch:focus-within{border-color:var(--red);box-shadow:0 0 0 4px rgba(194,51,31,.12),var(--shadow)}
+.bigsearch input{flex:1;border:0;background:transparent;font:inherit;font-size:1.05rem;padding:.6rem .9rem;min-width:0}
+.bigsearch input:focus{outline:none}
+.bigsearch button{flex:0 0 auto;background:var(--red);color:#fff;border:0;border-radius:11px;padding:.7rem 1.3rem;font:inherit;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:.4rem;transition:background .18s,transform .12s}
+.bigsearch button:hover{background:var(--red-deep)}
+.bigsearch button:active{transform:scale(.97)}
+.quick{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.1rem}
+.quick span{font-size:.82rem;color:var(--ink-soft);align-self:center;margin-right:.2rem}
+.quick a{text-decoration:none;font-size:.85rem;font-weight:600;color:var(--ink);background:#fff;border:1px solid var(--line);padding:.32rem .7rem;border-radius:999px;transition:.18s}
+.quick a:hover{border-color:var(--red);color:var(--red);transform:translateY(-1px)}
+
+/* CATALOG */
+.section{padding:clamp(44px,6vw,78px) 0}
+.sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-bottom:1.6rem}
+.sec-head h2{font-size:clamp(1.7rem,4vw,2.5rem)}
+.sec-head .kick{font-weight:700;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--red);margin-bottom:.4rem}
+.sec-head p{color:var(--ink-soft);max-width:42ch;margin:.3rem 0 0}
+
+.filters{position:sticky;top:64px;z-index:50;background:rgba(251,248,244,.92);backdrop-filter:blur(8px);padding:.9rem 0;border-block:1px solid var(--line);margin-bottom:1.8rem}
+.filters .row{display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+.pills{display:flex;gap:.5rem;flex-wrap:wrap;flex:1}
+.pill{border:1px solid var(--line);background:#fff;color:var(--ink-soft);font:inherit;font-weight:600;font-size:.88rem;padding:.42rem .9rem;border-radius:999px;cursor:pointer;transition:.16s;white-space:nowrap}
+.pill:hover{border-color:var(--red);color:var(--red)}
+.pill[aria-pressed="true"]{background:var(--red);border-color:var(--red);color:#fff;box-shadow:var(--shadow-sm)}
+.filter-search{position:relative;flex:0 0 auto}
+.filter-search input{border:1px solid var(--line);border-radius:999px;padding:.45rem .9rem .45rem 2.1rem;font:inherit;font-size:.9rem;width:220px;background:#fff}
+.filter-search input:focus{border-color:var(--amber);outline:none;box-shadow:0 0 0 3px rgba(201,126,22,.18)}
+.filter-search svg{position:absolute;left:.7rem;top:50%;transform:translateY(-50%);width:16px;height:16px;color:var(--ink-soft)}
+.count{font-size:.85rem;color:var(--ink-soft);font-weight:600;white-space:nowrap}
+
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.1rem}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;transition:transform .22s,box-shadow .22s,border-color .22s}
+.card:hover{transform:translateY(-6px);box-shadow:var(--shadow);border-color:#dcd2c7}
+.card .ph{position:relative;aspect-ratio:4/3;overflow:hidden;background:#efe9e1}
+.card .ph img{width:100%;height:100%;object-fit:cover;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.card:hover .ph img{transform:scale(1.08)}
+.tile{position:absolute;inset:0;display:flex;align-items:flex-end;padding:.8rem;color:#fff;font-family:"Bricolage Grotesque";font-weight:800;font-size:1rem;line-height:1.1;text-shadow:0 2px 10px rgba(0,0,0,.5)}
+.badge{position:absolute;top:.7rem;left:.7rem;font-size:.7rem;font-weight:700;letter-spacing:.04em;padding:.25rem .55rem;border-radius:999px;background:#fff;color:var(--ink);box-shadow:var(--shadow-sm)}
+.badge.in{color:var(--green)}
+.badge.low{color:var(--amber)}
+.badge.out{color:var(--red)}
+.card .body{padding:.95rem 1rem 1.1rem;display:flex;flex-direction:column;gap:.45rem;flex:1}
+.cat-tag{font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--red)}
+.card h3{font-size:1.05rem;line-height:1.15}
+.compat{font-size:.83rem;color:var(--ink-soft);margin:0;flex:1}
+.priceline{display:flex;align-items:baseline;justify-content:space-between;gap:.5rem;margin-top:.3rem}
+.price{font-family:"Bricolage Grotesque";font-weight:800;font-size:1.3rem}
+.price small{font-weight:600;font-size:.72rem;color:var(--ink-soft);letter-spacing:.04em}
+.btn-quote{margin-top:.6rem;display:flex;align-items:center;justify-content:center;gap:.45rem;background:#06351c;color:#fff;border:0;border-radius:10px;padding:.6rem;font:inherit;font-weight:700;font-size:.92rem;text-decoration:none;cursor:pointer;transition:.16s}
+.btn-quote:hover{background:#25d366;color:#06351c}
+.btn-quote svg{width:17px;height:17px}
+
+.noresults{display:none;text-align:center;padding:3.5rem 1rem;border:2px dashed var(--line);border-radius:var(--r);background:#fff}
+.noresults.show{display:block}
+.noresults .ic{width:60px;height:60px;margin:0 auto 1rem;border-radius:50%;background:rgba(194,51,31,.08);display:grid;place-items:center;color:var(--red)}
+.noresults h3{font-size:1.3rem;margin-bottom:.4rem}
+.noresults p{color:var(--ink-soft);margin:0 0 1.2rem}
+.noresults button{background:var(--red);color:#fff;border:0;border-radius:10px;padding:.6rem 1.2rem;font:inherit;font-weight:700;cursor:pointer}
+.noresults button:hover{background:var(--red-deep)}
+
+/* SERVICES */
+.services{background:#0c282f;color:#fff}
+.services .sec-head h2{color:#fff}
+.services .sec-head .kick{color:#f0a35a}
+.services .sec-head p{color:#a8c4c0}
+.svc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.svc{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:var(--r);padding:1.4rem;transition:.22s}
+.svc:hover{background:rgba(255,255,255,.08);transform:translateY(-4px)}
+.svc .ic{width:46px;height:46px;border-radius:12px;background:linear-gradient(135deg,var(--amber),var(--red));display:grid;place-items:center;margin-bottom:.9rem;color:#fff}
+.svc h3{font-size:1.12rem;margin-bottom:.4rem}
+.svc p{color:#a8c4c0;font-size:.9rem;margin:0}
+
+/* WHY + LOCATION */
+.why-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:1.6rem;align-items:stretch}
+.why-list{display:grid;gap:.9rem}
+.why-item{display:flex;gap:.9rem;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:1.1rem 1.2rem}
+.why-item .n{flex:0 0 auto;width:40px;height:40px;border-radius:11px;background:rgba(194,51,31,.1);color:var(--red);display:grid;place-items:center;font-family:"Bricolage Grotesque";font-weight:800}
+.why-item h3{font-size:1.05rem;margin-bottom:.2rem}
+.why-item p{margin:0;font-size:.9rem;color:var(--ink-soft)}
+.loc{background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column}
+.loc .map{aspect-ratio:16/10;background:
+  linear-gradient(135deg,rgba(194,51,31,.08),rgba(201,126,22,.1)),
+  repeating-linear-gradient(0deg,#efe9e1 0 1px,transparent 1px 28px),
+  repeating-linear-gradient(90deg,#efe9e1 0 1px,transparent 1px 28px);
+  position:relative}
+.loc .map .pin{position:absolute;left:50%;top:48%;transform:translate(-50%,-100%);color:var(--red);filter:drop-shadow(0 6px 8px rgba(194,51,31,.4))}
+.loc .info{padding:1.3rem 1.4rem}
+.loc .info h3{font-size:1.2rem;margin-bottom:.6rem}
+.loc dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:.4rem 1rem;font-size:.92rem}
+.loc dt{color:var(--ink-soft);font-weight:600}
+.loc dd{margin:0;font-weight:600}
+.loc .open{color:var(--green)}
+
+/* CTA */
+.cta-band{background:linear-gradient(135deg,var(--red),var(--red-deep));color:#fff;text-align:center;padding:clamp(48px,7vw,84px) 0;position:relative;overflow:hidden}
+.cta-band::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(135deg,rgba(255,255,255,.05) 0 2px,transparent 2px 24px)}
+.cta-band .wrap{position:relative}
+.cta-band h2{font-size:clamp(1.8rem,4.5vw,3rem);margin-bottom:.6rem}
+.cta-band p{color:rgba(255,255,255,.9);max-width:44ch;margin:0 auto 1.7rem;font-size:1.05rem}
+.cta-band a{display:inline-flex;align-items:center;gap:.5rem;background:#fff;color:var(--red-deep);font-weight:700;padding:.85rem 1.8rem;border-radius:999px;text-decoration:none;transition:.18s}
+.cta-band a:hover{transform:translateY(-2px);box-shadow:0 14px 30px -10px rgba(0,0,0,.4)}
+
+/* FOOTER */
+footer{background:#0c282f;color:#a8c4c0;padding:clamp(40px,5vw,60px) 0 1.5rem}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:2rem;margin-bottom:2rem}
+.foot-grid .brand b,.foot-grid .brand span{color:#fff}
+.foot-grid h4{color:#fff;font-family:"Bricolage Grotesque";font-size:1rem;margin:0 0 .7rem}
+.foot-grid a{display:block;text-decoration:none;color:#a8c4c0;font-size:.92rem;padding:.18rem 0;transition:.16s}
+.foot-grid a:hover{color:#fff}
+.foot-grid p{font-size:.9rem;margin:.5rem 0 0;max-width:32ch}
+.foot-note{border-top:1px solid rgba(255,255,255,.12);padding-top:1.3rem;font-size:.82rem;color:#7fa19d;display:flex;justify-content:space-between;flex-wrap:wrap;gap:.6rem}
+
+/* FAB */
+.fab{position:fixed;right:18px;bottom:18px;z-index:800;width:58px;height:58px;border-radius:50%;background:#25d366;display:grid;place-items:center;box-shadow:0 12px 28px -8px rgba(37,211,102,.6);text-decoration:none;transition:transform .18s}
+.fab:hover{transform:scale(1.08)}
+.fab svg{width:30px;height:30px;color:#fff}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .grid{grid-template-columns:repeat(3,1fr)}
+  .svc-grid{grid-template-columns:repeat(2,1fr)}
+  .why-grid{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:768px){
+  .head-search{display:none}
+  .nav{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;background:var(--paper);border-bottom:1px solid var(--line);padding:.6rem 6vw 1rem;gap:.1rem}
+  .nav.open{display:flex}
+  .nav a{padding:.7rem .4rem;border-radius:8px}
+  .burger{display:flex}
+  .grid{grid-template-columns:repeat(2,1fr)}
+  .filters{top:60px}
+  .filter-search input{width:160px}
+}
+@media(max-width:560px){
+  .grid{grid-template-columns:1fr 1fr;gap:.7rem}
+  .svc-grid{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr}
+  .bigsearch{flex-direction:column}
+  .bigsearch button{justify-content:center}
+  .filter-search{width:100%}
+  .filter-search input{width:100%}
+  .card h3{font-size:.95rem}
+  .price{font-size:1.1rem}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+}
+</style>
+</head>
+<body>
+
+<div class="ef-demobar">
+  <a class="ef-back" href="../../index.html#showcase">← Estudio Faro</a>
+  <span class="ef-label">Demo · Repuestos — estilo Catálogo</span>
+  <a class="ef-cta" href="https://wa.me/56971845174?text=Hola%20Estudio%20Faro%2C%20me%20gust%C3%B3%20el%20estilo%20Cat%C3%A1logo%20para%20Central%20Arranque" target="_blank" rel="noopener">Me gusta este estilo</a>
+</div>
+
+<header class="site-head">
+  <div class="wrap bar">
+    <a class="brand" href="#top">
+      <span class="mark">CA</span>
+      <span><b>Central Arranque</b><span>Repuestos · La Serena</span></span>
+    </a>
+    <nav class="nav" id="nav">
+      <a href="#catalogo">Catálogo</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#nosotros">Nosotros</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <div class="head-search">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input type="search" id="headSearch" placeholder="Buscar repuesto…" aria-label="Buscar repuesto">
+    </div>
+    <button class="burger" id="burger" aria-label="Abrir menú" aria-expanded="false"><span></span></button>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero" id="inicio">
+    <div class="wrap">
+      <span class="eyebrow">▲ Faro · Repuestos y servicio automotriz</span>
+      <h1>Encuentra tu <em>repuesto</em> y cotiza al tiro.</h1>
+      <p class="sub">Más de 2.500 repuestos para autos y camionetas. Arranque, carga, frenos y filtros con stock real en La Serena.</p>
+      <form class="bigsearch" id="bigForm" role="search">
+        <input type="search" id="bigSearch" placeholder="Ej: alternador, batería 75Ah, pastillas…" aria-label="Buscar tu repuesto">
+        <button type="submit"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.3"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>Buscar</button>
+      </form>
+      <div class="quick">
+        <span>Populares:</span>
+        <a href="#catalogo" data-jump="Motor de arranque">Motor de arranque</a>
+        <a href="#catalogo" data-jump="Alternadores">Alternadores</a>
+        <a href="#catalogo" data-jump="Baterías">Baterías</a>
+        <a href="#catalogo" data-jump="Frenos">Frenos</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="catalogo">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <div class="kick">Catálogo</div>
+          <h2>Repuestos disponibles</h2>
+          <p>Filtra por categoría o busca por nombre. Cotiza por WhatsApp en un toque.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="filters">
+      <div class="wrap row">
+        <div class="pills" id="pills" role="group" aria-label="Filtrar por categoría">
+          <button class="pill" data-cat="all" aria-pressed="true">Todos</button>
+          <button class="pill" data-cat="arranque" aria-pressed="false">Motor de arranque</button>
+          <button class="pill" data-cat="alternador" aria-pressed="false">Alternadores</button>
+          <button class="pill" data-cat="bateria" aria-pressed="false">Baterías</button>
+          <button class="pill" data-cat="frenos" aria-pressed="false">Frenos</button>
+          <button class="pill" data-cat="filtros" aria-pressed="false">Filtros</button>
+          <button class="pill" data-cat="accesorios" aria-pressed="false">Accesorios</button>
+        </div>
+        <div class="filter-search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+          <input type="search" id="gridSearch" placeholder="Filtrar en catálogo…" aria-label="Filtrar catálogo">
+        </div>
+        <span class="count" id="count" aria-live="polite"></span>
+      </div>
+    </div>
+
+    <div class="wrap">
+      <div class="grid" id="grid"></div>
+      <div class="noresults" id="noResults">
+        <div class="ic"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></div>
+        <h3>No encontramos ese repuesto</h3>
+        <p>Igual lo conseguimos. Escríbenos y lo cotizamos para ti.</p>
+        <a href="https://wa.me/56971845174?text=Hola%20Central%20Arranque%2C%20busco%20un%20repuesto%20que%20no%20vi%20en%20el%20cat%C3%A1logo" target="_blank" rel="noopener"><button>Consultar por WhatsApp</button></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section services" id="servicios">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <div class="kick">Servicio automotriz</div>
+          <h2>No solo vendemos: instalamos</h2>
+          <p>Taller propio con técnicos especializados en sistema de arranque y carga.</p>
+        </div>
+      </div>
+      <div class="svc-grid">
+        <div class="svc">
+          <div class="ic"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 7h7v7"/><path d="M21 7 13 15l-4-4-6 6"/></svg></div>
+          <h3>Diagnóstico de carga</h3>
+          <p>Medimos alternador, batería y motor de partida. Te decimos qué falla de verdad.</p>
+        </div>
+        <div class="svc">
+          <div class="ic"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="m14.7 6.3 3 3-7.4 7.4-3.3.3.3-3.3z"/><path d="M3 21h18"/></svg></div>
+          <h3>Instalación al instante</h3>
+          <p>Compras y te lo dejamos puesto el mismo día, con garantía de mano de obra.</p>
+        </div>
+        <div class="svc">
+          <div class="ic"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+          <h3>Atención express</h3>
+          <p>Cambio de batería y filtros sin agenda. Llegas, cotizas y sales andando.</p>
+        </div>
+        <div class="svc">
+          <div class="ic"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 4 6v6c0 5 3.5 8 8 10 4.5-2 8-5 8-10V6z"/><path d="m9 12 2 2 4-4"/></svg></div>
+          <h3>Garantía real</h3>
+          <p>Repuestos con respaldo de marca y boleta. Nada de piezas sin origen.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="nosotros">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <div class="kick">Por qué nosotros</div>
+          <h2>15 años partiendo motores</h2>
+          <p>Un negocio del barrio que conoce los autos de la zona.</p>
+        </div>
+      </div>
+      <div class="why-grid">
+        <div class="why-list">
+          <div class="why-item"><div class="n">1</div><div><h3>Stock que sí existe</h3><p>Si aparece en el catálogo, lo tenemos en bodega. Sin promesas que no se cumplen.</p></div></div>
+          <div class="why-item"><div class="n">2</div><div><h3>Te asesoran de verdad</h3><p>Mándanos tu modelo y año, y te decimos exactamente qué pieza necesitas.</p></div></div>
+          <div class="why-item"><div class="n">3</div><div><h3>Precio claro, sin vueltas</h3><p>Cotización al toque por WhatsApp, con valor instalado incluido si quieres.</p></div></div>
+          <div class="why-item"><div class="n">4</div><div><h3>Despacho en la región</h3><p>Coordinamos envío a Coquimbo, Ovalle y Vicuña el mismo día.</p></div></div>
+        </div>
+        <div class="loc" id="contacto">
+          <div class="map" aria-hidden="true">
+            <svg class="pin" viewBox="0 0 24 24" width="44" height="44" fill="currentColor"><path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7z"/><circle cx="12" cy="9" r="2.5" fill="#fff"/></svg>
+          </div>
+          <div class="info">
+            <h3>Visítanos</h3>
+            <dl>
+              <dt>Dirección</dt><dd>Av. Balmaceda 1820, La Serena</dd>
+              <dt>Teléfono</dt><dd>+56 9 7184 5174</dd>
+              <dt>Lun a Vie</dt><dd class="open">9:30 – 18:30</dd>
+              <dt>Sábado</dt><dd>9:30 – 14:30</dd>
+              <dt>Domingo</dt><dd>Cerrado</dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="wrap">
+      <h2>¿No encuentras tu repuesto?</h2>
+      <p>Cuéntanos tu modelo, año y qué necesitas. Te cotizamos en minutos por WhatsApp.</p>
+      <a href="https://wa.me/56971845174?text=Hola%20Central%20Arranque%2C%20necesito%20cotizar%20un%20repuesto%20para%20mi%20veh%C3%ADculo" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.9 5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-1.6-.1-.4-.1-.9-.3-1.5-.5-2.6-1.1-4.3-3.7-4.4-3.9-.1-.2-1-1.4-1-2.6s.6-1.8.9-2.1c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5.2.5.7 1.7.7 1.8.1.1.1.3 0 .4l-.3.5-.3.4c-.1.1-.3.3-.1.5.1.3.6 1 1.3 1.6.9.8 1.6 1 1.9 1.2.2.1.4.1.5-.1l.6-.7c.2-.2.3-.2.5-.1l1.6.8c.2.1.4.2.4.3.1.1.1.6-.1 1z"/></svg>
+        Cotizar por WhatsApp
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="#top"><span class="mark">CA</span><span><b>Central Arranque</b><span>Repuestos · La Serena</span></span></a>
+        <p>Repuestos y servicio automotriz para autos y camionetas en la Región de Coquimbo.</p>
+      </div>
+      <div>
+        <h4>Catálogo</h4>
+        <a href="#catalogo">Motor de arranque</a>
+        <a href="#catalogo">Alternadores</a>
+        <a href="#catalogo">Baterías</a>
+        <a href="#catalogo">Frenos y filtros</a>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <a href="#contacto">Av. Balmaceda 1820</a>
+        <a href="#contacto">La Serena, Chile</a>
+        <a href="https://wa.me/56971845174" target="_blank" rel="noopener">+56 9 7184 5174</a>
+        <a href="#servicios">Lun–Sáb · Taller propio</a>
+      </div>
+    </div>
+    <div class="foot-note">
+      <span>Demo creada por Estudio Faro · estudiofaro.cl · Negocio de ejemplo, datos/imágenes ficticios.</span>
+      <span>© 2026 Central Arranque (demo)</span>
+    </div>
+  </div>
+</footer>
+
+<a class="fab" href="https://wa.me/56971845174?text=Hola%20Central%20Arranque%2C%20quiero%20cotizar%20un%20repuesto" target="_blank" rel="noopener" aria-label="Cotizar por WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.9 5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-1.6-.1-.4-.1-.9-.3-1.5-.5-2.6-1.1-4.3-3.7-4.4-3.9-.1-.2-1-1.4-1-2.6s.6-1.8.9-2.1c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5.2.5.7 1.7.7 1.8.1.1.1.3 0 .4l-.3.5-.3.4c-.1.1-.3.3-.1.5.1.3.6 1 1.3 1.6.9.8 1.6 1 1.9 1.2.2.1.4.1.5-.1l.6-.7c.2-.2.3-.2.5-.1l1.6.8c.2.1.4.2.4.3.1.1.1.6-.1 1z"/></svg>
+</a>
+
+<script>
+(function(){
+  "use strict";
+  var fmt = function(n){ return "$" + n.toLocaleString("es-CL"); };
+
+  var CATS = {
+    arranque:"Motor de arranque", alternador:"Alternadores", bateria:"Baterías",
+    frenos:"Frenos", filtros:"Filtros", accesorios:"Accesorios"
+  };
+
+  var products = [
+    {n:"Motor de arranque Bosch 12V", cat:"arranque", price:159990, compat:"Compatible: Hilux, L200, Ranger", stock:"in", seed:"arranque-cat-1", tone:"194,51,31"},
+    {n:"Motor de arranque Valeo 1.4kW", cat:"arranque", price:134990, compat:"Compatible: Corolla, Yaris, Mazda 3", stock:"low", seed:"arranque-cat-2", tone:"156,38,21"},
+    {n:"Alternador 90A Denso", cat:"alternador", price:189990, compat:"Compatible: Hilux, Fortuner", stock:"in", seed:"arranque-cat-3", tone:"201,126,22"},
+    {n:"Alternador 120A Valeo", cat:"alternador", price:229990, compat:"Compatible: Amarok, Ranger, BT-50", stock:"in", seed:"arranque-cat-4", tone:"176,98,16"},
+    {n:"Batería 75Ah Libre Mantención", cat:"bateria", price:89990, compat:"Compatible: la mayoría de sedanes", stock:"in", seed:"arranque-cat-5", tone:"12,40,47"},
+    {n:"Batería 100Ah Heavy Duty", cat:"bateria", price:139990, compat:"Compatible: camionetas y SUV diésel", stock:"low", seed:"arranque-cat-6", tone:"30,122,60"},
+    {n:"Kit pastillas de freno cerámicas", cat:"frenos", price:42990, compat:"Compatible: Corolla, Civic, Mazda 3", stock:"in", seed:"arranque-cat-7", tone:"194,51,31"},
+    {n:"Disco de freno ventilado (par)", cat:"frenos", price:74990, compat:"Compatible: Hilux, Ranger, Amarok", stock:"in", seed:"arranque-cat-8", tone:"90,90,96"},
+    {n:"Filtro de aceite premium", cat:"filtros", price:7990, compat:"Compatible: amplio rango de motores", stock:"in", seed:"arranque-cat-9", tone:"201,126,22"},
+    {n:"Filtro de aire de alto flujo", cat:"filtros", price:18990, compat:"Compatible: Hilux, L200, Fortuner", stock:"out", seed:"arranque-cat-10", tone:"176,98,16"},
+    {n:"Cables de arranque 600A 3m", cat:"accesorios", price:24990, compat:"Universal · pinzas reforzadas", stock:"in", seed:"arranque-cat-11", tone:"12,40,47"},
+    {n:"Bujías de iridio (juego x4)", cat:"accesorios", price:34990, compat:"Compatible: Yaris, Sentra, Mazda 2", stock:"low", seed:"arranque-cat-12", tone:"156,38,21"}
+  ];
+
+  var stockMeta = {
+    in:{cls:"in", txt:"En stock"},
+    low:{cls:"low", txt:"Últimas unidades"},
+    out:{cls:"out", txt:"Bajo pedido"}
+  };
+
+  var grid = document.getElementById("grid");
+  var noResults = document.getElementById("noResults");
+  var countEl = document.getElementById("count");
+  var pills = document.getElementById("pills");
+  var gridSearch = document.getElementById("gridSearch");
+  var headSearch = document.getElementById("headSearch");
+  var bigSearch = document.getElementById("bigSearch");
+
+  var state = { cat:"all", q:"" };
+
+  function waLink(name){
+    var msg = "Hola Central Arranque, quiero cotizar: " + name + ". ¿Tienen stock y precio instalado?";
+    return "https://wa.me/56971845174?text=" + encodeURIComponent(msg);
+  }
+
+  function cardHTML(p){
+    var sm = stockMeta[p.stock];
+    return '<article class="card" data-cat="'+p.cat+'" data-name="'+p.n.toLowerCase()+'">'+
+      '<div class="ph">'+
+        '<span class="badge '+sm.cls+'">'+sm.txt+'</span>'+
+        '<img src="https://picsum.photos/seed/'+p.seed+'/480/360" width="480" height="360" loading="lazy" alt="'+p.n+'">'+
+        '<span class="tile" style="background:linear-gradient(180deg,transparent 35%,rgba('+p.tone+',.78))">'+p.n+'</span>'+
+      '</div>'+
+      '<div class="body">'+
+        '<span class="cat-tag">'+CATS[p.cat]+'</span>'+
+        '<h3>'+p.n+'</h3>'+
+        '<p class="compat">'+p.compat+'</p>'+
+        '<div class="priceline"><span class="price">'+fmt(p.price)+' <small>CLP</small></span></div>'+
+        '<a class="btn-quote" href="'+waLink(p.n)+'" target="_blank" rel="noopener">'+
+          '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.9 5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-1.6-.1-.4-.1-.9-.3-1.5-.5-2.6-1.1-4.3-3.7-4.4-3.9-.1-.2-1-1.4-1-2.6s.6-1.8.9-2.1c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5.2.5.7 1.7.7 1.8.1.1.1.3 0 .4l-.3.5-.3.4c-.1.1-.3.3-.1.5.1.3.6 1 1.3 1.6.9.8 1.6 1 1.9 1.2.2.1.4.1.5-.1l.6-.7c.2-.2.3-.2.5-.1l1.6.8c.2.1.4.2.4.3.1.1.1.6-.1 1z"/></svg>'+
+          'Cotizar</a>'+
+      '</div>'+
+    '</article>';
+  }
+
+  grid.innerHTML = products.map(cardHTML).join("");
+
+  function render(){
+    var q = state.q.trim().toLowerCase();
+    var shown = 0;
+    var cards = grid.querySelectorAll(".card");
+    cards.forEach(function(c){
+      var okCat = state.cat === "all" || c.getAttribute("data-cat") === state.cat;
+      var okQ = !q || c.getAttribute("data-name").indexOf(q) !== -1;
+      var ok = okCat && okQ;
+      c.style.display = ok ? "" : "none";
+      if(ok) shown++;
+    });
+    noResults.classList.toggle("show", shown === 0);
+    grid.style.display = shown === 0 ? "none" : "";
+    countEl.textContent = shown + (shown === 1 ? " repuesto" : " repuestos");
+  }
+
+  pills.addEventListener("click", function(e){
+    var btn = e.target.closest(".pill");
+    if(!btn) return;
+    pills.querySelectorAll(".pill").forEach(function(p){ p.setAttribute("aria-pressed", p === btn ? "true" : "false"); });
+    state.cat = btn.getAttribute("data-cat");
+    render();
+  });
+
+  function setCatByLabel(label){
+    var found = "all";
+    Object.keys(CATS).forEach(function(k){ if(CATS[k] === label) found = k; });
+    pills.querySelectorAll(".pill").forEach(function(p){
+      p.setAttribute("aria-pressed", p.getAttribute("data-cat") === found ? "true" : "false");
+    });
+    state.cat = found;
+  }
+
+  function syncSearch(val, source){
+    state.q = val;
+    if(source !== "grid") gridSearch.value = val;
+    if(source !== "head" && headSearch) headSearch.value = val;
+    render();
+  }
+
+  gridSearch.addEventListener("input", function(e){ syncSearch(e.target.value, "grid"); });
+  if(headSearch) headSearch.addEventListener("input", function(e){ syncSearch(e.target.value, "head"); });
+
+  document.getElementById("bigForm").addEventListener("submit", function(e){
+    e.preventDefault();
+    syncSearch(bigSearch.value, "big");
+    state.cat = "all";
+    pills.querySelectorAll(".pill").forEach(function(p){ p.setAttribute("aria-pressed", p.getAttribute("data-cat") === "all" ? "true":"false"); });
+    render();
+    document.getElementById("catalogo").scrollIntoView({behavior:"smooth"});
+  });
+
+  document.querySelectorAll("[data-jump]").forEach(function(a){
+    a.addEventListener("click", function(){
+      setCatByLabel(a.getAttribute("data-jump"));
+      syncSearch("", "jump");
+    });
+  });
+
+  var burger = document.getElementById("burger");
+  var nav = document.getElementById("nav");
+  burger.addEventListener("click", function(){
+    var open = nav.classList.toggle("open");
+    burger.setAttribute("aria-expanded", open ? "true" : "false");
+  });
+  nav.querySelectorAll("a").forEach(function(a){
+    a.addEventListener("click", function(){ nav.classList.remove("open"); burger.setAttribute("aria-expanded","false"); });
+  });
+
+  render();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="es-CL">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Estilos para tu sitio · Estudio Faro</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#ffffff; --bg-soft:#faf8f3; --ink:#0f262c; --ink-2:#51666b; --line:#ece7dc; --line-2:#e2ddd0;
+  --beam:#c97e16; --beam-soft:#f5b65c; --teal:#1f7a74; --dark:#0c282f; --dark-soft:#11343c; --cream:#f6f2e9; --wa:#25d366;
+  --r:14px; --r-lg:22px; --r-pill:999px; --ease:cubic-bezier(.16,1,.3,1);
+  --fd:"Bricolage Grotesque",system-ui,sans-serif; --fb:"Hanken Grotesk",system-ui,sans-serif;
+}
+*{margin:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--fb);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+:focus-visible{outline:2px solid var(--beam);outline-offset:3px;border-radius:6px}
+h1,h2,h3{font-family:var(--fd);font-weight:800;letter-spacing:-.02em;line-height:1.05;margin:0;text-wrap:balance}
+.wrap{max-width:1080px;margin:0 auto;padding:0 clamp(20px,5vw,40px)}
+
+/* barra demo */
+.ef-demobar{position:sticky;top:0;z-index:9999;display:flex;align-items:center;justify-content:space-between;gap:1rem;background:#0c282f;color:#fff;padding:.5rem clamp(14px,4vw,28px);font-family:var(--fb);font-size:.85rem}
+.ef-demobar .ef-back{color:#cfe0de;font-weight:600}.ef-demobar .ef-back:hover{color:#fff}
+.ef-demobar .ef-label{color:#8fb0ac;font-weight:600}@media(max-width:560px){.ef-demobar .ef-label{display:none}}
+.ef-demobar .ef-cta{background:#25d366;color:#06351c;font-weight:700;padding:.4rem .9rem;border-radius:999px;white-space:nowrap}
+
+/* hero */
+.head{position:relative;overflow:hidden;padding:clamp(40px,6vw,72px) 0 clamp(20px,3vw,28px)}
+.head::before{content:"";position:absolute;top:-30%;right:-10%;width:46vw;height:46vw;max-width:560px;
+  background:radial-gradient(circle,rgba(245,182,92,.28),transparent 62%);pointer-events:none}
+.head .wrap{position:relative;z-index:1}
+.eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-weight:600;font-size:.85rem;color:var(--teal);
+  background:rgba(31,122,116,.09);padding:.34rem .8rem;border-radius:var(--r-pill);margin-bottom:1rem}
+.eyebrow .pt{width:7px;height:7px;border-radius:50%;background:var(--teal)}
+.head h1{font-size:clamp(2rem,4.6vw,3.1rem);margin-bottom:.9rem}
+.head h1 em{color:var(--beam);font-style:normal}
+.head .sub{font-size:clamp(1.05rem,1.5vw,1.18rem);color:var(--ink-2);max-width:60ch}
+
+/* paths */
+.paths{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.8rem 0 .4rem}
+.path{border:1px solid var(--line);border-radius:var(--r);padding:1.1rem 1.2rem;background:var(--bg-soft)}
+.path h3{font-size:1.06rem;margin-bottom:.3rem;display:flex;align-items:center;gap:.5rem}
+.path h3 .n{width:1.6rem;height:1.6rem;border-radius:50%;background:var(--beam);color:#fff;font-size:.85rem;display:flex;align-items:center;justify-content:center;flex:none}
+.path p{color:var(--ink-2);font-size:.95rem}
+@media(max-width:680px){.paths{grid-template-columns:1fr}}
+
+/* selector */
+.sel{padding:clamp(28px,4vw,44px) 0 clamp(48px,7vw,80px)}
+.sel h2{font-size:clamp(1.5rem,3vw,2rem);margin-bottom:.5rem}
+.sel .lead{color:var(--ink-2);max-width:60ch;margin-bottom:2rem}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.3rem}
+@media(max-width:860px){.cards{grid-template-columns:1fr;max-width:480px}}
+.card{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;background:#fff;
+  transition:transform .3s var(--ease),box-shadow .3s var(--ease),border-color .3s;position:relative}
+.card:hover{transform:translateY(-5px);box-shadow:0 2px 6px rgba(15,38,44,.05),0 40px 80px -32px rgba(15,38,44,.28);border-color:var(--line-2)}
+.card .shot{aspect-ratio:16/10;overflow:hidden;background:var(--bg-soft);border-bottom:1px solid var(--line)}
+.card .shot img{width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .4s var(--ease)}
+.card:hover .shot img{transform:scale(1.04)}
+.card .b{padding:1.1rem 1.2rem 1.3rem;display:flex;flex-direction:column;gap:.4rem;flex:1}
+.card .st{font-size:.74rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--beam)}
+.card h3{font-size:1.25rem}
+.card p{color:var(--ink-2);font-size:.93rem;flex:1}
+.card .go{margin-top:.5rem;font-weight:700;color:var(--ink);display:inline-flex;align-items:center;gap:.4rem}
+.card .go .ar{color:var(--beam);transition:transform .25s var(--ease)}
+.card:hover .go .ar{transform:translateX(5px)}
+.card .match{position:absolute;top:10px;right:10px;background:var(--dark);color:#fff;font-size:.72rem;font-weight:700;
+  padding:.3rem .7rem;border-radius:var(--r-pill);z-index:2;box-shadow:0 8px 18px -8px rgba(12,40,47,.7)}
+.card .match b{color:var(--beam-soft)}
+
+/* cierre */
+.close{margin-top:2.6rem;background:linear-gradient(150deg,var(--dark),var(--dark-soft));color:#fff;border-radius:var(--r-lg);
+  padding:clamp(24px,4vw,40px);text-align:center;position:relative;overflow:hidden}
+.close::before{content:"";position:absolute;top:-40%;left:50%;transform:translateX(-50%);width:70vw;height:50vw;max-width:700px;
+  background:radial-gradient(circle,rgba(245,182,92,.2),transparent 60%);pointer-events:none}
+.close *{position:relative;z-index:1}
+.close h2{font-size:clamp(1.5rem,3vw,2.1rem);margin-bottom:.7rem}
+.close p{color:#bcd0ce;max-width:52ch;margin:0 auto 1.4rem}
+.btn{display:inline-flex;align-items:center;gap:.55rem;font-weight:700;font-size:1.02rem;padding:.9rem 1.5rem;border-radius:var(--r-pill);
+  background:var(--wa);color:#06351c;transition:transform .25s var(--ease),box-shadow .25s var(--ease)}
+.btn:hover{transform:translateY(-2px);box-shadow:0 16px 36px -14px rgba(37,211,102,.6)}
+.btn svg{width:1.2em;height:1.2em}
+.foot{text-align:center;color:var(--ink-2);font-size:.85rem;padding:0 0 40px}
+.foot a{color:var(--teal);font-weight:600}
+
+/* fab */
+.fab{position:fixed;right:18px;bottom:18px;z-index:80;width:54px;height:54px;border-radius:50%;background:var(--wa);color:#fff;
+  display:flex;align-items:center;justify-content:center;box-shadow:0 10px 30px -8px rgba(37,211,102,.6);transition:transform .25s var(--ease)}
+.fab svg{width:28px;height:28px}.fab:hover{transform:scale(1.08)}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<div class="ef-demobar">
+  <a class="ef-back" href="../../index.html#showcase">← Estudio Faro</a>
+  <span class="ef-label">Propuesta · Central Arranque</span>
+  <a class="ef-cta" href="https://wa.me/56971845174?text=Hola%20Estudio%20Faro%2C%20vi%20las%20opciones%20para%20Central%20Arranque" target="_blank" rel="noopener">Conversemos</a>
+</div>
+
+<header class="head">
+  <div class="wrap">
+    <span class="eyebrow"><span class="pt"></span> Estudio Faro · para Central Arranque</span>
+    <h1>Tu sitio web, <em>como tú lo quieras</em>.</h1>
+    <p class="sub">Hola 👋 Soy Diego, de Estudio Faro. Te armé esto pensando en Central Arranque. Mira los estilos, abre el que te tinque y dime cuál te gusta — lo dejamos a tu medida.</p>
+
+    <div class="paths">
+      <div class="path">
+        <h3><span class="n">1</span> ¿Solo se te cayó?</h3>
+        <p>Reviso si se puede recuperar. Si es tema de dominio/hosting, te la levanto y la dejo con <b>mantención</b> para que no se vuelva a caer.</p>
+      </div>
+      <div class="path">
+        <h3><span class="n">2</span> ¿Quieres una nueva?</h3>
+        <p>Elige abajo el <b>estilo</b> que más te guste. Esa es la base; después la afinamos con tus colores, fotos y datos reales.</p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="sel">
+  <div class="wrap">
+    <h2>Elige el estilo que más te guste</h2>
+    <p class="lead">Tres caminos para el mismo negocio. Ábrelos, navégalos como si fueran tuyos (los botones funcionan) y quédate con uno.</p>
+    <div class="cards">
+
+      <a class="card" href="catalogo.html">
+        <span class="match">★ El más parecido a tu <b>Instagram</b></span>
+        <div class="shot"><img src="thumb-catalogo.webp" width="760" height="475" alt="Demo estilo Catálogo para Central Arranque" loading="lazy"></div>
+        <div class="b">
+          <span class="st">Estilo Catálogo</span>
+          <h3>Vitrina de repuestos</h3>
+          <p>Buscador + grilla de repuestos con precios y "cotizar al tiro". Ideal si quieres mostrar y vender productos. Acento rojo, como tu marca.</p>
+          <span class="go">Ver demo <span class="ar">→</span></span>
+        </div>
+      </a>
+
+      <a class="card" href="industrial.html">
+        <div class="shot"><img src="thumb-industrial.webp" width="760" height="475" alt="Demo estilo Industrial para Central Arranque" loading="lazy"></div>
+        <div class="b">
+          <span class="st">Estilo Industrial</span>
+          <h3>Fuerza mecánica</h3>
+          <p>Oscuro, potente, con energía de taller. Naranjo eléctrico. Para verse rudo y especialista. Pega fuerte en el celular.</p>
+          <span class="go">Ver demo <span class="ar">→</span></span>
+        </div>
+      </a>
+
+      <a class="card" href="confianza.html">
+        <div class="shot"><img src="thumb-confianza.webp" width="760" height="475" alt="Demo estilo Confianza para Central Arranque" loading="lazy"></div>
+        <div class="b">
+          <span class="st">Estilo Confianza</span>
+          <h3>Serio y confiable</h3>
+          <p>Claro, ordenado, con garantías a la vista. Azul profesional. Para transmitir experiencia y tranquilidad al cliente.</p>
+          <span class="go">Ver demo <span class="ar">→</span></span>
+        </div>
+      </a>
+
+    </div>
+
+    <div class="close">
+      <h2>¿Cuál te gustó?</h2>
+      <p>Dime el estilo y lo dejamos a tu medida con tus colores, fotos y datos. Sin compromiso.</p>
+      <a class="btn" href="https://wa.me/56971845174?text=Hola%20Diego%2C%20vi%20las%20opciones%20para%20Central%20Arranque%2C%20me%20gust%C3%B3%20el%20estilo%3A%20" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.05L2 22l5.07-1.33A10 10 0 1 0 12 2Zm5.3 14.1c-.22.62-1.3 1.2-1.8 1.24-.46.04-.9.2-3.04-.63-2.57-1-4.2-3.6-4.33-3.77-.13-.17-1.04-1.38-1.04-2.63 0-1.25.66-1.86.9-2.12.22-.25.5-.31.66-.31l.48.01c.15 0 .36-.06.56.43.22.53.74 1.84.8 1.97.07.13.11.29.02.46-.41.83-.85.8-.6 1.22.93 1.6 1.86 2.16 3.3 2.88.25.13.4.11.54-.06.16-.18.62-.72.79-.97.16-.25.33-.2.55-.12.22.08 1.4.66 1.64.78.24.12.4.18.46.28.06.1.06.58-.16 1.2Z"/></svg>
+        Hablar por WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<p class="foot">Propuesta hecha por <a href="../../index.html">Estudio Faro</a> · La Serena–Coquimbo · Demos con datos de ejemplo.</p>
+
+<a class="fab" href="https://wa.me/56971845174?text=Hola%20Diego%2C%20sobre%20el%20sitio%20de%20Central%20Arranque" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.05L2 22l5.07-1.33A10 10 0 1 0 12 2Zm5.3 14.1c-.22.62-1.3 1.2-1.8 1.24-.46.04-.9.2-3.04-.63-2.57-1-4.2-3.6-4.33-3.77-.13-.17-1.04-1.38-1.04-2.63 0-1.25.66-1.86.9-2.12.22-.25.5-.31.66-.31l.48.01c.15 0 .36-.06.56.43.22.53.74 1.84.8 1.97.07.13.11.29.02.46-.41.83-.85.8-.6 1.22.93 1.6 1.86 2.16 3.3 2.88.25.13.4.11.54-.06.16-.18.62-.72.79-.97.16-.25.33-.2.55-.12.22.08 1.4.66 1.64.78.24.12.4.18.46.28.06.1.06.58-.16 1.2Z"/></svg>
+</a>
+
+</body>
+</html>
