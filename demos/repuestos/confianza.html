@@ -26,8 +26,8 @@
   --shadow-sm:0 1px 2px rgba(21,83,158,.05),0 2px 6px rgba(20,35,58,.05);
   --shadow:0 6px 24px -8px rgba(21,83,158,.18),0 2px 8px rgba(20,35,58,.06);
   --shadow-lg:0 24px 60px -20px rgba(21,83,158,.28),0 8px 24px rgba(20,35,58,.08);
-  --r:14px;
-  --r-lg:22px;
+  --r:8px;
+  --r-lg:12px;
   --maxw:1180px;
   --ease:cubic-bezier(.2,.7,.2,1);
 }
@@ -62,20 +62,20 @@ img{display:block;max-width:100%}
 .logo{display:flex;align-items:center;gap:.6rem;text-decoration:none;color:var(--ink);font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:1.2rem;letter-spacing:-.02em}
 .logo svg{flex:none}
 .nav-links{display:flex;align-items:center;gap:.3rem;list-style:none;margin:0;padding:0}
-.nav-links a{text-decoration:none;color:var(--ink-2);font-weight:600;font-size:.95rem;padding:.5rem .8rem;border-radius:10px;transition:color .2s var(--ease),background .2s var(--ease)}
+.nav-links a{text-decoration:none;color:var(--ink-2);font-weight:600;font-size:.95rem;padding:.5rem .8rem;border-radius:6px;transition:color .2s var(--ease),background .2s var(--ease)}
 .nav-links a:hover{color:var(--blue);background:var(--blue-soft)}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;font-family:"Hanken Grotesk",sans-serif;font-weight:700;font-size:.95rem;text-decoration:none;border:none;cursor:pointer;border-radius:11px;padding:.7rem 1.15rem;transition:transform .2s var(--ease),box-shadow .2s var(--ease),background .2s var(--ease)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;font-family:"Hanken Grotesk",sans-serif;font-weight:700;font-size:.95rem;text-decoration:none;border:none;cursor:pointer;border-radius:7px;padding:.7rem 1.15rem;transition:transform .2s var(--ease),box-shadow .2s var(--ease),background .2s var(--ease)}
 .btn-primary{background:var(--blue);color:#fff;box-shadow:var(--shadow-sm)}
 .btn-primary:hover{background:var(--blue-d);transform:translateY(-1px);box-shadow:var(--shadow)}
 .btn-ghost{background:#fff;color:var(--ink);border:1px solid var(--line-2)}
 .btn-ghost:hover{border-color:var(--blue);color:var(--blue);transform:translateY(-1px)}
 .btn-wa{background:#25d366;color:#06351c}
 .btn-wa:hover{background:#21bd5b;transform:translateY(-1px);box-shadow:0 8px 20px -6px rgba(37,211,102,.45)}
-.nav-burger{display:none;background:none;border:1px solid var(--line-2);border-radius:10px;width:42px;height:42px;cursor:pointer;align-items:center;justify-content:center}
+.nav-burger{display:none;background:none;border:1px solid var(--line-2);border-radius:6px;width:42px;height:42px;cursor:pointer;align-items:center;justify-content:center}
 .nav-burger span{display:block;width:18px;height:2px;background:var(--ink);position:relative}
 .nav-burger span::before,.nav-burger span::after{content:"";position:absolute;left:0;width:18px;height:2px;background:var(--ink)}
 .nav-burger span::before{top:-6px}.nav-burger span::after{top:6px}
-a:focus-visible,button:focus-visible,.btn:focus-visible{outline:2.5px solid var(--blue);outline-offset:3px;border-radius:11px}
+a:focus-visible,button:focus-visible,.btn:focus-visible{outline:2.5px solid var(--blue);outline-offset:3px;border-radius:7px}
 
 /* HERO */
 .hero{position:relative;background:linear-gradient(180deg,#fff 0%,var(--bg-2) 100%);overflow:hidden}
@@ -94,8 +94,8 @@ a:focus-visible,button:focus-visible,.btn:focus-visible{outline:2.5px solid var(
 .stars{color:var(--amber);letter-spacing:1px}
 .hero-media{position:relative}
 .hero-media img{width:100%;height:460px;object-fit:cover;border-radius:var(--r-lg);box-shadow:var(--shadow-lg)}
-.hero-float{position:absolute;left:-18px;bottom:28px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:.9rem 1.1rem;box-shadow:var(--shadow);display:flex;align-items:center;gap:.8rem;max-width:240px}
-.hero-float .fi{width:40px;height:40px;border-radius:11px;background:var(--blue-soft);color:var(--blue);display:flex;align-items:center;justify-content:center;flex:none}
+.hero-float{position:absolute;left:-18px;bottom:28px;background:#fff;border:1px solid var(--line);border-radius:8px;padding:.9rem 1.1rem;box-shadow:var(--shadow);display:flex;align-items:center;gap:.8rem;max-width:240px}
+.hero-float .fi{width:40px;height:40px;border-radius:7px;background:var(--blue-soft);color:var(--blue);display:flex;align-items:center;justify-content:center;flex:none}
 .hero-float b{display:block;font-size:.95rem}
 .hero-float span{font-size:.78rem;color:var(--ink-3)}
 
@@ -108,24 +108,27 @@ a:focus-visible,button:focus-visible,.btn:focus-visible{outline:2.5px solid var(
 .finder-form{display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:.7rem;align-items:end}
 .finder-field{display:flex;flex-direction:column;gap:.35rem}
 .finder-field label{font-size:.76rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-3)}
-.finder-field select{appearance:none;-webkit-appearance:none;font-family:"Hanken Grotesk",sans-serif;font-size:.96rem;font-weight:600;color:var(--ink);background:var(--bg-2) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2342526b' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat right .8rem center;border:1px solid var(--line-2);border-radius:11px;padding:.72rem 2.2rem .72rem .9rem;cursor:pointer;transition:border-color .2s var(--ease),box-shadow .2s var(--ease)}
+.finder-field select{appearance:none;-webkit-appearance:none;font-family:"Hanken Grotesk",sans-serif;font-size:.96rem;font-weight:600;color:var(--ink);background:var(--bg-2) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2342526b' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat right .8rem center;border:1px solid var(--line-2);border-radius:7px;padding:.72rem 2.2rem .72rem .9rem;cursor:pointer;transition:border-color .2s var(--ease),box-shadow .2s var(--ease)}
 .finder-field select:hover{border-color:var(--blue)}
 .finder-field select:focus-visible{outline:2.5px solid var(--blue);outline-offset:2px;border-color:var(--blue)}
 .finder-form .btn{padding:.78rem 1.5rem;height:fit-content;white-space:nowrap}
 
-/* BRANDS */
-.brands{padding:clamp(2.2rem,4vw,3rem) 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#fff}
+/* BRANDS — marquee */
+.brands{padding:clamp(2.2rem,4vw,3rem) 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#fff;overflow:hidden}
 .brands-head{text-align:center;color:var(--ink-3);font-size:.82rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:1.6rem}
-.brands-row{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:.8rem clamp(1.4rem,4vw,3rem)}
-.brand-logo{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:clamp(1.05rem,2.2vw,1.5rem);letter-spacing:.01em;color:var(--ink-3);opacity:.75;transition:color .25s var(--ease),opacity .25s var(--ease);white-space:nowrap}
-.brand-logo:hover{color:var(--blue);opacity:1}
-.brand-logo em{font-style:normal;color:var(--blue);opacity:.9}
+.marquee{position:relative;width:100%;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
+.marquee-track{display:flex;width:max-content;align-items:center;gap:clamp(2.2rem,5vw,4rem);animation:marquee 40s linear infinite;will-change:transform}
+.marquee:hover .marquee-track{animation-play-state:paused}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.brand-logo{flex:none;display:flex;align-items:center;justify-content:center}
+.brand-logo img{height:34px;width:auto;object-fit:contain;filter:grayscale(1) brightness(0) opacity(.42);transition:filter .3s var(--ease)}
+.brand-logo img:hover{filter:none}
 
 /* SPECIALTY CHIPS */
 .spec-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.9rem}
 .spec{display:flex;align-items:center;gap:.85rem;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:1rem 1.1rem;text-decoration:none;color:var(--ink);transition:transform .22s var(--ease),box-shadow .22s var(--ease),border-color .22s var(--ease)}
 .spec:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:var(--line-2)}
-.spec-ic{width:42px;height:42px;border-radius:11px;background:var(--blue-soft);color:var(--blue);display:flex;align-items:center;justify-content:center;flex:none;transition:background .22s var(--ease),color .22s var(--ease)}
+.spec-ic{width:42px;height:42px;border-radius:7px;background:var(--blue-soft);color:var(--blue);display:flex;align-items:center;justify-content:center;flex:none;transition:background .22s var(--ease),color .22s var(--ease)}
 .spec:hover .spec-ic{background:var(--blue);color:#fff}
 .spec b{font-size:.97rem;font-weight:700;letter-spacing:-.01em;line-height:1.2}
 .spec span{display:block;font-size:.78rem;color:var(--ink-3);font-weight:500}
@@ -148,7 +151,7 @@ a:focus-visible,button:focus-visible,.btn:focus-visible{outline:2.5px solid var(
 .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem}
 .svc{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:1.6rem;transition:transform .25s var(--ease),box-shadow .25s var(--ease),border-color .25s var(--ease)}
 .svc:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:var(--line-2)}
-.svc-ic{width:50px;height:50px;border-radius:13px;background:var(--blue-soft);color:var(--blue);display:flex;align-items:center;justify-content:center;margin-bottom:1.1rem;transition:background .25s var(--ease),color .25s var(--ease)}
+.svc-ic{width:50px;height:50px;border-radius:8px;background:var(--blue-soft);color:var(--blue);display:flex;align-items:center;justify-content:center;margin-bottom:1.1rem;transition:background .25s var(--ease),color .25s var(--ease)}
 .svc:hover .svc-ic{background:var(--blue);color:#fff}
 .svc h3{font-size:1.18rem;margin-bottom:.45rem;font-weight:700;font-family:"Hanken Grotesk",sans-serif;letter-spacing:-.01em}
 .svc p{color:var(--ink-2);font-size:.95rem}
@@ -168,12 +171,25 @@ a:focus-visible,button:focus-visible,.btn:focus-visible{outline:2.5px solid var(
 .price small{font-size:.74rem;color:var(--ink-3);font-weight:600}
 .price b{font-size:1.18rem;font-family:"Bricolage Grotesque",sans-serif;color:var(--ink)}
 .card .btn{width:100%;padding:.6rem;font-size:.9rem}
+.card.hide{display:none}
+.card-img{background:#fff}
+.card-img img{object-fit:contain;padding:14px;background:#fff}
+.cat-result{display:flex;align-items:center;flex-wrap:wrap;gap:.5rem 1rem;margin-bottom:1.4rem;padding:.85rem 1.1rem;background:var(--blue-soft);border:1px solid var(--line-2);border-radius:var(--r);font-size:.95rem;color:var(--ink-2)}
+.cat-result[hidden]{display:none}
+.cat-result b{color:var(--ink);font-weight:700}
+.cat-result .clear-filter{margin-left:auto;background:none;border:none;color:var(--blue);font-family:inherit;font-weight:700;font-size:.9rem;cursor:pointer;text-decoration:underline;padding:.2rem .3rem;border-radius:4px}
+.cat-result .clear-filter:hover{color:var(--blue-d)}
+.cat-empty{display:none;text-align:center;padding:3rem 1rem;color:var(--ink-2)}
+.cat-empty.show{display:block}
+.cat-empty svg{color:var(--ink-3);margin-bottom:.8rem}
+.cat-empty b{display:block;font-size:1.1rem;color:var(--ink);margin-bottom:.3rem;font-family:"Hanken Grotesk",sans-serif}
+.cat-empty .btn{margin-top:1rem}
 
 /* PROCESS */
 .process{background:var(--bg-2)}
 .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;position:relative}
 .step{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:1.8rem 1.6rem;position:relative}
-.step-n{width:42px;height:42px;border-radius:12px;background:var(--blue);color:#fff;display:flex;align-items:center;justify-content:center;font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:1.15rem;margin-bottom:1.1rem}
+.step-n{width:42px;height:42px;border-radius:8px;background:var(--blue);color:#fff;display:flex;align-items:center;justify-content:center;font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:1.15rem;margin-bottom:1.1rem}
 .step h3{font-size:1.2rem;margin-bottom:.5rem;font-weight:700;font-family:"Hanken Grotesk",sans-serif;letter-spacing:-.01em}
 .step p{color:var(--ink-2);font-size:.95rem}
 
@@ -203,7 +219,7 @@ a:focus-visible,button:focus-visible,.btn:focus-visible{outline:2.5px solid var(
 .map-pin .dot::after{content:"";position:absolute;inset:7px;background:#fff;border-radius:50%}
 .map-pin .pulse{position:absolute;left:50%;top:0;transform:translate(-50%,-50%);width:30px;height:30px;border-radius:50%;background:rgba(21,83,158,.3);animation:pulse 2.4s ease-out infinite}
 @keyframes pulse{0%{transform:translate(-50%,-50%) scale(.6);opacity:.7}100%{transform:translate(-50%,-50%) scale(3);opacity:0}}
-.map-lbl{position:absolute;bottom:14px;left:14px;background:#fff;border:1px solid var(--line);border-radius:11px;padding:.55rem .85rem;font-size:.82rem;font-weight:600;box-shadow:var(--shadow-sm);display:flex;align-items:center;gap:.45rem}
+.map-lbl{position:absolute;bottom:14px;left:14px;background:#fff;border:1px solid var(--line);border-radius:7px;padding:.55rem .85rem;font-size:.82rem;font-weight:600;box-shadow:var(--shadow-sm);display:flex;align-items:center;gap:.45rem}
 .map-lbl svg{color:var(--blue)}
 .loc-info{display:flex;flex-direction:column;gap:1.1rem}
 .info-box{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:1.4rem 1.5rem}
@@ -346,7 +362,7 @@ a:focus-visible,button:focus-visible,.btn:focus-visible{outline:2.5px solid var(
       </div>
     </div>
     <div class="hero-media">
-      <img src="https://picsum.photos/seed/arranque-conf-hero/760/600" width="760" height="600" loading="eager" alt="Mecánico certificado revisando el motor de un vehículo en taller Central Arranque">
+      <img src="../../assets/repuestos/scene/s02.jpg" width="760" height="600" loading="eager" alt="Mecánico certificado revisando el motor de un vehículo en taller Central Arranque">
       <div class="hero-float">
         <span class="fi"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         <div><b>Garantía por escrito</b><span>en todos nuestros trabajos</span></div>
@@ -360,13 +376,13 @@ a:focus-visible,button:focus-visible,.btn:focus-visible{outline:2.5px solid var(
   <div class="wrap">
     <div class="finder-card reveal">
       <h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 11l1.5-4.5A2 2 0 018.4 5h7.2a2 2 0 011.9 1.5L19 11M5 11h14M5 11v6m14-6v6M7 17h2m6 0h2M5 17v2m14-2v2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Encuentra tu repuesto</h3>
-      <p class="finder-sub">Dinos tu vehículo y te confirmamos compatibilidad y stock por WhatsApp al instante.</p>
+      <p class="finder-sub">Elige tu vehículo y te mostramos al instante los repuestos compatibles en stock.</p>
       <form class="finder-form" id="finderForm">
         <div class="finder-field">
           <label for="fMarca">Marca</label>
           <select id="fMarca" required>
             <option value="" disabled selected>Selecciona</option>
-            <option>Toyota</option><option>Nissan</option><option>Hyundai</option><option>Chevrolet</option><option>Suzuki</option><option>Kia</option><option>Mitsubishi</option><option>Ford</option>
+            <option value="toyota">Toyota</option><option value="nissan">Nissan</option><option value="hyundai">Hyundai</option><option value="chevrolet">Chevrolet</option><option value="suzuki">Suzuki</option><option value="kia">Kia</option><option value="mitsubishi">Mitsubishi</option><option value="ford">Ford</option>
           </select>
         </div>
         <div class="finder-field">
@@ -392,16 +408,10 @@ a:focus-visible,button:focus-visible,.btn:focus-visible{outline:2.5px solid var(
 
 <!-- BRANDS -->
 <section class="brands">
-  <div class="wrap">
-    <p class="brands-head">Trabajamos con marcas de primera línea</p>
-    <div class="brands-row">
-      <span class="brand-logo"><em>BOSCH</em></span>
-      <span class="brand-logo">DENSO</span>
-      <span class="brand-logo">VALEO</span>
-      <span class="brand-logo">CARGO</span>
-      <span class="brand-logo"><em>HELLA</em></span>
-      <span class="brand-logo">Mitsubishi Electric</span>
-      <span class="brand-logo">WAI</span>
+  <p class="brands-head">Repuestos para tu marca</p>
+  <div class="marquee" aria-label="Marcas de vehículos con las que trabajamos">
+    <div class="marquee-track" id="brandTrack">
+      <!-- track content injected by JS (logos + duplicate for seamless loop) -->
     </div>
   </div>
 </section>
@@ -513,9 +523,13 @@ a:focus-visible,button:focus-visible,.btn:focus-visible{outline:2.5px solid var(
       <h2>Repuestos con stock y precio claro</h2>
       <p>Una muestra de nuestro inventario. Cotiza cualquier ítem por WhatsApp y te confirmamos disponibilidad al instante.</p>
     </div>
-    <div class="cat-grid">
-      <article class="card reveal">
-        <div class="card-img"><span class="card-tag">Eléctrico</span><img src="https://picsum.photos/seed/arranque-conf-1/400/300" width="400" height="300" loading="lazy" alt="Motor de arranque Bosch para vehículo liviano"></div>
+    <div class="cat-result" id="catResult" hidden>
+      <span id="catResultText"></span>
+      <button type="button" class="clear-filter" id="clearFilter">Ver todo el catálogo</button>
+    </div>
+    <div class="cat-grid" id="catGrid">
+      <article class="card reveal" data-marcas="toyota nissan hyundai chevrolet suzuki kia mitsubishi ford">
+        <div class="card-img"><span class="card-tag">Eléctrico</span><img src="../../assets/repuestos/prod/part1.jpg" width="400" height="300" loading="lazy" alt="Motor de arranque Bosch para vehículo liviano"></div>
         <div class="card-body">
           <h3>Motor de arranque Bosch</h3>
           <p class="desc">Compatible · vehículos livianos</p>
@@ -523,8 +537,8 @@ a:focus-visible,button:focus-visible,.btn:focus-visible{outline:2.5px solid var(
           <a class="btn btn-primary" href="https://wa.me/56971845174?text=Hola%2C%20quiero%20cotizar%20el%20Motor%20de%20arranque%20Bosch%20(desde%20%2458.900)." target="_blank" rel="noopener">Cotizar</a>
         </div>
       </article>
-      <article class="card reveal">
-        <div class="card-img"><span class="card-tag">Eléctrico</span><img src="https://picsum.photos/seed/arranque-conf-2/400/300" width="400" height="300" loading="lazy" alt="Alternador reacondicionado con garantía"></div>
+      <article class="card reveal" data-marcas="toyota nissan hyundai chevrolet suzuki kia mitsubishi ford">
+        <div class="card-img"><span class="card-tag">Eléctrico</span><img src="../../assets/repuestos/prod/part2.jpg" width="400" height="300" loading="lazy" alt="Alternador reacondicionado con garantía"></div>
         <div class="card-body">
           <h3>Alternador 90A</h3>
           <p class="desc">Reacondicionado · garantía 6 meses</p>
@@ -532,8 +546,8 @@ a:focus-visible,button:focus-visible,.btn:focus-visible{outline:2.5px solid var(
           <a class="btn btn-primary" href="https://wa.me/56971845174?text=Hola%2C%20quiero%20cotizar%20el%20Alternador%2090A%20(desde%20%2472.500)." target="_blank" rel="noopener">Cotizar</a>
         </div>
       </article>
-      <article class="card reveal">
-        <div class="card-img"><span class="card-tag">Energía</span><img src="https://picsum.photos/seed/arranque-conf-3/400/300" width="400" height="300" loading="lazy" alt="Batería de auto 65Ah libre de mantención"></div>
+      <article class="card reveal" data-marcas="toyota nissan hyundai chevrolet suzuki kia mitsubishi ford">
+        <div class="card-img"><span class="card-tag">Energía</span><img src="../../assets/repuestos/prod/part3.jpg" width="400" height="300" loading="lazy" alt="Batería de auto 65Ah libre de mantención"></div>
         <div class="card-body">
           <h3>Batería 65Ah</h3>
           <p class="desc">Libre mantención · 18 meses garantía</p>
@@ -541,8 +555,8 @@ a:focus-visible,button:focus-visible,.btn:focus-visible{outline:2.5px solid var(
           <a class="btn btn-primary" href="https://wa.me/56971845174?text=Hola%2C%20quiero%20cotizar%20la%20Bater%C3%ADa%2065Ah%20(desde%20%2464.990)." target="_blank" rel="noopener">Cotizar</a>
         </div>
       </article>
-      <article class="card reveal">
-        <div class="card-img"><span class="card-tag">Frenos</span><img src="https://picsum.photos/seed/arranque-conf-4/400/300" width="400" height="300" loading="lazy" alt="Juego de pastillas de freno cerámicas"></div>
+      <article class="card reveal" data-marcas="toyota nissan hyundai chevrolet suzuki kia">
+        <div class="card-img"><span class="card-tag">Frenos</span><img src="../../assets/repuestos/prod/part4.jpg" width="400" height="300" loading="lazy" alt="Juego de pastillas de freno cerámicas"></div>
         <div class="card-body">
           <h3>Pastillas de freno</h3>
           <p class="desc">Cerámicas · juego delantero</p>
@@ -550,8 +564,8 @@ a:focus-visible,button:focus-visible,.btn:focus-visible{outline:2.5px solid var(
           <a class="btn btn-primary" href="https://wa.me/56971845174?text=Hola%2C%20quiero%20cotizar%20las%20Pastillas%20de%20freno%20(desde%20%2423.900)." target="_blank" rel="noopener">Cotizar</a>
         </div>
       </article>
-      <article class="card reveal">
-        <div class="card-img"><span class="card-tag">Frenos</span><img src="https://picsum.photos/seed/arranque-conf-5/400/300" width="400" height="300" loading="lazy" alt="Par de discos de freno ventilados"></div>
+      <article class="card reveal" data-marcas="toyota nissan hyundai chevrolet mitsubishi ford">
+        <div class="card-img"><span class="card-tag">Frenos</span><img src="../../assets/repuestos/prod/part1.jpg" width="400" height="300" loading="lazy" alt="Par de discos de freno ventilados"></div>
         <div class="card-body">
           <h3>Discos de freno (par)</h3>
           <p class="desc">Ventilados · varias medidas</p>
@@ -559,8 +573,8 @@ a:focus-visible,button:focus-visible,.btn:focus-visible{outline:2.5px solid var(
           <a class="btn btn-primary" href="https://wa.me/56971845174?text=Hola%2C%20quiero%20cotizar%20los%20Discos%20de%20freno%20(desde%20%2441.500)." target="_blank" rel="noopener">Cotizar</a>
         </div>
       </article>
-      <article class="card reveal">
-        <div class="card-img"><span class="card-tag">Eléctrico</span><img src="https://picsum.photos/seed/arranque-conf-6/400/300" width="400" height="300" loading="lazy" alt="Bendix de motor de arranque nuevo"></div>
+      <article class="card reveal" data-marcas="toyota nissan hyundai chevrolet suzuki kia mitsubishi ford">
+        <div class="card-img"><span class="card-tag">Eléctrico</span><img src="../../assets/repuestos/prod/part2.jpg" width="400" height="300" loading="lazy" alt="Bendix de motor de arranque nuevo"></div>
         <div class="card-body">
           <h3>Bendix de arranque</h3>
           <p class="desc">Nuevo · múltiples modelos</p>
@@ -568,8 +582,8 @@ a:focus-visible,button:focus-visible,.btn:focus-visible{outline:2.5px solid var(
           <a class="btn btn-primary" href="https://wa.me/56971845174?text=Hola%2C%20quiero%20cotizar%20el%20Bendix%20de%20arranque%20(desde%20%2415.900)." target="_blank" rel="noopener">Cotizar</a>
         </div>
       </article>
-      <article class="card reveal">
-        <div class="card-img"><span class="card-tag">Eléctrico</span><img src="https://picsum.photos/seed/arranque-conf-7/400/300" width="400" height="300" loading="lazy" alt="Regulador de voltaje para alternador"></div>
+      <article class="card reveal" data-marcas="toyota nissan hyundai chevrolet suzuki kia mitsubishi ford">
+        <div class="card-img"><span class="card-tag">Eléctrico</span><img src="../../assets/repuestos/prod/part3.jpg" width="400" height="300" loading="lazy" alt="Regulador de voltaje para alternador"></div>
         <div class="card-body">
           <h3>Regulador de voltaje</h3>
           <p class="desc">Para alternador · alta calidad</p>
@@ -577,8 +591,8 @@ a:focus-visible,button:focus-visible,.btn:focus-visible{outline:2.5px solid var(
           <a class="btn btn-primary" href="https://wa.me/56971845174?text=Hola%2C%20quiero%20cotizar%20el%20Regulador%20de%20voltaje%20(desde%20%2418.900)." target="_blank" rel="noopener">Cotizar</a>
         </div>
       </article>
-      <article class="card reveal">
-        <div class="card-img"><span class="card-tag">Filtros</span><img src="https://picsum.photos/seed/arranque-conf-8/400/300" width="400" height="300" loading="lazy" alt="Kit de filtros de aceite y aire"></div>
+      <article class="card reveal" data-marcas="toyota nissan hyundai chevrolet suzuki kia mitsubishi ford">
+        <div class="card-img"><span class="card-tag">Filtros</span><img src="../../assets/repuestos/prod/part4.jpg" width="400" height="300" loading="lazy" alt="Kit de filtros de aceite y aire"></div>
         <div class="card-body">
           <h3>Kit de filtros</h3>
           <p class="desc">Aceite + aire · mantención</p>
@@ -586,6 +600,12 @@ a:focus-visible,button:focus-visible,.btn:focus-visible{outline:2.5px solid var(
           <a class="btn btn-primary" href="https://wa.me/56971845174?text=Hola%2C%20quiero%20cotizar%20el%20Kit%20de%20filtros%20(desde%20%2412.500)." target="_blank" rel="noopener">Cotizar</a>
         </div>
       </article>
+    </div>
+    <div class="cat-empty" id="catEmpty">
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="M20 20l-3.5-3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      <b>No tenemos ese ítem en muestra</b>
+      <span>Igual lo conseguimos. Escríbenos por WhatsApp con tu vehículo y te confirmamos stock.</span>
+      <div><a class="btn btn-wa" href="https://wa.me/56971845174?text=Hola%20Central%20Arranque%2C%20busco%20un%20repuesto%20para%20mi%20veh%C3%ADculo." target="_blank" rel="noopener">Consultar por WhatsApp</a></div>
     </div>
   </div>
 </section>
@@ -760,16 +780,36 @@ a:focus-visible,button:focus-visible,.btn:focus-visible{outline:2.5px solid var(
   }else{
     els.forEach(function(el){el.classList.add("in");});
   }
+  // Brand marquee — inject real logos (duplicated for seamless loop)
+  var BRANDS=[
+    ["toyota","Toyota"],["nissan","Nissan"],["hyundai","Hyundai"],["kia","Kia"],
+    ["ford","Ford"],["honda","Honda"],["mazda","Mazda"],["suzuki","Suzuki"],
+    ["mitsubishi","Mitsubishi"],["chevrolet","Chevrolet"],["volkswagen","Volkswagen"],
+    ["renault","Renault"],["peugeot","Peugeot"],["bmw","BMW"]
+  ];
+  var track=document.getElementById("brandTrack");
+  if(track){
+    var html="";
+    for(var pass=0;pass<2;pass++){
+      for(var b=0;b<BRANDS.length;b++){
+        html+='<span class="brand-logo"><img src="../../assets/repuestos/marcas/'+BRANDS[b][0]+
+          '.svg" alt="'+BRANDS[b][1]+'" width="80" height="34" loading="lazy"'+
+          (pass===1?' aria-hidden="true"':'')+'></span>';
+      }
+    }
+    track.innerHTML=html;
+  }
+
   // Vehicle finder
   var MODELS={
-    "Toyota":["Yaris","Corolla","Hilux","RAV4","Etios","Rush"],
-    "Nissan":["V16","Versa","Sentra","Qashqai","Navara","March"],
-    "Hyundai":["Accent","Elantra","Tucson","Santa Fe","Creta","i10"],
-    "Chevrolet":["Sail","Spark","Cruze","Tracker","Captiva","D-Max"],
-    "Suzuki":["Swift","Baleno","Vitara","Celerio","S-Presso","Jimny"],
-    "Kia":["Rio","Sportage","Morning","Cerato","Sorento","Soul"],
-    "Mitsubishi":["Lancer","L200","Montero","ASX","Outlander","Colt"],
-    "Ford":["Fiesta","Focus","Ranger","EcoSport","Escape","Ka"]
+    "toyota":["Yaris","Corolla","Hilux","RAV4","Etios","Rush"],
+    "nissan":["V16","Versa","Sentra","Qashqai","Navara","March"],
+    "hyundai":["Accent","Elantra","Tucson","Santa Fe","Creta","i10"],
+    "chevrolet":["Sail","Spark","Cruze","Tracker","Captiva","D-Max"],
+    "suzuki":["Swift","Baleno","Vitara","Celerio","S-Presso","Jimny"],
+    "kia":["Rio","Sportage","Morning","Cerato","Sorento","Soul"],
+    "mitsubishi":["Lancer","L200","Montero","ASX","Outlander","Colt"],
+    "ford":["Fiesta","Focus","Ranger","EcoSport","Escape","Ka"]
   };
   var fForm=document.getElementById("finderForm");
   var fMarca=document.getElementById("fMarca");
@@ -790,6 +830,46 @@ a:focus-visible,button:focus-visible,.btn:focus-visible{outline:2.5px solid var(
       list.forEach(function(m){var o=document.createElement("option");o.value=m;o.textContent=m;fModelo.appendChild(o);});
     });
   }
+
+  // Catalog filter (shows results in-page, no WhatsApp)
+  var grid=document.getElementById("catGrid");
+  var cards=grid?Array.prototype.slice.call(grid.querySelectorAll(".card")):[];
+  var resultBar=document.getElementById("catResult");
+  var resultText=document.getElementById("catResultText");
+  var clearBtn=document.getElementById("clearFilter");
+  var emptyState=document.getElementById("catEmpty");
+  var marcaLabel={toyota:"Toyota",nissan:"Nissan",hyundai:"Hyundai",chevrolet:"Chevrolet",suzuki:"Suzuki",kia:"Kia",mitsubishi:"Mitsubishi",ford:"Ford"};
+
+  function resetCatalog(){
+    cards.forEach(function(c){c.classList.remove("hide");});
+    if(resultBar)resultBar.hidden=true;
+    if(emptyState)emptyState.classList.remove("show");
+    if(grid)grid.style.display="";
+  }
+  function applyFilter(marca,labelParts){
+    var count=0;
+    cards.forEach(function(c){
+      var marcas=(c.getAttribute("data-marcas")||"").split(" ");
+      var match=marcas.indexOf(marca)!==-1;
+      c.classList.toggle("hide",!match);
+      if(match)count++;
+    });
+    if(resultText){
+      resultText.innerHTML=count?
+        "<b>"+count+(count===1?" repuesto":" repuestos")+"</b> para "+labelParts:
+        "Sin coincidencias para "+labelParts;
+    }
+    if(resultBar)resultBar.hidden=false;
+    if(emptyState)emptyState.classList.toggle("show",count===0);
+    if(grid)grid.style.display=count===0?"none":"";
+  }
+  if(clearBtn){
+    clearBtn.addEventListener("click",function(){
+      resetCatalog();
+      if(fForm)fForm.reset();
+      if(fModelo){fModelo.innerHTML='<option value="" selected>Elige una marca</option>';}
+    });
+  }
   if(fForm){
     fForm.addEventListener("submit",function(e){
       e.preventDefault();
@@ -797,9 +877,13 @@ a:focus-visible,button:focus-visible,.btn:focus-visible{outline:2.5px solid var(
       if(!marca){fMarca.focus();return;}
       var modelo=fModelo&&fModelo.value?fModelo.value:"";
       var anio=fAnio&&fAnio.value?fAnio.value:"";
-      var partes=[marca,modelo,anio].filter(Boolean).join(" ");
-      var msg="Hola Central Arranque, busco un repuesto para mi "+partes+". ¿Tienen stock y cuánto sale?";
-      window.open("https://wa.me/56971845174?text="+encodeURIComponent(msg),"_blank","noopener");
+      var label=[marcaLabel[marca]||marca,modelo,anio].filter(Boolean).join(" ");
+      applyFilter(marca,label);
+      var anchor=document.getElementById("repuestos");
+      if(anchor){
+        var rm=window.matchMedia&&window.matchMedia("(prefers-reduced-motion:reduce)").matches;
+        anchor.scrollIntoView({behavior:rm?"auto":"smooth",block:"start"});
+      }
     });
   }
 })();

@@ -36,6 +36,8 @@ body{
 h1,h2,h3,.display{font-family:"Bricolage Grotesque",system-ui,sans-serif;font-weight:800;line-height:.96;letter-spacing:-.02em;margin:0}
 a{color:inherit}
 img{display:block;max-width:100%}
+/* ===== ESQUINAS CUADRADAS (look industrial) — salvo demobar/FAB ===== */
+.btn,.finder-card,.field select,.brand-grid,.card,.card .ph,.tag,.why,.rev,.loc,.svc .ic,.burger,.logos-track img{border-radius:0!important}
 .wrap{max-width:1200px;margin:0 auto;padding:0 clamp(16px,4vw,40px)}
 .eyebrow{font-family:"Hanken Grotesk";font-weight:700;font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;color:var(--orange-soft)}
 
@@ -111,14 +113,20 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--orange-soft);outlin
 .trust-item svg{width:24px;height:24px;color:var(--orange);flex:none}
 .trust-item small{display:block;color:var(--muted-2);font-weight:500;font-size:.78rem;letter-spacing:.02em}
 
-/* ===== MARCAS ===== */
+/* ===== MARCAS (carrusel marquee) ===== */
 .brands{padding:clamp(40px,6vw,64px) 0;border-bottom:1px solid var(--line)}
 .brands .lbl{text-align:center;margin:0 0 1.8rem;font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted-2);font-weight:700}
-.brand-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden}
-.brand-cell{background:var(--carbon);display:grid;place-items:center;padding:1.3rem .6rem;min-height:84px;transition:background .25s var(--ease)}
-.brand-cell:hover{background:var(--carbon-3)}
-.brand-cell span{font-family:"Bricolage Grotesque";font-weight:800;font-size:1.05rem;letter-spacing:.02em;color:var(--muted);text-transform:uppercase;transition:color .25s var(--ease);text-align:center;line-height:1}
-.brand-cell:hover span{color:var(--orange-soft)}
+.logos{position:relative;overflow:hidden;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.logos-track{display:flex;width:max-content;gap:clamp(40px,6vw,72px);align-items:center;animation:logo-marquee 38s linear infinite}
+.logos:hover .logos-track{animation-play-state:paused}
+.logos-track img{height:34px;width:auto;flex:none;
+  /* logos en blanco/gris claro sobre fondo oscuro */
+  filter:brightness(0) invert(1);opacity:.62;
+  transition:opacity .25s var(--ease)}
+.logos-track img:hover{opacity:1}
+@keyframes logo-marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
 /* ===== SECTION SHELL ===== */
 .section{padding:clamp(64px,9vw,120px) 0}
@@ -143,16 +151,28 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--orange-soft);outlin
 .cat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem}
 .card{background:var(--carbon-2);border:1px solid var(--line);border-radius:10px;overflow:hidden;display:flex;flex-direction:column;transition:transform .3s var(--ease),border-color .25s var(--ease),box-shadow .3s var(--ease)}
 .card:hover{transform:translateY(-6px);border-color:rgba(242,92,5,.5);box-shadow:var(--shadow)}
-.card .ph{position:relative;aspect-ratio:4/3;overflow:hidden}
-.card .ph img{width:100%;height:100%;object-fit:cover;filter:grayscale(.2) contrast(1.04);transition:transform .5s var(--ease)}
-.card:hover .ph img{transform:scale(1.07)}
-.card .ph::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(19,21,26,.55) 100%)}
+.card .ph{position:relative;aspect-ratio:4/3;overflow:hidden;background:#fff}
+.card .ph img{width:100%;height:100%;object-fit:contain;padding:14px;transition:transform .5s var(--ease)}
+.card:hover .ph img{transform:scale(1.05)}
 .tag{position:absolute;top:10px;left:10px;z-index:2;background:var(--orange);color:#1a0c02;font-weight:700;font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;padding:.25rem .55rem;border-radius:4px}
 .card .body{padding:1.1rem 1.2rem 1.3rem;display:flex;flex-direction:column;gap:.55rem;flex:1}
 .card h3{font-size:1.08rem;line-height:1.1}
 .card .price{font-family:"Bricolage Grotesque";font-weight:800;font-size:1.2rem;color:var(--orange-soft)}
 .card .price small{font-family:"Hanken Grotesk";font-weight:500;font-size:.72rem;color:var(--muted-2);display:block;letter-spacing:.04em}
 .card .btn{margin-top:auto;width:100%;justify-content:center;font-size:.9rem;padding:.65rem}
+.card.is-hidden{display:none}
+/* ===== ESTADO RESULTADOS FILTRO ===== */
+.cat-results{display:none;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin:0 0 1.4rem;padding:.85rem 1.1rem;background:var(--carbon-3);border-left:3px solid var(--orange)}
+.cat-results.show{display:flex}
+.cat-results p{margin:0;font-size:.96rem;color:var(--ink)}
+.cat-results p b{font-family:"Bricolage Grotesque";color:var(--orange-soft)}
+.cat-results .clear{background:none;border:1px solid var(--line);color:var(--muted);font-family:"Hanken Grotesk";font-weight:600;font-size:.85rem;padding:.45rem .9rem;cursor:pointer;transition:border-color .2s var(--ease),color .2s var(--ease)}
+.cat-results .clear:hover{border-color:var(--orange);color:var(--orange-soft)}
+.cat-empty{display:none;text-align:center;padding:clamp(40px,7vw,72px) 1rem;border:1px dashed var(--line);background:var(--carbon)}
+.cat-empty.show{display:block}
+.cat-empty svg{width:46px;height:46px;color:var(--muted-2);margin:0 auto .9rem}
+.cat-empty h3{font-size:1.3rem;text-transform:uppercase;margin-bottom:.5rem}
+.cat-empty p{color:var(--muted);max-width:420px;margin:0 auto 1.4rem}
 
 /* ===== POR QUE ===== */
 .why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem}
@@ -291,7 +311,7 @@ footer{background:#0e1014;border-top:1px solid var(--line);padding:clamp(48px,6v
 <!-- HERO -->
 <section class="hero">
   <div class="hero-bg">
-    <img src="https://picsum.photos/seed/arranque-ind-hero/1800/1100" width="1800" height="1100" alt="Taller mecánico oscuro con motor en reparación" fetchpriority="high">
+    <img src="../../assets/repuestos/scene/s01.jpg" width="1800" height="1100" alt="Taller mecánico oscuro con motor en reparación" fetchpriority="high">
   </div>
   <div class="hero-grid" aria-hidden="true"></div>
   <div class="wrap hero-content">
@@ -320,7 +340,7 @@ footer{background:#0e1014;border-top:1px solid var(--line);padding:clamp(48px,6v
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 13l1.6-5A2 2 0 016.5 6.5h11a2 2 0 011.9 1.4L21 13M5 13h14v5a1 1 0 01-1 1h-1a1 1 0 01-1-1v-1H8v1a1 1 0 01-1 1H6a1 1 0 01-1-1v-5z"/><circle cx="7.5" cy="16" r="1"/><circle cx="16.5" cy="16" r="1"/></svg>
       <div>
         <h2>Encuentra tu repuesto</h2>
-        <p>Dinos qué auto tienes y te cotizamos al toque por WhatsApp.</p>
+        <p>Dinos qué auto tienes y te mostramos las piezas compatibles al toque.</p>
       </div>
     </div>
     <form class="finder-form" id="finder">
@@ -376,19 +396,11 @@ footer{background:#0e1014;border-top:1px solid var(--line);padding:clamp(48px,6v
   </div>
 </section>
 
-<!-- MARCAS -->
+<!-- MARCAS (carrusel girando) -->
 <section class="brands">
-  <div class="wrap">
-    <p class="lbl">Trabajamos con repuestos de marca</p>
-    <div class="brand-grid">
-      <div class="brand-cell"><span>Bosch</span></div>
-      <div class="brand-cell"><span>Denso</span></div>
-      <div class="brand-cell"><span>Valeo</span></div>
-      <div class="brand-cell"><span>Cargo</span></div>
-      <div class="brand-cell"><span>Hella</span></div>
-      <div class="brand-cell"><span>Mitsubishi&nbsp;Electric</span></div>
-      <div class="brand-cell"><span>WAI</span></div>
-    </div>
+  <p class="lbl">Repuestos para todas las marcas del mercado chileno</p>
+  <div class="logos" aria-label="Marcas de vehículos que atendemos">
+    <div class="logos-track" id="logosTrack"><!-- logos inyectados por JS --></div>
   </div>
 </section>
 
@@ -447,8 +459,18 @@ footer{background:#0e1014;border-top:1px solid var(--line);padding:clamp(48px,6v
       </div>
       <p>Precios referenciales. Cotiza por WhatsApp con la patente o el modelo y te confirmamos al toque.</p>
     </div>
+    <div class="cat-results" id="catResults" aria-live="polite">
+      <p id="catResultsTxt"></p>
+      <button type="button" class="clear" id="catClear">Limpiar filtro</button>
+    </div>
     <div class="cat-grid" id="catgrid">
       <!-- cards inyectadas por JS -->
+    </div>
+    <div class="cat-empty" id="catEmpty">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M8.5 11h5"/></svg>
+      <h3>Sin resultados en el catálogo</h3>
+      <p>No tenemos esa pieza listada en stock destacado, pero trabajamos casi todas las marcas. Escríbenos por WhatsApp y la conseguimos.</p>
+      <a class="btn btn-primary" href="https://wa.me/56971845174?text=Hola%20Central%20Arranque%2C%20busco%20un%20repuesto%20que%20no%20aparece%20en%20el%20cat%C3%A1logo" target="_blank" rel="noopener">Cotizar por WhatsApp</a>
     </div>
   </div>
 </section>
@@ -514,7 +536,7 @@ footer{background:#0e1014;border-top:1px solid var(--line);padding:clamp(48px,6v
     </div>
     <div class="loc">
       <div class="map">
-        <img src="https://picsum.photos/seed/arranque-ind-map/900/700" width="900" height="700" alt="Mapa referencial de la ubicación del taller" loading="lazy">
+        <img src="../../assets/repuestos/scene/s00.jpg" width="900" height="700" alt="Mapa referencial de la ubicación del taller" loading="lazy">
         <div class="pin" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a7 7 0 00-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 00-7-7zm0 9.5A2.5 2.5 0 1112 6.5a2.5 2.5 0 010 5z"/></svg>
         </div>
@@ -606,32 +628,48 @@ footer{background:#0e1014;border-top:1px solid var(--line);padding:clamp(48px,6v
     });
   }
 
-  /* ---- Catálogo (genera cards + WhatsApp prellenado) ---- */
   var WA = 'https://wa.me/56971845174?text=';
+
+  /* ---- Carrusel de logos de marca (marquee, set duplicado) ---- */
+  var marcasLogos = ['toyota','nissan','hyundai','kia','ford','honda','mazda','suzuki','mitsubishi','chevrolet','volkswagen','renault','peugeot','bmw'];
+  var track = document.getElementById('logosTrack');
+  if(track){
+    function logoImg(slug){
+      var nombre = slug.charAt(0).toUpperCase() + slug.slice(1);
+      return '<img src="../../assets/repuestos/marcas/'+slug+'.svg" width="120" height="34" loading="lazy" alt="'+nombre+'">';
+    }
+    var oneSet = marcasLogos.map(logoImg).join('');
+    /* set duplicado (aria-hidden no aplica a innerHTML aquí; el 2do set es decorativo) */
+    track.innerHTML = oneSet + oneSet;
+  }
+
+  /* ---- Catálogo de repuestos (fotos reales, data-marcas para filtrar) ---- */
+  var fotos = ['../../assets/repuestos/prod/part1.jpg','../../assets/repuestos/prod/part2.jpg','../../assets/repuestos/prod/part3.jpg','../../assets/repuestos/prod/part4.jpg'];
+
+  /* marcas en minúscula para matchear el filtro */
   var productos = [
-    {n:'Motor de partida reacondicionado', tag:'Más vendido', precio:64990, seed:'arranque-ind-mot'},
-    {n:'Alternador 90A', tag:'Garantía 6m', precio:89990, seed:'arranque-ind-alt'},
-    {n:'Regulador de voltaje', tag:'', precio:24990, seed:'arranque-ind-reg'},
-    {n:'Bendix / automático de arranque', tag:'', precio:18990, seed:'arranque-ind-ben'},
-    {n:'Juego de carbones', tag:'', precio:8990, seed:'arranque-ind-car'},
-    {n:'Solenoide de arranque', tag:'', precio:21990, seed:'arranque-ind-sol'},
-    {n:'Batería 12V 75Ah', tag:'OEM', precio:79990, seed:'arranque-ind-bat'},
-    {n:'Rectificador de alternador', tag:'', precio:16990, seed:'arranque-ind-rec'}
+    {n:'Motor de partida reacondicionado', tag:'Más vendido', precio:64990, marcas:['toyota','nissan','hyundai','suzuki','ford']},
+    {n:'Alternador 90A', tag:'Garantía 6m', precio:89990, marcas:['toyota','chevrolet','kia','hyundai']},
+    {n:'Regulador de voltaje', tag:'', precio:24990, marcas:['nissan','mitsubishi','suzuki','ford']},
+    {n:'Bendix / automático de arranque', tag:'', precio:18990, marcas:['toyota','nissan','chevrolet','kia']},
+    {n:'Juego de carbones', tag:'', precio:8990, marcas:['toyota','nissan','hyundai','chevrolet','suzuki','kia','mitsubishi','ford']},
+    {n:'Solenoide de arranque', tag:'', precio:21990, marcas:['toyota','hyundai','mitsubishi','ford']},
+    {n:'Batería 12V 75Ah', tag:'OEM', precio:79990, marcas:['toyota','nissan','hyundai','chevrolet','suzuki','kia','mitsubishi','ford']},
+    {n:'Rectificador de alternador', tag:'', precio:16990, marcas:['nissan','chevrolet','kia','suzuki']}
   ];
 
-  function clp(n){
-    return '$' + n.toLocaleString('es-CL');
-  }
+  function clp(n){ return '$' + n.toLocaleString('es-CL'); }
 
   var grid = document.getElementById('catgrid');
   if(grid){
-    var html = productos.map(function(p){
+    var html = productos.map(function(p, i){
       var tagHtml = p.tag ? '<span class="tag">'+p.tag+'</span>' : '';
       var msg = encodeURIComponent('Hola Central Arranque, quiero cotizar: ' + p.n + ' (desde ' + clp(p.precio) + '). ¿Tienen stock?');
+      var foto = fotos[i % fotos.length];
       return ''+
-      '<article class="card">'+
+      '<article class="card" data-marcas="'+p.marcas.join(' ')+'">'+
         '<div class="ph">'+ tagHtml +
-          '<img src="https://picsum.photos/seed/'+p.seed+'/600/450" width="600" height="450" loading="lazy" alt="'+p.n+'">'+
+          '<img src="'+foto+'" width="600" height="450" loading="lazy" alt="'+p.n+'">'+
         '</div>'+
         '<div class="body">'+
           '<h3>'+p.n+'</h3>'+
@@ -643,7 +681,7 @@ footer{background:#0e1014;border-top:1px solid var(--line);padding:clamp(48px,6v
     grid.innerHTML = html;
   }
 
-  /* ---- Buscador por auto (Marca → Modelo → Año → WhatsApp) ---- */
+  /* ---- Buscador por auto → FILTRA la grilla (no WhatsApp) ---- */
   var modelos = {
     'Toyota':['Yaris','Corolla','Hilux','RAV4','Etios','Tacoma','Land Cruiser'],
     'Nissan':['V16','Versa','Sentra','Qashqai','Navara','X-Trail','March'],
@@ -655,13 +693,37 @@ footer{background:#0e1014;border-top:1px solid var(--line);padding:clamp(48px,6v
     'Ford':['Fiesta','Focus','Ranger','EcoSport','Escape','F-150']
   };
 
-  var finder = document.getElementById('finder');
+  var finder    = document.getElementById('finder');
   var selMarca  = document.getElementById('f-marca');
   var selModelo = document.getElementById('f-modelo');
   var selAnio   = document.getElementById('f-anio');
+  var results   = document.getElementById('catResults');
+  var resultsTxt= document.getElementById('catResultsTxt');
+  var clearBtn  = document.getElementById('catClear');
+  var emptyEl   = document.getElementById('catEmpty');
+
+  function cards(){ return grid ? Array.prototype.slice.call(grid.querySelectorAll('.card')) : []; }
+
+  function resetFiltro(){
+    cards().forEach(function(c){ c.classList.remove('is-hidden'); });
+    if(results) results.classList.remove('show');
+    if(emptyEl) emptyEl.classList.remove('show');
+    if(grid) grid.style.display = '';
+  }
+
+  function aplicarFiltro(marca){
+    var slug = (marca || '').toLowerCase();
+    var visibles = 0;
+    cards().forEach(function(c){
+      var ms = (c.getAttribute('data-marcas') || '').split(' ');
+      var ok = !slug || ms.indexOf(slug) !== -1;
+      c.classList.toggle('is-hidden', !ok);
+      if(ok) visibles++;
+    });
+    return visibles;
+  }
 
   if(finder && selMarca && selModelo && selAnio){
-    /* Años 2024 → 2005 */
     var aniosFrag = '';
     for(var y=2024; y>=2005; y--){ aniosFrag += '<option>'+y+'</option>'; }
     selAnio.insertAdjacentHTML('beforeend', aniosFrag);
@@ -679,11 +741,38 @@ footer{background:#0e1014;border-top:1px solid var(--line);padding:clamp(48px,6v
       var marca  = selMarca.value;
       var modelo = (selModelo.value && !selModelo.disabled) ? selModelo.value : '';
       var anio   = selAnio.value || '';
-      var detalle = [marca, modelo, anio].filter(Boolean).join(' ');
-      var msg = 'Hola Central Arranque, busco un repuesto del sistema de arranque/carga para mi ' +
-                (detalle || 'auto') + '. ¿Tienen stock y cuánto sale?';
-      window.open(WA + encodeURIComponent(msg), '_blank', 'noopener');
+      var n = aplicarFiltro(marca);
+      var auto = [marca, modelo, anio].filter(Boolean).join(' ') || 'tu auto';
+
+      if(results && resultsTxt){
+        if(n > 0){
+          resultsTxt.innerHTML = '<b>'+n+'</b> repuesto'+(n===1?'':'s')+' para <b>'+auto+'</b>';
+          results.classList.add('show');
+          if(emptyEl) emptyEl.classList.remove('show');
+          if(grid) grid.style.display = '';
+        } else {
+          resultsTxt.innerHTML = 'Sin resultados para <b>'+auto+'</b>';
+          results.classList.add('show');
+          if(grid) grid.style.display = 'none';
+          if(emptyEl) emptyEl.classList.add('show');
+        }
+      }
+
+      var anchor = document.getElementById('repuestos');
+      if(anchor) anchor.scrollIntoView({behavior:'smooth', block:'start'});
     });
+
+    if(clearBtn){
+      clearBtn.addEventListener('click', function(){
+        resetFiltro();
+        selMarca.selectedIndex = 0;
+        selModelo.innerHTML = '<option value="" disabled selected>Elige marca primero</option>';
+        selModelo.disabled = true;
+        selAnio.selectedIndex = 0;
+        var anchor = document.getElementById('repuestos');
+        if(anchor) anchor.scrollIntoView({behavior:'smooth', block:'start'});
+      });
+    }
   }
 })();
 </script>
