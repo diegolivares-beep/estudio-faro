@@ -87,6 +87,39 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--orange-soft);outlin
 .hero-meta .m span{font-size:.82rem;color:var(--muted-2);letter-spacing:.04em;text-transform:uppercase;font-weight:600}
 .stars{color:var(--orange);letter-spacing:2px}
 
+/* ===== BUSCADOR POR AUTO ===== */
+.finder{position:relative;z-index:5;margin-top:-46px}
+.finder-card{background:var(--carbon-2);border:1px solid var(--line);border-top:3px solid var(--orange);border-radius:12px;padding:clamp(20px,3vw,30px);box-shadow:0 30px 60px -28px rgba(0,0,0,.8)}
+.finder-card .lead{display:flex;align-items:center;gap:.6rem;margin-bottom:1.1rem}
+.finder-card .lead svg{width:24px;height:24px;color:var(--orange);flex:none}
+.finder-card .lead h2{font-size:clamp(1.3rem,2.6vw,1.7rem);text-transform:uppercase}
+.finder-card .lead p{margin:.15rem 0 0;color:var(--muted);font-size:.9rem}
+.finder-form{display:grid;grid-template-columns:repeat(3,1fr) auto;gap:.8rem;align-items:end}
+.field{display:flex;flex-direction:column;gap:.35rem}
+.field label{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--muted-2)}
+.field select{appearance:none;background:var(--carbon-3) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23f25c05' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat right .9rem center;color:var(--ink);font-family:"Hanken Grotesk";font-size:.98rem;font-weight:600;border:1px solid var(--line);border-radius:6px;padding:.78rem 2.4rem .78rem .9rem;cursor:pointer;transition:border-color .25s var(--ease)}
+.field select:hover{border-color:rgba(242,92,5,.55)}
+.field select:focus-visible{outline:3px solid var(--orange-soft);outline-offset:2px;border-color:var(--orange)}
+.field select:disabled{opacity:.5;cursor:not-allowed}
+.finder-form .btn{height:46px;white-space:nowrap}
+.finder-note{margin:1rem 0 0;font-size:.82rem;color:var(--muted-2)}
+
+/* ===== BANDA CONFIANZA ===== */
+.trust{border-bottom:1px solid var(--line);background:var(--carbon-2)}
+.trust-row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1.2rem 2rem;padding:1.4rem 0}
+.trust-item{display:flex;align-items:center;gap:.7rem;font-size:.92rem;color:var(--ink);font-weight:600}
+.trust-item svg{width:24px;height:24px;color:var(--orange);flex:none}
+.trust-item small{display:block;color:var(--muted-2);font-weight:500;font-size:.78rem;letter-spacing:.02em}
+
+/* ===== MARCAS ===== */
+.brands{padding:clamp(40px,6vw,64px) 0;border-bottom:1px solid var(--line)}
+.brands .lbl{text-align:center;margin:0 0 1.8rem;font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted-2);font-weight:700}
+.brand-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.brand-cell{background:var(--carbon);display:grid;place-items:center;padding:1.3rem .6rem;min-height:84px;transition:background .25s var(--ease)}
+.brand-cell:hover{background:var(--carbon-3)}
+.brand-cell span{font-family:"Bricolage Grotesque";font-weight:800;font-size:1.05rem;letter-spacing:.02em;color:var(--muted);text-transform:uppercase;transition:color .25s var(--ease);text-align:center;line-height:1}
+.brand-cell:hover span{color:var(--orange-soft)}
+
 /* ===== SECTION SHELL ===== */
 .section{padding:clamp(64px,9vw,120px) 0}
 .section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;margin-bottom:clamp(34px,5vw,56px);flex-wrap:wrap}
@@ -188,6 +221,9 @@ footer{background:#0e1014;border-top:1px solid var(--line);padding:clamp(48px,6v
   .loc{grid-template-columns:1fr}
   .map{min-height:300px}
   .foot-top{grid-template-columns:1fr 1fr}
+  .finder-form{grid-template-columns:1fr 1fr}
+  .finder-form .btn{grid-column:1 / -1}
+  .brand-grid{grid-template-columns:repeat(4,1fr)}
 }
 @media(max-width:768px){
   .nav-links{position:fixed;inset:74px 0 auto 0;flex-direction:column;align-items:stretch;gap:0;background:var(--carbon-2);border-bottom:1px solid var(--line);padding:.5rem 0;transform:translateY(-130%);transition:transform .35s var(--ease);box-shadow:0 20px 40px -20px rgba(0,0,0,.8)}
@@ -208,6 +244,9 @@ footer{background:#0e1014;border-top:1px solid var(--line);padding:clamp(48px,6v
   .fab .txt{display:none}
   .fab{padding:.85rem}
   .hero-ctas .btn{flex:1;justify-content:center}
+  .finder-form{grid-template-columns:1fr}
+  .finder{margin-top:-30px}
+  .brand-grid{grid-template-columns:repeat(2,1fr)}
 }
 @media(prefers-reduced-motion:reduce){
   *{transition:none!important;animation:none!important;scroll-behavior:auto!important}
@@ -258,7 +297,7 @@ footer{background:#0e1014;border-top:1px solid var(--line);padding:clamp(48px,6v
   <div class="wrap hero-content">
     <span class="eyebrow">Repuestos &amp; servicio automotriz · La Serena</span>
     <h1>Tu auto, <span class="slash">/</span> de vuelta a la ruta.</h1>
-    <p class="sub">Especialistas en motor de arranque, alternador y baterías. Diagnóstico al toque, repuestos con garantía y mano de obra que no falla.</p>
+    <p class="sub">Especialistas en sistema de arranque y carga: motores de partida, alternadores, reguladores, bendix, carbones y baterías. Cotiza con tu marca, modelo y año.</p>
     <div class="hero-ctas">
       <a class="btn btn-primary" href="https://wa.me/56971845174?text=Hola%20Central%20Arranque%2C%20mi%20auto%20no%20parte%2C%20necesito%20ayuda" target="_blank" rel="noopener">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.5 23.5l1.6-5.8A11.4 11.4 0 1112 23.4a11.4 11.4 0 01-5.6-1.5L.5 23.5zM6.8 20l.4.2a9.5 9.5 0 005 1.4 9.5 9.5 0 10-9.5-9.5c0 1.8.5 3.6 1.5 5.1l.2.4-1 3.4 3.4-1zm10.9-5.4c-.1-.2-.5-.3-1-.6-.5-.2-2.9-1.4-3.3-1.6-.5-.1-.8-.2-1 .3-.3.4-1.1 1.4-1.4 1.7-.2.2-.5.3-.9.1-.5-.2-2-.8-3.8-2.4-1.4-1.2-2.4-2.8-2.6-3.2-.3-.5 0-.7.2-1l.6-.7c.2-.2.3-.4.4-.7.1-.2.1-.5 0-.7l-1-2.5c-.3-.6-.6-.5-.8-.5h-.7c-.3 0-.7.1-1 .5C2.4 5.1 2 5.9 2 7.7s1.3 3.6 1.5 3.9c.2.2 2.6 4 6.3 5.6.9.4 1.6.6 2.1.8.9.3 1.7.2 2.3.1.7-.1 2.1-.8 2.4-1.7.3-.8.3-1.5.2-1.7z"/></svg>
@@ -268,8 +307,87 @@ footer{background:#0e1014;border-top:1px solid var(--line);padding:clamp(48px,6v
     </div>
     <div class="hero-meta">
       <div class="m"><b><span class="stars">★</span> 4.8</b><span>120+ reseñas Google</span></div>
-      <div class="m"><b>La Serena</b><span>Zona Industrial</span></div>
+      <div class="m"><b>La Serena</b><span>Colón #46 · Centro</span></div>
       <div class="m"><b>+15 años</b><span>en la ruta</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- BUSCADOR POR AUTO -->
+<div class="wrap finder">
+  <div class="finder-card">
+    <div class="lead">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 13l1.6-5A2 2 0 016.5 6.5h11a2 2 0 011.9 1.4L21 13M5 13h14v5a1 1 0 01-1 1h-1a1 1 0 01-1-1v-1H8v1a1 1 0 01-1 1H6a1 1 0 01-1-1v-5z"/><circle cx="7.5" cy="16" r="1"/><circle cx="16.5" cy="16" r="1"/></svg>
+      <div>
+        <h2>Encuentra tu repuesto</h2>
+        <p>Dinos qué auto tienes y te cotizamos al toque por WhatsApp.</p>
+      </div>
+    </div>
+    <form class="finder-form" id="finder">
+      <div class="field">
+        <label for="f-marca">Marca</label>
+        <select id="f-marca" name="marca" required>
+          <option value="" disabled selected>Selecciona</option>
+          <option>Toyota</option><option>Nissan</option><option>Hyundai</option>
+          <option>Chevrolet</option><option>Suzuki</option><option>Kia</option>
+          <option>Mitsubishi</option><option>Ford</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="f-modelo">Modelo</label>
+        <select id="f-modelo" name="modelo" disabled>
+          <option value="" disabled selected>Elige marca primero</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="f-anio">Año</label>
+        <select id="f-anio" name="anio">
+          <option value="" disabled selected>Selecciona</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+        Buscar
+      </button>
+    </form>
+    <p class="finder-note">¿No aparece tu modelo? Escríbenos igual: trabajamos casi todas las marcas del mercado chileno.</p>
+  </div>
+</div>
+
+<!-- BANDA CONFIANZA -->
+<section class="trust">
+  <div class="wrap trust-row">
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg>
+      <span>Garantía 6 meses<small>repuestos y mano de obra</small></span>
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 13l1.6-5A2 2 0 016.5 6.5h7a2 2 0 012 2V13M3 13h13v5H3v-5z"/><path d="M16 10h3l2 3v5h-5"/><circle cx="7" cy="18" r="1.6"/><circle cx="18" cy="18" r="1.6"/></svg>
+      <span>Despacho a todo Chile<small>Starken · Chilexpress</small></span>
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="M2.5 9.5h19M6 15h4"/></svg>
+      <span>Pago con Webpay<small>débito y crédito</small></span>
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 2a7 7 0 00-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 00-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+      <span>+15 años en La Serena<small>Colón #46</small></span>
+    </div>
+  </div>
+</section>
+
+<!-- MARCAS -->
+<section class="brands">
+  <div class="wrap">
+    <p class="lbl">Trabajamos con repuestos de marca</p>
+    <div class="brand-grid">
+      <div class="brand-cell"><span>Bosch</span></div>
+      <div class="brand-cell"><span>Denso</span></div>
+      <div class="brand-cell"><span>Valeo</span></div>
+      <div class="brand-cell"><span>Cargo</span></div>
+      <div class="brand-cell"><span>Hella</span></div>
+      <div class="brand-cell"><span>Mitsubishi&nbsp;Electric</span></div>
+      <div class="brand-cell"><span>WAI</span></div>
     </div>
   </div>
 </section>
@@ -282,38 +400,38 @@ footer{background:#0e1014;border-top:1px solid var(--line);padding:clamp(48px,6v
         <span class="eyebrow">Lo que hacemos</span>
         <h2>Servicios</h2>
       </div>
-      <p>De la falla eléctrica al freno chillón: lo resolvemos en el día y con repuesto a mano.</p>
+      <p>Somos especialistas en el sistema de arranque y carga. Reparamos, reacondicionamos y vendemos la pieza exacta para tu auto.</p>
     </div>
     <div class="svc-grid">
       <article class="svc">
         <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3.2"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg></div>
-        <h3>Motor de arranque</h3>
-        <p>Reparación y cambio de bendix, escobillas y solenoide. Lo dejamos partiendo a la primera.</p>
+        <h3>Motores de partida</h3>
+        <p>Nuevos, reacondicionados y reparación. Lo dejamos partiendo a la primera, con garantía.</p>
       </article>
       <article class="svc">
         <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M13 2L4 14h6l-1 8 9-12h-6l1-8z"/></svg></div>
-        <h3>Alternador</h3>
-        <p>Diagnóstico de carga, rectificadores y regulador. Que tu batería nunca quede a media máquina.</p>
+        <h3>Alternadores</h3>
+        <p>Diagnóstico de carga, cambio y reacondicionamiento. Que tu batería nunca quede a media máquina.</p>
       </article>
       <article class="svc">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="7" width="18" height="11" rx="2"/><path d="M7 7V5h4v2M14 7V5h3v2M8 12h2M9 11v2"/></svg></div>
-        <h3>Baterías</h3>
-        <p>Venta, instalación y test de carga gratis. Marcas con garantía y entrega inmediata.</p>
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 13h4l2-4 3 8 2-4h5"/><rect x="2.5" y="5" width="19" height="14" rx="2"/></svg></div>
+        <h3>Reguladores de voltaje</h3>
+        <p>Reguladores y rectificadores para todas las marcas. Controlamos la carga de tu sistema eléctrico.</p>
       </article>
       <article class="svc">
         <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5"/><path d="M12 3v3.5M12 17.5V21M3 12h3.5M17.5 12H21"/></svg></div>
-        <h3>Frenos</h3>
-        <p>Pastillas, discos y purgado de líquido. Frenado firme y sin ruidos, garantizado.</p>
+        <h3>Bendix y automáticos</h3>
+        <p>Bendix, solenoides y automáticos de arranque. La pieza correcta, original o alternativa.</p>
       </article>
       <article class="svc">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4M7 8l2 2-2 2M12 12h4"/></svg></div>
-        <h3>Scanner / Diagnóstico</h3>
-        <p>Lectura de códigos OBD-II y borrado de fallas. Sabemos qué tiene tu auto antes de abrirlo.</p>
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v6M9 6h6"/><rect x="6" y="9" width="12" height="11" rx="2"/><path d="M9 13h6M9 16h4"/></svg></div>
+        <h3>Carbones y escobillas</h3>
+        <p>Juegos de carbones para motor de partida y alternador. Stock de las medidas más pedidas.</p>
       </article>
       <article class="svc">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 7l3-3 3 3-3 3M17 4l-7 7M3 21l4-1 9-9-3-3-9 9-1 4z"/></svg></div>
-        <h3>Repuestos</h3>
-        <p>Filtros, correas, bujías, bombas de agua y más. Originales y alternativos a buen precio.</p>
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="7" width="18" height="11" rx="2"/><path d="M7 7V5h4v2M14 7V5h3v2M8 12h2M9 11v2M15 12h2"/></svg></div>
+        <h3>Baterías</h3>
+        <p>Venta, instalación y test de carga gratis. Marcas con garantía y entrega inmediata.</p>
       </article>
     </div>
   </div>
@@ -392,7 +510,7 @@ footer{background:#0e1014;border-top:1px solid var(--line);padding:clamp(48px,6v
         <span class="eyebrow">Pásate o escríbenos</span>
         <h2>Ubicación &amp; horario</h2>
       </div>
-      <p>Estamos en plena zona industrial de La Serena, con estacionamiento al frente.</p>
+      <p>Estamos en pleno centro de La Serena, en Colón #46. Pásate o cotiza por WhatsApp.</p>
     </div>
     <div class="loc">
       <div class="map">
@@ -405,11 +523,11 @@ footer{background:#0e1014;border-top:1px solid var(--line);padding:clamp(48px,6v
         <h2>Te esperamos</h2>
         <div class="addr">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2a7 7 0 00-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 00-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
-          <span>Av. Las Industrias 1820, La Serena<br><small style="color:var(--muted-2)">Región de Coquimbo · Frente a estación de servicio</small></span>
+          <span>Colón #46, La Serena<br><small style="color:var(--muted-2)">Región de Coquimbo · Centro de La Serena</small></span>
         </div>
         <ul class="hours">
           <li><span>Lunes a Viernes</span><b>9:30 – 18:30</b></li>
-          <li><span>Sábado</span><b>9:30 – 14:30</b></li>
+          <li class="closed"><span>Sábado</span><b>Cerrado</b></li>
           <li class="closed"><span>Domingo</span><b>Cerrado</b></li>
         </ul>
         <a class="btn btn-primary" href="https://wa.me/56971845174?text=Hola%20Central%20Arranque%2C%20quiero%20pasar%20al%20taller%2C%20necesito%20la%20direcci%C3%B3n%20y%20horario" target="_blank" rel="noopener">Cotiza por WhatsApp</a>
@@ -440,7 +558,7 @@ footer{background:#0e1014;border-top:1px solid var(--line);padding:clamp(48px,6v
           </svg>
           Central<span class="b-accent">Arranque</span>
         </a>
-        <p>Repuestos para automóvil y servicio automotriz en La Serena. Motor de arranque, alternador, baterías, frenos y diagnóstico.</p>
+        <p>Especialistas en sistema de arranque y carga en La Serena. Motores de partida, alternadores, reguladores, bendix, carbones y baterías.</p>
       </div>
       <div class="foot-col">
         <h4>Navegación</h4>
@@ -452,8 +570,8 @@ footer{background:#0e1014;border-top:1px solid var(--line);padding:clamp(48px,6v
       <div class="foot-col">
         <h4>Contacto</h4>
         <a href="https://wa.me/56971845174?text=Hola%20Central%20Arranque" target="_blank" rel="noopener">WhatsApp +56 9 7184 5174</a>
-        <a href="#contacto">Av. Las Industrias 1820, La Serena</a>
-        <a href="#contacto">Lun–Vie 9:30–18:30 · Sáb 9:30–14:30</a>
+        <a href="#contacto">Colón #46, La Serena</a>
+        <a href="#contacto">Lun–Vie 9:30–18:30</a>
       </div>
     </div>
     <div class="foot-bottom">
@@ -491,14 +609,14 @@ footer{background:#0e1014;border-top:1px solid var(--line);padding:clamp(48px,6v
   /* ---- Catálogo (genera cards + WhatsApp prellenado) ---- */
   var WA = 'https://wa.me/56971845174?text=';
   var productos = [
-    {n:'Batería 12V 75Ah', tag:'Más vendido', precio:79990, seed:'arranque-ind-bat'},
-    {n:'Motor de arranque reacondicionado', tag:'Garantía 6m', precio:64990, seed:'arranque-ind-mot'},
-    {n:'Alternador 90A', tag:'OEM', precio:89990, seed:'arranque-ind-alt'},
-    {n:'Kit pastillas de freno', tag:'', precio:34990, seed:'arranque-ind-fre'},
-    {n:'Discos de freno (par)', tag:'', precio:54990, seed:'arranque-ind-dis'},
-    {n:'Kit de filtros (aceite + aire)', tag:'', precio:19990, seed:'arranque-ind-fil'},
-    {n:'Bujías iridium (juego x4)', tag:'', precio:28990, seed:'arranque-ind-buj'},
-    {n:'Bomba de agua', tag:'', precio:42990, seed:'arranque-ind-bom'}
+    {n:'Motor de partida reacondicionado', tag:'Más vendido', precio:64990, seed:'arranque-ind-mot'},
+    {n:'Alternador 90A', tag:'Garantía 6m', precio:89990, seed:'arranque-ind-alt'},
+    {n:'Regulador de voltaje', tag:'', precio:24990, seed:'arranque-ind-reg'},
+    {n:'Bendix / automático de arranque', tag:'', precio:18990, seed:'arranque-ind-ben'},
+    {n:'Juego de carbones', tag:'', precio:8990, seed:'arranque-ind-car'},
+    {n:'Solenoide de arranque', tag:'', precio:21990, seed:'arranque-ind-sol'},
+    {n:'Batería 12V 75Ah', tag:'OEM', precio:79990, seed:'arranque-ind-bat'},
+    {n:'Rectificador de alternador', tag:'', precio:16990, seed:'arranque-ind-rec'}
   ];
 
   function clp(n){
@@ -523,6 +641,49 @@ footer{background:#0e1014;border-top:1px solid var(--line);padding:clamp(48px,6v
       '</article>';
     }).join('');
     grid.innerHTML = html;
+  }
+
+  /* ---- Buscador por auto (Marca → Modelo → Año → WhatsApp) ---- */
+  var modelos = {
+    'Toyota':['Yaris','Corolla','Hilux','RAV4','Etios','Tacoma','Land Cruiser'],
+    'Nissan':['V16','Versa','Sentra','Qashqai','Navara','X-Trail','March'],
+    'Hyundai':['Accent','Elantra','Tucson','Santa Fe','i10','Creta','Grand i10'],
+    'Chevrolet':['Sail','Spark','Aveo','Captiva','D-Max','Cruze','Tracker'],
+    'Suzuki':['Swift','Baleno','Vitara','Grand Vitara','Celerio','S-Cross'],
+    'Kia':['Rio','Morning','Sportage','Cerato','Soul','Sorento'],
+    'Mitsubishi':['Lancer','L200','Montero','ASX','Outlander','Mirage'],
+    'Ford':['Fiesta','Focus','Ranger','EcoSport','Escape','F-150']
+  };
+
+  var finder = document.getElementById('finder');
+  var selMarca  = document.getElementById('f-marca');
+  var selModelo = document.getElementById('f-modelo');
+  var selAnio   = document.getElementById('f-anio');
+
+  if(finder && selMarca && selModelo && selAnio){
+    /* Años 2024 → 2005 */
+    var aniosFrag = '';
+    for(var y=2024; y>=2005; y--){ aniosFrag += '<option>'+y+'</option>'; }
+    selAnio.insertAdjacentHTML('beforeend', aniosFrag);
+
+    selMarca.addEventListener('change', function(){
+      var lista = modelos[selMarca.value] || [];
+      var opts = '<option value="" disabled selected>Selecciona</option>';
+      lista.forEach(function(m){ opts += '<option>'+m+'</option>'; });
+      selModelo.innerHTML = opts;
+      selModelo.disabled = lista.length === 0;
+    });
+
+    finder.addEventListener('submit', function(e){
+      e.preventDefault();
+      var marca  = selMarca.value;
+      var modelo = (selModelo.value && !selModelo.disabled) ? selModelo.value : '';
+      var anio   = selAnio.value || '';
+      var detalle = [marca, modelo, anio].filter(Boolean).join(' ');
+      var msg = 'Hola Central Arranque, busco un repuesto del sistema de arranque/carga para mi ' +
+                (detalle || 'auto') + '. ¿Tienen stock y cuánto sale?';
+      window.open(WA + encodeURIComponent(msg), '_blank', 'noopener');
+    });
   }
 })();
 </script>
