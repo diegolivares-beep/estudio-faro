@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="es-CL">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Estilos para Dental Art · Estudio Faro</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#ffffff; --bg-soft:#f1f8f7; --ink:#123; --ink-2:#4b6b6b; --line:#dcebe9; --line-2:#cfe3e0;
+  --teal:#1f9ca0; --teal-d:#0c2a2c; --gold:#c9a24b; --wa:#25d366;
+  --r:12px; --r-lg:18px; --r-pill:999px; --ease:cubic-bezier(.16,1,.3,1);
+  --fd:"Bricolage Grotesque",system-ui,sans-serif; --fb:"Hanken Grotesk",system-ui,sans-serif;
+}
+*{margin:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--fb);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}img{max-width:100%;display:block}
+:focus-visible{outline:2px solid var(--teal);outline-offset:3px;border-radius:6px}
+h1,h2,h3{font-family:var(--fd);font-weight:800;letter-spacing:-.02em;line-height:1.06;margin:0;text-wrap:balance}
+.wrap{max-width:1080px;margin:0 auto;padding:0 clamp(20px,5vw,40px)}
+.ef-demobar{position:sticky;top:0;z-index:9999;display:flex;align-items:center;justify-content:space-between;gap:1rem;background:#0c282f;color:#fff;padding:.5rem clamp(14px,4vw,28px);font-family:var(--fb);font-size:.85rem}
+.ef-demobar .ef-back{color:#cfe0de;font-weight:600}.ef-demobar .ef-back:hover{color:#fff}
+.ef-demobar .ef-label{color:#8fb0ac;font-weight:600}@media(max-width:560px){.ef-demobar .ef-label{display:none}}
+.ef-demobar .ef-cta{background:#25d366;color:#06351c;font-weight:700;padding:.4rem .9rem;border-radius:999px;white-space:nowrap}
+.head{position:relative;overflow:hidden;padding:clamp(40px,6vw,72px) 0 clamp(18px,3vw,26px)}
+.head::before{content:"";position:absolute;top:-30%;right:-10%;width:46vw;height:46vw;max-width:560px;background:radial-gradient(circle,rgba(31,156,160,.16),transparent 64%);pointer-events:none}
+.head .wrap{position:relative;z-index:1}
+.eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-weight:700;font-size:.8rem;letter-spacing:.04em;color:var(--teal);background:var(--bg-soft);border:1px solid var(--line);padding:.34rem .8rem;border-radius:var(--r-pill);margin-bottom:1rem}
+.eyebrow .pt{width:7px;height:7px;border-radius:50%;background:var(--teal)}
+.head h1{font-size:clamp(2rem,4.6vw,3.1rem);margin-bottom:.9rem}
+.head h1 em{color:var(--teal);font-style:normal}
+.head .sub{font-size:clamp(1.05rem,1.5vw,1.18rem);color:var(--ink-2);max-width:62ch}
+.sel{padding:clamp(24px,4vw,40px) 0 clamp(48px,7vw,80px)}
+.sel h2{font-size:clamp(1.4rem,3vw,1.9rem);margin-bottom:.4rem}
+.sel .lead{color:var(--ink-2);max-width:60ch;margin-bottom:1.8rem}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.3rem}
+@media(max-width:860px){.cards{grid-template-columns:1fr;max-width:460px}}
+.card{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;background:#fff;transition:transform .3s var(--ease),box-shadow .3s var(--ease),border-color .3s;position:relative}
+.card:hover{transform:translateY(-5px);box-shadow:0 30px 60px -32px rgba(12,42,44,.4);border-color:var(--line-2)}
+.card .shot{aspect-ratio:16/10;overflow:hidden;background:var(--bg-soft);border-bottom:1px solid var(--line)}
+.card .shot img{width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .4s var(--ease)}
+.card:hover .shot img{transform:scale(1.04)}
+.card .b{padding:1.1rem 1.2rem 1.3rem;display:flex;flex-direction:column;gap:.4rem;flex:1}
+.card .st{font-size:.74rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--teal)}
+.card h3{font-size:1.22rem}
+.card p{color:var(--ink-2);font-size:.93rem;flex:1}
+.card .go{margin-top:.5rem;font-weight:700;color:var(--ink);display:inline-flex;align-items:center;gap:.4rem}
+.card .go .ar{color:var(--teal);transition:transform .25s var(--ease)}
+.card:hover .go .ar{transform:translateX(5px)}
+.close{margin-top:2.4rem;background:linear-gradient(150deg,var(--teal-d),#10393b);color:#fff;border-radius:var(--r-lg);padding:clamp(24px,4vw,38px);text-align:center;position:relative;overflow:hidden}
+.close h2{font-size:clamp(1.4rem,3vw,2rem);margin-bottom:.6rem}
+.close p{color:#bfe0de;max-width:52ch;margin:0 auto 1.3rem}
+.btn{display:inline-flex;align-items:center;gap:.55rem;font-weight:700;font-size:1.02rem;padding:.85rem 1.4rem;border-radius:var(--r-pill);background:var(--wa);color:#06351c;transition:transform .25s var(--ease),box-shadow .25s var(--ease)}
+.btn:hover{transform:translateY(-2px);box-shadow:0 16px 36px -14px rgba(37,211,102,.6)}
+.btn svg{width:1.2em;height:1.2em}
+.foot{text-align:center;color:var(--ink-2);font-size:.85rem;padding:0 0 40px}
+.foot a{color:var(--teal);font-weight:600}
+.fab{position:fixed;right:18px;bottom:18px;z-index:80;width:54px;height:54px;border-radius:50%;background:var(--wa);color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 30px -8px rgba(37,211,102,.6);transition:transform .25s var(--ease)}
+.fab svg{width:28px;height:28px}.fab:hover{transform:scale(1.08)}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<div class="ef-demobar">
+  <a class="ef-back" href="../../index.html#showcase">← Estudio Faro</a>
+  <span class="ef-label">Propuesta · Clínica Dental Art</span>
+  <a class="ef-cta" href="https://wa.me/56971845174?text=Hola%20Estudio%20Faro%2C%20vi%20las%20opciones%20para%20Dental%20Art" target="_blank" rel="noopener">Conversemos</a>
+</div>
+
+<header class="head">
+  <div class="wrap">
+    <span class="eyebrow"><span class="pt"></span> Estudio Faro · para Clínica Dental Art</span>
+    <h1>Tu web dental, <em>como la imaginas</em>.</h1>
+    <p class="sub">Hola 👋 Soy Diego, de Estudio Faro. Le armé a Dental Art tres estilos —con su marca, sus especialidades y sus datos reales. Ábralos, pruebe el "Agendar hora" y dígame cuál le gusta.</p>
+  </div>
+</header>
+
+<section class="sel">
+  <div class="wrap">
+    <h2>Elija el estilo que más le represente</h2>
+    <p class="lead">Tres caminos para la misma clínica. Los tres con agenda online, especialidades y ubicación. Navéguelos como si fueran suyos.</p>
+    <div class="cards">
+
+      <a class="card" href="clinica.html">
+        <div class="shot"><img src="thumb-clinica.webp" width="760" height="475" alt="Demo estilo Clínica para Dental Art" loading="lazy"></div>
+        <div class="b">
+          <span class="st">Estilo Clínica</span>
+          <h3>Confiable y profesional</h3>
+          <p>Teal limpio, ordenado, con agenda online y especialidades claras. Transmite seriedad y confianza médica. El más versátil.</p>
+          <span class="go">Ver demo <span class="ar">→</span></span>
+        </div>
+      </a>
+
+      <a class="card" href="estetica.html">
+        <div class="shot"><img src="thumb-estetica.webp" width="760" height="475" alt="Demo estilo Estética/Premium para Dental Art" loading="lazy"></div>
+        <div class="b">
+          <span class="st">Estilo Estética</span>
+          <h3>Premium y aspiracional</h3>
+          <p>Oscuro, elegante con detalles dorados. Foco en diseño de sonrisa, carillas y blanqueamiento. Para una imagen de alta gama.</p>
+          <span class="go">Ver demo <span class="ar">→</span></span>
+        </div>
+      </a>
+
+      <a class="card" href="cercana.html">
+        <div class="shot"><img src="thumb-cercana.webp" width="760" height="475" alt="Demo estilo Cercana/Familiar para Dental Art" loading="lazy"></div>
+        <div class="b">
+          <span class="st">Estilo Cercana</span>
+          <h3>Cálida y familiar</h3>
+          <p>Luminosa y amable, quita el miedo al dentista. Para toda la familia. Tonos cálidos y trato cercano.</p>
+          <span class="go">Ver demo <span class="ar">→</span></span>
+        </div>
+      </a>
+
+    </div>
+
+    <div class="close">
+      <h2>¿Cuál le gustó?</h2>
+      <p>Dígame el estilo y lo dejamos a la medida de Dental Art, con sus fotos, convenios y agenda real. Sin compromiso.</p>
+      <a class="btn" href="https://wa.me/56971845174?text=Hola%20Diego%2C%20vi%20las%20opciones%20para%20Dental%20Art%2C%20me%20gust%C3%B3%20el%20estilo%3A%20" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.05L2 22l5.07-1.33A10 10 0 1 0 12 2Zm5.3 14.1c-.22.62-1.3 1.2-1.8 1.24-.46.04-.9.2-3.04-.63-2.57-1-4.2-3.6-4.33-3.77-.13-.17-1.04-1.38-1.04-2.63 0-1.25.66-1.86.9-2.12.22-.25.5-.31.66-.31l.48.01c.15 0 .36-.06.56.43.22.53.74 1.84.8 1.97.07.13.11.29.02.46-.41.83-.85.8-.6 1.22.93 1.6 1.86 2.16 3.3 2.88.25.13.4.11.54-.06.16-.18.62-.72.79-.97.16-.25.33-.2.55-.12.22.08 1.4.66 1.64.78.24.12.4.18.46.28.06.1.06.58-.16 1.2Z"/></svg>
+        Hablar por WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<p class="foot">Propuesta hecha por <a href="../../index.html">Estudio Faro</a> · La Serena–Coquimbo · Demos con datos reales de la clínica.</p>
+
+<a class="fab" href="https://wa.me/56971845174?text=Hola%20Diego%2C%20sobre%20el%20sitio%20de%20Dental%20Art" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.05L2 22l5.07-1.33A10 10 0 1 0 12 2Zm5.3 14.1c-.22.62-1.3 1.2-1.8 1.24-.46.04-.9.2-3.04-.63-2.57-1-4.2-3.6-4.33-3.77-.13-.17-1.04-1.38-1.04-2.63 0-1.25.66-1.86.9-2.12.22-.25.5-.31.66-.31l.48.01c.15 0 .36-.06.56.43.22.53.74 1.84.8 1.97.07.13.11.29.02.46-.41.83-.85.8-.6 1.22.93 1.6 1.86 2.16 3.3 2.88.25.13.4.11.54-.06.16-.18.62-.72.79-.97.16-.25.33-.2.55-.12.22.08 1.4.66 1.64.78.24.12.4.18.46.28.06.1.06.58-.16 1.2Z"/></svg>
+</a>
+
+</body>
+</html>

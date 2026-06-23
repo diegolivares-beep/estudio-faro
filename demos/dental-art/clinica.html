@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Dental Art · Odontología especializada — La Serena</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#ffffff; --bg-soft:#f3f8f8; --ink:#0f2a2c; --ink-2:#51696b; --line:#e2ecec;
+  --teal:#1f9ca0; --teal-deep:#157479; --teal-soft:#d6efef; --teal-tint:#eef8f8;
+  --petrol:#0c282f; --dark:#0c282f; --wa:#25d366;
+  --r:12px; --r-lg:20px; --r-pill:999px;
+  --ease:cubic-bezier(.16,1,.3,1);
+  --shadow-soft:0 16px 44px -24px rgba(15,42,44,.4);
+  --shadow-teal:0 16px 40px -18px rgba(31,156,160,.5);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:"Hanken Grotesk",system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3,.display{font-family:"Bricolage Grotesque",system-ui,sans-serif;line-height:1.04;letter-spacing:-.02em;font-weight:800}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--teal);outline-offset:3px;border-radius:6px}
+.wrap{width:min(1160px,92vw);margin-inline:auto}
+.eyebrow{font-size:.78rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--teal)}
+
+/* ===== DEMO BAR ===== */
+.ef-demobar{position:sticky;top:0;z-index:9999;display:flex;align-items:center;justify-content:space-between;gap:1rem;background:#0c282f;color:#fff;padding:.5rem clamp(14px,4vw,28px);font-family:"Hanken Grotesk",system-ui,sans-serif;font-size:.85rem}
+.ef-demobar .ef-back{color:#cfe0de;font-weight:600;text-decoration:none}.ef-demobar .ef-back:hover{color:#fff}
+.ef-demobar .ef-label{color:#8fb0ac;font-weight:600}@media(max-width:560px){.ef-demobar .ef-label{display:none}}
+.ef-demobar .ef-cta{background:#25d366;color:#06351c;font-weight:700;padding:.4rem .9rem;border-radius:999px;text-decoration:none;white-space:nowrap;transition:transform .25s var(--ease),box-shadow .25s var(--ease)}
+.ef-demobar .ef-cta:hover{transform:translateY(-1px);box-shadow:0 8px 20px -8px rgba(37,211,102,.7)}
+
+/* ===== UTILITY BAR ===== */
+.util{background:var(--petrol);color:#cfe6e6;font-size:.85rem;font-weight:500}
+.util-inner{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.45rem 0}
+.util-left{display:flex;align-items:center;gap:1.4rem;flex-wrap:wrap}
+.util-left a,.util-left span{display:inline-flex;align-items:center;gap:.4rem;color:#cfe6e6;text-decoration:none}
+.util-left a:hover{color:#fff}
+.util svg{width:15px;height:15px;flex-shrink:0;color:#5cc7ca}
+.util-cta{background:var(--teal);color:#fff;font-weight:700;padding:.35rem .9rem;border-radius:var(--r-pill);text-decoration:none;white-space:nowrap;transition:background .25s var(--ease)}
+.util-cta:hover{background:var(--teal-deep)}
+@media(max-width:768px){.util .util-left span.hide-sm{display:none}}
+
+/* ===== LOGO ===== */
+.logo{display:flex;align-items:center;gap:.55rem;text-decoration:none}
+.logo .mark{flex-shrink:0}
+.logo .wm{display:flex;flex-direction:column;line-height:1}
+.logo .wm b{font-family:"Bricolage Grotesque";font-weight:800;font-size:1.18rem;letter-spacing:.02em;color:var(--ink)}
+.logo .wm small{font-size:.54rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--teal);margin-top:2px}
+
+/* ===== NAV ===== */
+.nav{position:sticky;top:0;z-index:900;background:rgba(255,255,255,.86);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);transition:box-shadow .3s var(--ease)}
+.nav.scrolled{box-shadow:0 6px 24px -16px rgba(15,42,44,.35)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;padding:.7rem 0}
+.nav-links{display:flex;align-items:center;gap:.2rem;list-style:none}
+.nav-links>li{position:relative}
+.nav-links a{text-decoration:none;color:var(--ink-2);font-weight:600;font-size:.95rem;padding:.55rem .8rem;border-radius:var(--r-pill);transition:color .25s var(--ease),background .25s var(--ease);display:inline-flex;align-items:center;gap:.3rem}
+.nav-links a:hover,.nav-links a:focus-visible{color:var(--ink);background:var(--teal-tint)}
+/* dropdown */
+.has-drop>a .chev{transition:transform .3s var(--ease)}
+.has-drop.open>a .chev,.has-drop:hover>a .chev{transform:rotate(180deg)}
+.dropdown{position:absolute;top:calc(100% + 8px);left:0;min-width:248px;background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow-soft);padding:.5rem;opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .25s var(--ease),transform .25s var(--ease),visibility .25s;list-style:none}
+.has-drop:hover .dropdown,.has-drop.open .dropdown{opacity:1;visibility:visible;transform:translateY(0)}
+.dropdown a{display:flex;align-items:center;gap:.6rem;padding:.55rem .65rem;border-radius:10px;font-size:.92rem;color:var(--ink);width:100%}
+.dropdown a:hover{background:var(--teal-tint);color:var(--teal-deep)}
+.dropdown a svg{width:18px;height:18px;color:var(--teal);flex-shrink:0}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;font-family:"Hanken Grotesk";font-weight:700;font-size:.95rem;border:none;cursor:pointer;text-decoration:none;border-radius:var(--r-pill);padding:.7rem 1.3rem;transition:transform .25s var(--ease),box-shadow .25s var(--ease),background .25s var(--ease),color .25s var(--ease)}
+.btn-primary{background:var(--teal);color:#fff;box-shadow:var(--shadow-teal)}
+.btn-primary:hover{transform:translateY(-2px);background:var(--teal-deep);box-shadow:0 22px 50px -18px rgba(31,156,160,.6)}
+.btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+.btn-ghost:hover{border-color:var(--teal);color:var(--teal-deep);transform:translateY(-2px)}
+.btn-light{background:rgba(255,255,255,.16);color:#fff;border:1.5px solid rgba(255,255,255,.32);backdrop-filter:blur(6px)}
+.btn-light:hover{background:rgba(255,255,255,.26);transform:translateY(-2px)}
+.btn-wa{background:var(--wa);color:#06351c}
+.btn-wa:hover{transform:translateY(-2px);box-shadow:0 18px 40px -14px rgba(37,211,102,.6)}
+.btn-lg{padding:.85rem 1.6rem;font-size:1rem}
+.nav-burger{display:none;background:none;border:1.5px solid var(--line);border-radius:12px;width:46px;height:46px;cursor:pointer;align-items:center;justify-content:center;flex-direction:column;gap:5px}
+.nav-burger span{display:block;width:20px;height:2px;background:var(--ink);border-radius:2px;transition:transform .3s var(--ease),opacity .3s var(--ease)}
+.nav-burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-burger.open span:nth-child(2){opacity:0}
+.nav-burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* ===== HERO ===== */
+.hero{position:relative;background:linear-gradient(160deg,var(--teal-tint) 0%,#fff 60%);overflow:hidden}
+.hero-inner{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(1.5rem,4vw,3.5rem);align-items:center;padding:clamp(2.4rem,6vw,5rem) 0 clamp(2.6rem,6vw,5rem)}
+.hero-copy .eyebrow{margin-bottom:.6rem}
+.hero h1{font-size:clamp(2.4rem,6vw,4.4rem);max-width:13ch;margin-bottom:1rem}
+.hero h1 em{font-style:normal;color:var(--teal)}
+.hero p.sub{font-size:clamp(1.05rem,2vw,1.28rem);max-width:44ch;color:var(--ink-2);font-weight:500}
+.hero-cta{display:flex;flex-wrap:wrap;gap:.8rem;margin:1.7rem 0 1.6rem}
+.hero-badges{display:flex;flex-wrap:wrap;gap:.5rem .9rem;align-items:center;font-weight:600;font-size:.92rem;color:var(--ink-2)}
+.hero-badges .b{display:inline-flex;align-items:center;gap:.4rem}
+.hero-badges .star{color:#f0a830;font-weight:700}
+.hero-badges .dot{width:5px;height:5px;border-radius:50%;background:var(--teal);display:inline-block}
+.hero-media{position:relative}
+.hero-media .photo{border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow-soft);aspect-ratio:4/5}
+.hero-media .photo img{width:100%;height:100%;object-fit:cover}
+.hero-media .float{position:absolute;left:-18px;bottom:26px;background:#fff;border-radius:16px;box-shadow:var(--shadow-soft);padding:.9rem 1.1rem;display:flex;align-items:center;gap:.7rem;border:1px solid var(--line)}
+.hero-media .float .ic{width:42px;height:42px;border-radius:12px;background:var(--teal-tint);display:flex;align-items:center;justify-content:center;color:var(--teal-deep);flex-shrink:0}
+.hero-media .float .ic svg{width:22px;height:22px}
+.hero-media .float b{display:block;font-family:"Bricolage Grotesque";font-size:1.05rem;color:var(--ink)}
+.hero-media .float span{font-size:.82rem;color:var(--ink-2)}
+
+/* ===== CONVENIOS ===== */
+.convenios{background:var(--petrol);color:#cfe6e6}
+.convenios-inner{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:.6rem 1.2rem;padding:1.1rem 0}
+.convenios .lbl{font-size:.8rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#7fb3b5;margin-right:.4rem}
+.convenios .conv-line{font-size:.96rem;font-weight:600;color:#eaf6f6}
+.conv-pill{background:rgba(255,255,255,.08);border:1px solid rgba(92,199,202,.25);color:#eafafa;font-weight:600;font-size:.92rem;padding:.4rem 1rem;border-radius:var(--r-pill)}
+
+/* ===== SECTION SHELL ===== */
+section{position:relative}
+.sec-pad{padding:clamp(3.4rem,8vw,6rem) 0}
+.sec-head{max-width:62ch}
+.sec-head.center{margin-inline:auto;text-align:center}
+.sec-head h2{font-size:clamp(1.9rem,4.2vw,3rem);margin:.5rem 0 .7rem}
+.sec-head p{color:var(--ink-2);font-size:1.06rem;max-width:56ch}
+.sec-head.center p{margin-inline:auto}
+
+/* ===== ESPECIALIDADES ===== */
+#especialidades{background:var(--bg-soft)}
+.esp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2.4rem}
+.esp-card{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:1.5rem;transition:transform .3s var(--ease),box-shadow .3s var(--ease),border-color .3s var(--ease)}
+.esp-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-soft);border-color:var(--teal-soft)}
+.esp-card .ic{width:52px;height:52px;border-radius:14px;background:var(--teal-tint);display:flex;align-items:center;justify-content:center;color:var(--teal-deep);margin-bottom:1rem;transition:background .3s var(--ease),color .3s var(--ease)}
+.esp-card:hover .ic{background:var(--teal);color:#fff}
+.esp-card .ic svg{width:26px;height:26px}
+.esp-card h3{font-size:1.18rem;margin-bottom:.4rem}
+.esp-card p{color:var(--ink-2);font-size:.95rem}
+
+/* ===== RESULTADOS / SLIDER ===== */
+#resultados .res-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,4vw,3rem);align-items:center;margin-top:2.4rem}
+.ba{position:relative;border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow-soft);aspect-ratio:4/3;user-select:none;touch-action:none}
+.ba img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ba .after{clip-path:inset(0 0 0 50%);}
+.ba .tag-ba{position:absolute;top:12px;font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:.25rem .7rem;border-radius:var(--r-pill);background:rgba(12,40,47,.78);color:#fff;backdrop-filter:blur(4px)}
+.ba .tag-before{left:12px}
+.ba .tag-after{right:12px;background:var(--teal)}
+.ba .divider{position:absolute;top:0;bottom:0;left:50%;width:3px;background:#fff;transform:translateX(-50%);box-shadow:0 0 0 1px rgba(12,40,47,.15)}
+.ba .handle{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:44px;height:44px;border-radius:50%;background:#fff;box-shadow:0 6px 18px -6px rgba(12,40,47,.5);display:flex;align-items:center;justify-content:center;cursor:ew-resize;color:var(--teal-deep)}
+.ba .handle svg{width:24px;height:24px}
+.ba input[type=range]{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:ew-resize}
+.res-copy h2{font-size:clamp(1.8rem,4vw,2.7rem);margin:.5rem 0 .8rem}
+.res-copy p{color:var(--ink-2);margin-bottom:1rem}
+.res-stats{display:flex;gap:1.8rem;flex-wrap:wrap;margin-top:1.4rem}
+.res-stats .s b{font-family:"Bricolage Grotesque";font-size:1.9rem;color:var(--teal-deep);display:block;line-height:1}
+.res-stats .s span{font-size:.85rem;color:var(--ink-2);font-weight:600}
+
+/* ===== CLINICA / BENTO ===== */
+#clinica{background:var(--bg-soft)}
+.bento{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:170px;gap:.9rem;margin-top:2.4rem}
+.bento figure{position:relative;border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow-soft)}
+.bento figure img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
+.bento figure:hover img{transform:scale(1.06)}
+.bento .b1{grid-column:span 2;grid-row:span 2}
+.bento .b2{grid-column:span 2;grid-row:span 1}
+.bento .b3{grid-column:span 1;grid-row:span 1}
+.bento .b4{grid-column:span 1;grid-row:span 1}
+.bento figcaption{position:absolute;left:0;right:0;bottom:0;padding:1rem;background:linear-gradient(0deg,rgba(12,40,47,.8),transparent);color:#fff;font-weight:600;font-size:.95rem}
+
+/* ===== EQUIPO ===== */
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:2.4rem}
+.team-card{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
+.team-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-soft)}
+.team-card .ph{aspect-ratio:4/3;overflow:hidden}
+.team-card .ph img{width:100%;height:100%;object-fit:cover;transition:transform .5s var(--ease)}
+.team-card:hover .ph img{transform:scale(1.05)}
+.team-card .body{padding:1.2rem 1.3rem}
+.team-card h3{font-size:1.2rem}
+.team-card .spec{color:var(--teal-deep);font-weight:700;font-size:.9rem;margin:.15rem 0 .5rem}
+.team-card p{color:var(--ink-2);font-size:.92rem}
+
+/* ===== TESTIMONIOS ===== */
+#testimonios{background:var(--bg-soft)}
+.test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:2.4rem}
+.test-card{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:1.5rem;display:flex;flex-direction:column;gap:.8rem}
+.test-card .stars{color:#f0a830;font-size:1rem;letter-spacing:.1em}
+.test-card p{color:var(--ink);font-size:1rem;flex:1}
+.test-card .who{display:flex;align-items:center;gap:.7rem;margin-top:.4rem}
+.test-card .who img{width:44px;height:44px;border-radius:50%;object-fit:cover}
+.test-card .who .av{width:44px;height:44px;border-radius:50%;background:var(--teal-tint);color:var(--teal-deep);display:flex;align-items:center;justify-content:center;font-family:"Bricolage Grotesque";font-weight:800;font-size:1.05rem}
+.test-card .who b{display:block;font-size:.95rem}
+.test-card .who span{font-size:.82rem;color:var(--ink-2)}
+
+/* ===== AGENDAR ===== */
+#agendar{background:linear-gradient(165deg,var(--petrol),#103439);color:#fff;overflow:hidden}
+#agendar .eyebrow{color:#5cc7ca}
+#agendar .sec-head h2{color:#fff}
+#agendar .sec-head p{color:#bfdedf}
+.agenda-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(1.5rem,4vw,3rem);margin-top:2.4rem;align-items:start}
+.agenda-aside .ai{display:flex;gap:.9rem;align-items:flex-start;margin-bottom:1.3rem}
+.agenda-aside .ai .ic{width:44px;height:44px;border-radius:12px;background:rgba(92,199,202,.16);color:#5cc7ca;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.agenda-aside .ai .ic svg{width:22px;height:22px}
+.agenda-aside .ai b{display:block;font-family:"Bricolage Grotesque";font-size:1.05rem}
+.agenda-aside .ai span{color:#bfdedf;font-size:.92rem}
+.agenda-card{background:#fff;color:var(--ink);border-radius:var(--r-lg);padding:clamp(1.4rem,3vw,2rem);box-shadow:var(--shadow-soft)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
+.field{display:flex;flex-direction:column;gap:.35rem}
+.field.full{grid-column:1/-1}
+.field label{font-weight:600;font-size:.88rem;color:var(--ink)}
+.field input,.field select{font-family:"Hanken Grotesk";font-size:1rem;padding:.7rem .85rem;border:1.5px solid var(--line);border-radius:10px;background:#fff;color:var(--ink);transition:border-color .25s var(--ease),box-shadow .25s var(--ease)}
+.field input:focus,.field select:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 3px rgba(31,156,160,.16)}
+.form-note{font-size:.82rem;color:var(--ink-2);margin-top:.2rem}
+.form-success{display:none;text-align:center;padding:1.4rem .5rem;animation:pop .5s var(--ease)}
+.form-success.show{display:block}
+.form-success .check{width:64px;height:64px;border-radius:50%;background:var(--teal-tint);color:var(--teal-deep);display:flex;align-items:center;justify-content:center;margin:0 auto 1rem}
+.form-success .check svg{width:34px;height:34px}
+.form-success h3{font-size:1.4rem;margin-bottom:.5rem}
+.form-success p{color:var(--ink-2)}
+.form-success button{margin-top:1.2rem}
+@keyframes pop{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:none}}
+
+/* ===== UBICACION ===== */
+.loc-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(1.5rem,4vw,3rem);margin-top:2.4rem;align-items:stretch}
+.map{position:relative;border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow-soft);min-height:340px;background:
+  linear-gradient(135deg,#dceeee,#eaf6f6);}
+.map .grid-lines{position:absolute;inset:0;background-image:
+  linear-gradient(rgba(31,156,160,.1) 1px,transparent 1px),
+  linear-gradient(90deg,rgba(31,156,160,.1) 1px,transparent 1px);
+  background-size:40px 40px}
+.map .road{position:absolute;background:#fff;opacity:.85}
+.map .r1{top:0;bottom:0;left:38%;width:14px;transform:skewX(-6deg)}
+.map .r2{left:0;right:0;top:55%;height:14px}
+.map .pin{position:absolute;top:48%;left:40%;transform:translate(-50%,-100%);text-align:center;color:var(--teal-deep)}
+.map .pin .dot{width:26px;height:26px;border-radius:50% 50% 50% 0;background:var(--teal);transform:rotate(-45deg);margin:0 auto;box-shadow:0 8px 18px -6px rgba(31,156,160,.7);position:relative;animation:bob 2.4s var(--ease) infinite}
+.map .pin .dot::after{content:"";position:absolute;inset:7px;background:#fff;border-radius:50%}
+.map .pin .lbl{margin-top:.6rem;background:#fff;border-radius:var(--r-pill);padding:.3rem .8rem;font-weight:700;font-size:.82rem;box-shadow:var(--shadow-soft);white-space:nowrap;color:var(--ink)}
+@keyframes bob{0%,100%{transform:rotate(-45deg) translateY(0)}50%{transform:rotate(-45deg) translateY(-6px)}}
+.loc-card{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:clamp(1.4rem,3vw,2rem);display:flex;flex-direction:column;gap:1.1rem}
+.loc-card .li{display:flex;gap:.85rem;align-items:flex-start}
+.loc-card .li .ic{width:42px;height:42px;border-radius:12px;background:var(--teal-tint);color:var(--teal-deep);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.loc-card .li .ic svg{width:21px;height:21px}
+.loc-card .li b{display:block;font-family:"Bricolage Grotesque";font-size:1.02rem;margin-bottom:.15rem}
+.loc-card .li span,.loc-card .li a{color:var(--ink-2);font-size:.94rem;display:block;text-decoration:none}
+.loc-card .li a:hover{color:var(--teal-deep)}
+.loc-card .li .hr{display:flex;justify-content:space-between;gap:1rem;font-size:.92rem;color:var(--ink-2);padding:.12rem 0}
+.loc-card .li .hr.closed{color:#b04a3a}
+
+/* ===== FOOTER ===== */
+.footer{background:#081e24;color:#7e9a98;padding:2.8rem 0 2.2rem}
+.footer-top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:2rem;align-items:flex-start;margin-bottom:1.8rem}
+.footer .logo .wm b{color:#fff}
+.footer .f-contact{display:flex;flex-direction:column;gap:.4rem;font-size:.92rem}
+.footer .f-contact a{color:#cfe6e6;text-decoration:none;font-weight:600}
+.footer .f-contact a:hover{color:#fff}
+.footer hr{border:none;border-top:1px solid rgba(126,154,152,.22);margin:1.2rem 0}
+.footer .f-bottom{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.6rem;font-size:.85rem;align-items:center}
+.footer .note{font-size:.8rem;color:#5d7775}
+.footer .note a{color:#9bbab8;font-weight:600;text-decoration:none}
+.footer .note a:hover{color:#fff}
+
+/* ===== FAB ===== */
+.fab{position:fixed;bottom:22px;right:22px;z-index:950;background:var(--wa);color:#06351c;width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 14px 34px -10px rgba(37,211,102,.7);text-decoration:none;transition:transform .3s var(--ease)}
+.fab:hover{transform:scale(1.08) translateY(-2px)}
+.fab svg{width:30px;height:30px}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:900px){
+  .hero-inner{grid-template-columns:1fr;gap:2rem}
+  .hero-media{max-width:440px}
+  .esp-grid,.team-grid,.test-grid{grid-template-columns:repeat(2,1fr)}
+  #resultados .res-grid,.agenda-grid,.loc-grid{grid-template-columns:1fr}
+  .bento{grid-template-columns:repeat(2,1fr);grid-auto-rows:150px}
+  .bento .b1{grid-column:span 2}
+}
+@media(max-width:768px){
+  .nav-links{position:fixed;inset:0 0 0 auto;width:min(82vw,330px);flex-direction:column;align-items:stretch;background:#fff;padding:5.5rem 1.2rem 2rem;gap:.2rem;box-shadow:-12px 0 40px -18px rgba(15,42,44,.4);transform:translateX(100%);transition:transform .35s var(--ease);overflow-y:auto}
+  .nav-links.open{transform:translateX(0)}
+  .nav-links a{padding:.85rem 1rem;font-size:1.05rem;border-radius:12px}
+  .dropdown{position:static;opacity:1;visibility:visible;transform:none;box-shadow:none;border:none;padding:.2rem 0 .4rem .8rem;min-width:auto;max-height:0;overflow:hidden;transition:max-height .3s var(--ease)}
+  .has-drop.open .dropdown{max-height:520px}
+  .nav-burger{display:flex;z-index:10}
+  .nav-cta-desktop{display:none}
+}
+@media(max-width:560px){
+  .esp-grid,.team-grid,.test-grid{grid-template-columns:1fr}
+  .form-row{grid-template-columns:1fr}
+  .bento{grid-template-columns:1fr}
+  .bento .b1,.bento .b2{grid-column:span 1}
+  .res-stats{gap:1.2rem}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+}
+</style>
+</head>
+<body>
+
+<!-- ===== ESTUDIO FARO DEMO BAR ===== -->
+<div class="ef-demobar">
+  <a class="ef-back" href="../../index.html#showcase">← Estudio Faro</a>
+  <span class="ef-label">Demo · Dental Art — estilo Clínica</span>
+  <a class="ef-cta" href="https://wa.me/56971845174?text=Hola%20Estudio%20Faro%2C%20vi%20la%20demo%20de%20Cl%C3%ADnica%20Dental%20Art" target="_blank" rel="noopener">Quiero una así</a>
+</div>
+
+<!-- ===== UTILITY BAR ===== -->
+<div class="util">
+  <div class="wrap util-inner">
+    <div class="util-left">
+      <a href="tel:+56963271545">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        +56 9 6327 1545
+      </a>
+      <span class="hide-sm">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        Lun a Vie 9–18 · Sáb 9:30–12:30
+      </span>
+    </div>
+    <a class="util-cta" href="#agendar">Agendar hora</a>
+  </div>
+</div>
+
+<!-- ===== NAV ===== -->
+<header class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a class="logo" href="#" aria-label="Dental Art, inicio">
+      <!-- Logo: diente + anillo/órbita teal -->
+      <svg class="mark" width="44" height="44" viewBox="0 0 64 64" aria-hidden="true">
+        <ellipse cx="32" cy="32" rx="27" ry="15" fill="none" stroke="#1f9ca0" stroke-width="3" transform="rotate(-28 32 32)"/>
+        <path d="M32 14c-6.5 0-11 3.4-11 9 0 4.2 1.5 7.3 2.6 12.4.7 3.3 1 8.4 1.7 11.6.5 2.4 1.4 4 3 4 1.4 0 1.9-1.3 2.3-3.6.4-2.5.6-5.4 1.4-5.4s1 2.9 1.4 5.4c.4 2.3.9 3.6 2.3 3.6 1.6 0 2.5-1.6 3-4 .7-3.2 1-8.3 1.7-11.6C42.5 30.3 44 27.2 44 23c0-5.6-4.5-9-12-9z" fill="#1f9ca0"/>
+        <circle cx="51" cy="20" r="3" fill="#5cc7ca"/>
+      </svg>
+      <span class="wm"><b>DENTAL ART</b><small>Odontología especializada</small></span>
+    </a>
+
+    <nav>
+      <ul class="nav-links" id="navLinks">
+        <li class="has-drop" id="dropEsp">
+          <a href="#especialidades" id="dropToggle">Especialidades
+            <svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </a>
+          <ul class="dropdown">
+            <li><a href="#especialidades"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 4c-4 0-6 2-6 5 0 5 2 11 4 11s2-5 2-5 0 5 2 5 4-6 4-11c0-3-2-5-6-5z"/></svg>Odontología General</a></li>
+            <li><a href="#especialidades"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 8h16M4 16h16M8 4v16M16 4v16"/></svg>Rehabilitación Oral</a></li>
+            <li><a href="#especialidades"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M7 7l5-5 5 5M9 13h6"/></svg>Implantología</a></li>
+            <li><a href="#especialidades"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4l16 16M4 14c0-4 3-6 6-6m4 0c3 0 6 2 6 6"/></svg>Cirugía Oral</a></li>
+            <li><a href="#especialidades"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M8 8c0 4 8 4 8 8"/></svg>Endodoncia</a></li>
+            <li><a href="#especialidades"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="9" width="16" height="6" rx="3"/><path d="M8 9V7M12 9V6M16 9V7"/></svg>Ortodoncia</a></li>
+            <li><a href="#especialidades"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 14c0-5 3-8 6-8s6 3 6 8M4 14h16"/></svg>Periodoncia</a></li>
+          </ul>
+        </li>
+        <li><a href="#equipo">Equipo</a></li>
+        <li><a href="#resultados">Resultados</a></li>
+        <li><a href="#convenios">Convenios</a></li>
+        <li><a href="#ubicacion">Contacto</a></li>
+        <li><a class="btn btn-primary" style="margin-left:.5rem" href="#agendar">Agendar hora</a></li>
+      </ul>
+    </nav>
+
+    <a class="btn btn-primary nav-cta-desktop" href="#agendar" style="display:none">Agendar hora</a>
+    <button class="nav-burger" id="burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="navLinks">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="wrap hero-inner">
+    <div class="hero-copy">
+      <p class="eyebrow">Clínica dental · La Serena</p>
+      <h1>Tu mejor sonrisa, en manos <em>especialistas</em>.</h1>
+      <p class="sub">Odontología integral con tecnología moderna y trato cercano. Atención por especialista en el Edificio Dentimed, pleno centro de La Serena.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary btn-lg" href="#agendar">Agendar hora</a>
+        <a class="btn btn-ghost btn-lg" href="#especialidades">Ver especialidades</a>
+      </div>
+      <div class="hero-badges">
+        <span class="b"><span class="star">★</span> 4.9 en Google</span>
+        <span class="dot"></span>
+        <span class="b">+3.000 pacientes atendidos</span>
+        <span class="dot"></span>
+        <span class="b">Ed. Dentimed, La Serena</span>
+      </div>
+    </div>
+    <div class="hero-media">
+      <div class="photo">
+        <img src="../../assets/dental/d03.jpg" width="640" height="800" alt="Primer plano de una sonrisa sana tras tratamiento dental" loading="eager">
+      </div>
+      <div class="float">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>
+        <div><b>Atendemos isapres</b><span>y Fonasa · reembolso con bono</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONVENIOS ===== -->
+<section class="convenios" id="convenios">
+  <div class="wrap convenios-inner">
+    <span class="lbl">Convenios</span>
+    <span class="conv-line">Atendemos las principales isapres y Fonasa · reembolso con bono</span>
+  </div>
+</section>
+
+<!-- ===== ESPECIALIDADES ===== -->
+<section class="sec-pad" id="especialidades">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Nuestras especialidades</p>
+      <h2>Todo el cuidado dental, en un solo lugar</h2>
+      <p>Cada tratamiento lo realiza un especialista del área. Desde tu control preventivo hasta procedimientos complejos, con un plan a tu medida.</p>
+    </div>
+    <div class="esp-grid">
+      <article class="esp-card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4c-4 0-6 2.2-6 5 0 5.2 2 11 4 11s2-5 2-5 0 5 2 5 4-5.8 4-11c0-2.8-2-5-6-5z"/></svg></div>
+        <h3>Odontología General</h3>
+        <p>Controles, limpiezas, tapaduras y diagnóstico integral para mantener tu boca sana.</p>
+      </article>
+      <article class="esp-card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="8" rx="2"/><path d="M7 8v8M12 8v8M17 8v8"/></svg></div>
+        <h3>Rehabilitación Oral</h3>
+        <p>Coronas, puentes y prótesis para devolver función y estética a tu dentadura.</p>
+      </article>
+      <article class="esp-card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M8 7l4-4 4 4M9 12h6M10 16h4"/></svg></div>
+        <h3>Implantología</h3>
+        <p>Implantes dentales que reemplazan piezas perdidas con resultados naturales y duraderos.</p>
+      </article>
+      <article class="esp-card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4l6 6-9 9-6 1 1-6 8-8z"/><path d="M13 5l6 6"/></svg></div>
+        <h3>Cirugía Oral</h3>
+        <p>Extracciones, terceros molares y cirugías menores con protocolos seguros.</p>
+      </article>
+      <article class="esp-card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M9 9c0 4 6 4 6 9"/></svg></div>
+        <h3>Endodoncia</h3>
+        <p>Tratamiento de conducto para salvar dientes dañados y eliminar el dolor.</p>
+      </article>
+      <article class="esp-card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="10" width="18" height="5" rx="2.5"/><path d="M7 10V7M12 10V6M17 10V7"/></svg></div>
+        <h3>Ortodoncia</h3>
+        <p>Brackets y alineadores para corregir la posición de tus dientes a toda edad.</p>
+      </article>
+      <article class="esp-card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 15c0-5 3.2-8 7-8s7 3 7 8M4 15h16"/></svg></div>
+        <h3>Periodoncia</h3>
+        <p>Tratamiento de encías para prevenir y controlar la enfermedad periodontal.</p>
+      </article>
+      <article class="esp-card" style="background:var(--teal);color:#fff;border-color:var(--teal);display:flex;flex-direction:column;justify-content:center">
+        <h3 style="color:#fff">¿No sabes qué necesitas?</h3>
+        <p style="color:#e3f6f6;margin-bottom:1rem">Agenda una evaluación y te orientamos con un plan claro.</p>
+        <a class="btn btn-light" href="#agendar" style="align-self:flex-start">Agendar evaluación</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== RESULTADOS / ANTES-DESPUÉS ===== -->
+<section class="sec-pad" id="resultados">
+  <div class="wrap">
+    <div class="res-grid">
+      <div class="ba" id="ba">
+        <img class="before" src="../../assets/dental/d09.jpg" width="600" height="450" alt="Paciente antes del tratamiento dental" loading="lazy">
+        <img class="after" id="baAfter" src="../../assets/dental/d03.jpg" width="600" height="450" alt="Resultado de la sonrisa después del tratamiento" loading="lazy">
+        <span class="tag-ba tag-before">Antes</span>
+        <span class="tag-ba tag-after">Después</span>
+        <div class="divider" id="baDivider"></div>
+        <div class="handle" id="baHandle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/><polyline points="9 18 15 12 9 6" transform="translate(0 0)"/></svg>
+        </div>
+        <input type="range" id="baRange" min="0" max="100" value="50" aria-label="Comparar antes y después: arrastra para revelar">
+      </div>
+      <div class="res-copy">
+        <p class="eyebrow">Casos reales</p>
+        <h2>Resultados que se ven y se sienten</h2>
+        <p>Cada sonrisa es un plan de tratamiento pensado paciente a paciente. Arrastra el control para ver el antes y el después de un caso real de rehabilitación.</p>
+        <div class="res-stats">
+          <div class="s"><b>+3.000</b><span>pacientes atendidos</span></div>
+          <div class="s"><b>7</b><span>especialidades</span></div>
+          <div class="s"><b>4.9★</b><span>valoración Google</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== NUESTRA CLÍNICA ===== -->
+<section class="sec-pad" id="clinica">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Nuestra clínica</p>
+      <h2>Un espacio pensado para tu comodidad</h2>
+      <p>Boxes equipados con tecnología actual, ambiente cálido y atención puntual. Estamos en el Edificio Dentimed, oficinas 216–210, con fácil acceso en el centro de La Serena.</p>
+    </div>
+    <div class="bento">
+      <figure class="b1"><img src="../../assets/dental/d00.jpg" width="560" height="360" alt="Box de atención de la clínica con sillón dental" loading="lazy"><figcaption>Boxes equipados</figcaption></figure>
+      <figure class="b2"><img src="../../assets/dental/d01.jpg" width="560" height="180" alt="Sala de tratamiento con equipamiento moderno" loading="lazy"><figcaption>Tecnología actual</figcaption></figure>
+      <figure class="b3"><img src="../../assets/dental/d02.jpg" width="280" height="180" alt="Interior de la clínica dental" loading="lazy"></figure>
+      <figure class="b4"><img src="../../assets/dental/d05.jpg" width="280" height="180" alt="Ambiente de recepción de la clínica" loading="lazy"></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ===== EQUIPO ===== -->
+<section class="sec-pad" id="equipo">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Nuestro equipo</p>
+      <h2>Especialistas que cuidan tu sonrisa</h2>
+      <p>Un equipo con formación en cada área de la odontología, comprometido con un trato cercano y resultados que duran.</p>
+    </div>
+    <div class="team-grid">
+      <article class="team-card">
+        <div class="ph"><img src="../../assets/dental/d04.jpg" width="380" height="285" alt="Dra. Camila Reyes atendiendo en la clínica" loading="lazy"></div>
+        <div class="body">
+          <h3>Dra. Camila Reyes</h3>
+          <p class="spec">Rehabilitación Oral · Implantología</p>
+          <p>Devuelve función y estética con planes de rehabilitación completos centrados en cada paciente.</p>
+        </div>
+      </article>
+      <article class="team-card">
+        <div class="ph"><img src="../../assets/dental/d06.jpg" width="380" height="285" alt="Dr. Matías Fuentes realizando un procedimiento dental" loading="lazy"></div>
+        <div class="body">
+          <h3>Dr. Matías Fuentes</h3>
+          <p class="spec">Cirugía Oral · Endodoncia</p>
+          <p>Procedimientos quirúrgicos y tratamientos de conducto con foco en comodidad y seguridad.</p>
+        </div>
+      </article>
+      <article class="team-card">
+        <div class="ph"><img src="../../assets/dental/d08.jpg" width="380" height="285" alt="Dra. Antonia Vega, ortodoncista de la clínica" loading="lazy"></div>
+        <div class="body">
+          <h3>Dra. Antonia Vega</h3>
+          <p class="spec">Ortodoncia · Odontología General</p>
+          <p>Brackets y alineadores para niños, adolescentes y adultos, con seguimiento cercano.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TESTIMONIOS ===== -->
+<section class="sec-pad" id="testimonios">
+  <div class="wrap">
+    <div class="sec-head center">
+      <p class="eyebrow">Lo que dicen nuestros pacientes</p>
+      <h2>Confianza que se construye sonrisa a sonrisa</h2>
+    </div>
+    <div class="test-grid">
+      <article class="test-card">
+        <div class="stars">★★★★★</div>
+        <p>"Me hice una rehabilitación completa y quedé feliz. Me explicaron todo el plan y los costos antes de empezar. Excelente trato."</p>
+        <div class="who">
+          <span class="av">CM</span>
+          <div><b>Carla Muñoz</b><span>Paciente · La Serena</span></div>
+        </div>
+      </article>
+      <article class="test-card">
+        <div class="stars">★★★★★</div>
+        <p>"Llegué con mucho miedo al dentista y la verdad me sentí súper cómodo. El tratamiento de conducto fue sin dolor. Recomendados 100%."</p>
+        <div class="who">
+          <img src="../../assets/dental/d09.jpg" width="44" height="44" alt="Foto de Rodrigo Pizarro, paciente" loading="lazy">
+          <div><b>Rodrigo Pizarro</b><span>Paciente · Coquimbo</span></div>
+        </div>
+      </article>
+      <article class="test-card">
+        <div class="stars">★★★★★</div>
+        <p>"Mi hija está con ortodoncia acá y la atención ha sido impecable. Puntuales, ordenados y siempre amables. Vale toda la pena."</p>
+        <div class="who">
+          <span class="av">PV</span>
+          <div><b>Paula Villalobos</b><span>Paciente · La Serena</span></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== AGENDAR ===== -->
+<section class="sec-pad" id="agendar">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Agenda tu hora</p>
+      <h2>Reserva tu evaluación en minutos</h2>
+      <p>Completa tus datos y te confirmamos la hora por WhatsApp. Sin enredos: rápido, claro y con un especialista para lo que necesitas.</p>
+    </div>
+    <div class="agenda-grid">
+      <aside class="agenda-aside">
+        <div class="ai">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+          <div><b>Llámanos directo</b><span>+56 9 6327 1545</span></div>
+        </div>
+        <div class="ai">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span>
+          <div><b>Escríbenos</b><span>dental.art216@gmail.com</span></div>
+        </div>
+        <div class="ai">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span>
+          <div><b>Horario</b><span>Lun a Vie 9:00–12:30 y 14:00–18:00 · Sáb 9:30–12:30</span></div>
+        </div>
+        <div class="ai">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+          <div><b>Dónde estamos</b><span>Balmaceda 985, Ed. Dentimed, Of. 216–210, La Serena</span></div>
+        </div>
+      </aside>
+
+      <div class="agenda-card">
+        <form id="agendaForm" novalidate>
+          <div class="form-row">
+            <div class="field">
+              <label for="f-nombre">Nombre y apellido</label>
+              <input type="text" id="f-nombre" name="nombre" placeholder="Ej. María Pérez" required autocomplete="name">
+            </div>
+            <div class="field">
+              <label for="f-tel">Teléfono</label>
+              <input type="tel" id="f-tel" name="telefono" placeholder="+56 9 1234 5678" required autocomplete="tel">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="field full">
+              <label for="f-esp">Especialidad</label>
+              <select id="f-esp" name="especialidad" required>
+                <option value="" disabled selected>Selecciona una especialidad</option>
+                <option>Odontología General</option>
+                <option>Rehabilitación Oral</option>
+                <option>Implantología</option>
+                <option>Cirugía Oral</option>
+                <option>Endodoncia (tratamiento de conducto)</option>
+                <option>Ortodoncia</option>
+                <option>Periodoncia</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="field">
+              <label for="f-fecha">Fecha preferida</label>
+              <input type="date" id="f-fecha" name="fecha" required>
+            </div>
+            <div class="field">
+              <label for="f-bloque">Bloque horario</label>
+              <select id="f-bloque" name="bloque" required>
+                <option value="" disabled selected>Elige un bloque</option>
+                <option>Mañana (9:00–12:30)</option>
+                <option>Tarde (14:00–18:00)</option>
+                <option>Sábado (9:30–12:30)</option>
+              </select>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary btn-lg" style="width:100%">Solicitar hora</button>
+          <p class="form-note">Al enviar, te contactamos por WhatsApp para confirmar la disponibilidad. No es un pago ni un compromiso.</p>
+        </form>
+
+        <div class="form-success" id="agendaSuccess" aria-live="polite">
+          <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div>
+          <h3>✓ Hora solicitada</h3>
+          <p id="successMsg">Te confirmamos por WhatsApp a la brevedad. ¡Gracias por preferir Dental Art!</p>
+          <button type="button" class="btn btn-ghost" id="agendaReset">Agendar otra hora</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== UBICACIÓN ===== -->
+<section class="sec-pad" id="ubicacion">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Cómo llegar</p>
+      <h2>Visítanos en el centro de La Serena</h2>
+    </div>
+    <div class="loc-grid">
+      <div class="map" role="img" aria-label="Mapa referencial de la ubicación en Balmaceda 985, La Serena">
+        <div class="grid-lines"></div>
+        <div class="road r1"></div>
+        <div class="road r2"></div>
+        <div class="pin">
+          <div class="dot"></div>
+          <div class="lbl">Ed. Dentimed · Balmaceda 985</div>
+        </div>
+      </div>
+      <div class="loc-card">
+        <div class="li">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+          <div><b>Dirección</b><span>Balmaceda 985, Edificio Dentimed,<br>Oficina 216–210, La Serena</span></div>
+        </div>
+        <div class="li">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span>
+          <div style="flex:1">
+            <b>Horario de atención</b>
+            <div class="hr"><span>Lunes a Viernes</span><span>9:00–12:30 · 14:00–18:00</span></div>
+            <div class="hr"><span>Sábado</span><span>9:30–12:30</span></div>
+            <div class="hr closed"><span>Domingo</span><span>Cerrado</span></div>
+          </div>
+        </div>
+        <div class="li">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+          <div><b>Teléfono / WhatsApp</b><a href="tel:+56963271545">+56 9 6327 1545</a></div>
+        </div>
+        <div class="li">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></span>
+          <div><b>Instagram</b><a href="https://instagram.com/dental.art_laserena" target="_blank" rel="noopener">@dental.art_laserena · 3.892 seguidores</a></div>
+        </div>
+        <a class="btn btn-wa btn-lg" href="https://wa.me/56963271545?text=Hola%20Dental%20Art%2C%20quiero%20agendar%20una%20hora" target="_blank" rel="noopener" style="margin-top:.4rem">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.8 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.2.1-1.9-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5-4.5-.2-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.1.2.1.4 0 .5l-.4.6c-.2.2-.3.4-.1.7.2.3.8 1.3 1.7 2 .9.8 1.7 1 2 1.2.3.1.5.1.6-.1l.6-.8c.2-.2.4-.2.6-.1l1.8.9c.3.1.4.2.5.3.1.2.1.6-.1 1.3z"/></svg>
+          Escribir por WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <a class="logo" href="#" aria-label="Dental Art">
+        <svg class="mark" width="44" height="44" viewBox="0 0 64 64" aria-hidden="true">
+          <ellipse cx="32" cy="32" rx="27" ry="15" fill="none" stroke="#5cc7ca" stroke-width="3" transform="rotate(-28 32 32)"/>
+          <path d="M32 14c-6.5 0-11 3.4-11 9 0 4.2 1.5 7.3 2.6 12.4.7 3.3 1 8.4 1.7 11.6.5 2.4 1.4 4 3 4 1.4 0 1.9-1.3 2.3-3.6.4-2.5.6-5.4 1.4-5.4s1 2.9 1.4 5.4c.4 2.3.9 3.6 2.3 3.6 1.6 0 2.5-1.6 3-4 .7-3.2 1-8.3 1.7-11.6C42.5 30.3 44 27.2 44 23c0-5.6-4.5-9-12-9z" fill="#1f9ca0"/>
+          <circle cx="51" cy="20" r="3" fill="#5cc7ca"/>
+        </svg>
+        <span class="wm"><b>DENTAL ART</b><small>Odontología especializada</small></span>
+      </a>
+      <div class="f-contact">
+        <span>Balmaceda 985, Ed. Dentimed, Of. 216–210 · La Serena</span>
+        <a href="tel:+56963271545">+56 9 6327 1545</a>
+        <a href="mailto:dental.art216@gmail.com">dental.art216@gmail.com</a>
+        <a href="https://instagram.com/dental.art_laserena" target="_blank" rel="noopener">@dental.art_laserena</a>
+      </div>
+    </div>
+    <hr>
+    <div class="f-bottom">
+      <span>© 2026 Dental Art · Odontología especializada · La Serena</span>
+      <span class="note">Demo creada por <a href="../../index.html#showcase">Estudio Faro</a> · estudiofaro.cl · Sitio de demostración.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== FAB WHATSAPP (Estudio Faro lead) ===== -->
+<a class="fab" href="https://wa.me/56971845174?text=Hola%20Estudio%20Faro%2C%20vi%20la%20demo%20de%20Cl%C3%ADnica%20Dental%20Art" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.8 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.2.1-1.9-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5-4.5-.2-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.1.2.1.4 0 .5l-.4.6c-.2.2-.3.4-.1.7.2.3.8 1.3 1.7 2 .9.8 1.7 1 2 1.2.3.1.5.1.6-.1l.6-.8c.2-.2.4-.2.6-.1l1.8.9c.3.1.4.2.5.3.1.2.1.6-.1 1.3z"/></svg>
+</a>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ---- NAV scroll shadow ---- */
+  var nav = document.getElementById('nav');
+  window.addEventListener('scroll', function(){
+    nav.classList.toggle('scrolled', window.scrollY > 8);
+  }, {passive:true});
+
+  /* ---- Burger / mobile menu ---- */
+  var burger = document.getElementById('burger');
+  var navLinks = document.getElementById('navLinks');
+  burger.addEventListener('click', function(){
+    var open = navLinks.classList.toggle('open');
+    burger.classList.toggle('open', open);
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  navLinks.addEventListener('click', function(e){
+    var a = e.target.closest('a');
+    if(a && !a.closest('#dropToggle') && navLinks.classList.contains('open')){
+      navLinks.classList.remove('open');
+      burger.classList.remove('open');
+      burger.setAttribute('aria-expanded','false');
+    }
+  });
+
+  /* ---- Dropdown (toggle on mobile, hover on desktop via CSS) ---- */
+  var drop = document.getElementById('dropEsp');
+  var dropToggle = document.getElementById('dropToggle');
+  dropToggle.addEventListener('click', function(e){
+    if(window.innerWidth <= 768){
+      e.preventDefault();
+      drop.classList.toggle('open');
+    }
+  });
+  document.addEventListener('click', function(e){
+    if(window.innerWidth > 768 && !drop.contains(e.target)){
+      drop.classList.remove('open');
+    }
+  });
+
+  /* ---- Before / After slider ---- */
+  var ba = document.getElementById('ba');
+  var range = document.getElementById('baRange');
+  var afterImg = document.getElementById('baAfter');
+  var divider = document.getElementById('baDivider');
+  var handle = document.getElementById('baHandle');
+
+  function setBA(v){
+    v = Math.max(0, Math.min(100, v));
+    afterImg.style.clipPath = 'inset(0 0 0 ' + v + '%)';
+    divider.style.left = v + '%';
+    handle.style.left = v + '%';
+    range.value = v;
+    range.setAttribute('aria-valuenow', Math.round(v));
+  }
+  range.addEventListener('input', function(){ setBA(parseFloat(range.value)); });
+
+  // drag support on the whole comparator
+  var dragging = false;
+  function pointerToPct(clientX){
+    var rect = ba.getBoundingClientRect();
+    return ((clientX - rect.left) / rect.width) * 100;
+  }
+  function startDrag(e){ dragging = true; moveDrag(e); }
+  function moveDrag(e){
+    if(!dragging) return;
+    var x = e.touches ? e.touches[0].clientX : e.clientX;
+    setBA(pointerToPct(x));
+  }
+  function endDrag(){ dragging = false; }
+
+  ba.addEventListener('mousedown', startDrag);
+  window.addEventListener('mousemove', moveDrag);
+  window.addEventListener('mouseup', endDrag);
+  ba.addEventListener('touchstart', startDrag, {passive:true});
+  window.addEventListener('touchmove', moveDrag, {passive:true});
+  window.addEventListener('touchend', endDrag);
+
+  setBA(50);
+
+  /* ---- Agendar form ---- */
+  var form = document.getElementById('agendaForm');
+  var success = document.getElementById('agendaSuccess');
+  var successMsg = document.getElementById('successMsg');
+  var resetBtn = document.getElementById('agendaReset');
+  var fecha = document.getElementById('f-fecha');
+
+  // min date = today
+  if(fecha){
+    var t = new Date();
+    var iso = t.getFullYear() + '-' + String(t.getMonth()+1).padStart(2,'0') + '-' + String(t.getDate()).padStart(2,'0');
+    fecha.min = iso;
+  }
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    if(!form.checkValidity()){
+      form.reportValidity();
+      return;
+    }
+    var nombre = document.getElementById('f-nombre').value.trim();
+    var esp = document.getElementById('f-esp').value;
+    var primer = nombre.split(' ')[0] || '';
+    successMsg.textContent = (primer ? primer + ', t' : 'T') + 'e confirmamos por WhatsApp tu hora de ' + esp + ' a la brevedad. ¡Gracias por preferir Dental Art!';
+    form.style.display = 'none';
+    success.classList.add('show');
+    success.scrollIntoView({behavior:'smooth', block:'center'});
+  });
+
+  resetBtn.addEventListener('click', function(){
+    form.reset();
+    success.classList.remove('show');
+    form.style.display = '';
+  });
+})();
+</script>
+</body>
+</html>
