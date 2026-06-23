@@ -1,0 +1,14 @@
+{
+  "name": "Estudio Faro",
+  "short_name": "Estudio Faro",
+  "description": "Páginas web rápidas para PYMEs de La Serena y Coquimbo.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0E2F36",
+  "lang": "es-CL",
+  "icons": [
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "/assets/og.png", "sizes": "1200x630", "type": "image/png" }
+  ]
+}
