@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Pedir Rincón Oriental — Delivery de wok y sushi · La Serena</title>
+<meta name="description" content="Pide Rincón Oriental (东方角餐厅) a domicilio en La Serena: chaufán, tallarines salteados, pollo agridulce, carne mongoliana y rolls de sushi. Carta con precios. Delivery por UberEats y PedidosYa o llama al (51) 222 5553.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#fbf6ef;
+  --card:#ffffff;
+  --cream:#f3e9dc;
+  --ink:#1d1714;
+  --mut:#6f655c;
+  --line:#e8ddcd;
+  --line2:#efe6d8;
+  --acc:#cf2b2b;
+  --acc-d:#a91f1f;
+  --acc-soft:#fbe6e2;
+  --gold:#c79a3e;
+  --green:#25d366;
+  --r:3px;
+  --r-lg:4px;
+  --r-pill:4px;
+}
+html{scroll-behavior:smooth}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{
+  background:var(--bg);color:var(--ink);
+  font-family:"Hanken Grotesk",system-ui,sans-serif;
+  font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,h4{font-family:"Bricolage Grotesque","Hanken Grotesk",sans-serif;font-weight:800;line-height:1.04;letter-spacing:-.02em}
+.wrap{max-width:1180px;margin:0 auto;padding:0 clamp(16px,4vw,40px)}
+.acc{color:var(--acc)}
+::selection{background:var(--acc);color:#fff}
+:focus-visible{outline:3px solid var(--acc);outline-offset:2px;border-radius:var(--r)}
+
+/* ---------- DEMO BAR ---------- */
+.ef-demobar{position:sticky;top:0;z-index:9999;display:flex;align-items:center;justify-content:space-between;gap:1rem;background:#0c282f;color:#fff;padding:.5rem clamp(14px,4vw,28px);font-family:"Hanken Grotesk",system-ui,sans-serif;font-size:.85rem}
+.ef-demobar .ef-back{color:#cfe0de;font-weight:600}.ef-demobar .ef-back:hover{color:#fff}
+.ef-demobar .ef-label{color:#8fb0ac;font-weight:600}@media(max-width:640px){.ef-demobar .ef-label{display:none}}
+.ef-demobar .ef-cta{background:#25d366;color:#06351c;font-weight:700;padding:.4rem .9rem;border-radius:var(--r-pill);white-space:nowrap}
+.ef-demobar .ef-cta:hover{background:#1eb656}
+
+/* ---------- NAV ---------- */
+.nav{position:sticky;top:35px;z-index:900;background:rgba(251,246,239,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:68px;gap:1rem}
+.brand{display:flex;align-items:center;gap:12px}
+.brand .seal{width:44px;height:44px;flex:none;display:grid;place-items:center;background:var(--acc);color:#fff;font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:1.4rem;border-radius:var(--r)}
+.brand .bn{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:1.18rem;line-height:1}
+.brand .bn small{display:block;font-family:"Hanken Grotesk",sans-serif;font-weight:600;font-size:.56rem;letter-spacing:.3em;color:var(--mut);margin-top:5px;text-transform:uppercase}
+.nav-act{display:flex;align-items:center;gap:.6rem}
+.btn{display:inline-flex;align-items:center;gap:.5rem;font-weight:700;font-size:.95rem;padding:.7rem 1.2rem;border-radius:var(--r);border:1px solid transparent;cursor:pointer;line-height:1;transition:transform .12s ease,background .15s ease}
+.btn:active{transform:translateY(1px)}
+.btn-primary{background:var(--acc);color:#fff}
+.btn-primary:hover{background:var(--acc-d)}
+.btn-ghost{background:transparent;border-color:var(--line);color:var(--ink)}
+.btn-ghost:hover{border-color:var(--ink)}
+.btn-lg{font-size:1.05rem;padding:1rem 1.4rem}
+.btn svg{width:18px;height:18px;flex:none}
+@media(max-width:760px){.nav-ghost-hide{display:none}}
+
+/* ---------- HERO ---------- */
+.hero{position:relative;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(24px,4vw,56px);align-items:center;padding:clamp(36px,6vw,76px) 0}
+.eyebrow{display:inline-flex;align-items:center;gap:.55rem;font-weight:700;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--acc);background:var(--acc-soft);padding:.4rem .75rem;border-radius:var(--r)}
+.hero h1{font-size:clamp(2.3rem,6vw,4rem);margin:1.1rem 0 .9rem}
+.hero h1 .zh{font-size:.42em;color:var(--gold);font-weight:700;letter-spacing:.04em;display:block;margin-top:.5rem}
+.lede{font-size:clamp(1.05rem,2.3vw,1.22rem);color:var(--mut);max-width:30em;margin-bottom:1.6rem}
+.order-box{background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);padding:1.3rem;box-shadow:0 18px 40px -28px rgba(0,0,0,.4)}
+.order-box .ob-h{font-weight:700;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mut);margin-bottom:.9rem}
+.order-row{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
+.btn-uber{background:#06c167;color:#0a2415}
+.btn-uber:hover{background:#05a657}
+.btn-pya{background:#fa0050;color:#fff}
+.btn-pya:hover{background:#d80045}
+.btn-call{grid-column:1/-1;background:var(--ink);color:#fff}
+.btn-call:hover{background:#000}
+.ob-note{font-size:.82rem;color:var(--mut);margin-top:.85rem;text-align:center}
+.badges{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.5rem}
+.badge{display:inline-flex;align-items:center;gap:.4rem;font-size:.85rem;font-weight:600;background:var(--card);border:1px solid var(--line);padding:.45rem .8rem;border-radius:var(--r);color:var(--ink)}
+.badge .star{color:var(--gold)}
+.hero-media{position:relative}
+.hero-media img{width:100%;height:clamp(340px,46vw,520px);object-fit:cover;border-radius:var(--r-lg);border:1px solid var(--line)}
+.hero-tag{position:absolute;left:18px;bottom:18px;background:var(--acc);color:#fff;font-weight:700;font-size:.82rem;padding:.55rem .9rem;border-radius:var(--r);box-shadow:0 8px 20px -10px rgba(0,0,0,.5)}
+@media(max-width:880px){.hero-grid{grid-template-columns:1fr}.hero-media{order:-1}.hero-media img{height:clamp(240px,60vw,340px)}}
+
+/* ---------- SECTION ---------- */
+.sec{padding:clamp(48px,7vw,84px) 0}
+.sec-head{max-width:34em;margin-bottom:2.4rem}
+.kick{font-weight:700;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--acc)}
+.sec-head h2{font-size:clamp(1.8rem,4.4vw,2.7rem);margin:.6rem 0 .5rem}
+.sec-head p{color:var(--mut);font-size:1.05rem}
+.alt{background:var(--cream)}
+
+/* ---------- MENU ---------- */
+.menu-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,4vw,52px)}
+@media(max-width:820px){.menu-grid{grid-template-columns:1fr}}
+.mcat{margin-bottom:2rem}
+.mcat:last-child{margin-bottom:0}
+.mcat h3{font-size:1.3rem;display:flex;align-items:baseline;gap:.6rem;padding-bottom:.7rem;border-bottom:2px solid var(--acc);margin-bottom:1rem}
+.mcat h3 .zh{font-family:"Hanken Grotesk",sans-serif;font-weight:600;font-size:.72rem;letter-spacing:.04em;color:var(--gold)}
+.mitem{display:flex;align-items:baseline;gap:.8rem;padding:.6rem 0;border-bottom:1px dashed var(--line)}
+.mitem:last-child{border-bottom:0}
+.mitem .nm{font-weight:600}
+.mitem .nm span{display:block;font-size:.82rem;color:var(--mut);font-weight:400;margin-top:2px}
+.mitem .dots{flex:1;border-bottom:1px dotted var(--line);transform:translateY(-4px);min-width:14px}
+.mitem .pr{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;white-space:nowrap;color:var(--acc)}
+.feat{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:2.6rem}
+@media(max-width:820px){.feat{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.feat{grid-template-columns:1fr}}
+.fcard{background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden}
+.fcard img{width:100%;height:160px;object-fit:cover}
+.fcard .fc-b{padding:.85rem 1rem 1.05rem}
+.fcard h4{font-size:1.05rem;display:flex;justify-content:space-between;align-items:baseline;gap:.6rem}
+.fcard h4 .pr{color:var(--acc);font-family:"Bricolage Grotesque",sans-serif}
+.fcard p{font-size:.86rem;color:var(--mut);margin-top:.3rem}
+
+/* ---------- COMBOS ---------- */
+.combos{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+@media(max-width:820px){.combos{grid-template-columns:1fr}}
+.combo{position:relative;background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);padding:1.5rem 1.4rem;display:flex;flex-direction:column}
+.combo.pop{border-color:var(--acc);box-shadow:0 0 0 1px var(--acc)}
+.combo .tag{position:absolute;top:-11px;left:1.4rem;background:var(--acc);color:#fff;font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.3rem .7rem;border-radius:var(--r)}
+.combo h3{font-size:1.22rem;margin-bottom:.5rem}
+.combo .lst{list-style:none;font-size:.92rem;color:var(--mut);margin:.4rem 0 1.1rem;flex:1}
+.combo .lst li{padding:.28rem 0 .28rem 1.3rem;position:relative}
+.combo .lst li::before{content:"";position:absolute;left:0;top:.78em;width:7px;height:7px;background:var(--acc);border-radius:1px}
+.combo .price{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:1.9rem;margin-bottom:1rem}
+.combo .price small{font-size:.78rem;color:var(--mut);font-weight:600}
+
+/* ---------- STEPS ---------- */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+@media(max-width:760px){.steps{grid-template-columns:1fr}}
+.step{background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);padding:1.6rem 1.4rem}
+.step .n{width:38px;height:38px;display:grid;place-items:center;background:var(--acc);color:#fff;font-family:"Bricolage Grotesque",sans-serif;font-weight:800;border-radius:var(--r);margin-bottom:.9rem}
+.step h3{font-size:1.12rem;margin-bottom:.4rem}
+.step p{color:var(--mut);font-size:.95rem}
+
+/* ---------- REVIEWS + LOCATION ---------- */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,4vw,52px);align-items:start}
+@media(max-width:880px){.split{grid-template-columns:1fr}}
+.review{background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);padding:1.3rem;margin-bottom:1.1rem}
+.review:last-child{margin-bottom:0}
+.review .stars{color:var(--gold);font-size:.95rem;letter-spacing:.1em;margin-bottom:.5rem}
+.review p{font-size:.98rem}
+.review .who{font-size:.82rem;color:var(--mut);font-weight:600;margin-top:.7rem}
+.loc{background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);padding:1.6rem}
+.loc h3{font-size:1.3rem;margin-bottom:1rem}
+.loc dl{display:grid;grid-template-columns:auto 1fr;gap:.5rem 1rem;font-size:.96rem}
+.loc dt{font-weight:700;color:var(--acc)}
+.loc dd{color:var(--ink)}
+.loc .map-btn{margin-top:1.3rem;width:100%;justify-content:center}
+
+/* ---------- CTA ---------- */
+.cta{background:var(--ink);color:#fff;text-align:center;padding:clamp(48px,7vw,82px) 0}
+.cta h2{font-size:clamp(1.9rem,5vw,3rem);margin-bottom:.7rem}
+.cta p{color:#bcae9f;max-width:30em;margin:0 auto 1.8rem;font-size:1.05rem}
+.cta .row{display:flex;flex-wrap:wrap;gap:.7rem;justify-content:center}
+
+/* ---------- FOOTER ---------- */
+.foot{background:var(--cream);border-top:1px solid var(--line);padding:clamp(36px,5vw,56px) 0 2rem}
+.foot-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:2rem}
+@media(max-width:680px){.foot-grid{grid-template-columns:1fr}}
+.foot h4{font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--mut);margin-bottom:.9rem}
+.foot p,.foot a{font-size:.94rem;color:var(--ink);display:block;margin-bottom:.4rem}
+.foot a:hover{color:var(--acc)}
+.foot-brand .seal{width:40px;height:40px;display:grid;place-items:center;background:var(--acc);color:#fff;font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:1.3rem;border-radius:var(--r);margin-bottom:.8rem}
+.foot-bot{margin-top:2.4rem;padding-top:1.4rem;border-top:1px solid var(--line);font-size:.82rem;color:var(--mut);display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+
+/* ---------- FAB ---------- */
+.fab{position:fixed;right:18px;bottom:18px;z-index:1200;display:inline-flex;align-items:center;gap:.55rem;background:var(--acc);color:#fff;font-weight:700;padding:.9rem 1.2rem;border-radius:var(--r);box-shadow:0 12px 28px -10px rgba(207,43,43,.7)}
+.fab:hover{background:var(--acc-d)}
+.fab svg{width:20px;height:20px}
+@media(max-width:520px){.fab span{display:none}.fab{padding:1rem;border-radius:var(--r-lg)}}
+</style>
+</head>
+<body>
+
+<div class="ef-demobar"><a class="ef-back" href="index.html">← Estilos para Rincón Oriental</a><span class="ef-label">Demo de Estudio Faro · datos de muestra</span><a class="ef-cta" href="https://wa.me/56971466930?text=Hola%20Estudio%20Faro%2C%20vi%20las%20opciones%20para%20Rinc%C3%B3n%20Oriental" target="_blank" rel="noopener">Conversemos</a></div>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="#top" aria-label="Rincón Oriental — inicio">
+      <span class="seal" aria-hidden="true">东</span>
+      <span class="bn">Rincón Oriental<small>Wok cantonés · Sushi · La Serena</small></span>
+    </a>
+    <div class="nav-act">
+      <a class="btn btn-ghost nav-ghost-hide" href="tel:+56512225553">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        Llamar
+      </a>
+      <a class="btn btn-primary" href="#pedir">Pedir delivery</a>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Delivery en La Serena · 12:00 a 22:00</span>
+      <h1>Wok recién salteado, en tu mesa<span class="zh">东方角餐厅 · Rincón Oriental</span></h1>
+      <p class="lede">Chaufán, tallarines salteados, pollo agridulce y rolls de sushi listos para pedir. Cantonés de verdad, al wok y bien servido.</p>
+
+      <div class="order-box" id="pedir">
+        <p class="ob-h">Pide ahora · entrega a domicilio</p>
+        <div class="order-row">
+          <a class="btn btn-uber" href="https://www.ubereats.com/cl/store/rincon-oriental/-W1HpSNLXzSw2aNdgEfHVg" target="_blank" rel="noopener">Pedir por UberEats</a>
+          <a class="btn btn-pya" href="https://www.pedidosya.cl/" target="_blank" rel="noopener">Pedir por PedidosYa</a>
+          <a class="btn btn-call" href="tel:+56512225553">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Llamar para pedir · (51) 222 5553
+          </a>
+        </div>
+        <p class="ob-note">Atención telefónica para pedidos y consultas · sin app intermediaria</p>
+      </div>
+
+      <div class="badges">
+        <span class="badge"><span class="star">★</span> 4,3 en Google</span>
+        <span class="badge">103 reseñas</span>
+        <span class="badge">Delivery L–S 12:00–22:00</span>
+      </div>
+    </div>
+    <div class="hero-media">
+      <img src="../../assets/oriental/o0.jpg" width="1200" height="900" loading="eager" alt="Tallarines salteados al wok de Rincón Oriental servidos humeantes">
+      <span class="hero-tag">Tallarines salteados · $7.900</span>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section class="sec" id="carta">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kick">La carta</span>
+      <h2>Todo con precio, para que pidas sin dudar</h2>
+      <p>Porciones individuales para una persona o para compartir. Precios en pesos chilenos.</p>
+    </div>
+
+    <!-- Featured -->
+    <div class="feat">
+      <article class="fcard">
+        <img src="../../assets/oriental/o2.jpg" width="600" height="400" loading="lazy" alt="Pollo agridulce con salsa brillante y trozos de piña">
+        <div class="fc-b">
+          <h4>Pollo agridulce <span class="pr">$8.500</span></h4>
+          <p>El clásico de la casa: crujiente, en salsa agridulce con piña y pimentón.</p>
+        </div>
+      </article>
+      <article class="fcard">
+        <img src="../../assets/oriental/o5.jpg" width="600" height="400" loading="lazy" alt="Dumplings y wantán frito recién servidos">
+        <div class="fc-b">
+          <h4>Wantán frito <span class="pr">$5.500</span></h4>
+          <p>Masa fina y crocante, rellena y dorada al momento. Para empezar.</p>
+        </div>
+      </article>
+      <article class="fcard">
+        <img src="../../assets/oriental/o9.jpg" width="600" height="400" loading="lazy" alt="Arroz chaufán salteado al wok con verduras">
+        <div class="fc-b">
+          <h4>Arroz chaufán <span class="pr">$7.500</span></h4>
+          <p>Salteado al wok con huevo, verduras y un toque de salsa de soya.</p>
+        </div>
+      </article>
+    </div>
+
+    <div class="menu-grid">
+      <div>
+        <div class="mcat">
+          <h3>Arroces y tallarines <span class="zh">炒饭 · 炒面</span></h3>
+          <div class="mitem"><span class="nm">Arroz chaufán</span><span class="dots"></span><span class="pr">$7.500</span></div>
+          <div class="mitem"><span class="nm">Tallarines salteados<span>Con verduras y carne de cerdo</span></span><span class="dots"></span><span class="pr">$7.900</span></div>
+          <div class="mitem"><span class="nm">Chop suey<span>Salteado de verduras crujientes</span></span><span class="dots"></span><span class="pr">$7.500</span></div>
+        </div>
+        <div class="mcat">
+          <h3>Entradas <span class="zh">前菜</span></h3>
+          <div class="mitem"><span class="nm">Wantán frito</span><span class="dots"></span><span class="pr">$5.500</span></div>
+          <div class="mitem"><span class="nm">Arrollado primavera<span>Crujiente, con verduras</span></span><span class="dots"></span><span class="pr">$4.500</span></div>
+        </div>
+        <div class="mcat">
+          <h3>Sushi <span class="zh">寿司</span></h3>
+          <div class="mitem"><span class="nm">Rolls de sushi<span>Variedad de rolls · precio según roll</span></span><span class="dots"></span><span class="pr">desde $5.900</span></div>
+        </div>
+      </div>
+      <div>
+        <div class="mcat">
+          <h3>Pollos y carnes <span class="zh">鸡 · 肉</span></h3>
+          <div class="mitem"><span class="nm">Pollo agridulce<span>El favorito de la casa</span></span><span class="dots"></span><span class="pr">$8.500</span></div>
+          <div class="mitem"><span class="nm">Carne mongoliana<span>Salteada con cebollín y soya</span></span><span class="dots"></span><span class="pr">$9.500</span></div>
+        </div>
+        <div class="mcat">
+          <h3>Combinados <span class="zh">套餐</span></h3>
+          <div class="mitem"><span class="nm">Combinado individual<span>Plato completo para una persona</span></span><span class="dots"></span><span class="pr">$6.900</span></div>
+        </div>
+        <div class="mcat">
+          <h3>Ramen <span class="zh">拉面</span></h3>
+          <div class="mitem"><span class="nm">Ramen de la casa<span>Caldo, fideos y acompañamientos</span></span><span class="dots"></span><span class="pr">consultar</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMBOS -->
+<section class="sec alt" id="combos">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kick">Para compartir</span>
+      <h2>Combos pensados para delivery</h2>
+      <p>Listos para pedir por teléfono o por la app. Ideales para almuerzo en casa o cena entre varios.</p>
+    </div>
+    <div class="combos">
+      <article class="combo">
+        <h3>Combo individual</h3>
+        <ul class="lst">
+          <li>Combinado individual</li>
+          <li>Arrollado primavera</li>
+          <li>Bebida en lata</li>
+        </ul>
+        <div class="price">$9.900 <small>/ 1 persona</small></div>
+        <a class="btn btn-primary" href="tel:+56512225553">Pedir este combo</a>
+      </article>
+      <article class="combo pop">
+        <span class="tag">Más pedido</span>
+        <h3>Combo para 2</h3>
+        <ul class="lst">
+          <li>Arroz chaufán</li>
+          <li>Pollo agridulce</li>
+          <li>Arrollados primavera (4)</li>
+        </ul>
+        <div class="price">$18.900 <small>/ 2 personas</small></div>
+        <a class="btn btn-primary" href="tel:+56512225553">Pedir este combo</a>
+      </article>
+      <article class="combo">
+        <h3>Combo familiar</h3>
+        <ul class="lst">
+          <li>Tallarines salteados</li>
+          <li>Carne mongoliana</li>
+          <li>Chop suey + wantán frito</li>
+        </ul>
+        <div class="price">$28.900 <small>/ 3–4 personas</small></div>
+        <a class="btn btn-primary" href="tel:+56512225553">Pedir este combo</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- HOW TO ORDER -->
+<section class="sec" id="como-pedir">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kick">Cómo pedir</span>
+      <h2>En tres pasos lo tienes en casa</h2>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="n" aria-hidden="true">1</div>
+        <h3>Elige cómo pedir</h3>
+        <p>Por UberEats o PedidosYa con seguimiento, o llama directo al (51) 222 5553 para coordinar tu pedido.</p>
+      </div>
+      <div class="step">
+        <div class="n" aria-hidden="true">2</div>
+        <h3>Arma tu pedido</h3>
+        <p>Escoge platos de la carta o uno de nuestros combos. Te confirmamos tiempo de preparación.</p>
+      </div>
+      <div class="step">
+        <div class="n" aria-hidden="true">3</div>
+        <h3>Recíbelo caliente</h3>
+        <p>Lo preparamos al momento, salteado al wok, y lo enviamos dentro de La Serena.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS + LOCATION -->
+<section class="sec alt" id="ubicacion">
+  <div class="wrap split">
+    <div>
+      <div class="sec-head" style="margin-bottom:1.6rem">
+        <span class="kick">Reseñas · ★ 4,3 · 103 opiniones</span>
+        <h2>Lo que dicen quienes ya pidieron</h2>
+      </div>
+      <div class="review">
+        <div class="stars" aria-label="5 de 5 estrellas">★★★★★</div>
+        <p>"El pollo agridulce y el chaufán llegaron calientes y abundantes. Sabor casero de verdad, no como otros."</p>
+        <div class="who">— Carolina P. · pedido por delivery</div>
+      </div>
+      <div class="review">
+        <div class="stars" aria-label="4 de 5 estrellas">★★★★☆</div>
+        <p>"Pedí por teléfono y atendieron al tiro. Los tallarines salteados son enormes, alcanza para dos."</p>
+        <div class="who">— Rodrigo M. · cliente frecuente</div>
+      </div>
+      <div class="review">
+        <div class="stars" aria-label="5 de 5 estrellas">★★★★★</div>
+        <p>"Buenos rolls de sushi y wantán frito crujiente. Precios justos para lo que sirven."</p>
+        <div class="who">— Daniela V. · La Serena</div>
+      </div>
+    </div>
+    <div class="loc">
+      <h3>Dónde estamos</h3>
+      <dl>
+        <dt>Dirección</dt><dd>Av. B. O'Higgins 570, La Serena</dd>
+        <dt>Teléfono</dt><dd><a href="tel:+56512225553">(51) 222 5553</a></dd>
+        <dt>Horario</dt><dd>Lunes a sábado 12:00–22:00<br>Domingo 12:00–18:30</dd>
+        <dt>Delivery</dt><dd>UberEats · PedidosYa · pedido telefónico</dd>
+      </dl>
+      <a class="btn btn-primary map-btn" href="https://www.google.com/maps/search/?api=1&query=Rinc%C3%B3n+Oriental+Av.+B.+O%27Higgins+570+La+Serena" target="_blank" rel="noopener">Cómo llegar en Google Maps</a>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="cta">
+  <div class="wrap">
+    <h2>¿Con hambre? Pide ahora</h2>
+    <p>Wok cantonés y sushi recién hecho, directo a tu puerta en La Serena.</p>
+    <div class="row">
+      <a class="btn btn-lg btn-uber" href="https://www.ubereats.com/cl/store/rincon-oriental/-W1HpSNLXzSw2aNdgEfHVg" target="_blank" rel="noopener">Pedir por UberEats</a>
+      <a class="btn btn-lg btn-pya" href="https://www.pedidosya.cl/" target="_blank" rel="noopener">Pedir por PedidosYa</a>
+      <a class="btn btn-lg btn-primary" href="tel:+56512225553">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        Llamar al (51) 222 5553
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="foot">
+  <div class="wrap foot-grid">
+    <div class="foot-brand">
+      <span class="seal" aria-hidden="true">东</span>
+      <p style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:1.15rem;margin-bottom:.5rem">Rincón Oriental</p>
+      <p style="color:var(--mut)">东方角餐厅 — cocina cantonesa al wok y sushi en La Serena desde hace años.</p>
+    </div>
+    <div>
+      <h4>Contacto</h4>
+      <a href="tel:+56512225553">(51) 222 5553</a>
+      <p>Av. B. O'Higgins 570, La Serena</p>
+      <a href="https://www.ubereats.com/cl/store/rincon-oriental/-W1HpSNLXzSw2aNdgEfHVg" target="_blank" rel="noopener">Pedir por UberEats</a>
+      <a href="https://www.pedidosya.cl/" target="_blank" rel="noopener">Pedir por PedidosYa</a>
+    </div>
+    <div>
+      <h4>Horario</h4>
+      <p>Lunes a sábado<br>12:00 – 22:00</p>
+      <p>Domingo<br>12:00 – 18:30</p>
+    </div>
+  </div>
+  <div class="wrap foot-bot">
+    <span>© 2026 Rincón Oriental · La Serena</span>
+    <span>Sitio de demostración · Estudio Faro</span>
+  </div>
+</footer>
+
+<!-- FAB: LLAMAR -->
+<a class="fab" href="tel:+56512225553" aria-label="Llamar a Rincón Oriental">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+  <span>Llamar</span>
+</a>
+
+</body>
+</html>

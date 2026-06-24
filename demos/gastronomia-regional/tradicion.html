@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Gastronomía Regional · Cocina chilena casera — La Serena</title>
+<meta name="description" content="Cocina chilena de siempre en La Serena. Cazuela, pastel de choclo, charquicán y menú del día. Cienfuegos 696. Almuerzos de lunes a sábado.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --r:3px; --r-lg:4px; --r-pill:4px;
+    --terracota:#a8442e;
+    --terracota-d:#8a3624;
+    --ladrillo:#c25a3f;
+    --crema:#f3ead7;
+    --crema-d:#e8dbc0;
+    --oliva:#5f6b3a;
+    --oliva-d:#4a5430;
+    --madera:#7a4a2b;
+    --cafe:#3a2a20;
+    --cafe-suave:#5c4636;
+    --hueso:#fbf6ec;
+    --linea:#ddcdac;
+    --ok:#25d366;
+    --max:1140px;
+    --shadow:0 1px 0 rgba(58,42,32,.04), 0 8px 24px -16px rgba(58,42,32,.35);
+    font-family:'Hanken Grotesk',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--hueso);
+    color:var(--cafe);
+    font-size:17px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{font-family:'Bricolage Grotesque',system-ui,sans-serif;line-height:1.1;color:var(--cafe);font-weight:700;letter-spacing:-.01em}
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 22px}
+  :focus-visible{outline:3px solid var(--oliva);outline-offset:2px;border-radius:var(--r)}
+
+  /* ===== DEMOBAR ===== */
+  .ef-demobar{position:sticky;top:0;z-index:9999;background:#0c282f;color:#fff;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:9px 16px;font-size:14px;flex-wrap:wrap}
+  .ef-demobar a{color:#fff}
+  .ef-back{font-weight:600;opacity:.92}
+  .ef-back:hover{opacity:1}
+  .ef-label{opacity:.62;font-size:12.5px;letter-spacing:.02em}
+  .ef-cta{background:var(--ok);color:#06351c !important;font-weight:700;padding:7px 15px;border-radius:var(--r-pill)}
+  .ef-cta:hover{filter:brightness(1.06)}
+
+  /* ===== HEADER ===== */
+  .site-header{position:sticky;top:38px;z-index:900;background:rgba(251,246,236,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--linea)}
+  .nav{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:13px 0}
+  .brand{display:flex;align-items:center;gap:11px}
+  .brand-mark{width:38px;height:38px;background:var(--terracota);border-radius:var(--r);display:grid;place-items:center;flex-shrink:0}
+  .brand-mark svg{width:23px;height:23px}
+  .brand-name{font-family:'Bricolage Grotesque';font-weight:800;font-size:19px;line-height:1.02;color:var(--cafe)}
+  .brand-name small{display:block;font-family:'Hanken Grotesk';font-weight:500;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--terracota)}
+  .nav-links{display:flex;align-items:center;gap:26px}
+  .nav-links a{font-weight:600;font-size:15px;color:var(--cafe-suave)}
+  .nav-links a:hover{color:var(--terracota)}
+  .btn{display:inline-flex;align-items:center;gap:8px;font-weight:700;border-radius:var(--r);padding:11px 18px;font-size:15px;cursor:pointer;border:none;transition:.15s}
+  .btn-wa{background:var(--ok);color:#06351c}
+  .btn-wa:hover{filter:brightness(1.05)}
+  .btn-primary{background:var(--terracota);color:#fff}
+  .btn-primary:hover{background:var(--terracota-d)}
+  .btn-ghost{background:transparent;color:var(--cafe);border:1.5px solid var(--linea)}
+  .btn-ghost:hover{border-color:var(--terracota);color:var(--terracota)}
+  .nav-toggle{display:none;background:none;border:1.5px solid var(--linea);border-radius:var(--r);padding:8px 10px;cursor:pointer}
+
+  /* ===== HERO ===== */
+  .hero{position:relative;padding:0 0 8px}
+  .hero-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:0;align-items:stretch}
+  .hero-copy{padding:62px 56px 62px 0;display:flex;flex-direction:column;justify-content:center}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:13px;letter-spacing:.13em;text-transform:uppercase;color:var(--terracota);margin-bottom:18px}
+  .eyebrow::before{content:"";width:26px;height:2px;background:var(--terracota)}
+  .hero h1{font-size:clamp(2.5rem,5.2vw,4.1rem);font-weight:800}
+  .hero h1 em{font-style:italic;color:var(--terracota)}
+  .hero p.lead{font-size:1.18rem;color:var(--cafe-suave);margin:20px 0 30px;max-width:36ch}
+  .hero-actions{display:flex;gap:13px;flex-wrap:wrap}
+  .badges{display:flex;flex-wrap:wrap;gap:10px;margin-top:34px}
+  .badge{display:inline-flex;align-items:center;gap:7px;background:#fff;border:1px solid var(--linea);border-radius:var(--r);padding:8px 13px;font-size:13.5px;font-weight:600;color:var(--cafe-suave)}
+  .badge b{color:var(--cafe)}
+  .stars{color:var(--terracota);letter-spacing:1px}
+  .hero-photo{position:relative;border-radius:var(--r-lg);overflow:hidden;min-height:480px;border:1px solid var(--linea)}
+  .hero-photo img{width:100%;height:100%;object-fit:cover}
+  .hero-photo .tag{position:absolute;left:0;bottom:22px;background:var(--crema);color:var(--cafe);font-family:'Bricolage Grotesque';font-weight:700;font-size:14px;padding:9px 16px;border-radius:0 var(--r) var(--r) 0;box-shadow:var(--shadow)}
+
+  /* ===== SECTION CHROME ===== */
+  section{padding:74px 0}
+  .sec-head{max-width:60ch;margin-bottom:40px}
+  .sec-head .eyebrow{margin-bottom:13px}
+  .sec-head h2{font-size:clamp(1.9rem,3.6vw,2.7rem)}
+  .sec-head p{color:var(--cafe-suave);margin-top:13px;font-size:1.05rem}
+
+  /* ===== MENU DEL DIA ===== */
+  .menudia{background:var(--terracota);color:#fff;border-radius:var(--r-lg)}
+  .menudia-inner{display:grid;grid-template-columns:1fr auto;gap:34px;align-items:center;padding:40px 44px}
+  .menudia h2{color:#fff;font-size:clamp(1.7rem,3.4vw,2.4rem)}
+  .menudia .eyebrow{color:var(--crema)}
+  .menudia .eyebrow::before{background:var(--crema)}
+  .menudia p{color:rgba(255,255,255,.9);margin:14px 0 4px;max-width:46ch}
+  .menudia ul{list-style:none;margin:16px 0 0;display:flex;flex-wrap:wrap;gap:8px 22px}
+  .menudia li{font-weight:600;font-size:15px;display:flex;align-items:center;gap:8px}
+  .menudia li::before{content:"·";color:var(--crema);font-weight:800}
+  .price-tag{text-align:center;background:var(--crema);color:var(--cafe);border-radius:var(--r);padding:24px 30px;min-width:180px}
+  .price-tag small{display:block;font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--terracota)}
+  .price-tag .num{font-family:'Bricolage Grotesque';font-weight:800;font-size:2.7rem;line-height:1;margin:6px 0 2px}
+  .price-tag span.sub{font-size:13px;color:var(--cafe-suave)}
+
+  /* ===== CARTA ===== */
+  .carta-grid{display:grid;grid-template-columns:1fr 1fr;gap:38px 56px}
+  .carta-block h3{font-size:1.25rem;display:flex;align-items:center;gap:10px;padding-bottom:11px;border-bottom:2px solid var(--linea);margin-bottom:6px}
+  .carta-block h3 .dot{width:8px;height:8px;background:var(--oliva);border-radius:var(--r);flex-shrink:0}
+  .dish{display:flex;align-items:baseline;gap:12px;padding:13px 0;border-bottom:1px dashed var(--linea)}
+  .dish:last-child{border-bottom:none}
+  .dish .d-name{font-weight:700;font-size:16px;color:var(--cafe)}
+  .dish .d-desc{font-size:13.5px;color:var(--cafe-suave);font-weight:400}
+  .dish .d-dots{flex:1;border-bottom:1px dotted var(--linea);transform:translateY(-4px);min-width:18px}
+  .dish .d-price{font-family:'Bricolage Grotesque';font-weight:700;font-size:16px;color:var(--terracota);white-space:nowrap}
+
+  /* ===== GALERIA ===== */
+  .gal{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:170px;gap:12px}
+  .gal a{position:relative;border-radius:var(--r);overflow:hidden;border:1px solid var(--linea)}
+  .gal img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease}
+  .gal a:hover img{transform:scale(1.05)}
+  .gal .big{grid-column:span 2;grid-row:span 2}
+
+  /* ===== NOSOTROS ===== */
+  .nos-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:50px;align-items:center}
+  .nos-photo{border-radius:var(--r-lg);overflow:hidden;border:1px solid var(--linea)}
+  .nos-photo img{width:100%;height:100%;object-fit:cover;aspect-ratio:4/5}
+  .nos-copy p{color:var(--cafe-suave);margin-top:16px}
+  .nos-points{list-style:none;margin:24px 0 0;display:grid;gap:13px}
+  .nos-points li{display:flex;gap:12px;font-weight:600;color:var(--cafe);font-size:15.5px}
+  .nos-points svg{flex-shrink:0;width:22px;height:22px;color:var(--oliva);margin-top:1px}
+
+  /* ===== RESEÑAS + UBICACION ===== */
+  .split{display:grid;grid-template-columns:1.1fr 1fr;gap:48px}
+  .reviews{display:grid;gap:16px}
+  .review{background:#fff;border:1px solid var(--linea);border-radius:var(--r-lg);padding:22px 24px}
+  .review .r-stars{color:var(--terracota);font-size:15px;letter-spacing:2px}
+  .review p{margin:10px 0 14px;color:var(--cafe);font-size:15.5px;font-style:italic}
+  .review .r-who{font-weight:700;font-size:14px;color:var(--cafe)}
+  .review .r-who span{font-weight:400;color:var(--cafe-suave)}
+  .infobox{background:var(--crema);border:1px solid var(--crema-d);border-radius:var(--r-lg);padding:26px 28px}
+  .infobox h3{font-size:1.3rem;margin-bottom:6px}
+  .info-row{display:flex;gap:13px;padding:14px 0;border-bottom:1px solid var(--crema-d)}
+  .info-row:last-child{border-bottom:none}
+  .info-row svg{flex-shrink:0;width:21px;height:21px;color:var(--terracota);margin-top:2px}
+  .info-row .lbl{font-weight:700;font-size:14px;color:var(--cafe)}
+  .info-row .val{font-size:14.5px;color:var(--cafe-suave)}
+  .info-row .val a{color:var(--terracota);font-weight:600}
+  .map{margin-top:18px;border-radius:var(--r);overflow:hidden;border:1px solid var(--crema-d)}
+  .map iframe{display:block;width:100%;height:220px;border:0;filter:saturate(.9)}
+
+  /* ===== BANDA ===== */
+  .band{background:var(--oliva);color:#fff;text-align:center;border-radius:var(--r-lg)}
+  .band-inner{padding:56px 28px}
+  .band h2{color:#fff;font-size:clamp(1.8rem,4vw,2.6rem)}
+  .band p{color:rgba(255,255,255,.88);margin:14px auto 26px;max-width:48ch}
+  .band .hero-actions{justify-content:center}
+  .band .btn-ghost{color:#fff;border-color:rgba(255,255,255,.5)}
+  .band .btn-ghost:hover{border-color:#fff;color:#fff;background:rgba(255,255,255,.1)}
+
+  /* ===== FOOTER ===== */
+  footer{background:var(--cafe);color:#e8dccb;padding:54px 0 26px}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:36px;padding-bottom:30px;border-bottom:1px solid rgba(255,255,255,.12)}
+  .foot-grid h4{color:#fff;font-size:1.05rem;margin-bottom:14px}
+  .foot-brand .brand-name{color:#fff}
+  .foot-brand p{color:#c7b6a3;font-size:14.5px;margin-top:14px;max-width:34ch}
+  .foot-col p,.foot-col a{display:block;color:#cdbdac;font-size:14.5px;margin-bottom:9px}
+  .foot-col a:hover{color:#fff}
+  .foot-bottom{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;padding-top:20px;font-size:13px;color:#a8967f}
+  .foot-bottom .demo-note{color:var(--crema)}
+
+  /* ===== FAB ===== */
+  .fab{position:fixed;right:20px;bottom:20px;z-index:950;width:58px;height:58px;background:var(--ok);border-radius:var(--r);display:grid;place-items:center;box-shadow:0 10px 28px -8px rgba(6,53,28,.6);transition:.15s}
+  .fab:hover{transform:translateY(-2px)}
+  .fab svg{width:31px;height:31px;color:#06351c}
+
+  /* ===== RESPONSIVE ===== */
+  @media(max-width:900px){
+    .hero-grid,.nos-grid,.split,.carta-grid{grid-template-columns:1fr}
+    .hero-copy{padding:46px 0 36px}
+    .hero-photo{min-height:340px;order:-1}
+    .menudia-inner{grid-template-columns:1fr;gap:24px}
+    .price-tag{justify-self:start}
+    .foot-grid{grid-template-columns:1fr 1fr}
+    .gal{grid-template-columns:repeat(2,1fr);grid-auto-rows:150px}
+    .gal .big{grid-column:span 2;grid-row:span 1}
+  }
+  @media(max-width:640px){
+    body{font-size:16px}
+    .site-header{top:0}
+    .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:var(--hueso);border-bottom:1px solid var(--linea);flex-direction:column;align-items:flex-start;gap:0;padding:8px 22px 16px}
+    .nav-links.open{display:flex}
+    .nav-links a{padding:11px 0;width:100%;border-bottom:1px solid var(--linea)}
+    .nav .btn-wa{display:none}
+    .nav-toggle{display:inline-flex}
+    section{padding:52px 0}
+    .menudia-inner,.infobox{padding:28px 22px}
+    .foot-grid{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<!-- DEMOBAR -->
+<div class="ef-demobar"><a class="ef-back" href="index.html">← Estilos para Gastronomía Regional</a><span class="ef-label">Demo de Estudio Faro · datos de muestra</span><a class="ef-cta" href="https://wa.me/56971466930?text=Hola%20Estudio%20Faro%2C%20vi%20las%20opciones%20para%20Gastronom%C3%ADa%20Regional" target="_blank" rel="noopener">Conversemos</a></div>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="#inicio" aria-label="Gastronomía Regional, inicio">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 11h16a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/>
+          <path d="M6 13l1 6h10l1-6"/>
+          <path d="M9 8c0-1.5-1-1.5-1-3M12 8c0-1.5-1-1.5-1-3M15 8c0-1.5-1-1.5-1-3"/>
+        </svg>
+      </span>
+      <span class="brand-name">Gastronomía Regional<small>Cocina chilena · La Serena</small></span>
+    </a>
+    <nav class="nav-links" id="navlinks">
+      <a href="#carta">Carta</a>
+      <a href="#menudia">Menú del día</a>
+      <a href="#nosotros">Nosotros</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a class="btn btn-wa" href="https://wa.me/56961900758?text=Hola%2C%20quiero%20hacer%20un%20pedido" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor" aria-hidden="true"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 0 1 8.413 3.488 11.82 11.82 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 0 0 1.51 5.26l-.999 3.648 3.978-1.207z"/></svg>
+      Pedir por WhatsApp
+    </a>
+    <button class="nav-toggle" id="navtoggle" aria-label="Abrir menú" aria-expanded="false">
+      <svg width="20" height="14" viewBox="0 0 20 14" fill="none" stroke="var(--cafe)" stroke-width="2" stroke-linecap="round"><path d="M1 1h18M1 7h18M1 13h18"/></svg>
+    </button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero wrap" id="inicio" style="padding-top:18px">
+  <div class="hero-grid">
+    <div class="hero-copy">
+      <span class="eyebrow">La cocina chilena de siempre</span>
+      <h1>Almuerzos como los de <em>la casa</em>, en pleno centro de La Serena</h1>
+      <p class="lead">Cazuela que reconforta, pastel de choclo recién horneado y la sazón que 243 clientes vuelven a buscar. Aquí se cocina con tiempo.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#carta">Ver la carta</a>
+        <a class="btn btn-wa" href="https://wa.me/56961900758?text=Hola%2C%20quiero%20hacer%20un%20pedido" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor" aria-hidden="true"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 0 1 8.413 3.488 11.82 11.82 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 0 0 1.51 5.26l-.999 3.648 3.978-1.207z"/></svg>
+          Pedir por WhatsApp
+        </a>
+      </div>
+      <div class="badges">
+        <span class="badge"><span class="stars">★</span> <b>4,3</b> Google</span>
+        <span class="badge"><b>243</b> reseñas</span>
+        <span class="badge">Almuerzos <b>Lun a Sáb</b></span>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <img src="../../assets/regional/g2.jpg" alt="Cazuela de vacuno humeante servida en plato hondo" width="720" height="640" loading="eager">
+      <span class="tag">Cazuela de vacuno · recién servida</span>
+    </div>
+  </div>
+</section>
+
+<!-- MENU DEL DIA -->
+<section class="wrap" id="menudia" style="padding-top:30px">
+  <div class="menudia">
+    <div class="menudia-inner">
+      <div>
+        <span class="eyebrow">Lo más pedido a la hora de almuerzo</span>
+        <h2>Menú del día</h2>
+        <p>Entrada, fondo y postre. Cambia cada jornada con lo fresco del mercado. Servido de lunes a sábado mientras alcance.</p>
+        <ul>
+          <li>Una entrada del día</li>
+          <li>Fondo chileno a elección</li>
+          <li>Postre casero</li>
+          <li>Pan amasado</li>
+        </ul>
+      </div>
+      <div class="price-tag">
+        <small>Completo</small>
+        <div class="num">$6.500</div>
+        <span class="sub">por persona</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CARTA -->
+<section class="wrap" id="carta">
+  <div class="sec-head">
+    <span class="eyebrow">Nuestra carta</span>
+    <h2>Cocina chilena, plato por plato</h2>
+    <p>Recetas de siempre, porciones de verdad. Los precios incluyen pan amasado de la casa.</p>
+  </div>
+  <div class="carta-grid">
+    <div class="carta-block">
+      <h3><span class="dot"></span> Para empezar</h3>
+      <div class="dish">
+        <span><span class="d-name">Empanada de pino</span><br><span class="d-desc">Horneada, con carne, cebolla, huevo y aceituna</span></span>
+        <span class="d-dots"></span><span class="d-price">$2.500</span>
+      </div>
+      <div class="dish">
+        <span><span class="d-name">Porotos granados</span><br><span class="d-desc">Con mazamorra y albahaca fresca</span></span>
+        <span class="d-dots"></span><span class="d-price">$7.000</span>
+      </div>
+    </div>
+
+    <div class="carta-block">
+      <h3><span class="dot"></span> Cazuelas y guisos</h3>
+      <div class="dish">
+        <span><span class="d-name">Cazuela de vacuno</span><br><span class="d-desc">Con choclo, papa, zapallo y arroz</span></span>
+        <span class="d-dots"></span><span class="d-price">$7.500</span>
+      </div>
+      <div class="dish">
+        <span><span class="d-name">Charquicán</span><br><span class="d-desc">Zapallo, papa y carne, con huevo frito</span></span>
+        <span class="d-dots"></span><span class="d-price">$6.900</span>
+      </div>
+    </div>
+
+    <div class="carta-block">
+      <h3><span class="dot"></span> Fondos de la casa</h3>
+      <div class="dish">
+        <span><span class="d-name">Pastel de choclo</span><br><span class="d-desc">Pino jugoso y choclo molido, gratinado al horno</span></span>
+        <span class="d-dots"></span><span class="d-price">$8.500</span>
+      </div>
+      <div class="dish">
+        <span><span class="d-name">Lomo a lo pobre</span><br><span class="d-desc">Con papas fritas, cebolla y dos huevos</span></span>
+        <span class="d-dots"></span><span class="d-price">$9.500</span>
+      </div>
+    </div>
+
+    <div class="carta-block">
+      <h3><span class="dot"></span> Del mar</h3>
+      <div class="dish">
+        <span><span class="d-name">Congrio frito</span><br><span class="d-desc">Con ensalada a la chilena y papas cocidas</span></span>
+        <span class="d-dots"></span><span class="d-price">$11.000</span>
+      </div>
+      <div class="dish">
+        <span><span class="d-name">Menú del día</span><br><span class="d-desc">Entrada + fondo + postre</span></span>
+        <span class="d-dots"></span><span class="d-price">$6.500</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALERIA -->
+<section class="wrap" id="galeria" style="padding-top:0">
+  <div class="sec-head">
+    <span class="eyebrow">De la cocina a la mesa</span>
+    <h2>Así se ve un almuerzo aquí</h2>
+  </div>
+  <div class="gal">
+    <a class="big" href="#carta"><img src="../../assets/regional/g0.jpg" alt="Mesa con variedad de platos chilenos servidos" width="560" height="350" loading="lazy"></a>
+    <a href="#carta"><img src="../../assets/regional/g5.jpg" alt="Empanadas de pino recién hechas" width="280" height="170" loading="lazy"></a>
+    <a href="#carta"><img src="../../assets/regional/g3.jpg" alt="Carnes a la parrilla" width="280" height="170" loading="lazy"></a>
+    <a href="#carta"><img src="../../assets/regional/g8.jpg" alt="Caldo casero humeante en plato hondo" width="280" height="170" loading="lazy"></a>
+    <a href="#carta"><img src="../../assets/regional/g7.jpg" alt="Empanadas doradas sobre fuente" width="280" height="170" loading="lazy"></a>
+  </div>
+</section>
+
+<!-- NOSOTROS -->
+<section class="wrap" id="nosotros">
+  <div class="nos-grid">
+    <div class="nos-photo">
+      <img src="../../assets/regional/g8.jpg" alt="Caldo casero servido, ambiente acogedor del comedor" width="520" height="650" loading="lazy">
+    </div>
+    <div class="nos-copy">
+      <span class="eyebrow">Nuestra historia</span>
+      <h2>Tradición que se cocina a fuego lento</h2>
+      <p>Llevamos años en Cienfuegos 696 haciendo lo mismo de siempre: comida chilena honesta, sin atajos. La cazuela se cuece toda la mañana, el pastel de choclo se arma a mano y el pan amasado sale del horno mientras llegan los primeros clientes.</p>
+      <p>No buscamos sorprender con modas. Buscamos que cada plato sepa a casa. Por eso la gente vuelve, y vuelve con sus hijos.</p>
+      <ul class="nos-points">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Recetas caseras de toda la vida, sin pre-elaborados</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Porciones generosas a precio de almuerzo</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Ambiente acogedor, atención de barrio</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> 243 clientes que nos dejaron su reseña</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- RESEÑAS + UBICACION -->
+<section class="wrap" id="contacto">
+  <div class="split">
+    <div>
+      <div class="sec-head" style="margin-bottom:24px">
+        <span class="eyebrow">Lo que dicen</span>
+        <h2>Querido por el barrio</h2>
+      </div>
+      <div class="reviews">
+        <div class="review">
+          <div class="r-stars" aria-label="5 de 5 estrellas">★★★★★</div>
+          <p>"La cazuela es tal cual la de mi abuela. Porción enorme y el pan amasado caliente. Vuelvo cada semana."</p>
+          <div class="r-who">Marcela R. <span>· reseña en Google</span></div>
+        </div>
+        <div class="review">
+          <div class="r-stars" aria-label="5 de 5 estrellas">★★★★★</div>
+          <p>"Mejor menú del día de La Serena por lejos. Comida casera de verdad y atención muy amable."</p>
+          <div class="r-who">Jorge V. <span>· reseña en Google</span></div>
+        </div>
+        <div class="review">
+          <div class="r-stars" aria-label="4 de 5 estrellas">★★★★☆</div>
+          <p>"El pastel de choclo es para repetir. Lugar sencillo y acogedor, justo para el almuerzo de día de semana."</p>
+          <div class="r-who">Paula C. <span>· reseña en Google</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="infobox">
+        <h3>Ven a almorzar</h3>
+        <p style="color:var(--cafe-suave);font-size:14.5px;margin-bottom:6px">Estamos en pleno centro, a pasos de la Recova.</p>
+        <div class="info-row">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <div><div class="lbl">Dirección</div><div class="val">Cienfuegos 696, La Serena, Coquimbo</div></div>
+        </div>
+        <div class="info-row">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+          <div><div class="lbl">Horario</div><div class="val">Lunes a sábado · 11:30 a 20:00<br>Domingo cerrado</div></div>
+        </div>
+        <div class="info-row">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <div><div class="lbl">Reservas y pedidos</div><div class="val"><a href="https://wa.me/56961900758?text=Hola%2C%20quiero%20hacer%20un%20pedido" target="_blank" rel="noopener">WhatsApp +56 9 6190 0758</a><br><a href="tel:+56961900758">Llamar +56 9 6190 0758</a></div></div>
+        </div>
+        <div class="map">
+          <iframe title="Mapa de Gastronomía Regional, Cienfuegos 696, La Serena" loading="lazy" src="https://www.openstreetmap.org/export/embed.html?bbox=-71.2520%2C-29.9080%2C-71.2420%2C-29.9020&layer=mapnik&marker=-29.9050%2C-71.2470"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BANDA -->
+<section class="wrap" style="padding-top:0">
+  <div class="band">
+    <div class="band-inner">
+      <h2>Hoy almuerza en casa</h2>
+      <p>Pasa a vernos a Cienfuegos 696 o haz tu pedido por WhatsApp y lo dejamos listo para retiro.</p>
+      <div class="hero-actions">
+        <a class="btn btn-wa" href="https://wa.me/56961900758?text=Hola%2C%20quiero%20hacer%20un%20pedido" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor" aria-hidden="true"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 0 1 8.413 3.488 11.82 11.82 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 0 0 1.51 5.26l-.999 3.648 3.978-1.207z"/></svg>
+          Pedir por WhatsApp
+        </a>
+        <a class="btn btn-ghost" href="tel:+56961900758">Llamar al local</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="brand">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11h16a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/><path d="M6 13l1 6h10l1-6"/><path d="M9 8c0-1.5-1-1.5-1-3M12 8c0-1.5-1-1.5-1-3M15 8c0-1.5-1-1.5-1-3"/></svg>
+          </span>
+          <span class="brand-name" style="color:#fff">Gastronomía Regional</span>
+        </div>
+        <p>Cocina chilena casera en el centro de La Serena. Almuerzos de tradición desde hace años.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Visítanos</h4>
+        <p>Cienfuegos 696<br>La Serena, Coquimbo</p>
+        <p>Lun a Sáb · 11:30–20:00<br>Domingo cerrado</p>
+      </div>
+      <div class="foot-col">
+        <h4>Contacto</h4>
+        <a href="https://wa.me/56961900758?text=Hola%2C%20quiero%20hacer%20un%20pedido" target="_blank" rel="noopener">WhatsApp +56 9 6190 0758</a>
+        <a href="tel:+56961900758">Llamar +56 9 6190 0758</a>
+        <a href="#carta">Ver la carta</a>
+        <a href="#menudia">Menú del día</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Gastronomía Regional · La Serena</span>
+      <span class="demo-note">Sitio de demostración · Estudio Faro</span>
+    </div>
+  </div>
+</footer>
+
+<!-- FAB -->
+<a class="fab" href="https://wa.me/56961900758?text=Hola%2C%20quiero%20hacer%20un%20pedido" target="_blank" rel="noopener" aria-label="Pedir por WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 0 1 8.413 3.488 11.82 11.82 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 0 0 1.51 5.26l-.999 3.648 3.978-1.207zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+</a>
+
+<script>
+  (function(){
+    var t=document.getElementById('navtoggle'),n=document.getElementById('navlinks');
+    if(t&&n){
+      t.addEventListener('click',function(){
+        var open=n.classList.toggle('open');
+        t.setAttribute('aria-expanded',open?'true':'false');
+      });
+      n.querySelectorAll('a').forEach(function(a){
+        a.addEventListener('click',function(){n.classList.remove('open');t.setAttribute('aria-expanded','false');});
+      });
+    }
+  })();
+</script>
+</body>
+</html>

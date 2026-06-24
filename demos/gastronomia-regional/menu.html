@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Gastronomía Regional · Cocina chilena casera · La Serena</title>
+<meta name="description" content="Cocina chilena casera en La Serena. Menú del día $6.500, cazuela, pastel de choclo, congrio frito. Para llevar o reserva por WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --r:3px; --r-lg:4px; --r-pill:4px;
+    --crema:#fbf5ea;
+    --crema-2:#f4ead6;
+    --tinta:#241c14;
+    --tinta-2:#5a4d3e;
+    --tomate:#c0492b;
+    --tomate-d:#9c3620;
+    --hierba:#3f6b3a;
+    --hierba-d:#2f5129;
+    --linea:#e2d3b8;
+    --wa:#25d366;
+    --wa-tinta:#06351c;
+    --max:1120px;
+    --sombra:0 1px 2px rgba(36,28,20,.06), 0 8px 24px rgba(36,28,20,.06);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:"Hanken Grotesk",system-ui,sans-serif;
+    background:var(--crema);
+    color:var(--tinta);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{font-family:"Bricolage Grotesque",system-ui,sans-serif;line-height:1.08;font-weight:700;letter-spacing:-.01em}
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  :focus-visible{outline:3px solid var(--hierba);outline-offset:2px;border-radius:var(--r)}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 20px}
+  .eyebrow{font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--tomate-d)}
+
+  /* ===== Demo bar ===== */
+  .ef-demobar{
+    position:sticky;top:0;z-index:9999;
+    background:#0c282f;color:#fff;
+    display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+    justify-content:space-between;
+    padding:8px 16px;font-size:.85rem;
+    font-family:"Hanken Grotesk",sans-serif;
+  }
+  .ef-demobar a{color:#fff}
+  .ef-back{font-weight:600;opacity:.92}
+  .ef-back:hover{opacity:1}
+  .ef-label{opacity:.65;font-size:.78rem;flex:1 1 auto;text-align:center;min-width:140px}
+  .ef-cta{
+    background:var(--wa);color:var(--wa-tinta)!important;
+    font-weight:700;padding:7px 14px;border-radius:var(--r-pill);
+    white-space:nowrap;
+  }
+  .ef-cta:hover{filter:brightness(1.06)}
+
+  /* ===== Header ===== */
+  .site-head{
+    position:sticky;top:0;z-index:50;
+    background:rgba(251,245,234,.94);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--linea);
+  }
+  .site-head .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:68px}
+  .brand{display:flex;align-items:center;gap:11px}
+  .brand-mark{
+    width:42px;height:42px;flex:none;display:grid;place-items:center;
+    background:var(--tomate);color:#fff;border-radius:var(--r);
+    font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:1.25rem;
+  }
+  .brand-name{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:1.06rem;line-height:1.05}
+  .brand-name span{display:block;font-family:"Hanken Grotesk",sans-serif;font-weight:500;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--tinta-2)}
+  .nav-links{display:none;gap:26px;font-weight:600;font-size:.94rem}
+  .nav-links a:hover{color:var(--tomate-d)}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    font-weight:700;font-family:"Hanken Grotesk",sans-serif;
+    padding:11px 18px;border-radius:var(--r);
+    border:2px solid transparent;cursor:pointer;font-size:.95rem;
+    transition:transform .08s ease, filter .15s ease;
+  }
+  .btn:active{transform:translateY(1px)}
+  .btn-wa{background:var(--wa);color:var(--wa-tinta)}
+  .btn-wa:hover{filter:brightness(1.05)}
+  .btn-tomate{background:var(--tomate);color:#fff}
+  .btn-tomate:hover{background:var(--tomate-d)}
+  .btn-ghost{background:transparent;color:var(--tinta);border-color:var(--tinta)}
+  .btn-ghost:hover{background:var(--tinta);color:var(--crema)}
+  .head-cta{display:none}
+
+  /* ===== Hero ===== */
+  .hero{padding:40px 0 28px}
+  .hero-grid{display:grid;gap:28px}
+  .hero-photo{position:relative;border-radius:var(--r-lg);overflow:hidden;border:1px solid var(--linea);box-shadow:var(--sombra)}
+  .hero-photo img{width:100%;height:300px;object-fit:cover}
+  .hero-badge{
+    position:absolute;left:14px;bottom:14px;
+    background:var(--crema);color:var(--tinta);
+    border-radius:var(--r);padding:8px 12px;font-size:.82rem;font-weight:600;
+    box-shadow:var(--sombra);display:flex;align-items:center;gap:8px;
+  }
+  .stars{color:#e0a92e;font-weight:700}
+  .hero h1{font-size:2.3rem;margin:14px 0 10px}
+  .hero p.lead{font-size:1.08rem;color:var(--tinta-2);max-width:46ch}
+  .hero-meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px;font-size:.86rem}
+  .chip{display:inline-flex;align-items:center;gap:6px;background:var(--crema-2);border:1px solid var(--linea);padding:6px 11px;border-radius:var(--r-pill);font-weight:600}
+  .chip.open{background:#e7f1e3;border-color:#cfe3c7;color:var(--hierba-d)}
+
+  /* ===== Menú del día ===== */
+  .menu-dia{margin-top:30px}
+  .menu-card{
+    background:linear-gradient(180deg,#fff,#fffdf8);
+    border:2px solid var(--tomate);
+    border-radius:var(--r-lg);
+    box-shadow:var(--sombra);
+    overflow:hidden;
+  }
+  .menu-card-top{
+    background:var(--tomate);color:#fff;
+    padding:16px 22px;display:flex;flex-wrap:wrap;align-items:baseline;
+    justify-content:space-between;gap:8px;
+  }
+  .menu-card-top h2{color:#fff;font-size:1.5rem}
+  .menu-card-top .precio{font-size:1.7rem;font-weight:800;font-family:"Bricolage Grotesque",sans-serif}
+  .menu-card-top .precio small{font-size:.8rem;font-weight:500;opacity:.85;display:block;text-align:right}
+  .menu-card-body{padding:20px 22px}
+  .menu-cols{display:grid;gap:18px}
+  .menu-col h4{font-size:.82rem;letter-spacing:.12em;text-transform:uppercase;color:var(--tomate-d);margin-bottom:8px;border-bottom:1px solid var(--linea);padding-bottom:6px}
+  .menu-col ul{list-style:none;display:flex;flex-direction:column;gap:5px}
+  .menu-col li{font-size:.97rem}
+  .menu-col li::before{content:"›";color:var(--hierba);font-weight:700;margin-right:8px}
+  .menu-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:20px;padding-top:18px;border-top:1px dashed var(--linea)}
+  .menu-note{font-size:.82rem;color:var(--tinta-2);margin-top:14px}
+
+  /* ===== Section ===== */
+  section{padding:46px 0}
+  .sec-head{margin-bottom:26px}
+  .sec-head h2{font-size:1.8rem;margin-top:8px}
+  .sec-head p{color:var(--tinta-2);margin-top:8px;max-width:54ch}
+
+  /* ===== Carta ===== */
+  .carta{background:var(--crema-2);border-top:1px solid var(--linea);border-bottom:1px solid var(--linea)}
+  .carta-group{margin-bottom:34px}
+  .carta-group:last-child{margin-bottom:0}
+  .carta-group > h3{
+    font-size:1.25rem;color:var(--tinta);
+    display:flex;align-items:center;gap:12px;margin-bottom:14px;
+  }
+  .carta-group > h3::after{content:"";flex:1;height:1px;background:var(--linea)}
+  .dish{
+    display:flex;gap:14px;align-items:flex-start;
+    padding:14px 0;border-bottom:1px solid var(--linea);
+  }
+  .dish:last-child{border-bottom:none}
+  .dish-thumb{width:74px;height:74px;flex:none;border-radius:var(--r);overflow:hidden;border:1px solid var(--linea)}
+  .dish-thumb img{width:74px;height:74px;object-fit:cover}
+  .dish-main{flex:1;min-width:0}
+  .dish-row{display:flex;align-items:baseline;gap:10px}
+  .dish-name{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:1.05rem}
+  .dish-dots{flex:1;border-bottom:2px dotted var(--linea);transform:translateY(-4px)}
+  .dish-price{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:1.05rem;color:var(--tomate-d);white-space:nowrap}
+  .dish-desc{font-size:.9rem;color:var(--tinta-2);margin-top:3px}
+  .dish-pedir{
+    margin-top:8px;display:inline-flex;align-items:center;gap:6px;
+    font-size:.82rem;font-weight:700;color:var(--hierba-d);
+    border:1.5px solid var(--hierba);border-radius:var(--r-pill);
+    padding:4px 10px;
+  }
+  .dish-pedir:hover{background:var(--hierba);color:#fff}
+
+  /* ===== Pedir / reservar ===== */
+  .pedir-grid{display:grid;gap:18px}
+  .pedir-card{
+    background:#fff;border:1px solid var(--linea);border-radius:var(--r-lg);
+    padding:24px;box-shadow:var(--sombra);
+  }
+  .pedir-card .num{
+    width:34px;height:34px;display:grid;place-items:center;
+    background:var(--tomate);color:#fff;border-radius:var(--r);
+    font-family:"Bricolage Grotesque",sans-serif;font-weight:800;margin-bottom:12px;
+  }
+  .pedir-card h3{font-size:1.15rem;margin-bottom:8px}
+  .pedir-card p{font-size:.95rem;color:var(--tinta-2)}
+  .pedir-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+
+  /* ===== Galería ===== */
+  .gal{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+  .gal a{border-radius:var(--r);overflow:hidden;border:1px solid var(--linea)}
+  .gal img{width:100%;height:150px;object-fit:cover;transition:transform .3s ease}
+  .gal a:hover img{transform:scale(1.05)}
+
+  /* ===== Reseñas ===== */
+  .resenas{background:var(--hierba-d);color:#f1efe6}
+  .resenas .eyebrow{color:#bfe0b3}
+  .resenas h2{color:#fff}
+  .res-grid{display:grid;gap:16px;margin-top:26px}
+  .res-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:var(--r-lg);padding:20px}
+  .res-card .stars{color:#ffd166}
+  .res-card p{margin:10px 0;font-size:.98rem;line-height:1.6}
+  .res-card .who{font-weight:700;font-size:.9rem;color:#cfe6c6}
+
+  /* ===== Ubicación ===== */
+  .ubi-grid{display:grid;gap:24px}
+  .ubi-list{list-style:none;display:flex;flex-direction:column;gap:16px}
+  .ubi-list li{display:flex;gap:12px;align-items:flex-start}
+  .ubi-ico{width:38px;height:38px;flex:none;display:grid;place-items:center;background:var(--crema-2);border:1px solid var(--linea);border-radius:var(--r);color:var(--tomate-d)}
+  .ubi-list h4{font-size:1rem;margin-bottom:2px}
+  .ubi-list p,.ubi-list a{font-size:.94rem;color:var(--tinta-2)}
+  .ubi-list a{color:var(--hierba-d);font-weight:600;text-decoration:underline}
+  .ubi-map{border-radius:var(--r-lg);overflow:hidden;border:1px solid var(--linea);min-height:240px}
+  .ubi-map iframe{width:100%;height:100%;min-height:240px;border:0;display:block}
+
+  /* ===== CTA final ===== */
+  .cta-final{background:var(--tomate);color:#fff;text-align:center}
+  .cta-final h2{color:#fff;font-size:2rem;max-width:18ch;margin:0 auto 12px}
+  .cta-final p{max-width:48ch;margin:0 auto 24px;opacity:.92}
+  .cta-final .btn-wa{box-shadow:0 6px 18px rgba(0,0,0,.18)}
+  .cta-final .btn-ghost{color:#fff;border-color:#fff}
+  .cta-final .btn-ghost:hover{background:#fff;color:var(--tomate-d)}
+  .cta-row{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+
+  /* ===== Footer ===== */
+  footer{background:var(--tinta);color:#cfc4b5;padding:40px 0 28px;font-size:.9rem}
+  footer .foot-grid{display:grid;gap:24px}
+  footer h4{color:#fff;font-size:1.05rem;margin-bottom:10px}
+  footer a:hover{color:#fff}
+  footer .horario li{list-style:none;display:flex;justify-content:space-between;max-width:230px;padding:2px 0}
+  .foot-legal{margin-top:28px;padding-top:18px;border-top:1px solid rgba(255,255,255,.12);font-size:.82rem;opacity:.7;display:flex;flex-wrap:wrap;gap:8px;justify-content:space-between}
+
+  /* ===== FAB ===== */
+  .fab{
+    position:fixed;right:18px;bottom:18px;z-index:80;
+    width:58px;height:58px;border-radius:var(--r-lg);
+    background:var(--wa);color:var(--wa-tinta);
+    display:grid;place-items:center;
+    box-shadow:0 8px 22px rgba(6,53,28,.35);
+  }
+  .fab:hover{filter:brightness(1.06)}
+  .fab svg{width:32px;height:32px}
+
+  /* ===== Responsive ===== */
+  @media(min-width:680px){
+    .hero h1{font-size:2.9rem}
+    .hero-photo img{height:380px}
+    .menu-cols{grid-template-columns:repeat(3,1fr)}
+    .pedir-grid{grid-template-columns:repeat(3,1fr)}
+    .gal{grid-template-columns:repeat(4,1fr)}
+    .res-grid{grid-template-columns:repeat(3,1fr)}
+    .ubi-grid{grid-template-columns:1.1fr 1fr}
+    .footer .foot-grid{grid-template-columns:repeat(3,1fr)}
+    footer .foot-grid{grid-template-columns:2fr 1fr 1fr}
+  }
+  @media(min-width:920px){
+    .nav-links{display:flex}
+    .head-cta{display:inline-flex}
+    .hero-grid{grid-template-columns:1fr 1.05fr;align-items:center}
+    .hero-photo img{height:440px}
+    .hero h1{font-size:3.2rem}
+  }
+</style>
+</head>
+<body>
+
+<div class="ef-demobar"><a class="ef-back" href="index.html">← Estilos para Gastronomía Regional</a><span class="ef-label">Demo de Estudio Faro · datos de muestra</span><a class="ef-cta" href="https://wa.me/56971466930?text=Hola%20Estudio%20Faro%2C%20vi%20las%20opciones%20para%20Gastronom%C3%ADa%20Regional" target="_blank" rel="noopener">Conversemos</a></div>
+
+<header class="site-head">
+  <div class="wrap">
+    <a class="brand" href="#inicio" aria-label="Gastronomía Regional, inicio">
+      <span class="brand-mark">GR</span>
+      <span class="brand-name">Gastronomía Regional<span>Cocina chilena casera · La Serena</span></span>
+    </a>
+    <nav class="nav-links" aria-label="Principal">
+      <a href="#menu-dia">Menú del día</a>
+      <a href="#carta">Carta</a>
+      <a href="#pedir">Para llevar</a>
+      <a href="#ubicacion">Cómo llegar</a>
+    </nav>
+    <a class="btn btn-wa head-cta" href="https://wa.me/56961900758" target="_blank" rel="noopener">Pedir por WhatsApp</a>
+  </div>
+</header>
+
+<main id="inicio">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-photo">
+        <img src="../../assets/regional/g0.jpg" width="900" height="600" loading="eager" alt="Mesa servida con platos de cocina chilena casera en Gastronomía Regional, La Serena">
+        <div class="hero-badge"><span class="stars">★ 4,3</span> · 243 reseñas en Google</div>
+      </div>
+      <div>
+        <span class="eyebrow">Almuerzos · Cienfuegos 696, La Serena</span>
+        <h1>Comida chilena de casa, todos los días.</h1>
+        <p class="lead">Cazuela, pastel de choclo, congrio frito y el menú del día a la hora de almuerzo. Llévate tu pedido o reserva tu mesa por WhatsApp.</p>
+        <div class="hero-meta">
+          <span class="chip open">● Abierto · L a S 11:30–20:00</span>
+          <span class="chip">Domingo cerrado</span>
+          <span class="chip">Para llevar y en el local</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- MENÚ DEL DÍA -->
+    <div class="wrap menu-dia" id="menu-dia">
+      <div class="menu-card">
+        <div class="menu-card-top">
+          <h2>Menú del día de hoy</h2>
+          <span class="precio">$6.500<small>entrada · fondo · postre</small></span>
+        </div>
+        <div class="menu-card-body">
+          <div class="menu-cols">
+            <div class="menu-col">
+              <h4>Para empezar</h4>
+              <ul>
+                <li>Ensalada chilena</li>
+                <li>Caldillo de verduras</li>
+              </ul>
+            </div>
+            <div class="menu-col">
+              <h4>Fondo a elección</h4>
+              <ul>
+                <li>Cazuela de vacuno</li>
+                <li>Charquicán con huevo</li>
+                <li>Porotos granados</li>
+              </ul>
+            </div>
+            <div class="menu-col">
+              <h4>Para cerrar</h4>
+              <ul>
+                <li>Leche asada</li>
+                <li>Fruta de la estación</li>
+              </ul>
+            </div>
+          </div>
+          <p class="menu-note">El menú cambia cada día según lo que llega fresco a la cocina. Servido solo a la hora de almuerzo, hasta agotar stock.</p>
+          <div class="menu-actions">
+            <a class="btn btn-wa" href="https://wa.me/56961900758?text=Hola%2C%20quiero%20pedir%20el%20men%C3%BA%20del%20d%C3%ADa%20%28%246.500%29" target="_blank" rel="noopener">Pedir el menú por WhatsApp</a>
+            <a class="btn btn-ghost" href="#carta">Ver carta completa</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CARTA -->
+  <section class="carta" id="carta">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">La carta</span>
+        <h2>Lo que se cocina aquí</h2>
+        <p>Recetas chilenas de siempre, hechas a olla. Precios en pesos, sin sorpresas. Pide cualquier fondo directo por WhatsApp.</p>
+      </div>
+
+      <!-- Entradas -->
+      <div class="carta-group">
+        <h3>Entradas</h3>
+        <div class="dish">
+          <div class="dish-main">
+            <div class="dish-row"><span class="dish-name">Porotos granados</span><span class="dish-dots"></span><span class="dish-price">$7.000</span></div>
+            <p class="dish-desc">Porotos frescos con choclo, zapallo y albahaca. Bien chilenos.</p>
+            <a class="dish-pedir" href="https://wa.me/56961900758?text=Hola%2C%20quiero%20pedir%20Porotos%20granados%20%28%247.000%29" target="_blank" rel="noopener">Pedir →</a>
+          </div>
+        </div>
+        <div class="dish">
+          <div class="dish-main">
+            <div class="dish-row"><span class="dish-name">Charquicán</span><span class="dish-dots"></span><span class="dish-price">$6.900</span></div>
+            <p class="dish-desc">Guiso de zapallo, papas y carne deshilachada, con huevo frito encima.</p>
+            <a class="dish-pedir" href="https://wa.me/56961900758?text=Hola%2C%20quiero%20pedir%20Charquic%C3%A1n%20%28%246.900%29" target="_blank" rel="noopener">Pedir →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Fondos -->
+      <div class="carta-group">
+        <h3>Fondos chilenos</h3>
+        <div class="dish">
+          <div class="dish-thumb"><img src="../../assets/regional/g2.jpg" width="74" height="74" loading="lazy" alt="Plato de cazuela de vacuno con choclo y papa"></div>
+          <div class="dish-main">
+            <div class="dish-row"><span class="dish-name">Cazuela de vacuno</span><span class="dish-dots"></span><span class="dish-price">$7.500</span></div>
+            <p class="dish-desc">Caldo de verdad, con presa de vacuno, choclo, papa y zapallo.</p>
+            <a class="dish-pedir" href="https://wa.me/56961900758?text=Hola%2C%20quiero%20pedir%20Cazuela%20de%20vacuno%20%28%247.500%29" target="_blank" rel="noopener">Pedir →</a>
+          </div>
+        </div>
+        <div class="dish">
+          <div class="dish-main">
+            <div class="dish-row"><span class="dish-name">Pastel de choclo</span><span class="dish-dots"></span><span class="dish-price">$8.500</span></div>
+            <p class="dish-desc">Pino de carne y pollo bajo una capa dorada de choclo molido al horno.</p>
+            <a class="dish-pedir" href="https://wa.me/56961900758?text=Hola%2C%20quiero%20pedir%20Pastel%20de%20choclo%20%28%248.500%29" target="_blank" rel="noopener">Pedir →</a>
+          </div>
+        </div>
+        <div class="dish">
+          <div class="dish-thumb"><img src="../../assets/regional/g3.jpg" width="74" height="74" loading="lazy" alt="Lomo a lo pobre con papas fritas y huevo"></div>
+          <div class="dish-main">
+            <div class="dish-row"><span class="dish-name">Lomo a lo pobre</span><span class="dish-dots"></span><span class="dish-price">$9.500</span></div>
+            <p class="dish-desc">Lomo a la plancha sobre papas fritas, cebolla y dos huevos.</p>
+            <a class="dish-pedir" href="https://wa.me/56961900758?text=Hola%2C%20quiero%20pedir%20Lomo%20a%20lo%20pobre%20%28%249.500%29" target="_blank" rel="noopener">Pedir →</a>
+          </div>
+        </div>
+        <div class="dish">
+          <div class="dish-thumb"><img src="../../assets/regional/g8.jpg" width="74" height="74" loading="lazy" alt="Congrio frito acompañado de ensalada"></div>
+          <div class="dish-main">
+            <div class="dish-row"><span class="dish-name">Congrio frito</span><span class="dish-dots"></span><span class="dish-price">$11.000</span></div>
+            <p class="dish-desc">Filete de congrio fresco, frito al momento, con ensalada a elección.</p>
+            <a class="dish-pedir" href="https://wa.me/56961900758?text=Hola%2C%20quiero%20pedir%20Congrio%20frito%20%28%2411.000%29" target="_blank" rel="noopener">Pedir →</a>
+          </div>
+        </div>
+        <div class="dish">
+          <div class="dish-main">
+            <div class="dish-row"><span class="dish-name">Menú del día</span><span class="dish-dots"></span><span class="dish-price">$6.500</span></div>
+            <p class="dish-desc">Entrada, fondo a elección y postre. Solo a la hora de almuerzo.</p>
+            <a class="dish-pedir" href="https://wa.me/56961900758?text=Hola%2C%20quiero%20pedir%20el%20Men%C3%BA%20del%20d%C3%ADa%20%28%246.500%29" target="_blank" rel="noopener">Pedir →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Empanadas -->
+      <div class="carta-group">
+        <h3>Empanadas</h3>
+        <div class="dish">
+          <div class="dish-thumb"><img src="../../assets/regional/g5.jpg" width="74" height="74" loading="lazy" alt="Empanadas de pino recién horneadas"></div>
+          <div class="dish-main">
+            <div class="dish-row"><span class="dish-name">Empanada de pino</span><span class="dish-dots"></span><span class="dish-price">$2.500</span></div>
+            <p class="dish-desc">Pino de carne, cebolla, huevo y aceituna. Masa hecha en casa.</p>
+            <a class="dish-pedir" href="https://wa.me/56961900758?text=Hola%2C%20quiero%20pedir%20Empanadas%20de%20pino%20%28%242.500%20c%2Fu%29" target="_blank" rel="noopener">Pedir →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Postres -->
+      <div class="carta-group">
+        <h3>Postres</h3>
+        <div class="dish">
+          <div class="dish-main">
+            <div class="dish-row"><span class="dish-name">Leche asada</span><span class="dish-dots"></span><span class="dish-price">$2.500</span></div>
+            <p class="dish-desc">Clásico de la casa, con su capa de caramelo.</p>
+          </div>
+        </div>
+        <div class="dish">
+          <div class="dish-main">
+            <div class="dish-row"><span class="dish-name">Mote con huesillo</span><span class="dish-dots"></span><span class="dish-price">$2.200</span></div>
+            <p class="dish-desc">Bien helado, con harto mote y durazno. Como debe ser.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PEDIR / RESERVAR -->
+  <section id="pedir">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Para llevar · Reservar</span>
+        <h2>Pide en un minuto, por WhatsApp</h2>
+        <p>No necesitas app ni registro. Nos escribes, coordinamos y listo. Atención de lunes a sábado, 11:30 a 20:00.</p>
+      </div>
+      <div class="pedir-grid">
+        <div class="pedir-card">
+          <div class="num">1</div>
+          <h3>Para llevar</h3>
+          <p>Escríbenos lo que quieres por WhatsApp, te confirmamos el total y la hora. Lo dejamos listo para que pases a retirar en Cienfuegos 696.</p>
+        </div>
+        <div class="pedir-card">
+          <div class="num">2</div>
+          <h3>Reserva tu mesa</h3>
+          <p>Para grupos o la hora de almuerzo, manda fecha, hora y cantidad de personas por WhatsApp y te apartamos mesa.</p>
+        </div>
+        <div class="pedir-card">
+          <div class="num">3</div>
+          <h3>Llámanos</h3>
+          <p>¿Prefieres hablar? Marca y coordinamos tu pedido o reserva al tiro, en horario de atención.</p>
+        </div>
+      </div>
+      <div class="pedir-cta">
+        <a class="btn btn-wa" href="https://wa.me/56961900758?text=Hola%2C%20quiero%20hacer%20un%20pedido%20para%20llevar" target="_blank" rel="noopener">Pedir para llevar</a>
+        <a class="btn btn-tomate" href="https://wa.me/56961900758?text=Hola%2C%20quiero%20reservar%20una%20mesa" target="_blank" rel="noopener">Reservar por WhatsApp</a>
+        <a class="btn btn-ghost" href="tel:+56961900758">Llamar +56 9 6190 0758</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERÍA -->
+  <section class="carta" style="padding-top:46px;padding-bottom:46px">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">El local</span>
+        <h2>De la olla a tu mesa</h2>
+      </div>
+      <div class="gal">
+        <a href="../../assets/regional/g2.jpg" target="_blank" rel="noopener"><img src="../../assets/regional/g2.jpg" width="400" height="300" loading="lazy" alt="Cazuela de vacuno servida"></a>
+        <a href="../../assets/regional/g3.jpg" target="_blank" rel="noopener"><img src="../../assets/regional/g3.jpg" width="400" height="300" loading="lazy" alt="Carne a la parrilla con acompañamientos"></a>
+        <a href="../../assets/regional/g5.jpg" target="_blank" rel="noopener"><img src="../../assets/regional/g5.jpg" width="400" height="300" loading="lazy" alt="Empanadas caseras de pino"></a>
+        <a href="../../assets/regional/g8.jpg" target="_blank" rel="noopener"><img src="../../assets/regional/g8.jpg" width="400" height="300" loading="lazy" alt="Caldo caliente recién servido"></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESEÑAS -->
+  <section class="resenas">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Lo que dicen</span>
+        <h2>4,3 ★ en 243 reseñas de Google</h2>
+      </div>
+      <div class="res-grid">
+        <div class="res-card">
+          <div class="stars">★★★★★</div>
+          <p>"La cazuela como la de la abuela, abundante y con sabor de verdad. El menú del día a $6.500 es un regalo."</p>
+          <span class="who">— Marisol C.</span>
+        </div>
+        <div class="res-card">
+          <div class="stars">★★★★★</div>
+          <p>"Pedí congrio frito para llevar y llegó calentito. Atención rápida por WhatsApp, súper cómodo."</p>
+          <span class="who">— Rodrigo A.</span>
+        </div>
+        <div class="res-card">
+          <div class="stars">★★★★☆</div>
+          <p>"Comida chilena casera de la buena en pleno centro. El pastel de choclo vale cada peso."</p>
+          <span class="who">— Carolina P.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- UBICACIÓN -->
+  <section id="ubicacion">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Cómo llegar</span>
+        <h2>Estamos en el centro de La Serena</h2>
+      </div>
+      <div class="ubi-grid">
+        <ul class="ubi-list">
+          <li>
+            <span class="ubi-ico" aria-hidden="true">📍</span>
+            <div><h4>Dirección</h4><p>Cienfuegos 696, La Serena, Región de Coquimbo. A pasos de la Plaza de Armas.</p></div>
+          </li>
+          <li>
+            <span class="ubi-ico" aria-hidden="true">🕒</span>
+            <div><h4>Horario</h4><p>Lunes a sábado, 11:30 a 20:00 hrs. Almuerzos. Domingo cerrado.</p></div>
+          </li>
+          <li>
+            <span class="ubi-ico" aria-hidden="true">💬</span>
+            <div><h4>WhatsApp</h4><p><a href="https://wa.me/56961900758" target="_blank" rel="noopener">+56 9 6190 0758</a> — pedidos y reservas.</p></div>
+          </li>
+          <li>
+            <span class="ubi-ico" aria-hidden="true">📞</span>
+            <div><h4>Teléfono</h4><p><a href="tel:+56961900758">+56 9 6190 0758</a></p></div>
+          </li>
+        </ul>
+        <div class="ubi-map">
+          <iframe title="Mapa de Gastronomía Regional, Cienfuegos 696, La Serena" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Cienfuegos%20696%2C%20La%20Serena&output=embed"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="cta-final">
+    <div class="wrap">
+      <h2>¿Listo para almorzar rico?</h2>
+      <p>Pide el menú del día o tu plato favorito por WhatsApp y lo dejamos listo para llevar. También reservamos tu mesa.</p>
+      <div class="cta-row">
+        <a class="btn btn-wa" href="https://wa.me/56961900758?text=Hola%2C%20quiero%20hacer%20un%20pedido" target="_blank" rel="noopener">Pedir por WhatsApp</a>
+        <a class="btn btn-ghost" href="tel:+56961900758">Llamar al local</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h4>Gastronomía Regional</h4>
+        <p>Cocina chilena casera en La Serena. Almuerzos, para llevar y reservas. Cienfuegos 696, La Serena, Región de Coquimbo.</p>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <p><a href="https://wa.me/56961900758" target="_blank" rel="noopener">WhatsApp +56 9 6190 0758</a></p>
+        <p><a href="tel:+56961900758">Llamar +56 9 6190 0758</a></p>
+      </div>
+      <div>
+        <h4>Horario</h4>
+        <ul class="horario">
+          <li><span>Lun a Sáb</span><span>11:30–20:00</span></li>
+          <li><span>Domingo</span><span>Cerrado</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-legal">
+      <span>Sitio de demostración · Estudio Faro</span>
+      <span>Datos y fotografías de muestra.</span>
+    </div>
+  </div>
+</footer>
+
+<a class="fab" href="https://wa.me/56961900758?text=Hola%2C%20quiero%20hacer%20un%20pedido" target="_blank" rel="noopener" aria-label="Hacer un pedido por WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.413c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 0 0 1.51 5.26l-.999 3.648 3.978-.607zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+</a>
+
+</body>
+</html>
