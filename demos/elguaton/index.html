@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="es-CL">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Estilos para Dónde El Guatón · Estudio Faro</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#ffffff; --bg-soft:#f1e7d2; --ink:#231a12; --ink-2:#6a5a48; --line:#e4d9c2; --line-2:#d4c5a6;
+  --green:#1f3a2e; --green-d:#142519; --wine:#5a2230; --gold:#b08a3e; --gold-d:#8c6c28; --wa:#25d366;
+  --r:3px; --r-lg:4px; --r-pill:4px; --ease:cubic-bezier(.16,1,.3,1);
+  --fd:"Bricolage Grotesque",system-ui,sans-serif; --fb:"Hanken Grotesk",system-ui,sans-serif;
+}
+*{margin:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--fb);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}img{max-width:100%;display:block}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+h1,h2,h3{font-family:var(--fd);font-weight:800;letter-spacing:-.02em;line-height:1.06;margin:0;text-wrap:balance}
+.wrap{max-width:1080px;margin:0 auto;padding:0 clamp(20px,5vw,40px)}
+.ef-demobar{position:sticky;top:0;z-index:9999;display:flex;align-items:center;justify-content:space-between;gap:1rem;background:#0c282f;color:#fff;padding:.5rem clamp(14px,4vw,28px);font-family:var(--fb);font-size:.85rem}
+.ef-demobar .ef-back{color:#cfe0de;font-weight:600}.ef-demobar .ef-back:hover{color:#fff}
+.ef-demobar .ef-label{color:#8fb0ac;font-weight:600}@media(max-width:560px){.ef-demobar .ef-label{display:none}}
+.ef-demobar .ef-cta{background:#25d366;color:#06351c;font-weight:700;padding:.4rem .9rem;border-radius:var(--r-pill);white-space:nowrap}
+.head{position:relative;overflow:hidden;background:linear-gradient(160deg,var(--green),var(--green-d));color:#fff;padding:clamp(44px,6vw,76px) 0 clamp(34px,5vw,52px)}
+.head::before{content:"";position:absolute;inset:0;background:radial-gradient(120% 80% at 85% -10%,rgba(176,138,62,.34),transparent 60%);pointer-events:none}
+.head .wrap{position:relative;z-index:1}
+.eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-weight:700;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:#e3c98a;border:1px solid rgba(176,138,62,.55);padding:.34rem .8rem;border-radius:var(--r);margin-bottom:1.1rem}
+.eyebrow .pt{width:7px;height:7px;background:var(--gold)}
+.head h1{font-size:clamp(2rem,4.8vw,3.2rem);margin-bottom:.9rem}
+.head h1 em{color:#e3c98a;font-style:normal}
+.head .sub{font-size:clamp(1.05rem,1.5vw,1.18rem);color:#d8e0d2;max-width:62ch}
+.head .meta{margin-top:1.4rem;display:flex;flex-wrap:wrap;gap:.5rem .7rem;font-size:.85rem;color:#cdd6c8}
+.head .meta span{border:1px solid rgba(255,255,255,.18);padding:.28rem .7rem;border-radius:var(--r)}
+.sel{padding:clamp(30px,5vw,52px) 0 clamp(20px,3vw,30px)}
+.sel h2{font-size:clamp(1.4rem,3vw,1.9rem);margin-bottom:.4rem}
+.sel .lead{color:var(--ink-2);max-width:62ch;margin-bottom:2rem}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.3rem}
+@media(max-width:860px){.cards{grid-template-columns:1fr;max-width:460px}}
+.card{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;background:#fff;transition:transform .3s var(--ease),box-shadow .3s var(--ease),border-color .3s;position:relative}
+.card:hover{transform:translateY(-5px);box-shadow:0 30px 60px -34px rgba(31,58,46,.45);border-color:var(--line-2)}
+.card .shot{aspect-ratio:16/11;overflow:hidden;background:var(--green-d);position:relative}
+.card .shot img{width:100%;height:100%;object-fit:cover;transition:transform .5s var(--ease)}
+.card:hover .shot img{transform:scale(1.05)}
+.card .shot::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,37,25,.05),rgba(20,37,25,.5))}
+.card .badge{position:absolute;z-index:2;left:.8rem;top:.8rem;font-size:.7rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--green-d);background:var(--gold);padding:.3rem .6rem;border-radius:var(--r)}
+.card .b{padding:1.1rem 1.2rem 1.3rem;display:flex;flex-direction:column;gap:.45rem;flex:1}
+.card .st{font-size:.72rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--gold-d)}
+.card h3{font-size:1.22rem}
+.card p{color:var(--ink-2);font-size:.93rem;flex:1}
+.card .go{margin-top:.6rem;font-weight:700;color:var(--green);display:inline-flex;align-items:center;gap:.4rem}
+.card .go .ar{color:var(--gold-d);transition:transform .25s var(--ease)}
+.card:hover .go .ar{transform:translateX(5px)}
+.note{margin-top:1.8rem;background:var(--bg-soft);border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:var(--r);padding:1rem 1.2rem;color:var(--ink-2);font-size:.92rem}
+.note b{color:var(--ink)}
+.close{margin:2.6rem 0 0;background:linear-gradient(150deg,var(--green),var(--green-d));color:#fff;border-radius:var(--r-lg);padding:clamp(26px,4vw,40px);text-align:center;position:relative;overflow:hidden}
+.close::before{content:"";position:absolute;inset:0;background:radial-gradient(90% 120% at 50% -20%,rgba(176,138,62,.3),transparent 60%)}
+.close .in{position:relative;z-index:1}
+.close h2{font-size:clamp(1.4rem,3vw,2rem);margin-bottom:.6rem}
+.close p{color:#d8e0d2;max-width:54ch;margin:0 auto 1.4rem}
+.btn{display:inline-flex;align-items:center;gap:.55rem;font-weight:700;font-size:1.02rem;padding:.85rem 1.4rem;border-radius:var(--r-pill);background:var(--wa);color:#06351c;transition:transform .25s var(--ease),box-shadow .25s var(--ease)}
+.btn:hover{transform:translateY(-2px);box-shadow:0 16px 36px -16px rgba(37,211,102,.6)}
+.btn svg{width:1.2em;height:1.2em}
+.foot{text-align:center;color:var(--ink-2);font-size:.85rem;padding:2.4rem 0 48px}
+.foot a{color:var(--gold-d);font-weight:600}
+</style>
+</head>
+<body>
+<div class="ef-demobar">
+  <a class="ef-back" href="https://estudiofaro.cl">← Estudio Faro</a>
+  <span class="ef-label">Propuesta para Dónde El Guatón · datos de muestra</span>
+  <a class="ef-cta" href="https://wa.me/56971466930?text=Hola%20Estudio%20Faro%2C%20vi%20las%20opciones%20para%20D%C3%B3nde%20El%20Guat%C3%B3n" target="_blank" rel="noopener">Conversemos</a>
+</div>
+<header class="head">
+  <div class="wrap">
+    <span class="eyebrow"><span class="pt"></span>Propuesta de sitio web · Estudio Faro</span>
+    <h1>Tres estilos para <em>Dónde El Guatón</em></h1>
+    <p class="sub">Una web propia a la altura de la casona: para mostrar la carta criolla, contar los 36 años de historia y que reserven y los encuentren en Google. Hoy su dominio está caído. Elija el estilo que más representa al local.</p>
+    <div class="meta"><span>Cocina criolla · casona 1840</span><span>Brasil 750, La Serena</span><span>⭐ 4,4 · 1.649 reseñas</span><span>36 años</span></div>
+  </div>
+</header>
+<main class="wrap sel">
+  <h2>Elija su estilo</h2>
+  <p class="lead">Toque cada uno para verlo completo en su celular. Todos traen la carta criolla con precios, el ahuesillado, la historia de la casona, reseñas, ubicación y reserva por teléfono.</p>
+  <div class="cards">
+    <a class="card" href="patrimonial.html">
+      <div class="shot"><span class="badge">Patrimonial</span><img src="../../assets/elguaton/e1.jpg" width="640" height="440" loading="lazy" alt="Estilo Patrimonial — casona"></div>
+      <div class="b"><span class="st">Heritage · con historia</span><h3>Casona Patrimonial</h3><p>Elegante y con alma: la casona de 1840 y los 36 años como protagonistas. Para honrar la tradición y el patrimonio del local.</p><span class="go">Ver estilo <span class="ar">→</span></span></div>
+    </a>
+    <a class="card" href="criollo.html">
+      <div class="shot"><span class="badge">Criollo</span><img src="../../assets/elguaton/e9.jpg" width="640" height="440" loading="lazy" alt="Estilo Criollo — cazuela"></div>
+      <div class="b"><span class="st">Cálido · festivo</span><h3>Criollo / Tradición</h3><p>Comida chilena de verdad, abundante y con harta personalidad. Resalta la carta, el ahuesillado y el cariño de 1.649 clientes.</p><span class="go">Ver estilo <span class="ar">→</span></span></div>
+    </a>
+    <a class="card" href="sabor.html">
+      <div class="shot"><span class="badge">Sabor</span><img src="../../assets/elguaton/e4.jpg" width="640" height="440" loading="lazy" alt="Estilo Sabor — parrillada"></div>
+      <div class="b"><span class="st">Visual · apetitoso</span><h3>Sabor</h3><p>Fotografía en grande de la parrillada, las cazuelas y el ahuesillado. Da hambre con solo verla. Ideal para redes.</p><span class="go">Ver estilo <span class="ar">→</span></span></div>
+    </a>
+  </div>
+  <p class="note"><b>Importante:</b> son páginas de muestra de Estudio Faro con datos de ejemplo (precios referenciales). El sitio final lleva su carta, precios y fotos reales, en su propio dominio y conectado a su teléfono e Instagram (@donde_el_guaton_).</p>
+  <section class="close"><div class="in">
+    <h2>¿Cuál representa a la casona?</h2>
+    <p>Elija un estilo y lo dejamos publicado con sus datos en pocos días. Una web a la altura de sus 1.649 reseñas.</p>
+    <a class="btn" href="https://wa.me/56971466930?text=Hola%20Estudio%20Faro%2C%20vi%20las%20opciones%20para%20D%C3%B3nde%20El%20Guat%C3%B3n%2C%20me%20gust%C3%B3%20el%20estilo%3A%20" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.05L2 22l5.07-1.33A10 10 0 1 0 12 2Zm5.3 14.1c-.22.62-1.3 1.2-1.8 1.24-.46.04-.9.2-3.04-.63-2.57-1-4.2-3.6-4.33-3.77-.13-.17-1.04-1.38-1.04-2.63 0-1.25.66-1.86.9-2.12.22-.25.5-.31.66-.31l.48.01c.15 0 .36-.06.56.43.22.53.74 1.84.8 1.97.07.13.11.29.02.46-.41.83-.85.8-.6 1.22.93 1.6 1.86 2.16 3.3 2.88.25.13.4.11.54-.06.16-.18.62-.72.79-.97.16-.25.33-.2.55-.12.22.08 1.4.66 1.64.78.24.12.4.18.46.28.06.1.06.58-.16 1.2Z"/></svg> Hablar con Estudio Faro</a>
+  </div></section>
+</main>
+<p class="foot">Demostración creada por <a href="https://estudiofaro.cl">Estudio Faro</a> · Páginas web que te traen clientes</p>
+</body>
+</html>

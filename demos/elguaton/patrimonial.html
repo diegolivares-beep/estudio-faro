@@ -1,0 +1,502 @@
+<!doctype html>
+<html lang="es-CL">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Dónde El Guatón · Cocina criolla en una casona de 1840 — La Serena</title>
+<meta name="description" content="Dónde El Guatón · 36 años rescatando la cocina chilena criolla en una casona colonial de 1840, en el corazón histórico de La Serena. Cazuelas, pastel de choclo, parrilla y el legendario ahuesillado.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* heritage palette */
+  --green:#1f3a2e; --green-d:#16291f; --green-2:#2a5040;
+  --wine:#5a2230; --wine-d:#451a26;
+  --cream:#f1e7d2; --cream-2:#e6d9bd; --paper:#f6efdf;
+  --ink:#241c12; --ink-2:#4a3d2a;
+  --gold:#b08a3e; --gold-2:#cda657; --gold-d:#8a6a2c;
+  --muted:#8a7d63; --muted-cream:#c9bda0;
+  --line:#3a4f43; --line-cream:#d8c9a8;
+  --wa:#25d366;
+  --r:3px; --r-lg:4px; --r-pill:4px;
+  --ease:cubic-bezier(.16,1,.3,1);
+  --fd:"Bricolage Grotesque",Georgia,serif; --fb:"Hanken Grotesk",system-ui,sans-serif;
+}
+*{margin:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:var(--fb);line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:var(--r)}
+h1,h2,h3,h4{font-family:var(--fd);font-weight:800;letter-spacing:-.015em;line-height:1.06;margin:0;text-wrap:balance}
+.wrap{max-width:1160px;margin:0 auto;padding:0 clamp(18px,5vw,46px)}
+section{position:relative}
+.eyebrow{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--fb);font-weight:700;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-d);margin-bottom:1rem}
+.eyebrow::before{content:"";width:30px;height:1px;background:var(--gold)}
+.eyebrow.on-dark{color:var(--gold-2)}.eyebrow.on-dark::before{background:var(--gold)}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.55rem;font-family:var(--fb);font-weight:700;font-size:.98rem;padding:.9rem 1.6rem;border-radius:var(--r);cursor:pointer;border:0;transition:transform .25s var(--ease),box-shadow .25s var(--ease),background .25s,color .25s,border-color .25s}
+.btn svg{width:1.15em;height:1.15em}
+.btn-gold{background:var(--gold);color:#241500}
+.btn-gold:hover{background:var(--gold-2);transform:translateY(-2px);box-shadow:0 16px 34px -16px rgba(176,138,62,.8)}
+.btn-out{background:transparent;color:var(--cream);border:1px solid rgba(241,231,210,.45)}
+.btn-out:hover{border-color:var(--gold-2);color:var(--gold-2);transform:translateY(-2px)}
+.btn-wine{background:var(--wine);color:var(--cream)}
+.btn-wine:hover{background:var(--wine-d);transform:translateY(-2px);box-shadow:0 16px 34px -16px rgba(90,34,48,.6)}
+
+/* demo bar */
+.ef-demobar{position:sticky;top:0;z-index:9999;display:flex;align-items:center;justify-content:space-between;gap:1rem;background:#0c282f;color:#fff;padding:.5rem clamp(14px,4vw,28px);font-family:"Hanken Grotesk",system-ui,sans-serif;font-size:.85rem}
+.ef-demobar .ef-back{color:#cfe0de;font-weight:600;text-decoration:none}.ef-demobar .ef-back:hover{color:#fff}
+.ef-demobar .ef-label{color:#8fb0ac;font-weight:600}@media(max-width:600px){.ef-demobar .ef-label{display:none}}
+.ef-demobar .ef-cta{background:#25d366;color:#06351c;font-weight:700;padding:.42rem .9rem;border-radius:var(--r-pill);text-decoration:none;white-space:nowrap}
+.ef-demobar .ef-cta:hover{background:#2ee574}
+
+/* nav */
+.nav{position:sticky;top:35px;z-index:90;background:rgba(31,58,46,.94);backdrop-filter:blur(12px);border-bottom:1px solid rgba(176,138,62,.28)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-top:.65rem;padding-bottom:.65rem}
+.logo{display:flex;align-items:center;gap:.65rem;color:var(--cream)}
+.logo svg{height:38px;width:auto;display:block}
+.logo .lw{display:flex;flex-direction:column;line-height:1}
+.logo .lw b{font-family:var(--fd);font-weight:800;font-size:1.18rem;letter-spacing:-.01em}
+.logo .lw small{font-size:.6rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold-2);font-weight:600;margin-top:3px}
+.nav-links{display:flex;align-items:center;gap:1.8rem;list-style:none}
+.nav-links a{font-weight:600;font-size:.92rem;color:var(--muted-cream);letter-spacing:.01em;transition:color .2s}
+.nav-links a:hover{color:var(--gold-2)}
+.nav-cta{display:flex;align-items:center;gap:.8rem}
+.burger{display:none;background:none;border:1px solid rgba(241,231,210,.35);border-radius:var(--r);width:42px;height:40px;color:var(--cream);cursor:pointer;flex-direction:column;justify-content:center;align-items:center;gap:4px}
+.burger span{width:18px;height:2px;background:var(--cream);transition:.25s var(--ease)}
+.burger.open span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.burger.open span:nth-child(2){opacity:0}
+.burger.open span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+@media(max-width:860px){
+  .nav-links{position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:flex-start;gap:0;background:var(--green-d);padding:0 clamp(18px,5vw,46px);max-height:0;overflow:hidden;transition:max-height .3s var(--ease);border-bottom:1px solid var(--line)}
+  .nav-links.open{max-height:340px;padding:.6rem clamp(18px,5vw,46px) 1rem}
+  .nav-links li{width:100%}.nav-links a{display:block;padding:.7rem 0;border-bottom:1px solid rgba(176,138,62,.18);width:100%}
+  .burger{display:flex}.nav-cta .btn{display:none}
+}
+
+/* hero */
+.hero{position:relative;color:var(--cream);min-height:clamp(560px,82vh,760px);display:flex;align-items:flex-end}
+.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero-scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(22,41,31,.62) 0%,rgba(22,41,31,.38) 38%,rgba(22,41,31,.86) 100%)}
+.hero-scrim::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(22,41,31,.55),transparent 62%)}
+.hero .wrap{position:relative;z-index:2;padding-top:clamp(48px,9vw,96px);padding-bottom:clamp(40px,7vw,72px)}
+.hero-tag{display:inline-flex;align-items:center;gap:.5rem;font-size:.74rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-2);background:rgba(22,41,31,.5);border:1px solid rgba(176,138,62,.5);padding:.4rem .8rem;border-radius:var(--r);margin-bottom:1.4rem}
+.hero h1{font-size:clamp(2.5rem,6.4vw,4.6rem);max-width:14ch;text-shadow:0 2px 24px rgba(0,0,0,.4)}
+.hero h1 em{font-style:italic;color:var(--gold-2);font-weight:700}
+.hero p.sub{margin-top:1.2rem;max-width:46ch;font-size:clamp(1.02rem,2.1vw,1.22rem);color:var(--cream-2);text-shadow:0 1px 12px rgba(0,0,0,.4)}
+.hero-cta{display:flex;flex-wrap:wrap;gap:.85rem;margin-top:1.9rem}
+.hero-badges{display:flex;flex-wrap:wrap;gap:.5rem .5rem;margin-top:2rem}
+.hbadge{display:inline-flex;align-items:center;gap:.45rem;font-size:.82rem;font-weight:600;color:var(--cream);background:rgba(22,41,31,.55);border:1px solid rgba(241,231,210,.22);padding:.45rem .85rem;border-radius:var(--r)}
+.hbadge b{color:var(--gold-2)}
+.hbadge .star{color:var(--gold-2)}
+
+/* section base */
+.sec{padding:clamp(56px,8vw,104px) 0}
+.sec-head{max-width:62ch}
+.sec-head h2{font-size:clamp(1.9rem,4.2vw,3rem)}
+.sec-head p{margin-top:1rem;color:var(--ink-2);font-size:1.06rem}
+
+/* casona / story */
+.story{background:var(--green);color:var(--cream)}
+.story .grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(2rem,5vw,4.5rem);align-items:center}
+.story h2{font-size:clamp(1.9rem,4.2vw,3rem);color:var(--cream)}
+.story h2 em{font-style:italic;color:var(--gold-2)}
+.story p{margin-top:1.1rem;color:var(--muted-cream);font-size:1.05rem}
+.story .lead{color:var(--cream-2);font-size:1.16rem;font-weight:500}
+.story-stats{display:flex;gap:2.2rem;margin-top:2rem;flex-wrap:wrap}
+.story-stats div b{display:block;font-family:var(--fd);font-weight:800;font-size:clamp(1.8rem,4vw,2.5rem);color:var(--gold-2);line-height:1}
+.story-stats div span{font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted-cream);font-weight:600}
+.story-fig{position:relative}
+.story-fig img{width:100%;height:clamp(360px,46vw,500px);object-fit:cover;border-radius:var(--r-lg);border:1px solid var(--line)}
+.story-fig figcaption{position:absolute;bottom:14px;left:14px;right:14px;font-size:.8rem;color:var(--cream);background:rgba(22,41,31,.78);border-left:2px solid var(--gold);padding:.55rem .8rem;border-radius:var(--r)}
+@media(max-width:820px){.story .grid{grid-template-columns:1fr}.story-fig{order:-1}}
+
+/* menu */
+.menu{background:var(--paper)}
+.menu-cat{margin-top:clamp(2rem,4vw,3.2rem)}
+.menu-cat:first-of-type{margin-top:clamp(2.2rem,4vw,3rem)}
+.menu-cat h3{display:flex;align-items:baseline;gap:1rem;font-size:1.32rem;color:var(--green);border-bottom:1px solid var(--line-cream);padding-bottom:.7rem;margin-bottom:.4rem}
+.menu-cat h3 .k{font-size:.7rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-d);font-family:var(--fb);white-space:nowrap}
+.menu-cat h3 .ln{flex:1;height:1px;background:var(--line-cream);transform:translateY(-4px)}
+.menu-row{display:flex;align-items:baseline;gap:.8rem;padding:.75rem 0;border-bottom:1px dashed var(--line-cream)}
+.menu-row:last-child{border-bottom:0}
+.menu-row .nm{font-weight:700;color:var(--ink);font-size:1.04rem}
+.menu-row .ds{display:block;font-weight:400;color:var(--muted);font-size:.88rem;margin-top:2px}
+.menu-row .dots{flex:1;border-bottom:1px dotted var(--line-cream);transform:translateY(-5px);min-width:18px}
+.menu-row .pr{font-family:var(--fd);font-weight:700;color:var(--wine);font-size:1.06rem;white-space:nowrap}
+.menu-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:clamp(2rem,5vw,4rem);align-items:start}
+.menu-figs{display:grid;gap:1rem;position:sticky;top:120px}
+.menu-figs img{width:100%;height:200px;object-fit:cover;border-radius:var(--r-lg);border:1px solid var(--line-cream)}
+.menu-figs figcaption{font-size:.78rem;color:var(--muted);margin-top:.35rem;letter-spacing:.02em}
+@media(max-width:880px){.menu-grid{grid-template-columns:1fr}.menu-figs{position:static;grid-template-columns:1fr 1fr}.menu-figs figcaption{margin-bottom:.4rem}}
+.menu-note{margin-top:2rem;font-size:.86rem;color:var(--muted);font-style:italic}
+
+/* signature drink */
+.sig{background:var(--wine);color:var(--cream)}
+.sig .grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:clamp(2rem,5vw,4.5rem);align-items:center}
+.sig-fig img{width:100%;height:clamp(340px,44vw,480px);object-fit:cover;border-radius:var(--r-lg);border:1px solid rgba(241,231,210,.2)}
+.sig h2{font-size:clamp(1.9rem,4.4vw,3.1rem);color:var(--cream)}
+.sig h2 em{font-style:italic;color:var(--gold-2)}
+.sig p{margin-top:1.1rem;color:var(--cream-2);font-size:1.08rem}
+.sig .price{display:inline-flex;align-items:baseline;gap:.6rem;margin-top:1.6rem;font-family:var(--fd);font-weight:800;font-size:2rem;color:var(--gold-2)}
+.sig .price small{font-family:var(--fb);font-weight:600;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;color:var(--cream-2)}
+.sig-ing{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.4rem}
+.sig-ing span{font-size:.82rem;font-weight:600;color:var(--cream);border:1px solid rgba(205,166,87,.5);padding:.35rem .75rem;border-radius:var(--r)}
+@media(max-width:820px){.sig .grid{grid-template-columns:1fr}.sig-fig{order:-1}}
+
+/* reviews + location */
+.rl{background:var(--cream)}
+.rl-top{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.2rem;margin-top:clamp(2rem,4vw,3rem)}
+.rev{background:var(--paper);border:1px solid var(--line-cream);border-radius:var(--r-lg);padding:1.5rem 1.4rem;border-top:3px solid var(--gold)}
+.rev .stars{color:var(--gold);font-size:.95rem;letter-spacing:.1em;margin-bottom:.7rem}
+.rev p{font-size:.98rem;color:var(--ink-2)}
+.rev .who{margin-top:1rem;font-weight:700;font-size:.88rem;color:var(--green)}
+.rev .who span{display:block;font-weight:500;font-size:.78rem;color:var(--muted)}
+@media(max-width:820px){.rl-top{grid-template-columns:1fr}}
+.loc{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.6rem,4vw,3rem);margin-top:clamp(2.5rem,5vw,4rem);align-items:stretch}
+.loc-info h3{font-size:1.5rem;color:var(--green)}
+.loc-list{list-style:none;margin-top:1.4rem;display:grid;gap:1.1rem}
+.loc-list li{display:flex;gap:.85rem;align-items:flex-start}
+.loc-list svg{width:20px;height:20px;flex-shrink:0;color:var(--gold-d);margin-top:3px}
+.loc-list b{display:block;color:var(--ink);font-size:.96rem}
+.loc-list span{color:var(--muted);font-size:.9rem}
+.loc-list .closed{color:var(--wine);font-weight:600}
+.loc-map{border-radius:var(--r-lg);overflow:hidden;border:1px solid var(--line-cream);min-height:300px}
+.loc-map iframe{width:100%;height:100%;min-height:300px;border:0;display:block;filter:saturate(.9)}
+@media(max-width:820px){.loc{grid-template-columns:1fr}}
+
+/* reserve band */
+.band{background:var(--green-d);color:var(--cream);text-align:center}
+.band .wrap{padding:clamp(48px,7vw,84px) 0}
+.band h2{font-size:clamp(1.8rem,4.4vw,3rem)}
+.band h2 em{font-style:italic;color:var(--gold-2)}
+.band p{margin-top:1rem;color:var(--muted-cream);font-size:1.08rem;max-width:48ch;margin-left:auto;margin-right:auto}
+.band .phone{display:inline-flex;align-items:center;gap:.6rem;margin-top:1.8rem;font-family:var(--fd);font-weight:800;font-size:clamp(1.5rem,4vw,2.2rem);color:var(--gold-2)}
+.band .phone svg{width:1em;height:1em}
+.band .btn{margin-top:1.6rem}
+
+/* footer */
+.foot{background:var(--green-d);color:var(--muted-cream);border-top:1px solid var(--line);padding:clamp(40px,5vw,56px) 0 2rem}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:2rem}
+.foot .logo{margin-bottom:1rem}
+.foot p{font-size:.9rem;color:var(--muted-cream)}
+.foot h4{font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-2);margin-bottom:.9rem;font-family:var(--fb);font-weight:700}
+.foot ul{list-style:none;display:grid;gap:.5rem}
+.foot ul li{font-size:.9rem}
+.foot a:hover{color:var(--gold-2)}
+.foot-bottom{margin-top:2.4rem;padding-top:1.4rem;border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:.6rem;font-size:.8rem;color:var(--muted)}
+@media(max-width:760px){.foot-grid{grid-template-columns:1fr 1fr}.foot-grid>div:first-child{grid-column:1/-1}}
+
+/* FAB call */
+.fab{position:fixed;right:18px;bottom:18px;z-index:120;display:inline-flex;align-items:center;gap:.6rem;background:var(--wine);color:var(--cream);font-weight:700;font-size:.95rem;padding:.85rem 1.2rem;border-radius:var(--r);box-shadow:0 12px 30px -10px rgba(0,0,0,.5);border:1px solid var(--gold-d);transition:transform .25s var(--ease),background .25s}
+.fab svg{width:1.2em;height:1.2em}
+.fab:hover{transform:translateY(-3px);background:var(--wine-d)}
+@media(max-width:560px){.fab span{display:none}.fab{padding:.95rem;border-radius:var(--r)}}
+</style>
+</head>
+<body>
+
+<!-- 1. DEMO BAR -->
+<div class="ef-demobar">
+  <a class="ef-back" href="index.html">← Estilos para Dónde El Guatón</a>
+  <span class="ef-label">Demo de Estudio Faro · datos de muestra</span>
+  <a class="ef-cta" href="https://wa.me/56971466930?text=Hola%20Estudio%20Faro%2C%20vi%20las%20opciones%20para%20D%C3%B3nde%20El%20Guat%C3%B3n" target="_blank" rel="noopener">Conversemos</a>
+</div>
+
+<!-- 2. NAV -->
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Dónde El Guatón, inicio">
+      <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
+        <path d="M6 22 24 8l18 14" stroke="#cda657" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+        <path d="M10 21v17h28V21" stroke="#f1e7d2" stroke-width="2.2" stroke-linejoin="round"/>
+        <path d="M19 38V28h10v10" stroke="#cda657" stroke-width="2" stroke-linejoin="round"/>
+        <path d="M14 16h20" stroke="#cda657" stroke-width="2" stroke-linecap="round"/>
+        <circle cx="24" cy="6" r="1.6" fill="#cda657"/>
+      </svg>
+      <span class="lw"><b>Dónde El Guatón</b><small>Cocina criolla · 1840</small></span>
+    </a>
+    <nav>
+      <ul class="nav-links" id="navlinks">
+        <li><a href="#carta">Carta</a></li>
+        <li><a href="#casona">La Casona</a></li>
+        <li><a href="#tragos">Tragos</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-gold" href="tel:+56512211519">Reservar</a>
+      <button class="burger" id="burger" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<!-- 3. HERO -->
+<section class="hero" id="top">
+  <img class="hero-img" src="../../assets/elguaton/e1.jpg" width="1600" height="1000" alt="Interior rústico de la casona colonial de Dónde El Guatón, con maderas, mesas vestidas y decoración de la época republicana" loading="eager">
+  <div class="hero-scrim"></div>
+  <div class="wrap">
+    <span class="hero-tag">★ Patrimonio vivo de La Serena</span>
+    <h1>Cocina criolla en una <em>casona de 1840</em></h1>
+    <p class="sub">36 años rescatando la buena comida chilena, servida entre muros coloniales en pleno centro histórico. Acá no se come rápido: se viene a comer historia.</p>
+    <div class="hero-cta">
+      <a class="btn btn-gold" href="#carta">Ver la carta</a>
+      <a class="btn btn-out" href="tel:+56512211519">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>
+        Llamar para reservar
+      </a>
+    </div>
+    <div class="hero-badges">
+      <span class="hbadge"><span class="star">★</span> <b>4,4</b></span>
+      <span class="hbadge"><b>1.649</b> reseñas</span>
+      <span class="hbadge">Desde <b>1989</b> · 36 años</span>
+      <span class="hbadge">Mar–Sáb <b>12–21 h</b></span>
+    </div>
+  </div>
+</section>
+
+<!-- 4. LA CASONA -->
+<section class="story sec" id="casona">
+  <div class="wrap">
+    <div class="grid">
+      <div>
+        <span class="eyebrow on-dark">La Casona</span>
+        <h2>Una casa de <em>1840</em> que todavía huele a leña y a memoria</h2>
+        <p class="lead">El Guatón funciona dentro de una casona colonial levantada en 1840, en el casco histórico de La Serena, a un paso de La Recova.</p>
+        <p>Mantenemos la decoración de la época de la primera república: muebles de madera, objetos antiguos y la música chilena de siempre sonando de fondo. Cada rincón cuenta algo, y la cocina hace el resto. Llevamos 36 años con la misma terquedad: cazuelas a fuego lento, empanadas de pino bien servidas y los platos criollos que cuesta encontrar en otra parte.</p>
+        <div class="story-stats">
+          <div><b>1840</b><span>Casona colonial</span></div>
+          <div><b>36</b><span>Años de tradición</span></div>
+          <div><b>4,4★</b><span>1.649 reseñas</span></div>
+        </div>
+      </div>
+      <figure class="story-fig">
+        <img src="../../assets/elguaton/e0.jpg" width="900" height="1000" alt="Barra y estantería de botellas en la casona de Dónde El Guatón, ambiente patrimonial cálido" loading="lazy">
+        <figcaption>El bar de la casona — donde nace el ahuesillado de la casa.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- 5. CARTA -->
+<section class="menu sec" id="carta">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">La Carta</span>
+      <h2>Comida chilena criolla, sin atajos</h2>
+      <p>Recetas de toda la vida, porciones honestas y precios que se entienden. Una muestra de lo que se sirve hoy en la casona.</p>
+    </div>
+
+    <div class="menu-grid">
+      <div>
+        <div class="menu-cat">
+          <h3><span class="k">Para empezar</span><span class="ln"></span></h3>
+          <div class="menu-row"><span class="nm">Empanada de pino<span class="ds">Horneada, con pino, huevo y aceituna</span></span><span class="dots"></span><span class="pr">$2.800</span></div>
+          <div class="menu-row"><span class="nm">Pastel de choclo<span class="ds">Choclo molido a piedra, pino, presa de pollo</span></span><span class="dots"></span><span class="pr">$9.900</span></div>
+        </div>
+
+        <div class="menu-cat">
+          <h3><span class="k">Cazuelas y fondos criollos</span><span class="ln"></span></h3>
+          <div class="menu-row"><span class="nm">Cazuela de vacuno<span class="ds">A fuego lento, con choclo, zapallo y papa</span></span><span class="dots"></span><span class="pr">$8.900</span></div>
+          <div class="menu-row"><span class="nm">Cazuela de osobuco<span class="ds">Osobuco al hueso, caldo bien cargado</span></span><span class="dots"></span><span class="pr">$9.900</span></div>
+          <div class="menu-row"><span class="nm">Guatitas a la jardinera<span class="ds">Guatitas guisadas con verduras de la temporada</span></span><span class="dots"></span><span class="pr">$9.900</span></div>
+          <div class="menu-row"><span class="nm">Riñones al jerez<span class="ds">Salteados al jerez, como se hacían antes</span></span><span class="dots"></span><span class="pr">$9.500</span></div>
+          <div class="menu-row"><span class="nm">Lengua a la nuez<span class="ds">Lengua de vacuno en salsa de nuez</span></span><span class="dots"></span><span class="pr">$10.500</span></div>
+          <div class="menu-row"><span class="nm">Pabellón criollo<span class="ds">Plato abundante de la casa</span></span><span class="dots"></span><span class="pr">$11.900</span></div>
+        </div>
+
+        <div class="menu-cat">
+          <h3><span class="k">De la parrilla</span><span class="ln"></span></h3>
+          <div class="menu-row"><span class="nm">Costillar de cerdo<span class="ds">A las brasas, dorado y jugoso</span></span><span class="dots"></span><span class="pr">$12.900</span></div>
+          <div class="menu-row"><span class="nm">Parrillada para dos<span class="ds">Surtido de carnes a la parrilla para compartir</span></span><span class="dots"></span><span class="pr">$26.900</span></div>
+        </div>
+
+        <div class="menu-cat">
+          <h3><span class="k">Postres</span><span class="ln"></span></h3>
+          <div class="menu-row"><span class="nm">Mote con huesillo<span class="ds">El de siempre, bien helado</span></span><span class="dots"></span><span class="pr">$3.500</span></div>
+          <div class="menu-row"><span class="nm">Leche asada<span class="ds">Casera, con su caramelo</span></span><span class="dots"></span><span class="pr">$3.800</span></div>
+        </div>
+
+        <p class="menu-note">Carta de muestra. Los precios pueden variar; consúltalos al reservar por teléfono.</p>
+      </div>
+
+      <div class="menu-figs">
+        <figure>
+          <img src="../../assets/elguaton/e9.jpg" width="700" height="500" alt="Cazuela criolla humeante servida en la casona" loading="lazy">
+          <figcaption>Cazuela de vacuno, a fuego lento</figcaption>
+        </figure>
+        <figure>
+          <img src="../../assets/elguaton/e5.jpg" width="700" height="500" alt="Anticuchos y brochetas a la parrilla" loading="lazy">
+          <figcaption>De la parrilla, a las brasas</figcaption>
+        </figure>
+        <figure>
+          <img src="../../assets/elguaton/e3.jpg" width="700" height="500" alt="Salón rústico del restaurante con mesas dispuestas" loading="lazy">
+          <figcaption>El salón, listo para la mesa</figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. AHUESILLADO -->
+<section class="sig sec" id="tragos">
+  <div class="wrap">
+    <div class="grid">
+      <figure class="sig-fig">
+        <img src="../../assets/elguaton/e7.jpg" width="900" height="1000" alt="El ahuesillado, trago insignia de la casa, servido en la casona" loading="lazy">
+      </figure>
+      <div>
+        <span class="eyebrow on-dark">Trago de la casa</span>
+        <h2>El <em>Ahuesillado</em>, nuestro sello</h2>
+        <p>Pisco, jugo de huesillo y maracuyá. Suena simple, pero es de esos tragos que la gente vuelve a buscar. Es lo más nuestro que tenemos en la barra: chileno hasta el hueso, literal.</p>
+        <div class="sig-ing">
+          <span>Pisco</span><span>Jugo de huesillo</span><span>Maracuyá</span>
+        </div>
+        <div class="price">$5.500 <small>el vaso</small></div>
+        <div class="menu-cat" style="margin-top:2rem">
+          <h3 style="color:var(--cream);border-color:rgba(241,231,210,.25)"><span class="k" style="color:var(--gold-2)">Más de la barra</span><span class="ln" style="background:rgba(241,231,210,.25)"></span></h3>
+          <div class="menu-row" style="border-color:rgba(241,231,210,.18)"><span class="nm" style="color:var(--cream)">Borgoña con frutillas</span><span class="dots" style="border-color:rgba(241,231,210,.28)"></span><span class="pr" style="color:var(--gold-2)">$5.900</span></div>
+          <div class="menu-row" style="border-color:rgba(241,231,210,.18)"><span class="nm" style="color:var(--cream)">Sangría</span><span class="dots" style="border-color:rgba(241,231,210,.28)"></span><span class="pr" style="color:var(--gold-2)">$5.500</span></div>
+          <div class="menu-row" style="border-color:rgba(241,231,210,.18)"><span class="nm" style="color:var(--cream)">Pisco sour</span><span class="dots" style="border-color:rgba(241,231,210,.28)"></span><span class="pr" style="color:var(--gold-2)">$4.900</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7. RESEÑAS + UBICACIÓN -->
+<section class="rl sec" id="contacto">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">La gente lo dice</span>
+      <h2>4,4 estrellas y 1.649 reseñas no se juntan por casualidad</h2>
+    </div>
+    <div class="rl-top">
+      <article class="rev">
+        <div class="stars" aria-label="5 de 5 estrellas">★★★★★</div>
+        <p>“Sentís que entrás a otra época. La cazuela de osobuco es enorme y el ahuesillado se pasa. Un clásico de La Serena que hay que respetar.”</p>
+        <div class="who">Carolina M. <span>Local Guide · Google</span></div>
+      </article>
+      <article class="rev">
+        <div class="stars" aria-label="5 de 5 estrellas">★★★★★</div>
+        <p>“Comida chilena de verdad, en una casona preciosa. El pastel de choclo como el de la casa de la abuela. Atención de toda la vida.”</p>
+        <div class="who">Jorge V. <span>Reseña en Google</span></div>
+      </article>
+      <article class="rev">
+        <div class="stars" aria-label="4 de 5 estrellas">★★★★☆</div>
+        <p>“Llevo años viniendo. El lugar tiene historia y se nota en cada detalle. Ideal para llevar a quien viene de afuera a conocer lo nuestro.”</p>
+        <div class="who">Patricia R. <span>Reseña en Google</span></div>
+      </article>
+    </div>
+
+    <div class="loc">
+      <div class="loc-info">
+        <h3>Dónde encontrarnos</h3>
+        <ul class="loc-list">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            <div><b>Brasil 750, La Serena</b><span>Centro histórico, detrás del Unimarc de La Recova</span></div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+            <div>
+              <b>Horario de atención</b>
+              <span>Martes a sábado · 12:00 – 21:00</span>
+              <span>Domingo · 12:00 – 18:00</span>
+              <span class="closed">Lunes · Cerrado</span>
+            </div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>
+            <div><b>Reservas por teléfono</b><span>(51) 221 1519 — llámanos para apartar tu mesa</span></div>
+          </li>
+        </ul>
+        <a class="btn btn-wine" href="tel:+56512211519" style="margin-top:1.6rem">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>
+        Llamar al (51) 221 1519</a>
+      </div>
+      <div class="loc-map">
+        <iframe title="Mapa de Dónde El Guatón, Brasil 750, La Serena" loading="lazy" src="https://www.openstreetmap.org/export/embed.html?bbox=-71.2495%2C-29.9075%2C-71.2415%2C-29.9015&layer=mapnik&marker=-29.9045%2C-71.2455"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 8. BANDA RESERVA -->
+<section class="band">
+  <div class="wrap">
+    <span class="eyebrow on-dark" style="justify-content:center;display:flex">Tu mesa te espera</span>
+    <h2>Reserva tu mesa en <em>la casona</em></h2>
+    <p>No tenemos reservas online: preferimos contestarte nosotros. Llámanos y te apartamos un buen lugar.</p>
+    <a class="phone" href="tel:+56512211519">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>
+      (51) 221 1519
+    </a>
+    <div><a class="btn btn-gold" href="tel:+56512211519">Llamar ahora</a></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="logo" href="#top" aria-label="Dónde El Guatón">
+          <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
+            <path d="M6 22 24 8l18 14" stroke="#cda657" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+            <path d="M10 21v17h28V21" stroke="#f1e7d2" stroke-width="2.2" stroke-linejoin="round"/>
+            <path d="M19 38V28h10v10" stroke="#cda657" stroke-width="2" stroke-linejoin="round"/>
+            <path d="M14 16h20" stroke="#cda657" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          <span class="lw"><b>Dónde El Guatón</b><small>Cocina criolla · 1840</small></span>
+        </a>
+        <p>36 años rescatando las tradiciones y la buena comida chilena, en una casona colonial del centro histórico de La Serena.</p>
+      </div>
+      <div>
+        <h4>Visítanos</h4>
+        <ul>
+          <li>Brasil 750, La Serena</li>
+          <li>Detrás del Unimarc de La Recova</li>
+          <li><a href="tel:+56512211519">(51) 221 1519</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Horario</h4>
+        <ul>
+          <li>Mar a sáb · 12:00 – 21:00</li>
+          <li>Domingo · 12:00 – 18:00</li>
+          <li style="color:var(--wine)">Lunes · Cerrado</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 1989–2026 Dónde El Guatón · La Serena</span>
+      <span>Sitio de demostración · Estudio Faro</span>
+    </div>
+  </div>
+</footer>
+
+<!-- FAB LLAMAR -->
+<a class="fab" href="tel:+56512211519" aria-label="Llamar a Dónde El Guatón">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>
+  <span>Llamar</span>
+</a>
+
+<script>
+(function(){
+  var b=document.getElementById('burger'),n=document.getElementById('navlinks');
+  b.addEventListener('click',function(){
+    var open=n.classList.toggle('open');
+    b.classList.toggle('open',open);
+    b.setAttribute('aria-expanded',open?'true':'false');
+  });
+  n.addEventListener('click',function(e){
+    if(e.target.tagName==='A'){n.classList.remove('open');b.classList.remove('open');b.setAttribute('aria-expanded','false');}
+  });
+})();
+</script>
+</body>
+</html>
