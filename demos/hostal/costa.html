@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Hostal Casa del Valle · La Serena — a pasos del mar y el Valle del Elqui</title>
+<meta name="description" content="Hostal en el casco histórico de La Serena. Despierta a pasos de la Avenida del Mar y como base para el Valle del Elqui. Reserva directa por WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ocean:#1689a7; --ocean-deep:#0e7490; --ink:#0c282f;
+  --sand:#f3ead7; --cream:#fbf6ec; --sun:#e8a33d;
+  --paper:#ffffff; --line:#e4dcc8; --muted:#5b6a6e;
+  --r:3px; --r-lg:4px; --r-pill:4px;
+  --wa:#25d366;
+  --maxw:1180px;
+  --shadow:0 1px 2px rgba(12,40,47,.06), 0 8px 28px rgba(12,40,47,.07);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; font-family:"Hanken Grotesk",system-ui,sans-serif;
+  color:var(--ink); background:var(--cream); line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4{font-family:"Bricolage Grotesque",sans-serif; line-height:1.05; margin:0; letter-spacing:-.01em;}
+p{margin:0}
+a{color:inherit; text-decoration:none}
+img{display:block; max-width:100%}
+.wrap{max-width:var(--maxw); margin:0 auto; padding:0 22px}
+:focus-visible{outline:3px solid var(--sun); outline-offset:2px; border-radius:var(--r)}
+
+/* ===== DEMO BAR ===== */
+.ef-demobar{
+  position:sticky; top:0; z-index:9999;
+  display:flex; align-items:center; gap:14px; flex-wrap:wrap;
+  background:#0c282f; color:#fff;
+  padding:9px 18px; font-size:.84rem;
+}
+.ef-back{font-weight:600; color:#fff; white-space:nowrap}
+.ef-back:hover{color:var(--sun)}
+.ef-label{color:#9fc3cc; flex:1 1 auto; min-width:120px}
+.ef-cta{
+  background:var(--wa); color:#06351c; font-weight:700;
+  padding:7px 16px; border-radius:var(--r-pill);
+  white-space:nowrap; font-size:.85rem;
+}
+.ef-cta:hover{filter:brightness(1.06)}
+
+/* ===== HEADER ===== */
+.site-head{
+  position:sticky; top:0; z-index:900;
+  background:rgba(251,246,236,.92); backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);
+}
+.site-head .wrap{display:flex; align-items:center; justify-content:space-between; gap:18px; padding-top:14px; padding-bottom:14px}
+.brand{display:flex; align-items:center; gap:11px}
+.brand .mark{
+  width:38px; height:38px; flex:none; border-radius:var(--r);
+  background:linear-gradient(150deg,var(--ocean),var(--ocean-deep));
+  display:grid; place-items:center;
+}
+.brand .mark svg{width:22px; height:22px}
+.brand b{font-family:"Bricolage Grotesque"; font-weight:800; font-size:1.06rem; line-height:1.05; display:block}
+.brand span{font-size:.72rem; color:var(--muted); letter-spacing:.04em; text-transform:uppercase}
+.nav{display:flex; align-items:center; gap:26px}
+.nav a.lnk{font-weight:500; font-size:.94rem; color:var(--ink)}
+.nav a.lnk:hover{color:var(--ocean-deep)}
+.btn{
+  display:inline-flex; align-items:center; gap:8px;
+  font-weight:700; border-radius:var(--r); cursor:pointer;
+  border:1px solid transparent; font-family:inherit; font-size:.95rem;
+  padding:11px 20px; transition:transform .12s ease, background .15s ease;
+}
+.btn:active{transform:translateY(1px)}
+.btn-sun{background:var(--sun); color:#3a2705}
+.btn-sun:hover{background:#dd9530}
+.btn-ocean{background:var(--ocean-deep); color:#fff}
+.btn-ocean:hover{background:#0a5f78}
+.btn-ghost{background:transparent; color:var(--ink); border-color:var(--line)}
+.btn-ghost:hover{border-color:var(--ocean); color:var(--ocean-deep)}
+.btn-wa{background:var(--wa); color:#06351c}
+.btn-wa:hover{filter:brightness(1.06)}
+@media(max-width:820px){.nav a.lnk{display:none}}
+
+/* ===== HERO ===== */
+.hero{position:relative; min-height:clamp(560px,86vh,760px); display:flex; align-items:flex-end; overflow:hidden}
+.hero img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0}
+.hero::after{
+  content:""; position:absolute; inset:0; z-index:1;
+  background:linear-gradient(180deg, rgba(8,32,40,.30) 0%, rgba(8,32,40,.05) 38%, rgba(8,32,40,.62) 100%);
+}
+.hero .wrap{position:relative; z-index:2; width:100%; padding-bottom:54px; color:#fff}
+.hero .kicker{
+  display:inline-flex; align-items:center; gap:8px;
+  font-size:.82rem; font-weight:600; letter-spacing:.05em; text-transform:uppercase;
+  background:rgba(232,163,61,.92); color:#3a2705; padding:6px 13px; border-radius:var(--r); margin-bottom:18px;
+}
+.hero h1{font-size:clamp(2.3rem,6vw,4.2rem); font-weight:800; max-width:16ch; text-shadow:0 2px 26px rgba(0,0,0,.35)}
+.hero p.sub{margin-top:18px; font-size:clamp(1.05rem,2.2vw,1.32rem); max-width:48ch; color:#eaf3f5; text-shadow:0 1px 12px rgba(0,0,0,.4)}
+.hero .actions{display:flex; gap:13px; margin-top:30px; flex-wrap:wrap}
+.hero .actions .btn{padding:14px 26px; font-size:1rem}
+.hero .trust{display:flex; gap:26px; margin-top:34px; flex-wrap:wrap; font-size:.92rem; color:#dcebd0;}
+.hero .trust span{display:flex; align-items:center; gap:8px; color:#f1e4c6; font-weight:500}
+.hero .trust svg{width:17px; height:17px; flex:none}
+
+/* ===== SECTION SHELL ===== */
+section{padding:78px 0}
+.sec-head{max-width:62ch; margin-bottom:42px}
+.eyebrow{font-size:.82rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--ocean-deep); margin-bottom:12px}
+.sec-head h2{font-size:clamp(1.8rem,3.6vw,2.7rem); font-weight:700}
+.sec-head p{margin-top:14px; color:var(--muted); font-size:1.07rem}
+
+/* ===== EXPERIENCIA (qué hacer cerca) ===== */
+.exp{background:var(--ink); color:#eaf3f5}
+.exp .eyebrow{color:var(--sun)}
+.exp .sec-head h2{color:#fff}
+.exp .sec-head p{color:#a9c6cd}
+.exp-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:18px}
+.exp-card{
+  background:#11363f; border:1px solid #1d4a55; border-radius:var(--r-lg);
+  padding:24px 22px 26px; position:relative; overflow:hidden;
+  transition:transform .16s ease, border-color .16s ease;
+}
+.exp-card:hover{transform:translateY(-4px); border-color:var(--ocean)}
+.exp-card .num{font-family:"Bricolage Grotesque"; font-weight:800; font-size:.95rem; color:var(--sun); letter-spacing:.04em}
+.exp-card h3{font-size:1.22rem; font-weight:700; color:#fff; margin-top:14px}
+.exp-card p{margin-top:9px; font-size:.95rem; color:#a9c6cd}
+.exp-card .dist{
+  margin-top:18px; display:inline-flex; align-items:center; gap:7px;
+  font-size:.82rem; font-weight:600; color:#cfe6eb;
+  border-top:1px solid #1d4a55; padding-top:14px; width:100%;
+}
+.exp-card .dist svg{width:15px; height:15px; color:var(--sun)}
+@media(max-width:980px){.exp-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:540px){.exp-grid{grid-template-columns:1fr}}
+
+/* ===== HABITACIONES ===== */
+.rooms{background:var(--cream)}
+.room-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:24px}
+.room{
+  background:var(--paper); border:1px solid var(--line); border-radius:var(--r-lg);
+  overflow:hidden; display:flex; flex-direction:column; box-shadow:var(--shadow);
+}
+.room .ph{position:relative; aspect-ratio:16/10; overflow:hidden; background:var(--sand)}
+.room .ph img{width:100%; height:100%; object-fit:cover; transition:transform .5s ease}
+.room:hover .ph img{transform:scale(1.04)}
+.room .tag{
+  position:absolute; top:12px; left:12px; z-index:2;
+  background:var(--cream); color:var(--ink); font-size:.74rem; font-weight:700;
+  text-transform:uppercase; letter-spacing:.04em; padding:5px 10px; border-radius:var(--r);
+}
+.room .body{padding:22px 22px 24px; display:flex; flex-direction:column; flex:1}
+.room .top{display:flex; justify-content:space-between; align-items:baseline; gap:12px}
+.room h3{font-size:1.32rem; font-weight:700}
+.room .price{font-family:"Bricolage Grotesque"; font-weight:800; font-size:1.4rem; color:var(--ocean-deep); white-space:nowrap}
+.room .price small{display:block; font-family:"Hanken Grotesk"; font-weight:500; font-size:.72rem; color:var(--muted); text-align:right; letter-spacing:.02em}
+.room .feats{list-style:none; padding:0; margin:16px 0 22px; display:flex; flex-wrap:wrap; gap:8px}
+.room .feats li{font-size:.82rem; color:var(--muted); background:var(--sand); padding:4px 11px; border-radius:var(--r)}
+.room .body .btn{margin-top:auto; justify-content:center}
+
+/* ===== SERVICIOS ===== */
+.services{background:var(--paper); border-top:1px solid var(--line); border-bottom:1px solid var(--line)}
+.serv-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:14px}
+.serv{
+  display:flex; align-items:center; gap:14px; padding:18px 18px;
+  border:1px solid var(--line); border-radius:var(--r-lg); background:var(--cream);
+}
+.serv .ic{width:40px; height:40px; flex:none; border-radius:var(--r); background:var(--ocean); display:grid; place-items:center}
+.serv .ic svg{width:21px; height:21px; color:#fff}
+.serv b{font-size:.96rem; font-weight:600; display:block}
+.serv small{font-size:.8rem; color:var(--muted)}
+@media(max-width:880px){.serv-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:460px){.serv-grid{grid-template-columns:1fr}}
+
+/* ===== GALERIA ===== */
+.gallery{background:var(--cream)}
+.gal-grid{display:grid; grid-template-columns:repeat(4,1fr); grid-auto-rows:180px; gap:12px}
+.gal-grid a{overflow:hidden; border-radius:var(--r-lg); position:relative; background:var(--sand)}
+.gal-grid img{width:100%; height:100%; object-fit:cover; transition:transform .5s ease}
+.gal-grid a:hover img{transform:scale(1.05)}
+.gal-grid .big{grid-column:span 2; grid-row:span 2}
+@media(max-width:760px){.gal-grid{grid-template-columns:repeat(2,1fr); grid-auto-rows:140px}.gal-grid .big{grid-column:span 2; grid-row:span 1}}
+
+/* ===== RESEÑAS + UBICACION ===== */
+.proof{background:var(--paper); border-top:1px solid var(--line)}
+.proof-cols{display:grid; grid-template-columns:1.1fr .9fr; gap:48px; align-items:start}
+.reviews{display:flex; flex-direction:column; gap:18px}
+.review{border:1px solid var(--line); border-left:3px solid var(--sun); border-radius:var(--r-lg); padding:22px 24px; background:var(--cream)}
+.review .stars{color:var(--sun); font-size:.95rem; letter-spacing:2px; margin-bottom:10px}
+.review p{font-size:1.02rem; color:#243338}
+.review .who{margin-top:14px; display:flex; align-items:center; gap:11px}
+.review .av{width:36px; height:36px; border-radius:50%; background:var(--ocean-deep); color:#fff; display:grid; place-items:center; font-weight:700; font-size:.9rem; font-family:"Bricolage Grotesque"}
+.review .who b{font-size:.92rem}
+.review .who small{display:block; font-size:.78rem; color:var(--muted)}
+.locbox{border:1px solid var(--line); border-radius:var(--r-lg); overflow:hidden; background:var(--cream)}
+.locbox .info{padding:24px}
+.locbox h3{font-size:1.3rem; font-weight:700}
+.locbox .row{display:flex; gap:11px; margin-top:16px; font-size:.95rem; color:#243338}
+.locbox .row svg{width:18px; height:18px; flex:none; color:var(--ocean-deep); margin-top:3px}
+.locbox iframe{width:100%; height:230px; border:0; display:block; border-top:1px solid var(--line)}
+@media(max-width:880px){.proof-cols{grid-template-columns:1fr; gap:32px}}
+
+/* ===== BANDA RESERVA ===== */
+.cta-band{background:linear-gradient(135deg,var(--ocean) 0%, var(--ocean-deep) 100%); color:#fff; text-align:center}
+.cta-band .wrap{padding:64px 22px}
+.cta-band .eyebrow{color:#bce6f0}
+.cta-band h2{font-size:clamp(1.9rem,4.2vw,3rem); font-weight:800; max-width:18ch; margin:0 auto}
+.cta-band p{margin:18px auto 0; max-width:50ch; color:#dcf2f7; font-size:1.1rem}
+.cta-band .actions{display:flex; gap:14px; justify-content:center; margin-top:32px; flex-wrap:wrap}
+.cta-band .actions .btn{padding:15px 30px; font-size:1.05rem}
+.cta-band .small{margin-top:18px; font-size:.85rem; color:#bce6f0}
+
+/* ===== FOOTER ===== */
+footer{background:var(--ink); color:#a9c6cd; padding:56px 0 30px}
+.foot-grid{display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:38px; padding-bottom:34px; border-bottom:1px solid #1d4a55}
+.foot-grid h4{color:#fff; font-size:.82rem; text-transform:uppercase; letter-spacing:.07em; margin-bottom:16px}
+.foot-grid p, .foot-grid a{font-size:.94rem; line-height:1.9}
+.foot-grid a:hover{color:var(--sun)}
+.foot-brand b{font-family:"Bricolage Grotesque"; font-weight:800; font-size:1.2rem; color:#fff; display:block; margin-bottom:10px}
+.checkin{display:flex; gap:24px; margin-top:8px}
+.checkin div small{display:block; font-size:.74rem; text-transform:uppercase; letter-spacing:.05em; color:#7fa3ab}
+.checkin div b{color:#fff; font-size:1.15rem; font-family:"Bricolage Grotesque"}
+.foot-bottom{display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; padding-top:24px; font-size:.84rem; color:#7fa3ab}
+.foot-bottom b{color:var(--sun)}
+@media(max-width:760px){.foot-grid{grid-template-columns:1fr 1fr}.foot-brand{grid-column:1/-1}}
+
+/* ===== FAB ===== */
+.fab{
+  position:fixed; right:20px; bottom:20px; z-index:950;
+  width:58px; height:58px; border-radius:var(--r-lg);
+  background:var(--wa); display:grid; place-items:center;
+  box-shadow:0 6px 22px rgba(7,53,28,.4);
+  transition:transform .15s ease;
+}
+.fab:hover{transform:scale(1.06)}
+.fab svg{width:30px; height:30px; color:#06351c}
+
+/* ===== REVEAL ===== */
+.reveal{opacity:0; transform:translateY(22px); transition:opacity .6s ease, transform .6s ease}
+.reveal.in{opacity:1; transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+
+@media(max-width:680px){
+  .room-grid{grid-template-columns:1fr}
+  section{padding:58px 0}
+}
+</style>
+</head>
+<body>
+
+<!-- DEMO BAR -->
+<div class="ef-demobar">
+  <a class="ef-back" href="index.html">← Estilos para tu hostal</a>
+  <span class="ef-label">Demo de Estudio Faro · datos de muestra</span>
+  <a class="ef-cta" href="https://wa.me/56971466930?text=Hola%20Estudio%20Faro%2C%20vi%20las%20demos%20de%20hostal" target="_blank" rel="noopener">Conversemos</a>
+</div>
+
+<!-- HEADER -->
+<header class="site-head">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Hostal Casa del Valle, inicio">
+      <span class="mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg>
+      </span>
+      <span>
+        <b>Hostal Casa del Valle</b>
+        <span>La Serena · Chile</span>
+      </span>
+    </a>
+    <nav class="nav">
+      <a class="lnk" href="#descubrir">La zona</a>
+      <a class="lnk" href="#habitaciones">Habitaciones</a>
+      <a class="lnk" href="#servicios">Servicios</a>
+      <a class="lnk" href="#ubicacion">Cómo llegar</a>
+      <a class="btn btn-sun" href="#habitaciones">Reservar</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top" style="padding:0">
+  <img src="../../assets/hostal/h11.jpg" width="1000" height="667" alt="Playa de la Avenida del Mar en La Serena al mediodía, con el Faro Monumental al fondo" loading="eager">
+  <div class="wrap">
+    <span class="kicker">Casco histórico · a 10 min de la playa</span>
+    <h1>Despierta a pasos del mar, en el corazón de La Serena</h1>
+    <p class="sub">Una casa patrimonial en calle Cordovez como tu base para vivir la costa y el Valle del Elqui. Habitaciones cálidas, desayuno incluido y reserva directa sin comisiones.</p>
+    <div class="actions">
+      <a class="btn btn-sun" href="https://wa.me/56971466930?text=Hola%2C%20quiero%20reservar%20en%20el%20hostal" target="_blank" rel="noopener">Reserva directa</a>
+      <a class="btn btn-ghost" href="#habitaciones" style="color:#fff;border-color:rgba(255,255,255,.5)">Ver habitaciones</a>
+    </div>
+    <div class="trust">
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15 9 22 9 16 14 18 21 12 17 6 21 8 14 2 9 9 9"/></svg> 4,8 en Google · 320+ reseñas</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Desayuno y WiFi incluidos</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> Recepción bilingüe 24h</span>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCIA -->
+<section class="exp" id="descubrir">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="eyebrow">Tu base para descubrir</div>
+      <h2>Lo mejor de la Región de Coquimbo, a la vuelta de la esquina</h2>
+      <p>Desde Cordovez 285 caminas al centro histórico y llegas en minutos a la playa. El Valle del Elqui y sus observatorios quedan a una mañana de viaje. Te armamos la ruta.</p>
+    </div>
+    <div class="exp-grid">
+      <article class="exp-card reveal">
+        <div class="num">01</div>
+        <h3>Avenida del Mar</h3>
+        <p>6 km de playa, ciclovía y marisquerías. El atardecer sobre el Pacífico es el plan obligado al primer día.</p>
+        <span class="dist"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> 10 min en auto · 25 caminando</span>
+      </article>
+      <article class="exp-card reveal">
+        <div class="num">02</div>
+        <h3>Faro Monumental</h3>
+        <p>El ícono de la ciudad, en el inicio de la Avenida del Mar. Foto clásica y punto de partida del borde costero.</p>
+        <span class="dist"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> 12 min en auto</span>
+      </article>
+      <article class="exp-card reveal">
+        <div class="num">03</div>
+        <h3>Valle del Elqui</h3>
+        <p>Pisco, cielos limpios y observatorios astronómicos en Vicuña y Pisco Elqui. Te ayudamos a reservar el tour.</p>
+        <span class="dist"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> 1 h 10 a Vicuña</span>
+      </article>
+      <article class="exp-card reveal">
+        <div class="num">04</div>
+        <h3>Centro histórico y La Recova</h3>
+        <p>Iglesias coloniales, la Plaza de Armas y el Mercado La Recova para artesanía, papayas y cocina local.</p>
+        <span class="dist"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> 5 min caminando</span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- HABITACIONES -->
+<section class="rooms" id="habitaciones">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="eyebrow">Dónde dormir</div>
+      <h2>Habitaciones para cada viaje</h2>
+      <p>De la pareja en luna de miel al mochilero que recorre el norte. Todas con ropa de cama, toallas y agua caliente 24 horas. Precios por noche, sin comisiones de plataformas.</p>
+    </div>
+    <div class="room-grid">
+
+      <article class="room reveal">
+        <div class="ph">
+          <span class="tag">2 personas</span>
+          <img src="../../assets/hostal/h2.jpg" width="900" height="600" alt="Habitación matrimonial con cama doble, piso de madera y ventanal al jardín" loading="lazy">
+        </div>
+        <div class="body">
+          <div class="top">
+            <h3>Matrimonial</h3>
+            <div class="price">$38.000<small>por noche</small></div>
+          </div>
+          <ul class="feats"><li>Cama doble</li><li>Baño privado</li><li>Desayuno incluido</li><li>Ventanal al jardín</li></ul>
+          <a class="btn btn-ocean" href="https://wa.me/56971466930?text=Hola%2C%20quiero%20reservar%20la%20habitaci%C3%B3n%20Matrimonial" target="_blank" rel="noopener">Reservar matrimonial</a>
+        </div>
+      </article>
+
+      <article class="room reveal">
+        <div class="ph">
+          <span class="tag">2 personas</span>
+          <img src="../../assets/hostal/h3.jpg" width="900" height="600" alt="Habitación doble luminosa con dos camas y mucha luz natural" loading="lazy">
+        </div>
+        <div class="body">
+          <div class="top">
+            <h3>Doble · 2 camas</h3>
+            <div class="price">$42.000<small>por noche</small></div>
+          </div>
+          <ul class="feats"><li>2 camas individuales</li><li>Baño privado</li><li>Desayuno incluido</li><li>Escritorio</li></ul>
+          <a class="btn btn-ocean" href="https://wa.me/56971466930?text=Hola%2C%20quiero%20reservar%20la%20habitaci%C3%B3n%20Doble%20de%202%20camas" target="_blank" rel="noopener">Reservar doble</a>
+        </div>
+      </article>
+
+      <article class="room reveal">
+        <div class="ph">
+          <span class="tag">3 personas</span>
+          <img src="../../assets/hostal/h7.jpg" width="900" height="600" alt="Fachada del hostal en el casco histórico con buganvilias floreadas" loading="lazy">
+        </div>
+        <div class="body">
+          <div class="top">
+            <h3>Familiar / Triple</h3>
+            <div class="price">$55.000<small>por noche</small></div>
+          </div>
+          <ul class="feats"><li>1 doble + 1 individual</li><li>Baño privado</li><li>Desayuno incluido</li><li>Ideal familias</li></ul>
+          <a class="btn btn-ocean" href="https://wa.me/56971466930?text=Hola%2C%20quiero%20reservar%20la%20habitaci%C3%B3n%20Familiar%2FTriple" target="_blank" rel="noopener">Reservar familiar</a>
+        </div>
+      </article>
+
+      <article class="room reveal">
+        <div class="ph">
+          <span class="tag">Por cama</span>
+          <img src="../../assets/hostal/h12.jpg" width="900" height="600" alt="Vista aérea de la costa turquesa de La Serena" loading="lazy">
+        </div>
+        <div class="body">
+          <div class="top">
+            <h3>Cama en compartido</h3>
+            <div class="price">$15.000<small>por cama / noche</small></div>
+          </div>
+          <ul class="feats"><li>Dormitorio mixto</li><li>Locker individual</li><li>Cocina equipada</li><li>Desayuno incluido</li></ul>
+          <a class="btn btn-ocean" href="https://wa.me/56971466930?text=Hola%2C%20quiero%20reservar%20una%20cama%20en%20dormitorio%20compartido" target="_blank" rel="noopener">Reservar cama</a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section class="services" id="servicios">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="eyebrow">Todo incluido</div>
+      <h2>Lo que necesitas para sentirte en casa</h2>
+    </div>
+    <div class="serv-grid">
+      <div class="serv reveal"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0114 0"/><path d="M1.42 9a16 16 0 0121.16 0"/><path d="M8.53 16.11a6 6 0 016.95 0"/><line x1="12" y1="20" x2="12" y2="20"/></svg></span><div><b>WiFi gratis</b><small>En toda la casa</small></div></div>
+      <div class="serv reveal"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></span><div><b>Desayuno incluido</b><small>Pan, fruta y café</small></div></div>
+      <div class="serv reveal"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z"/></svg></span><div><b>Agua caliente 24h</b><small>Calefont continuo</small></div></div>
+      <div class="serv reveal"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 002-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 00-5 5v6c0 1.1.9 2 2 2h3zm0 0v7"/></svg></span><div><b>Cocina equipada</b><small>Úsala cuando quieras</small></div></div>
+      <div class="serv reveal"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17h14M5 17a2 2 0 01-2-2V9a2 2 0 012-2h14a2 2 0 012 2v6a2 2 0 01-2 2M5 17v2M19 17v2"/><circle cx="7.5" cy="14.5" r="1.5"/><circle cx="16.5" cy="14.5" r="1.5"/></svg></span><div><b>Estacionamiento</b><small>Dentro del recinto</small></div></div>
+      <div class="serv reveal"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 22l1-4h18l1 4"/><path d="M4 18V9a8 8 0 0116 0v9"/><path d="M12 4V2"/></svg></span><div><b>Terraza</b><small>Sol y sombra</small></div></div>
+      <div class="serv reveal"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l9-4 9 4-9 4z"/><path d="M3 7v6l9 4 9-4V7"/></svg></span><div><b>Ropa de cama y toallas</b><small>Incluidas siempre</small></div></div>
+      <div class="serv reveal"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15 15 0 010 20 15 15 0 010-20z"/></svg></span><div><b>Recepción bilingüe</b><small>Español e inglés</small></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- GALERIA -->
+<section class="gallery">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="eyebrow">La casa y su entorno</div>
+      <h2>Un poco de lo que te espera</h2>
+    </div>
+    <div class="gal-grid reveal">
+      <a class="big" href="#"><img src="../../assets/hostal/h10.jpg" width="1000" height="667" alt="Atardecer naranja sobre el mar en la Avenida del Mar de La Serena" loading="lazy"></a>
+      <a href="#"><img src="../../assets/hostal/h7.jpg" width="700" height="467" alt="Fachada del hostal con buganvilias en el casco histórico" loading="lazy"></a>
+      <a href="#"><img src="../../assets/hostal/h2.jpg" width="700" height="467" alt="Habitación matrimonial con vista al jardín" loading="lazy"></a>
+      <a href="#"><img src="../../assets/hostal/h11.jpg" width="700" height="467" alt="Playa y costanera de La Serena" loading="lazy"></a>
+      <a href="#"><img src="../../assets/hostal/h3.jpg" width="700" height="467" alt="Habitación doble luminosa" loading="lazy"></a>
+    </div>
+  </div>
+</section>
+
+<!-- RESEÑAS + UBICACION -->
+<section class="proof" id="ubicacion">
+  <div class="wrap">
+    <div class="proof-cols">
+      <div>
+        <div class="sec-head reveal" style="margin-bottom:28px">
+          <div class="eyebrow">Lo que dicen quienes se quedaron</div>
+          <h2>Reseñas reales de huéspedes</h2>
+        </div>
+        <div class="reviews">
+          <article class="review reveal">
+            <div class="stars" aria-label="5 de 5 estrellas">★★★★★</div>
+            <p>"Ubicación inmejorable: caminamos a la Plaza de Armas y a La Recova. Nos ayudaron a coordinar el tour al Valle del Elqui. La casa tiene un encanto que no encuentras en un hotel."</p>
+            <div class="who"><span class="av">M.F.</span><div><b>María F.</b><small>Santiago · Google</small></div></div>
+          </article>
+          <article class="review reveal">
+            <div class="stars" aria-label="5 de 5 estrellas">★★★★★</div>
+            <p>"Spotless rooms, great breakfast and the host speaks perfect English. Walking distance from the historic center and an easy drive to the beach. Highly recommended."</p>
+            <div class="who"><span class="av">J.K.</span><div><b>James K.</b><small>Canadá · Booking</small></div></div>
+          </article>
+          <article class="review reveal">
+            <div class="stars" aria-label="5 de 5 estrellas">★★★★★</div>
+            <p>"Llegué de mochilero y terminé quedándome tres noches más. La cocina es un golazo para ahorrar y la terraza al atardecer vale oro. Volvería sin pensarlo."</p>
+            <div class="who"><span class="av">D.O.</span><div><b>Daniel O.</b><small>Valdivia · Google</small></div></div>
+          </article>
+        </div>
+      </div>
+
+      <div>
+        <div class="sec-head reveal" style="margin-bottom:28px">
+          <div class="eyebrow">Cómo llegar</div>
+          <h2>Estamos en Cordovez 285</h2>
+        </div>
+        <div class="locbox reveal">
+          <div class="info">
+            <h3>Hostal Casa del Valle</h3>
+            <div class="row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg><span>Cordovez 285, casco histórico de La Serena, Región de Coquimbo.</span></div>
+            <div class="row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span>A 5 min del Terminal de Buses y la Plaza de Armas. 10 min de la Avenida del Mar.</span></div>
+            <div class="row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0122 16.92z"/></svg><span>WhatsApp +56 9 7146 6930 · Check-in 15:00 · Check-out 11:00</span></div>
+          </div>
+          <iframe title="Mapa de ubicación del hostal en La Serena" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.openstreetmap.org/export/embed.html?bbox=-71.2570%2C-29.9080%2C-71.2440%2C-29.9000&amp;layer=mapnik&amp;marker=-29.9040%2C-71.2505"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BANDA RESERVA -->
+<section class="cta-band">
+  <div class="wrap reveal">
+    <div class="eyebrow">Reserva directo, paga menos</div>
+    <h2>Sin comisiones de plataformas. Hablas directo con nosotros.</h2>
+    <p>Coordina tu llegada, pregunta por disponibilidad o arma tu ruta al Valle del Elqui. Te respondemos por WhatsApp todos los días.</p>
+    <div class="actions">
+      <a class="btn btn-wa" href="https://wa.me/56971466930?text=Hola%2C%20quiero%20reservar%20en%20el%20hostal" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.978-1.99zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+        +56 9 7146 6930
+      </a>
+      <a class="btn btn-ghost" href="#habitaciones" style="color:#fff;border-color:rgba(255,255,255,.6)">Ver tarifas</a>
+    </div>
+    <p class="small">Respuesta promedio en menos de 1 hora · Español e inglés</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <b>Hostal Casa del Valle</b>
+        <p>Una casa patrimonial en el casco histórico de La Serena. Tu base para descubrir la costa de Coquimbo y el Valle del Elqui.</p>
+        <div class="checkin">
+          <div><small>Check-in</small><b>15:00</b></div>
+          <div><small>Check-out</small><b>11:00</b></div>
+        </div>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <p>Cordovez 285<br>La Serena, Coquimbo</p>
+        <p><a href="https://wa.me/56971466930?text=Hola%2C%20quiero%20reservar%20en%20el%20hostal" target="_blank" rel="noopener">WhatsApp +56 9 7146 6930</a></p>
+      </div>
+      <div>
+        <h4>Explora</h4>
+        <p><a href="#descubrir">La zona</a></p>
+        <p><a href="#habitaciones">Habitaciones</a></p>
+        <p><a href="#servicios">Servicios</a></p>
+        <p><a href="#ubicacion">Cómo llegar</a></p>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Hostal Casa del Valle · Datos de muestra</span>
+      <span>Sitio de demostración · <b>Estudio Faro</b></span>
+    </div>
+  </div>
+</footer>
+
+<!-- FAB -->
+<a class="fab" href="https://wa.me/56971466930?text=Hola%2C%20quiero%20reservar%20en%20el%20hostal" target="_blank" rel="noopener" aria-label="Reservar por WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.978-1.99zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+</a>
+
+<script>
+(function(){
+  var els = document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return;}
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){en.target.classList.add('in'); io.unobserve(en.target);}
+    });
+  },{threshold:0.12, rootMargin:'0px 0px -8% 0px'});
+  els.forEach(function(e){io.observe(e);});
+})();
+</script>
+
+</body>
+</html>
