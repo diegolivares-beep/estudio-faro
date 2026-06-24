@@ -1,0 +1,575 @@
+<!doctype html>
+<html lang="es-CL">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Defensores Norte · Abogados penalistas en La Serena</title>
+<meta name="description" content="Defensores Norte · Defensa penal particular en La Serena, Región de Coquimbo. Atención 24/7, confidencial, desde 2009. Control de detención, Ley 20.000, delitos económicos y más.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#ffffff; --bg-2:#f5f7f8; --bg-3:#eef2f3; --ink:#1c2530; --ink-2:#42505d; --muted:#6b7884;
+  --line:#e2e8ea; --line-2:#cdd7da;
+  --acc:#1f5f7a; --acc-d:#174859; --acc-l:#2c7596; --acc-soft:#e8f1f4;
+  --wa:#25d366;
+  --r:3px; --r-lg:4px; --r-pill:4px;
+  --ease:cubic-bezier(.16,1,.3,1);
+  --fd:"Bricolage Grotesque",system-ui,sans-serif; --fb:"Hanken Grotesk",system-ui,sans-serif;
+  --shadow:0 18px 50px -28px rgba(28,37,48,.32);
+}
+*{margin:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--fb);line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+:focus-visible{outline:2px solid var(--acc);outline-offset:3px;border-radius:var(--r)}
+h1,h2,h3,h4{font-family:var(--fd);font-weight:700;letter-spacing:-.02em;line-height:1.06;margin:0;text-wrap:balance;color:var(--ink)}
+.wrap{max-width:1180px;margin:0 auto;padding:0 clamp(18px,5vw,46px)}
+section{position:relative}
+.eyebrow{display:inline-flex;align-items:center;gap:.55rem;font-family:var(--fb);font-weight:700;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--acc);margin-bottom:1rem}
+.eyebrow::before{content:"";width:24px;height:2px;background:var(--acc);border-radius:2px}
+.lead{color:var(--ink-2)}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.55rem;font-family:var(--fb);font-weight:700;font-size:.97rem;padding:.85rem 1.5rem;border-radius:var(--r);cursor:pointer;border:1px solid transparent;transition:transform .25s var(--ease),box-shadow .25s var(--ease),background .25s,color .25s,border-color .25s}
+.btn svg{width:1.15em;height:1.15em}
+.btn-acc{background:var(--acc);color:#fff}
+.btn-acc:hover{background:var(--acc-d);transform:translateY(-2px);box-shadow:0 16px 30px -16px rgba(31,95,122,.6)}
+.btn-out{background:#fff;color:var(--ink);border-color:var(--line-2)}
+.btn-out:hover{border-color:var(--acc);color:var(--acc);transform:translateY(-2px)}
+.btn-wa{background:var(--wa);color:#06351c}
+.btn-wa:hover{transform:translateY(-2px);box-shadow:0 16px 30px -16px rgba(37,211,102,.55)}
+
+/* demo bar */
+.ef-demobar{position:sticky;top:0;z-index:9999;display:flex;align-items:center;justify-content:space-between;gap:1rem;background:#0c282f;color:#fff;padding:.5rem clamp(14px,4vw,28px);font-family:"Hanken Grotesk",system-ui,sans-serif;font-size:.85rem}
+.ef-demobar .ef-back{color:#cfe0de;font-weight:600;text-decoration:none}
+.ef-demobar .ef-back:hover{color:#fff}
+.ef-demobar .ef-label{color:#8fb0ac;font-weight:600}
+@media(max-width:600px){.ef-demobar .ef-label{display:none}}
+.ef-demobar .ef-cta{background:#25d366;color:#06351c;font-weight:700;padding:.42rem .9rem;border-radius:4px;text-decoration:none;white-space:nowrap}
+
+/* nav */
+.nav{position:sticky;top:35px;z-index:90;background:rgba(255,255,255,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-top:.7rem;padding-bottom:.7rem}
+.logo{display:flex;align-items:center;gap:.65rem}
+.logo .mark{width:40px;height:40px;flex:none}
+.logo .wordmark{display:flex;flex-direction:column;line-height:1}
+.logo .wordmark b{font-family:var(--fd);font-weight:800;font-size:1.12rem;letter-spacing:-.02em;color:var(--ink)}
+.logo .wordmark span{font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-top:.18rem}
+.nav-links{display:flex;align-items:center;gap:1.7rem;list-style:none}
+.nav-links a{font-weight:600;font-size:.92rem;color:var(--ink-2);transition:color .2s}
+.nav-links a:hover{color:var(--acc)}
+.nav-cta{display:flex;align-items:center;gap:.8rem}
+.burger{display:none;background:none;border:1px solid var(--line-2);border-radius:var(--r);width:42px;height:40px;color:var(--ink);cursor:pointer;flex-direction:column;justify-content:center;align-items:center;gap:4px}
+.burger span{width:18px;height:2px;background:var(--ink);transition:.25s var(--ease)}
+.burger.open span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.burger.open span:nth-child(2){opacity:0}
+.burger.open span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+@media(max-width:920px){
+  .nav-links{position:fixed;inset:0 0 0 auto;top:0;width:min(80vw,310px);height:100vh;flex-direction:column;align-items:flex-start;gap:1.3rem;background:#fff;border-left:1px solid var(--line);padding:5rem 2rem 2rem;transform:translateX(105%);transition:transform .35s var(--ease);z-index:120;box-shadow:var(--shadow)}
+  .nav-links.open{transform:translateX(0)}
+  .nav-links a{font-size:1.08rem;color:var(--ink)}
+  .burger{display:flex}
+  .nav .btn-acc{display:none}
+}
+.navscrim{position:fixed;inset:0;background:rgba(12,40,47,.4);opacity:0;visibility:hidden;transition:.3s;z-index:110}
+.navscrim.show{opacity:1;visibility:visible}
+
+/* hero */
+.hero{padding:clamp(48px,7vw,84px) 0 clamp(40px,6vw,72px)}
+.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(28px,5vw,64px);align-items:center}
+.hero h1{font-size:clamp(2.4rem,5.2vw,4rem);max-width:14ch}
+.hero h1 em{font-style:normal;color:var(--acc)}
+.hero .lead{font-size:clamp(1.05rem,1.5vw,1.2rem);max-width:46ch;margin:1.3rem 0 1.9rem}
+.hero-actions{display:flex;flex-wrap:wrap;gap:.8rem}
+.hero-stats{display:flex;gap:clamp(1rem,3vw,2.4rem);margin-top:2.2rem;padding-top:1.6rem;border-top:1px solid var(--line);flex-wrap:wrap}
+.hero-stats .s b{font-family:var(--fd);font-weight:800;font-size:1.35rem;display:block;color:var(--ink);line-height:1.1}
+.hero-stats .s span{font-size:.82rem;color:var(--muted);font-weight:600;letter-spacing:.04em}
+.hero-media{position:relative}
+.hero-media img{width:100%;height:clamp(360px,52vw,540px);object-fit:cover;border-radius:var(--r-lg);box-shadow:var(--shadow)}
+.hero-media .badge{position:absolute;left:-14px;bottom:24px;background:var(--ink);color:#fff;border-radius:var(--r);padding:.85rem 1.1rem;display:flex;align-items:center;gap:.7rem;box-shadow:var(--shadow);max-width:240px}
+.hero-media .badge svg{width:26px;height:26px;flex:none;color:var(--acc-l)}
+.hero-media .badge b{font-family:var(--fd);font-weight:700;font-size:.95rem;display:block;line-height:1.15}
+.hero-media .badge span{font-size:.76rem;color:#aebfc6}
+@media(max-width:880px){
+  .hero .wrap{grid-template-columns:1fr}
+  .hero-media{order:-1}
+  .hero-media .badge{left:14px}
+}
+
+/* trust strip */
+.strip{background:var(--ink);color:#cfdade}
+.strip .wrap{display:flex;flex-wrap:wrap;gap:clamp(.8rem,3vw,2.6rem);justify-content:center;align-items:center;padding:.95rem 0;font-size:.86rem;font-weight:600;letter-spacing:.02em}
+.strip .it{display:inline-flex;align-items:center;gap:.5rem}
+.strip .it svg{width:16px;height:16px;color:var(--acc-l)}
+.strip .dot{width:4px;height:4px;border-radius:50%;background:#3f5560}
+@media(max-width:680px){.strip .dot{display:none}}
+
+/* section heads */
+.shead{max-width:660px;margin-bottom:clamp(2rem,4vw,3rem)}
+.shead.center{margin-left:auto;margin-right:auto;text-align:center}
+.shead h2{font-size:clamp(1.9rem,3.6vw,2.7rem)}
+.shead p{margin-top:1rem;font-size:1.05rem;color:var(--ink-2)}
+.pad{padding:clamp(56px,8vw,104px) 0}
+.pad-t{padding-top:clamp(56px,8vw,104px)}
+
+/* areas grid */
+.areas{background:var(--bg-2)}
+.areas-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+@media(max-width:1000px){.areas-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:540px){.areas-grid{grid-template-columns:1fr}}
+.area{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:1.5rem 1.4rem;transition:transform .25s var(--ease),box-shadow .25s var(--ease),border-color .25s}
+.area:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:var(--line-2)}
+.area .ico{width:42px;height:42px;border-radius:var(--r);background:var(--acc-soft);display:flex;align-items:center;justify-content:center;margin-bottom:1rem;color:var(--acc)}
+.area .ico svg{width:22px;height:22px}
+.area h3{font-size:1.06rem;margin-bottom:.45rem}
+.area p{font-size:.9rem;color:var(--muted);line-height:1.55}
+
+/* about */
+.about .wrap{display:grid;grid-template-columns:.95fr 1.05fr;gap:clamp(30px,5vw,64px);align-items:center}
+@media(max-width:880px){.about .wrap{grid-template-columns:1fr}}
+.about-media img{width:100%;height:clamp(340px,46vw,480px);object-fit:cover;border-radius:var(--r-lg);box-shadow:var(--shadow)}
+.pillars{list-style:none;margin-top:1.8rem;display:grid;gap:1.05rem}
+.pillars li{display:flex;gap:.85rem;align-items:flex-start}
+.pillars .tick{flex:none;width:26px;height:26px;border-radius:var(--r);background:var(--acc);color:#fff;display:flex;align-items:center;justify-content:center;margin-top:.15rem}
+.pillars .tick svg{width:15px;height:15px}
+.pillars b{font-family:var(--fd);font-weight:700;font-size:1rem;color:var(--ink);display:block}
+.pillars span{font-size:.92rem;color:var(--ink-2)}
+
+/* process */
+.process{background:var(--ink);color:#dbe5e8;position:relative;overflow:hidden}
+.process::after{content:"";position:absolute;inset:0;background:url('../../assets/abogados/j3.jpg') center/cover;opacity:.06}
+.process .wrap{position:relative;z-index:2}
+.process .shead h2{color:#fff}
+.process .shead p{color:#aebfc6}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;counter-reset:st}
+@media(max-width:900px){.steps{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.steps{grid-template-columns:1fr}}
+.step{border:1px solid #2c3b45;border-radius:var(--r-lg);padding:1.6rem 1.4rem;background:rgba(255,255,255,.02)}
+.step .num{font-family:var(--fd);font-weight:800;font-size:1rem;color:var(--acc-l);border:1px solid #355460;width:38px;height:38px;border-radius:var(--r);display:flex;align-items:center;justify-content:center;margin-bottom:1rem}
+.step h3{color:#fff;font-size:1.1rem;margin-bottom:.5rem}
+.step p{font-size:.9rem;color:#a9bcc3;line-height:1.55}
+
+/* testimonials */
+.tgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+@media(max-width:900px){.tgrid{grid-template-columns:1fr}}
+.tcard{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:1.7rem 1.6rem;display:flex;flex-direction:column}
+.tcard .stars{color:var(--acc);display:flex;gap:2px;margin-bottom:.9rem}
+.tcard .stars svg{width:16px;height:16px}
+.tcard p{font-size:.98rem;color:var(--ink);line-height:1.6;flex:1}
+.tcard .who{margin-top:1.3rem;padding-top:1rem;border-top:1px solid var(--line);font-size:.86rem}
+.tcard .who b{font-family:var(--fd);font-weight:700;color:var(--ink)}
+.tcard .who span{display:block;color:var(--muted)}
+.tnote{text-align:center;margin-top:1.5rem;font-size:.82rem;color:var(--muted)}
+
+/* faq */
+.faq{background:var(--bg-2)}
+.faq-wrap{max-width:780px;margin:0 auto}
+.acc-item{border-bottom:1px solid var(--line-2)}
+.acc-q{width:100%;text-align:left;background:none;border:0;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.35rem .2rem;font-family:var(--fd);font-weight:700;font-size:1.06rem;color:var(--ink)}
+.acc-q .ic{flex:none;width:26px;height:26px;border:1px solid var(--line-2);border-radius:var(--r);display:flex;align-items:center;justify-content:center;transition:.3s var(--ease);color:var(--acc)}
+.acc-q[aria-expanded="true"] .ic{transform:rotate(45deg);background:var(--acc);color:#fff;border-color:var(--acc)}
+.acc-q .ic svg{width:14px;height:14px}
+.acc-a{overflow:hidden;max-height:0;transition:max-height .35s var(--ease)}
+.acc-a p{padding:0 .2rem 1.35rem;color:var(--ink-2);font-size:.97rem}
+
+/* contact */
+.contact{position:relative;color:#fff;overflow:hidden;background:var(--ink)}
+.contact::before{content:"";position:absolute;inset:0;background:url('../../assets/abogados/j6.jpg') center/cover}
+.contact::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(12,30,38,.94),rgba(20,28,36,.96))}
+.contact .wrap{position:relative;z-index:2}
+.contact-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(30px,5vw,60px);align-items:center}
+@media(max-width:880px){.contact-grid{grid-template-columns:1fr}}
+.contact h2{color:#fff;font-size:clamp(1.9rem,3.6vw,2.7rem)}
+.contact .lead{color:#bcccd1;margin:1rem 0 1.9rem;font-size:1.05rem}
+.contact-actions{display:flex;flex-wrap:wrap;gap:.8rem}
+.cinfo{list-style:none;display:grid;gap:1.1rem;background:rgba(255,255,255,.04);border:1px solid #2c3b45;border-radius:var(--r-lg);padding:1.8rem}
+.cinfo li{display:flex;gap:.85rem;align-items:flex-start}
+.cinfo .ci{flex:none;width:34px;height:34px;border-radius:var(--r);background:var(--acc);color:#fff;display:flex;align-items:center;justify-content:center}
+.cinfo .ci svg{width:17px;height:17px}
+.cinfo b{font-family:var(--fd);font-weight:700;color:#fff;display:block;font-size:.95rem}
+.cinfo span{font-size:.9rem;color:#aebfc6}
+.cinfo a span{color:#aebfc6}
+.cinfo a:hover span{color:#fff}
+
+/* footer */
+.foot{background:#0c282f;color:#90a8af}
+.foot .wrap{padding:2.4rem 0;display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;align-items:center;font-size:.85rem}
+.foot .logo .wordmark b{color:#fff}
+.foot .logo .wordmark span{color:#6f8990}
+.foot a:hover{color:#fff}
+
+/* fab */
+.fab{position:fixed;right:18px;bottom:18px;z-index:200;width:56px;height:56px;border-radius:var(--r-lg);background:var(--wa);color:#06351c;display:flex;align-items:center;justify-content:center;box-shadow:0 12px 30px -10px rgba(37,211,102,.7);transition:transform .25s var(--ease)}
+.fab:hover{transform:translateY(-3px) scale(1.04)}
+.fab svg{width:30px;height:30px}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}}
+</style>
+</head>
+<body>
+
+<div class="ef-demobar"><a class="ef-back" href="index.html">← Estilos para Defensores Norte</a><span class="ef-label">Demo de Estudio Faro · datos de muestra</span><a class="ef-cta" href="https://wa.me/56971466930?text=Hola%20Estudio%20Faro%2C%20vi%20las%20opciones%20para%20Defensores%20Norte" target="_blank" rel="noopener">Conversemos</a></div>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Defensores Norte, inicio">
+      <svg class="mark" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+        <path d="M24 3l16 6v11c0 11-7 18.5-16 22-9-3.5-16-11-16-22V9l16-6z" fill="#1f5f7a"/>
+        <path d="M24 3l16 6v11c0 11-7 18.5-16 22-9-3.5-16-11-16-22V9l16-6z" stroke="#174859" stroke-width="1"/>
+        <text x="24" y="29" text-anchor="middle" font-family="Bricolage Grotesque, sans-serif" font-size="15" font-weight="800" fill="#fff" letter-spacing="-1">DN</text>
+      </svg>
+      <span class="wordmark"><b>Defensores Norte</b><span>Abogados penalistas</span></span>
+    </a>
+    <nav>
+      <ul class="nav-links" id="navlinks">
+        <li><a href="#areas">Áreas</a></li>
+        <li><a href="#nosotros">Nosotros</a></li>
+        <li><a href="#proceso">Proceso</a></li>
+        <li><a href="#preguntas">Preguntas</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-acc" href="https://wa.me/56966753828?text=Hola%2C%20quiero%20agendar%20una%20consulta%20penal" target="_blank" rel="noopener">Agenda tu consulta</a>
+      <button class="burger" id="burger" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+<div class="navscrim" id="navscrim"></div>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-copy rv">
+      <span class="eyebrow">Estudio jurídico penal · La Serena</span>
+      <h1>Defensa penal <em>clara, cercana</em> y con experiencia.</h1>
+      <p class="lead">Asesoría y representación en materia penal en la Región de Coquimbo. Te explicamos tu situación sin tecnicismos y actuamos rápido cuando más importa: desde el control de detención hasta el juicio.</p>
+      <div class="hero-actions">
+        <a class="btn btn-wa" href="https://wa.me/56966753828?text=Hola%2C%20quiero%20agendar%20una%20consulta%20penal" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.06 24l1.7-6.2A11.9 11.9 0 1 1 12 24a11.9 11.9 0 0 1-5.7-1.45L.06 24zM6.6 20.2l.36.2a9.9 9.9 0 1 0-3.4-3.4l.23.37-1 3.65 3.8-.82zM18 14.4c-.24-.12-1.45-.71-1.67-.79s-.39-.12-.55.12-.63.79-.77.95-.28.18-.52.06a8.1 8.1 0 0 1-2.4-1.48 9 9 0 0 1-1.66-2.06c-.17-.3 0-.45.13-.6s.24-.28.36-.42.18-.24.27-.4a.45.45 0 0 0 0-.43c-.06-.12-.55-1.32-.75-1.81s-.4-.41-.55-.42h-.47a.9.9 0 0 0-.65.3 2.75 2.75 0 0 0-.86 2.05 4.78 4.78 0 0 0 1 2.54 11 11 0 0 0 4.2 3.7c.59.26 1.05.41 1.4.52a3.4 3.4 0 0 0 1.55.1 2.53 2.53 0 0 0 1.66-1.17 2.05 2.05 0 0 0 .14-1.17c-.06-.1-.22-.16-.46-.28z"/></svg>
+          Escríbenos por WhatsApp
+        </a>
+        <a class="btn btn-out" href="tel:+56966753828">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.5 2.1L8.1 9.7a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.7 2z"/></svg>
+          Llámanos
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div class="s"><b>Desde 2009</b><span>Más de 15 años en penal</span></div>
+        <div class="s"><b>24/7</b><span>Urgencias y detenciones</span></div>
+        <div class="s"><b>Confidencial</b><span>Trato reservado</span></div>
+      </div>
+    </div>
+    <div class="hero-media rv">
+      <img src="../../assets/abogados/j1.jpg" width="900" height="600" loading="lazy" alt="Oficina del estudio jurídico Defensores Norte en La Serena">
+      <div class="badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 2 4 5v6c0 5 3.4 8.6 8 10 4.6-1.4 8-5 8-10V5l-8-3z" stroke-linejoin="round"/><path d="m9 12 2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div><b>Atención particular</b><span>Hablas directo con tu abogado, no con un call center.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST STRIP -->
+<div class="strip">
+  <div class="wrap">
+    <span class="it"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2 4 5v6c0 5 3.4 8.6 8 10 4.6-1.4 8-5 8-10V5l-8-3z" stroke-linejoin="round"/></svg> Defensa penal particular</span>
+    <span class="dot"></span>
+    <span class="it"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> Disponibilidad 24/7</span>
+    <span class="dot"></span>
+    <span class="it"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M21 10c0 6-9 11-9 11s-9-5-9-11a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="2.5"/></svg> Benavente 1435, La Serena</span>
+    <span class="dot"></span>
+    <span class="it"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11V7a3 3 0 0 1 6 0v4"/><rect x="5" y="11" width="14" height="9" rx="1.5"/></svg> Reservado y confidencial</span>
+  </div>
+</div>
+
+<!-- AREAS -->
+<section class="areas pad" id="areas">
+  <div class="wrap">
+    <div class="shead rv">
+      <span class="eyebrow">Áreas de práctica</span>
+      <h2>Defendemos cada etapa del proceso penal</h2>
+      <p>Trabajamos materias penales de baja y alta complejidad ante los tribunales de la Región de Coquimbo. Cada caso lo lleva un abogado a cargo, de principio a fin.</p>
+    </div>
+    <div class="areas-grid">
+      <article class="area rv">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+        <h3>Control de detención</h3>
+        <p>Asistencia inmediata en la primera audiencia y resguardo de tus derechos desde la detención.</p>
+      </article>
+      <article class="area rv">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M6 7l1 13h10l1-13M9 7V5a3 3 0 0 1 6 0v2"/></svg></div>
+        <h3>Tráfico y microtráfico</h3>
+        <p>Defensa especializada en causas de la Ley 20.000 de drogas y estupefacientes.</p>
+      </article>
+      <article class="area rv">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18M7 15h4"/></svg></div>
+        <h3>Delitos económicos</h3>
+        <p>Estafas, fraudes y delitos de cuello blanco, con análisis técnico de la prueba.</p>
+      </article>
+      <article class="area rv">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11V7a3 3 0 0 1 6 0v4"/><rect x="5" y="11" width="14" height="9" rx="1.5"/></svg></div>
+        <h3>Delitos sexuales</h3>
+        <p>Representación rigurosa y confidencial, con el debido respeto a tu privacidad.</p>
+      </article>
+      <article class="area rv">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9l9-6 9 6v12"/><path d="M9 21v-6h6v6"/></svg></div>
+        <h3>Robos y hurtos</h3>
+        <p>Defensa en delitos contra la propiedad, evaluando atenuantes y salidas alternativas.</p>
+      </article>
+      <article class="area rv">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.6-7 10-7 10z"/></svg></div>
+        <h3>Violencia intrafamiliar</h3>
+        <p>Asesoría en causas de VIF, medidas cautelares y procedimientos asociados.</p>
+      </article>
+      <article class="area rv">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/><path d="M5 17H3v-5l2-4h11l4 5v4h-2M9 17h6"/></svg></div>
+        <h3>Manejo en estado de ebriedad</h3>
+        <p>Defensa en conducción bajo influencia del alcohol y delitos de la Ley de Tránsito.</p>
+      </article>
+      <article class="area rv">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M5 8 3 12l4 1 4-1-2-4zM19 8l-2 4 4 1 4-1-2-4z"/></svg></div>
+        <h3>Recursos</h3>
+        <p>Amparo, nulidad y apelación para impugnar resoluciones y proteger tus garantías.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about pad" id="nosotros">
+  <div class="wrap">
+    <div class="about-media rv">
+      <img src="../../assets/abogados/j9.jpg" width="900" height="600" loading="lazy" alt="Abogado de Defensores Norte revisando una causa penal durante una consulta">
+    </div>
+    <div class="about-copy rv">
+      <span class="eyebrow">Nuestro enfoque</span>
+      <h2 class="shead" style="margin-bottom:.8rem">Un estudio penal hecho para acompañarte</h2>
+      <p class="lead">Sabemos que detrás de cada causa hay una persona y una familia preocupada. Por eso trabajamos cerca, explicamos cada paso en lenguaje simple y construimos una estrategia honesta sobre lo que sí se puede hacer en tu caso.</p>
+      <ul class="pillars">
+        <li>
+          <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 4 4 10-10"/></svg></span>
+          <span><b>Experiencia desde 2009</b>Más de 15 años litigando exclusivamente materias penales en la región.</span>
+        </li>
+        <li>
+          <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 4 4 10-10"/></svg></span>
+          <span><b>Disponibilidad 24/7</b>Las detenciones no tienen horario; respondemos cuando nos necesitas.</span>
+        </li>
+        <li>
+          <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 4 4 10-10"/></svg></span>
+          <span><b>Confidencialidad total</b>Tu información se trata con absoluta reserva profesional.</span>
+        </li>
+        <li>
+          <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 4 4 10-10"/></svg></span>
+          <span><b>Trato directo con el abogado</b>Hablas con quien lleva tu causa, no con un call center.</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process pad" id="proceso">
+  <div class="wrap">
+    <div class="shead center rv">
+      <span class="eyebrow" style="justify-content:center">Cómo trabajamos</span>
+      <h2>Un proceso claro, paso a paso</h2>
+      <p>Desde el primer contacto hasta la audiencia, sabes qué viene y por qué.</p>
+    </div>
+    <div class="steps">
+      <article class="step rv"><div class="num">01</div><h3>Consulta inicial</h3><p>Conversamos tu situación por WhatsApp o en oficina y evaluamos urgencia. Sin compromiso.</p></article>
+      <article class="step rv"><div class="num">02</div><h3>Análisis del caso</h3><p>Revisamos la carpeta investigativa y la prueba para entender los hechos y los riesgos reales.</p></article>
+      <article class="step rv"><div class="num">03</div><h3>Estrategia</h3><p>Definimos contigo la línea de defensa: salidas alternativas, atenuantes o ir a juicio.</p></article>
+      <article class="step rv"><div class="num">04</div><h3>Defensa en audiencias</h3><p>Te representamos en cada audiencia ante el Juzgado de Garantía y el Tribunal Oral.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="pad">
+  <div class="wrap">
+    <div class="shead center rv">
+      <span class="eyebrow" style="justify-content:center">Lo que dicen quienes confiaron</span>
+      <h2>Cercanía cuando más se necesita</h2>
+    </div>
+    <div class="tgrid">
+      <article class="tcard rv">
+        <div class="stars" aria-label="5 de 5">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
+        </div>
+        <p>"Llamé de madrugada por la detención de mi hijo y me respondieron al tiro. Nos explicaron cada paso de la audiencia con calma. Se nota la experiencia."</p>
+        <div class="who"><b>R.M.</b><span>La Serena</span></div>
+      </article>
+      <article class="tcard rv">
+        <div class="stars" aria-label="5 de 5">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
+        </div>
+        <p>"Valoré que fueran honestos desde el principio sobre lo que se podía esperar. Nada de promesas exageradas, solo trabajo serio y comunicación constante."</p>
+        <div class="who"><b>C.A.</b><span>Coquimbo</span></div>
+      </article>
+      <article class="tcard rv">
+        <div class="stars" aria-label="5 de 5">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
+        </div>
+        <p>"Siempre tuve a quién preguntarle. Respondían mis dudas sin apuro y en lenguaje que se entiende. Eso, en un momento tan difícil, vale mucho."</p>
+        <div class="who"><b>J.P.</b><span>Ovalle</span></div>
+      </article>
+    </div>
+    <p class="tnote">Testimonios de muestra. Los resultados dependen de las circunstancias particulares de cada caso.</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq pad" id="preguntas">
+  <div class="wrap">
+    <div class="shead center rv">
+      <span class="eyebrow" style="justify-content:center">Preguntas frecuentes</span>
+      <h2>Resolvemos tus dudas</h2>
+    </div>
+    <div class="faq-wrap rv">
+      <div class="acc-item">
+        <button class="acc-q" aria-expanded="false"><span>Detuvieron a un familiar ahora mismo, ¿qué hago?</span><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button>
+        <div class="acc-a"><p>Contáctanos de inmediato por WhatsApp o al +56 9 6675 3828. Atendemos urgencias las 24 horas. El control de detención debe realizarse dentro de las 24 horas siguientes, así que mientras antes intervengamos, mejor podremos resguardar sus derechos.</p></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-q" aria-expanded="false"><span>¿Tiene costo la primera consulta?</span><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button>
+        <div class="acc-a"><p>La primera conversación es para entender tu situación y orientarte sobre los pasos a seguir, sin compromiso. Si decides avanzar, te entregamos una propuesta de honorarios clara y por escrito antes de iniciar cualquier gestión.</p></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-q" aria-expanded="false"><span>¿En qué se diferencian de la Defensoría Penal Pública?</span><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button>
+        <div class="acc-a"><p>Como defensa particular dedicamos atención personalizada a tu causa, con disponibilidad directa con tu abogado y mayor tiempo de seguimiento. Tienes derecho a elegir abogado de confianza para que te represente en el proceso penal.</p></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-q" aria-expanded="false"><span>¿Atienden causas en toda la Región de Coquimbo?</span><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button>
+        <div class="acc-a"><p>Sí. Nuestra oficina está en Benavente 1435, La Serena, y litigamos en los tribunales de la región, incluyendo La Serena, Coquimbo y Ovalle. Coordinamos audiencias y reuniones según donde se tramite tu causa.</p></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-q" aria-expanded="false"><span>¿La información que les entrego es confidencial?</span><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button>
+        <div class="acc-a"><p>Absolutamente. Todo lo que conversemos está protegido por el secreto profesional. Puedes contarnos tu situación con total tranquilidad y reserva.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact pad" id="contacto">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div class="contact-copy rv">
+        <span class="eyebrow" style="color:var(--acc-l)">Hablemos de tu caso</span>
+        <h2>Tu defensa empieza con una conversación</h2>
+        <p class="lead">Cuéntanos qué pasó. Te respondemos con claridad y rapidez, cualquier día y a cualquier hora.</p>
+        <div class="contact-actions">
+          <a class="btn btn-wa" href="https://wa.me/56966753828?text=Hola%2C%20quiero%20agendar%20una%20consulta%20penal" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.06 24l1.7-6.2A11.9 11.9 0 1 1 12 24a11.9 11.9 0 0 1-5.7-1.45L.06 24zM6.6 20.2l.36.2a9.9 9.9 0 1 0-3.4-3.4l.23.37-1 3.65 3.8-.82zM18 14.4c-.24-.12-1.45-.71-1.67-.79s-.39-.12-.55.12-.63.79-.77.95-.28.18-.52.06a8.1 8.1 0 0 1-2.4-1.48 9 9 0 0 1-1.66-2.06c-.17-.3 0-.45.13-.6s.24-.28.36-.42.18-.24.27-.4a.45.45 0 0 0 0-.43c-.06-.12-.55-1.32-.75-1.81s-.4-.41-.55-.42h-.47a.9.9 0 0 0-.65.3 2.75 2.75 0 0 0-.86 2.05 4.78 4.78 0 0 0 1 2.54 11 11 0 0 0 4.2 3.7c.59.26 1.05.41 1.4.52a3.4 3.4 0 0 0 1.55.1 2.53 2.53 0 0 0 1.66-1.17 2.05 2.05 0 0 0 .14-1.17c-.06-.1-.22-.16-.46-.28z"/></svg>
+            WhatsApp 24/7
+          </a>
+          <a class="btn btn-out" href="tel:+56966753828" style="background:transparent;color:#fff;border-color:#3f5560">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.5 2.1L8.1 9.7a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.7 2z"/></svg>
+            +56 9 6675 3828
+          </a>
+        </div>
+      </div>
+      <ul class="cinfo rv">
+        <li>
+          <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 6-9 11-9 11s-9-5-9-11a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
+          <div><b>Oficina</b><span>Benavente 1435, La Serena, Región de Coquimbo</span></div>
+        </li>
+        <li>
+          <a href="https://wa.me/56966753828?text=Hola%2C%20quiero%20agendar%20una%20consulta%20penal" target="_blank" rel="noopener" style="display:flex;gap:.85rem;align-items:flex-start">
+            <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.5 2.1L8.1 9.7a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.7 2z"/></svg></span>
+            <div><b>WhatsApp / Teléfono</b><span>+56 9 6675 3828</span></div>
+          </a>
+        </li>
+        <li>
+          <a href="mailto:contacto@defensoresnorte.cl" style="display:flex;gap:.85rem;align-items:flex-start">
+            <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span>
+            <div><b>Correo</b><span>contacto@defensoresnorte.cl</span></div>
+          </a>
+        </li>
+        <li>
+          <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+          <div><b>Horario</b><span>Urgencias 24/7 · Oficina lun a vie, 9:00–18:00</span></div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="foot">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Defensores Norte">
+      <svg class="mark" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+        <path d="M24 3l16 6v11c0 11-7 18.5-16 22-9-3.5-16-11-16-22V9l16-6z" fill="#1f5f7a"/>
+        <text x="24" y="29" text-anchor="middle" font-family="Bricolage Grotesque, sans-serif" font-size="15" font-weight="800" fill="#fff" letter-spacing="-1">DN</text>
+      </svg>
+      <span class="wordmark"><b>Defensores Norte</b><span>Defensores Norte S.P.A. · La Serena</span></span>
+    </a>
+    <div>Sitio de demostración · Estudio Faro</div>
+  </div>
+</footer>
+
+<a class="fab" href="https://wa.me/56966753828?text=Hola%2C%20quiero%20agendar%20una%20consulta%20penal" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.06 24l1.7-6.2A11.9 11.9 0 1 1 12 24a11.9 11.9 0 0 1-5.7-1.45L.06 24zM6.6 20.2l.36.2a9.9 9.9 0 1 0-3.4-3.4l.23.37-1 3.65 3.8-.82zM18 14.4c-.24-.12-1.45-.71-1.67-.79s-.39-.12-.55.12-.63.79-.77.95-.28.18-.52.06a8.1 8.1 0 0 1-2.4-1.48 9 9 0 0 1-1.66-2.06c-.17-.3 0-.45.13-.6s.24-.28.36-.42.18-.24.27-.4a.45.45 0 0 0 0-.43c-.06-.12-.55-1.32-.75-1.81s-.4-.41-.55-.42h-.47a.9.9 0 0 0-.65.3 2.75 2.75 0 0 0-.86 2.05 4.78 4.78 0 0 0 1 2.54 11 11 0 0 0 4.2 3.7c.59.26 1.05.41 1.4.52a3.4 3.4 0 0 0 1.55.1 2.53 2.53 0 0 0 1.66-1.17 2.05 2.05 0 0 0 .14-1.17c-.06-.1-.22-.16-.46-.28z"/></svg>
+</a>
+
+<script>
+// Mobile nav
+(function(){
+  var burger=document.getElementById('burger'),
+      links=document.getElementById('navlinks'),
+      scrim=document.getElementById('navscrim');
+  function toggle(open){
+    links.classList.toggle('open',open);
+    scrim.classList.toggle('show',open);
+    burger.classList.toggle('open',open);
+    burger.setAttribute('aria-expanded',open?'true':'false');
+  }
+  burger.addEventListener('click',function(){toggle(!links.classList.contains('open'));});
+  scrim.addEventListener('click',function(){toggle(false);});
+  links.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){toggle(false);});});
+})();
+
+// FAQ accordion
+(function(){
+  document.querySelectorAll('.acc-q').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var open=btn.getAttribute('aria-expanded')==='true';
+      document.querySelectorAll('.acc-q').forEach(function(b){
+        b.setAttribute('aria-expanded','false');
+        b.nextElementSibling.style.maxHeight=null;
+      });
+      if(!open){
+        btn.setAttribute('aria-expanded','true');
+        var a=btn.nextElementSibling;
+        a.style.maxHeight=a.scrollHeight+'px';
+      }
+    });
+  });
+})();
+
+// Reveal on scroll
+(function(){
+  if(!('IntersectionObserver' in window)){
+    document.querySelectorAll('.rv').forEach(function(el){el.classList.add('in');});
+    return;
+  }
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}
+    });
+  },{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.rv').forEach(function(el){io.observe(el);});
+})();
+</script>
+</body>
+</html>
