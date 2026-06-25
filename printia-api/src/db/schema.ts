@@ -129,6 +129,89 @@ export const cobros = pgTable("cobros", {
   monto: integer("monto").notNull(),
   vence: text("vence").notNull(),
   estado: text("estado").notNull().default("vigente"),
+  condicion: text("condicion").notNull().default("Contado"),
+  montoPendiente: integer("monto_pendiente"),
+});
+
+// ---- Finanzas / contabilidad ----
+export const proveedores = pgTable("proveedores", {
+  id: text("id").primaryKey(),
+  empresaId: text("empresa_id").notNull(),
+  razonSocial: text("razon_social").notNull(),
+  rut: text("rut").notNull().default(""),
+  contacto: text("contacto").notNull().default(""),
+  telefono: text("telefono").notNull().default(""),
+  cuentaContable: text("cuenta_contable").notNull().default("Costo insumos, materiales y productos"),
+});
+
+export const cuentasBancarias = pgTable("cuentas_bancarias", {
+  id: text("id").primaryKey(),
+  empresaId: text("empresa_id").notNull(),
+  nombre: text("nombre").notNull(),
+  banco: text("banco").notNull().default(""),
+  numero: text("numero").notNull().default(""),
+  saldo: integer("saldo").notNull().default(0),
+});
+
+export const pagos = pgTable("pagos", {
+  id: text("id").primaryKey(),
+  empresaId: text("empresa_id").notNull(),
+  proveedor: text("proveedor").notNull(),
+  numeroDoc: text("numero_doc").notNull().default(""),
+  vencimiento: text("vencimiento").notNull(),
+  condicion: text("condicion").notNull().default("Contado"),
+  montoNeto: integer("monto_neto").notNull(),
+  montoBruto: integer("monto_bruto").notNull(),
+  estado: text("estado").notNull().default("pendiente"), // por-aprobar | pendiente | en-proceso | finalizado
+});
+
+// Comprobantes (libro diario)
+export const asientos = pgTable("asientos", {
+  id: text("id").primaryKey(),
+  empresaId: text("empresa_id").notNull(),
+  numero: integer("numero").notNull(),
+  glosa: text("glosa").notNull(),
+  fecha: text("fecha").notNull(),
+  operacion: text("operacion").notNull().default("egreso"), // ingreso | egreso
+  debe: integer("debe").notNull().default(0),
+  haber: integer("haber").notNull().default(0),
+});
+
+// Estado de resultado: una fila por (categoria, subcategoria) con montos por mes (jsonb)
+export const eerrLineas = pgTable("eerr_lineas", {
+  id: text("id").primaryKey(),
+  empresaId: text("empresa_id").notNull(),
+  categoria: text("categoria").notNull(),
+  subcategoria: text("subcategoria").notNull().default(""),
+  orden: integer("orden").notNull().default(0),
+  esTotal: boolean("es_total").notNull().default(false),
+  meses: jsonb("meses").$type<number[]>().notNull().default([]), // 6 meses
+});
+
+// Balance: una fila por cuenta
+export const balanceLineas = pgTable("balance_lineas", {
+  id: text("id").primaryKey(),
+  empresaId: text("empresa_id").notNull(),
+  cuenta: text("cuenta").notNull(),
+  debito: integer("debito").notNull().default(0),
+  credito: integer("credito").notNull().default(0),
+  activo: integer("activo").notNull().default(0),
+  pasivo: integer("pasivo").notNull().default(0),
+  perdida: integer("perdida").notNull().default(0),
+  ganancia: integer("ganancia").notNull().default(0),
+});
+
+// Resumen tributario para el dashboard (una fila por empresa)
+export const finanzasResumen = pgTable("finanzas_resumen", {
+  id: text("id").primaryKey(),
+  empresaId: text("empresa_id").notNull(),
+  ivaPorPagar: integer("iva_por_pagar").notNull().default(0),
+  rentaAt: integer("renta_at").notNull().default(0),
+  ppmAcumulado: integer("ppm_acumulado").notNull().default(0),
+  rentabilidad: integer("rentabilidad").notNull().default(0),
+  gastosTotal: integer("gastos_total").notNull().default(0),
+  gastosDetalle: jsonb("gastos_detalle").$type<{ nombre: string; monto: number }[]>().notNull().default([]),
+  deudaClientes: integer("deuda_clientes").notNull().default(0),
 });
 
 export const encuestas = pgTable("encuestas", {

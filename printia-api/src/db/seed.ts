@@ -8,10 +8,10 @@ const E = EMPRESA.id;
 // Single-tenant: una sola empresa (la de config.ts).
 export async function seed() {
   const existing = await db.select().from(schema.empresas);
-  if (existing.length > 0) return false;
-
+  const fresh = existing.length === 0;
   const pass = bcrypt.hashSync("demo1234", 8);
 
+  if (fresh) {
   await db.insert(schema.empresas).values([{ ...EMPRESA }]);
 
   await db.insert(schema.usuarios).values([
@@ -113,6 +113,86 @@ export async function seed() {
     { id: "s4", empresaId: E, cliente: "Fundacion Educa Norte", score: 6, comentario: "Calidad ok pero esperaba mejor color.", fecha: "2026-06-05" },
     { id: "s5", empresaId: E, cliente: "Vina Valle del Elqui", score: 10, comentario: "Los pendones quedaron espectaculares.", fecha: "2026-06-19" },
   ]);
+  } // fin seed base
 
-  return true;
+  // Finanzas: idempotente (poble aunque la BD ya tenga el resto de datos)
+  const sinFinanzas = (await db.select().from(schema.cuentasBancarias)).length === 0;
+  if (sinFinanzas) {
+  // ---- Finanzas / contabilidad (cifras realistas) ----
+  await db.insert(schema.proveedores).values([
+    { id: "pv1", empresaId: E, razonSocial: "Abingraf S.A.", rut: "77.325.180-0", contacto: "", telefono: "", cuentaContable: "Costo insumos, materiales y productos" },
+    { id: "pv2", empresaId: E, razonSocial: "Acenor Aceros del Norte S.A.", rut: "77.660.960-9", contacto: "", telefono: "", cuentaContable: "Costo insumos, materiales y productos" },
+    { id: "pv3", empresaId: E, razonSocial: "Admin. de Supermercados Express Ltda.", rut: "76.134.946-5", contacto: "", telefono: "", cuentaContable: "Equipos computacionales" },
+    { id: "pv4", empresaId: E, razonSocial: "Aguas del Valle S.A.", rut: "99.541.380-9", contacto: "", telefono: "", cuentaContable: "Cuentas servicios basicos" },
+    { id: "pv5", empresaId: E, razonSocial: "Claro Comunicaciones", rut: "76.500.000-1", contacto: "", telefono: "", cuentaContable: "Cuentas servicios basicos" },
+    { id: "pv6", empresaId: E, razonSocial: "Edipac SpA", rut: "96.500.310-2", contacto: "", telefono: "", cuentaContable: "Costo insumos, materiales y productos" },
+    { id: "pv7", empresaId: E, razonSocial: "Rapid Cargo S.A.", rut: "76.111.222-3", contacto: "", telefono: "", cuentaContable: "Transporte y gastos de entrega" },
+  ]);
+
+  await db.insert(schema.cuentasBancarias).values([
+    { id: "cb1", empresaId: E, nombre: "Banco de Chile", banco: "Banco de Chile", numero: "00-120-16541-04", saldo: 30984691 },
+    { id: "cb2", empresaId: E, nombre: "Caja chica Monica", banco: "Caja", numero: "15053505", saldo: 1097081 },
+    { id: "cb3", empresaId: E, nombre: "Transbank", banco: "Transbank", numero: "1201654104", saldo: 16248334 },
+    { id: "cb4", empresaId: E, nombre: "Banco Santander", banco: "Banco Santander", numero: "63559601", saldo: -5274217 },
+  ]);
+
+  await db.insert(schema.pagos).values([
+    { id: "pg1", empresaId: E, proveedor: "Claro Comunicaciones", numeroDoc: "2626591", vencimiento: "2026-06-25", condicion: "Contado", montoNeto: 31392, montoBruto: 37356, estado: "por-aprobar" },
+    { id: "pg2", empresaId: E, proveedor: "Comercial Mundo Ltda.", numeroDoc: "1106555", vencimiento: "2026-06-23", condicion: "Contado", montoNeto: 255633, montoBruto: 304203, estado: "pendiente" },
+    { id: "pg3", empresaId: E, proveedor: "Banco de Chile", numeroDoc: "47687575", vencimiento: "2026-06-19", condicion: "Contado", montoNeto: 3266, montoBruto: 3887, estado: "pendiente" },
+    { id: "pg4", empresaId: E, proveedor: "Rapid Cargo S.A.", numeroDoc: "635373", vencimiento: "2026-06-20", condicion: "Pago contra entrega", montoNeto: 5210, montoBruto: 6200, estado: "pendiente" },
+    { id: "pg5", empresaId: E, proveedor: "Edipac SpA", numeroDoc: "893454", vencimiento: "2026-07-12", condicion: "30 dias", montoNeto: 146238, montoBruto: 174023, estado: "en-proceso" },
+    { id: "pg6", empresaId: E, proveedor: "Chubb Seguros Chile", numeroDoc: "4283112", vencimiento: "2026-06-13", condicion: "Contado", montoNeto: 27292, montoBruto: 28126, estado: "finalizado" },
+  ]);
+
+  await db.insert(schema.asientos).values([
+    { id: "as1", empresaId: E, numero: 14401, glosa: "Documentos de compra 2626591", fecha: "2026-06-24", operacion: "egreso", debe: 43320, haber: 43320 },
+    { id: "as2", empresaId: E, numero: 14402, glosa: "Documentos de ventas 12752099", fecha: "2026-06-24", operacion: "ingreso", debe: 406170, haber: 406170 },
+    { id: "as3", empresaId: E, numero: 14403, glosa: "Documentos de ventas 12752055", fecha: "2026-06-24", operacion: "ingreso", debe: 194446, haber: 194446 },
+    { id: "as4", empresaId: E, numero: 14404, glosa: "Voucher pago remuneraciones", fecha: "2026-06-23", operacion: "egreso", debe: 6999026, haber: 6999026 },
+    { id: "as5", empresaId: E, numero: 14405, glosa: "Documentos de compra Edipac", fecha: "2026-06-22", operacion: "egreso", debe: 174023, haber: 174023 },
+    { id: "as6", empresaId: E, numero: 14406, glosa: "Boleta honorarios diseno", fecha: "2026-06-21", operacion: "egreso", debe: 304263, haber: 304263 },
+  ]);
+
+  // Estado de resultado (6 meses: ene-jun 2026), cifras reales de la captura
+  await db.insert(schema.eerrLineas).values([
+    { id: "er1", empresaId: E, categoria: "Ventas", subcategoria: "Ventas", orden: 1, esTotal: false, meses: [27136621, 30155702, 25319214, 35624208, 20718754, 17318122] },
+    { id: "er2", empresaId: E, categoria: "Ventas", subcategoria: "Ventas sin documento tributario", orden: 2, esTotal: false, meses: [0, 0, 119748, 397669, 0, 0] },
+    { id: "er3", empresaId: E, categoria: "Ventas", subcategoria: "Total ventas", orden: 3, esTotal: true, meses: [27136621, 30155702, 25438962, 36066677, 20718754, 17318122] },
+    { id: "er4", empresaId: E, categoria: "Costos de productos y servicios", subcategoria: "Costo insumos, materiales y productos", orden: 4, esTotal: false, meses: [4314638, 3039968, 5158189, 3188978, 3913044, 2202856] },
+    { id: "er5", empresaId: E, categoria: "Costos de productos y servicios", subcategoria: "Contratistas", orden: 5, esTotal: false, meses: [39468, 463600, 381800, 31084, 0, 0] },
+    { id: "er6", empresaId: E, categoria: "Costos de productos y servicios", subcategoria: "Total costos", orden: 6, esTotal: true, meses: [4354106, 3503568, 5539989, 3220062, 3913044, 2202856] },
+    { id: "er7", empresaId: E, categoria: "Nomina / Remuneraciones", subcategoria: "Sueldos y remuneraciones personal", orden: 7, esTotal: false, meses: [8115829, 8511222, 7662093, 7482977, 7494811, 6999026] },
+    { id: "er8", empresaId: E, categoria: "Nomina / Remuneraciones", subcategoria: "Leyes sociales", orden: 8, esTotal: false, meses: [0, 2981174, 2791625, 2766549, 0, 0] },
+    { id: "er9", empresaId: E, categoria: "Alquiler y arrendamiento", subcategoria: "Arriendo inmuebles", orden: 9, esTotal: false, meses: [1113418, 0, 0, 0, 0, 0] },
+    { id: "er10", empresaId: E, categoria: "Publicidad / Promocion", subcategoria: "Comidas y entretencion", orden: 10, esTotal: false, meses: [620959, 0, 100961, 730000, 0, 0] },
+    { id: "er11", empresaId: E, categoria: "Oficina / Gastos administrativos", subcategoria: "Gastos generales", orden: 11, esTotal: false, meses: [66316, 26772, 26788, 26842, 26967, 27292] },
+  ]);
+
+  await db.insert(schema.balanceLineas).values([
+    { id: "bl1", empresaId: E, cuenta: "Banco Santander", debito: 241199785, credito: 246473537, activo: 0, pasivo: 5274217, perdida: 0, ganancia: 0 },
+    { id: "bl2", empresaId: E, cuenta: "Banco de Chile", debito: 60711079, credito: 29729583, activo: 30984691, pasivo: 0, perdida: 0, ganancia: 0 },
+    { id: "bl3", empresaId: E, cuenta: "Transbank", debito: 16248334, credito: 0, activo: 16248334, pasivo: 0, perdida: 0, ganancia: 0 },
+    { id: "bl4", empresaId: E, cuenta: "Clientes (por cobrar)", debito: 19000000, credito: 0, activo: 19000000, pasivo: 0, perdida: 0, ganancia: 0 },
+    { id: "bl5", empresaId: E, cuenta: "Ventas", debito: 0, credito: 156834838, activo: 0, pasivo: 0, perdida: 0, ganancia: 156834838 },
+    { id: "bl6", empresaId: E, cuenta: "Costo insumos, materiales y productos", debito: 21817673, credito: 0, activo: 0, pasivo: 0, perdida: 21817673, ganancia: 0 },
+    { id: "bl7", empresaId: E, cuenta: "Sueldos y remuneraciones", debito: 46265958, credito: 0, activo: 0, pasivo: 0, perdida: 46265958, ganancia: 0 },
+  ]);
+
+  await db.insert(schema.finanzasResumen).values([{
+    id: "fr1", empresaId: E,
+    ivaPorPagar: 3208287, rentaAt: 6132294, ppmAcumulado: 273152,
+    rentabilidad: 37533412, gastosTotal: 119301426,
+    gastosDetalle: [
+      { nombre: "Sueldos y remuneraciones personal", monto: 46265958 },
+      { nombre: "Costo insumos, materiales y productos", monto: 21817673 },
+      { nombre: "Proveedores y patentes", monto: 22827261 },
+      { nombre: "Leyes sociales", monto: 14747473 },
+      { nombre: "Otros", monto: 13923256 },
+    ],
+    deudaClientes: 19000000,
+  }]);
+  } // fin seed finanzas
+
+  return fresh || sinFinanzas;
 }

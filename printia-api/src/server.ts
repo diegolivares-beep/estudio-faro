@@ -10,10 +10,10 @@ const SECRET = process.env.JWT_SECRET || "printia-demo-secret-change-in-prod";
 const PORT = Number(process.env.PORT || 8787);
 
 const ACCESO: Record<string, string[]> = {
-  admin: ["resumen", "cotizador", "cotizaciones", "produccion", "planificacion", "despacho", "clientes", "inventario", "finanzas", "indicadores", "config"],
+  admin: ["resumen", "cotizador", "cotizaciones", "produccion", "planificacion", "despacho", "clientes", "inventario", "finanzas", "contabilidad", "pagos", "proveedores", "indicadores", "config"],
   vendedor: ["resumen", "cotizador", "cotizaciones", "clientes"],
   produccion: ["resumen", "produccion", "planificacion", "despacho", "inventario", "indicadores"],
-  finanzas: ["resumen", "finanzas", "clientes", "cotizaciones", "indicadores"],
+  finanzas: ["resumen", "finanzas", "contabilidad", "pagos", "proveedores", "clientes", "cotizaciones", "indicadores"],
 };
 
 const app = new Hono();
@@ -113,12 +113,21 @@ app.get("/api/bootstrap", auth, async (c) => {
   const documentos = await byEmp(schema.documentos);
   const cobros = await byEmp(schema.cobros);
   const encuestas = await byEmp(schema.encuestas);
+  const proveedores = await byEmp(schema.proveedores);
+  const cuentasBancarias = await byEmp(schema.cuentasBancarias);
+  const pagos = await byEmp(schema.pagos);
+  const asientos = await byEmp(schema.asientos);
+  const eerr = await byEmp(schema.eerrLineas);
+  const balance = await byEmp(schema.balanceLineas);
+  const finanzasArr = await byEmp(schema.finanzasResumen);
   const empresas = await db.select().from(schema.empresas);
   const usuarios = await db.select().from(schema.usuarios);
   return c.json({
     empresaId: eid, empresas,
     usuarios: usuarios.map(({ passwordHash, ...u }) => u),
     clientes, materiales, maquinas, productos, cotizaciones, ots, documentos, cobros, encuestas,
+    proveedores, cuentasBancarias, pagos, asientos, eerr, balance,
+    finanzas: finanzasArr[0] ?? null,
   });
 });
 
@@ -190,6 +199,49 @@ app.patch("/api/documentos/:id", auth, async (c) => {
   await db.update(schema.documentos).set(patch).where(eq(schema.documentos.id, id));
   const [row] = await db.select().from(schema.documentos).where(eq(schema.documentos.id, id));
   return c.json(row);
+});
+
+// --- Pagos ---
+app.post("/api/pagos", auth, async (c) => {
+  const b = await c.req.json();
+  const row = { ...b, id: uid(), empresaId: empresaDe(c) };
+  await db.insert(schema.pagos).values(row);
+  return c.json(row, 201);
+});
+app.patch("/api/pagos/:id", auth, async (c) => {
+  const id = c.req.param("id");
+  const patch = await c.req.json();
+  await db.update(schema.pagos).set(patch).where(eq(schema.pagos.id, id));
+  const [row] = await db.select().from(schema.pagos).where(eq(schema.pagos.id, id));
+  return c.json(row);
+});
+
+// --- Cobros ---
+app.patch("/api/cobros/:id", auth, async (c) => {
+  const id = c.req.param("id");
+  const patch = await c.req.json();
+  await db.update(schema.cobros).set(patch).where(eq(schema.cobros.id, id));
+  const [row] = await db.select().from(schema.cobros).where(eq(schema.cobros.id, id));
+  return c.json(row);
+});
+
+// --- Proveedores ---
+app.post("/api/proveedores", auth, async (c) => {
+  const b = await c.req.json();
+  const row = { ...b, id: uid(), empresaId: empresaDe(c) };
+  await db.insert(schema.proveedores).values(row);
+  return c.json(row, 201);
+});
+
+// --- Asientos (comprobantes) ---
+app.post("/api/asientos", auth, async (c) => {
+  const b = await c.req.json();
+  const eid = empresaDe(c);
+  const existing = await db.select().from(schema.asientos).where(eq(schema.asientos.empresaId, eid));
+  const numero = 14400 + existing.length + 1;
+  const row = { ...b, id: uid(), empresaId: eid, numero };
+  await db.insert(schema.asientos).values(row);
+  return c.json(row, 201);
 });
 
 serve({ fetch: app.fetch, port: PORT }, (info) => {
