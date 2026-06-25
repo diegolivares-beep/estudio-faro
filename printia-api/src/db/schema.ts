@@ -350,3 +350,18 @@ export const tokensApi = pgTable("tokens_api", {
   ultimoUso: text("ultimo_uso").notNull().default(""),
   estado: text("estado").notNull().default("activo"), // activo | revocado
 });
+
+// Ordenes de compra (Operaciones) y, al recibirse, Compras (Administracion)
+export const ordenesCompra = pgTable("ordenes_compra", {
+  id: text("id").primaryKey(),
+  empresaId: text("empresa_id").notNull(),
+  numero: text("numero").notNull(),
+  proveedor: text("proveedor").notNull(),
+  numeroDoc: text("numero_doc").notNull().default(""),
+  cuentaContable: text("cuenta_contable").notNull().default("Costo insumos, materiales y productos"),
+  fecha: text("fecha").notNull(),
+  montoNeto: integer("monto_neto").notNull().default(0),
+  montoBruto: integer("monto_bruto").notNull().default(0),
+  recibido: boolean("recibido").notNull().default(false),
+  estado: text("estado").notNull().default("emitida"), // emitida | recibida | anulada
+});

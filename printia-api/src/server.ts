@@ -13,12 +13,12 @@ const PORT = Number(process.env.PORT || 8787);
 const ACCESO: Record<string, string[]> = {
   admin: [
     "resumen", "cotizador", "cotizaciones", "consultas", "crm", "ecommerce", "clientes", "satisfaccion",
-    "produccion", "tablero", "planificacion", "despacho", "inventario", "proveedores", "visto-bueno",
-    "agenda", "tareas", "finanzas", "pagos", "contabilidad", "indicadores", "config",
+    "produccion", "tablero", "orden-trabajo", "orden-compra", "visto-bueno", "planificacion", "despacho", "inventario", "proveedores",
+    "agenda", "tareas", "ventas", "compras", "pagos", "cobros", "contabilidad", "indicadores", "config",
   ],
   vendedor: ["resumen", "cotizador", "cotizaciones", "consultas", "crm", "ecommerce", "clientes", "satisfaccion", "agenda", "tareas"],
-  produccion: ["resumen", "produccion", "tablero", "planificacion", "despacho", "inventario", "proveedores", "visto-bueno", "agenda", "tareas", "indicadores"],
-  finanzas: ["resumen", "finanzas", "pagos", "contabilidad", "proveedores", "clientes", "cotizaciones", "indicadores"],
+  produccion: ["resumen", "produccion", "tablero", "orden-trabajo", "orden-compra", "visto-bueno", "planificacion", "despacho", "inventario", "proveedores", "agenda", "tareas", "indicadores"],
+  finanzas: ["resumen", "ventas", "compras", "pagos", "cobros", "contabilidad", "proveedores", "clientes", "cotizaciones", "indicadores"],
 };
 
 // Acceso efectivo = baseline del rol + overrides de permisos granulares.
@@ -164,6 +164,7 @@ app.get("/api/bootstrap", auth, async (c) => {
   const listasPrecios = await byEmp(schema.listasPrecios);
   const monedas = await byEmp(schema.monedas);
   const tokensApi = await byEmp(schema.tokensApi);
+  const ordenesCompra = await byEmp(schema.ordenesCompra);
   const empresas = await db.select().from(schema.empresas);
   const usuarios = await db.select().from(schema.usuarios);
   return c.json({
@@ -173,6 +174,7 @@ app.get("/api/bootstrap", auth, async (c) => {
     proveedores, cuentasBancarias, pagos, asientos, eerr, balance,
     finanzas: finanzasArr[0] ?? null,
     consultas, leads, estadosProduccion, agendamientos, tareas, listasPrecios, monedas, tokensApi,
+    ordenesCompra,
   });
 });
 
@@ -350,6 +352,7 @@ crud("listas-precios", schema.listasPrecios);
 crud("monedas", schema.monedas);
 crud("tokens-api", schema.tokensApi);
 crud("encuestas", schema.encuestas);
+crud("ordenes-compra", schema.ordenesCompra);
 
 serve({ fetch: app.fetch, port: PORT }, (info) => {
   console.log(`Printia API en http://localhost:${info.port}`);

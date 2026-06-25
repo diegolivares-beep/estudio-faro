@@ -328,5 +328,18 @@ export async function seed() {
   ]);
   } // fin seed comercial/operaciones/mi-empresa
 
-  return fresh || sinFinanzas || sinComercial;
+  // ---- Ordenes de compra / Compras (idempotente) ----
+  const sinOC = (await db.select().from(schema.ordenesCompra)).length === 0;
+  if (sinOC) {
+  await db.insert(schema.ordenesCompra).values([
+    { id: "oc1", empresaId: E, numero: "OC-2026-0231", proveedor: "Edipac SpA", numeroDoc: "F-893454", cuentaContable: "Costo insumos, materiales y productos", fecha: "2026-06-22", montoNeto: 146238, montoBruto: 174023, recibido: true, estado: "recibida" },
+    { id: "oc2", empresaId: E, numero: "OC-2026-0230", proveedor: "Abingraf S.A.", numeroDoc: "F-120877", cuentaContable: "Costo insumos, materiales y productos", fecha: "2026-06-20", montoNeto: 312605, montoBruto: 372000, recibido: true, estado: "recibida" },
+    { id: "oc3", empresaId: E, numero: "OC-2026-0229", proveedor: "Acenor Aceros del Norte S.A.", numeroDoc: "", cuentaContable: "Costo insumos, materiales y productos", fecha: "2026-06-24", montoNeto: 89500, montoBruto: 106505, recibido: false, estado: "emitida" },
+    { id: "oc4", empresaId: E, numero: "OC-2026-0228", proveedor: "Comercial Mundo Ltda.", numeroDoc: "", cuentaContable: "Equipos computacionales", fecha: "2026-06-24", montoNeto: 255633, montoBruto: 304203, recibido: false, estado: "emitida" },
+    { id: "oc5", empresaId: E, numero: "OC-2026-0227", proveedor: "Aguas del Valle S.A.", numeroDoc: "F-2626591", cuentaContable: "Cuentas servicios basicos", fecha: "2026-06-18", montoNeto: 31392, montoBruto: 37356, recibido: true, estado: "recibida" },
+    { id: "oc6", empresaId: E, numero: "OC-2026-0226", proveedor: "Rapid Cargo S.A.", numeroDoc: "F-635373", cuentaContable: "Transporte y gastos de entrega", fecha: "2026-06-20", montoNeto: 5210, montoBruto: 6200, recibido: true, estado: "recibida" },
+  ]);
+  } // fin seed ordenes de compra
+
+  return fresh || sinFinanzas || sinComercial || sinOC;
 }
