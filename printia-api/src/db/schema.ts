@@ -15,6 +15,7 @@ export const empresas = pgTable("empresas", {
   email: text("email").notNull(),
   web: text("web").notNull(),
   color: text("color").notNull(),
+  config: jsonb("config").$type<Record<string, any>>().notNull().default({}),
 });
 
 export const usuarios = pgTable("usuarios", {
@@ -27,6 +28,9 @@ export const usuarios = pgTable("usuarios", {
   passwordHash: text("password_hash").notNull(),
   iniciales: text("iniciales").notNull(),
   color: text("color").notNull(),
+  estado: text("estado").notNull().default("activo"), // activo | inactivo | temporal
+  // Permisos granulares: { modulo: "inactivo" | "ver" | "administrar" }. Vacio = usa el rol.
+  permisos: jsonb("permisos").$type<Record<string, string>>().notNull().default({}),
 });
 
 export const clientes = pgTable("clientes", {
@@ -72,6 +76,11 @@ export const productos = pgTable("productos", {
   unidad: text("unidad").notNull(),
   desde: integer("desde").notNull(),
   atributos: jsonb("atributos").$type<string[]>().notNull().default([]),
+  codigo: text("codigo").notNull().default(""),
+  precioNeto: integer("precio_neto").notNull().default(0),
+  exentoIva: boolean("exento_iva").notNull().default(false),
+  activo: boolean("activo").notNull().default(true),
+  enTienda: boolean("en_tienda").notNull().default(false), // visible en e-commerce
 });
 
 export const cotizaciones = pgTable("cotizaciones", {
@@ -107,6 +116,12 @@ export const ots = pgTable("ots", {
   qc: boolean("qc").notNull().default(false),
   tirajeReal: integer("tiraje_real"),
   merma: integer("merma"),
+  // Operaciones (Fase 3)
+  estadoTag: text("estado_tag").notNull().default(""), // etiqueta libre del tablero (Diseño, Offset, Serigrafia...)
+  compromiso: text("compromiso").notNull().default(""), // fecha compromiso con el cliente
+  responsable: text("responsable").notNull().default(""), // usuario responsable
+  vbEstado: text("vb_estado").notNull().default("sin-solicitar"), // sin-solicitar | pendiente | aprobado | rechazado
+  vbComentario: text("vb_comentario").notNull().default(""),
 });
 
 export const documentos = pgTable("documentos", {
@@ -221,4 +236,117 @@ export const encuestas = pgTable("encuestas", {
   score: integer("score").notNull(),
   comentario: text("comentario").notNull(),
   fecha: text("fecha").notNull(),
+  ot: text("ot").notNull().default(""),
+  vendedor: text("vendedor").notNull().default(""),
+  estado: text("estado").notNull().default("contestada"), // contestada | no-contestada | en-proceso
+});
+
+// ============================================================
+//  FASE 2 — COMERCIAL EXTENDIDO
+// ============================================================
+
+// Consultas: solicitudes de cotizacion entrantes (desde web/widget)
+export const consultas = pgTable("consultas", {
+  id: text("id").primaryKey(),
+  empresaId: text("empresa_id").notNull(),
+  numero: text("numero").notNull(),
+  contacto: text("contacto").notNull(),
+  clienteNombre: text("cliente_nombre").notNull().default(""),
+  email: text("email").notNull().default(""),
+  telefono: text("telefono").notNull().default(""),
+  fecha: text("fecha").notNull(),
+  producto: text("producto").notNull().default(""),
+  mensaje: text("mensaje").notNull().default(""),
+  origen: text("origen").notNull().default("Web"), // Web | E-commerce | Telefono | Email
+  estado: text("estado").notNull().default("pendiente"), // pendiente | atendida | convertida | descartada
+  vendedor: text("vendedor").notNull().default("Sin asignar"),
+});
+
+// CRM: leads en pipeline kanban
+export const leads = pgTable("leads", {
+  id: text("id").primaryKey(),
+  empresaId: text("empresa_id").notNull(),
+  nombre: text("nombre").notNull(),
+  contacto: text("contacto").notNull().default(""),
+  email: text("email").notNull().default(""),
+  telefono: text("telefono").notNull().default(""),
+  etapa: text("etapa").notNull().default("nuevo"), // nuevo | contactado | propuesta | ganado | perdido
+  valor: integer("valor").notNull().default(0),
+  probabilidad: integer("probabilidad").notNull().default(20),
+  vendedor: text("vendedor").notNull().default("Sin asignar"),
+  fecha: text("fecha").notNull(),
+  nota: text("nota").notNull().default(""),
+});
+
+// ============================================================
+//  FASE 3 — OPERACIONES
+// ============================================================
+
+// Estados configurables del tablero (etiquetas, no pipeline fijo)
+export const estadosProduccion = pgTable("estados_produccion", {
+  id: text("id").primaryKey(),
+  empresaId: text("empresa_id").notNull(),
+  nombre: text("nombre").notNull(),
+  color: text("color").notNull().default("#64748b"),
+  orden: integer("orden").notNull().default(0),
+});
+
+// Agendamiento: bloques por persona/operario
+export const agendamientos = pgTable("agendamientos", {
+  id: text("id").primaryKey(),
+  empresaId: text("empresa_id").notNull(),
+  usuarioId: text("usuario_id").notNull(),
+  otId: text("ot_id").notNull().default(""),
+  titulo: text("titulo").notNull(),
+  fecha: text("fecha").notNull(),
+  horaInicio: integer("hora_inicio").notNull(), // hora del dia (7..18)
+  horaFin: integer("hora_fin").notNull(),
+  tipo: text("tipo").notNull().default("trabajo"), // trabajo | entrega | reunion
+});
+
+// Mis Tareas
+export const tareas = pgTable("tareas", {
+  id: text("id").primaryKey(),
+  empresaId: text("empresa_id").notNull(),
+  usuarioId: text("usuario_id").notNull(),
+  titulo: text("titulo").notNull(),
+  otId: text("ot_id").notNull().default(""),
+  fecha: text("fecha").notNull(),
+  prioridad: text("prioridad").notNull().default("media"),
+  hecha: boolean("hecha").notNull().default(false),
+});
+
+// ============================================================
+//  FASE 4 — MI EMPRESA
+// ============================================================
+
+// Multiples listas de precios por sustrato/segmento
+export const listasPrecios = pgTable("listas_precios", {
+  id: text("id").primaryKey(),
+  empresaId: text("empresa_id").notNull(),
+  nombre: text("nombre").notNull(),
+  descripcion: text("descripcion").notNull().default(""),
+  activa: boolean("activa").notNull().default(true),
+  items: jsonb("items").$type<{ producto: string; valor: number }[]>().notNull().default([]),
+});
+
+export const monedas = pgTable("monedas", {
+  id: text("id").primaryKey(),
+  empresaId: text("empresa_id").notNull(),
+  codigo: text("codigo").notNull(), // CLP | USD | UF | EUR
+  nombre: text("nombre").notNull(),
+  decimales: integer("decimales").notNull().default(0),
+  cambioVenta: doublePrecision("cambio_venta").notNull().default(1),
+  cambioCompra: doublePrecision("cambio_compra").notNull().default(1),
+  auto: boolean("auto").notNull().default(false),
+});
+
+export const tokensApi = pgTable("tokens_api", {
+  id: text("id").primaryKey(),
+  empresaId: text("empresa_id").notNull(),
+  nombre: text("nombre").notNull(),
+  token: text("token").notNull(),
+  vence: text("vence").notNull().default(""),
+  ultimoUso: text("ultimo_uso").notNull().default(""),
+  estado: text("estado").notNull().default("activo"), // activo | revocado
 });

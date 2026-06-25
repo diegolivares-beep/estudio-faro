@@ -1,4 +1,5 @@
 import bcrypt from "bcryptjs";
+import { eq } from "drizzle-orm";
 import { db, schema } from "./client";
 import { EMPRESA } from "../config";
 
@@ -194,5 +195,138 @@ export async function seed() {
   }]);
   } // fin seed finanzas
 
-  return fresh || sinFinanzas;
+  // ---- Fases 2/3/4: comercial extendido, operaciones, mi empresa (idempotente) ----
+  const sinComercial = (await db.select().from(schema.leads)).length === 0;
+  if (sinComercial) {
+  // Consultas (solicitudes entrantes)
+  await db.insert(schema.consultas).values([
+    { id: "cn1", empresaId: E, numero: "C-2026-0091", contacto: "Marcela Pizarro", clienteNombre: "Colegio San Joaquin", email: "marcela@sanjoaquin.cl", telefono: "+56 9 8812 3344", fecha: "2026-06-24", producto: "Agendas escolares 2027", mensaje: "Necesitamos cotizar 800 agendas tapa dura para el proximo ano.", origen: "Web", estado: "pendiente", vendedor: "Sin asignar" },
+    { id: "cn2", empresaId: E, numero: "C-2026-0090", contacto: "Diego Fuentes", clienteNombre: "Cafe del Puerto", email: "hola@cafedelpuerto.cl", telefono: "+56 9 7711 0099", fecha: "2026-06-24", producto: "Menus plastificados", mensaje: "20 menus tamano carta, plastificados ambas caras.", origen: "E-commerce", estado: "pendiente", vendedor: "Sin asignar" },
+    { id: "cn3", empresaId: E, numero: "C-2026-0089", contacto: "Patricia Vega", clienteNombre: "Minera Andacollo SpA", email: "abastecimiento@mandacollo.cl", telefono: "+56 9 5544 1020", fecha: "2026-06-23", producto: "Talonarios de bodega", mensaje: "Reposicion de talonarios autocopiativos triplicados.", origen: "Telefono", estado: "atendida", vendedor: "Carla Diaz" },
+    { id: "cn4", empresaId: E, numero: "C-2026-0088", contacto: "Rodrigo Soto", clienteNombre: "Gimnasio Energy", email: "rsoto@energygym.cl", telefono: "+56 9 6543 2211", fecha: "2026-06-22", producto: "Pendones promocionales", mensaje: "3 pendones roller para campana de verano.", origen: "E-commerce", estado: "convertida", vendedor: "Marco Leon" },
+    { id: "cn5", empresaId: E, numero: "C-2026-0087", contacto: "Sin nombre", clienteNombre: "", email: "contacto@spam.cl", telefono: "", fecha: "2026-06-21", producto: "", mensaje: "Mensaje sin detalle.", origen: "Web", estado: "descartada", vendedor: "Sin asignar" },
+  ]);
+
+  // CRM leads (kanban)
+  await db.insert(schema.leads).values([
+    { id: "ld1", empresaId: E, nombre: "Universidad Catolica del Norte", contacto: "Depto. Comunicaciones", email: "comunicaciones@ucn.cl", telefono: "+56 51 220 1000", etapa: "nuevo", valor: 3500000, probabilidad: 20, vendedor: "Carla Diaz", fecha: "2026-06-24", nota: "Memorias institucionales + carpetas. Licitacion en agosto." },
+    { id: "ld2", empresaId: E, nombre: "Hotel Club La Serena", contacto: "Marketing", email: "mkt@clublaserena.cl", telefono: "+56 9 9988 7766", etapa: "nuevo", valor: 1200000, probabilidad: 20, vendedor: "Marco Leon", fecha: "2026-06-23", nota: "Carpetas, llaveros, senaletica habitaciones." },
+    { id: "ld3", empresaId: E, nombre: "Municipalidad de Vicuna", contacto: "Adquisiciones", email: "compras@munivicuna.cl", telefono: "+56 51 241 1200", etapa: "contactado", valor: 4800000, probabilidad: 45, vendedor: "Carla Diaz", fecha: "2026-06-20", nota: "Esperando bases. Contacto directo con jefe de gabinete." },
+    { id: "ld4", empresaId: E, nombre: "Vina Tabali", contacto: "Enoturismo", email: "turismo@tabali.cl", telefono: "+56 9 6677 1234", etapa: "contactado", valor: 2100000, probabilidad: 50, vendedor: "Marco Leon", fecha: "2026-06-19", nota: "Etiquetas premium + cajas. Pidieron muestra fisica." },
+    { id: "ld5", empresaId: E, nombre: "Clinica Regional del Elqui", contacto: "Abastecimiento", email: "compras@clinicaelqui.cl", telefono: "+56 51 255 9000", etapa: "propuesta", valor: 6500000, probabilidad: 70, vendedor: "Carla Diaz", fecha: "2026-06-17", nota: "Propuesta enviada: recetarios, fichas, senaletica. Decision esta semana." },
+    { id: "ld6", empresaId: E, nombre: "Enaex Servicios", contacto: "Prevencion", email: "epp@enaex.com", telefono: "+56 2 2837 7000", etapa: "ganado", valor: 5200000, probabilidad: 100, vendedor: "Carla Diaz", fecha: "2026-06-12", nota: "Cerrado: senaletica de seguridad + manuales. OC emitida." },
+    { id: "ld7", empresaId: E, nombre: "Feria Costumbrista Andacollo", contacto: "Comite", email: "feria@andacollo.cl", telefono: "+56 9 5511 2233", etapa: "perdido", valor: 900000, probabilidad: 0, vendedor: "Marco Leon", fecha: "2026-06-10", nota: "Se fueron por precio con imprenta local." },
+  ]);
+
+  // Estados configurables del tablero (etiquetas estilo Twist)
+  await db.insert(schema.estadosProduccion).values([
+    { id: "ep1", empresaId: E, nombre: "Aceptado", color: "#2563eb", orden: 1 },
+    { id: "ep2", empresaId: E, nombre: "Diseno", color: "#7c3aed", orden: 2 },
+    { id: "ep3", empresaId: E, nombre: "Offset", color: "#0891b2", orden: 3 },
+    { id: "ep4", empresaId: E, nombre: "Encuadernacion", color: "#d97706", orden: 4 },
+    { id: "ep5", empresaId: E, nombre: "Serigrafia", color: "#db2777", orden: 5 },
+    { id: "ep6", empresaId: E, nombre: "Grabado / DTF", color: "#059669", orden: 6 },
+    { id: "ep7", empresaId: E, nombre: "Plotter", color: "#ca8a04", orden: 7 },
+    { id: "ep8", empresaId: E, nombre: "Terminacion", color: "#6366f1", orden: 8 },
+    { id: "ep9", empresaId: E, nombre: "Stock", color: "#64748b", orden: 9 },
+  ]);
+
+  // Enriquecer OTs existentes con campos de operaciones (tags, responsable, visto bueno)
+  const otTags: Record<string, { tag: string; resp: string; vb: string }> = {
+    ot1: { tag: "Offset", resp: "Luis Araya", vb: "aprobado" },
+    ot2: { tag: "Plotter", resp: "Luis Araya", vb: "aprobado" },
+    ot3: { tag: "Diseno", resp: "Carla Diaz", vb: "pendiente" },
+    ot4: { tag: "Aceptado", resp: "Marco Leon", vb: "pendiente" },
+    ot5: { tag: "Offset", resp: "Luis Araya", vb: "aprobado" },
+    ot6: { tag: "Terminacion", resp: "Luis Araya", vb: "aprobado" },
+    ot7: { tag: "Stock", resp: "Luis Araya", vb: "sin-solicitar" },
+    ot8: { tag: "Grabado / DTF", resp: "Luis Araya", vb: "rechazado" },
+    ot9: { tag: "Encuadernacion", resp: "Luis Araya", vb: "pendiente" },
+  };
+  for (const [id, v] of Object.entries(otTags)) {
+    const [ot] = await db.select().from(schema.ots).where(eq(schema.ots.id, id));
+    if (ot) await db.update(schema.ots).set({ estadoTag: v.tag, responsable: v.resp, vbEstado: v.vb, compromiso: ot.entrega }).where(eq(schema.ots.id, id));
+  }
+
+  // Agendamiento por persona (hoy)
+  await db.insert(schema.agendamientos).values([
+    { id: "ag1", empresaId: E, usuarioId: "u5", otId: "ot1", titulo: "OT-3391 Talonarios Andacollo", fecha: "2026-06-25", horaInicio: 8, horaFin: 11, tipo: "trabajo" },
+    { id: "ag2", empresaId: E, usuarioId: "u5", otId: "ot5", titulo: "OT-3395 Folleto Educa Norte", fecha: "2026-06-25", horaInicio: 11, horaFin: 14, tipo: "trabajo" },
+    { id: "ag3", empresaId: E, usuarioId: "u1", otId: "ot3", titulo: "Revision arte OT-3393", fecha: "2026-06-25", horaInicio: 9, horaFin: 10, tipo: "reunion" },
+    { id: "ag4", empresaId: E, usuarioId: "u1", otId: "", titulo: "Visita Minera Andacollo", fecha: "2026-06-25", horaInicio: 15, horaFin: 17, tipo: "reunion" },
+    { id: "ag5", empresaId: E, usuarioId: "u2", otId: "ot4", titulo: "OT-3394 Credenciales La Mar", fecha: "2026-06-25", horaInicio: 10, horaFin: 12, tipo: "trabajo" },
+    { id: "ag6", empresaId: E, usuarioId: "u5", otId: "ot6", titulo: "Entrega partes matrimonio", fecha: "2026-06-25", horaInicio: 16, horaFin: 17, tipo: "entrega" },
+  ]);
+
+  // Mis Tareas
+  await db.insert(schema.tareas).values([
+    { id: "tk1", empresaId: E, usuarioId: "u1", titulo: "Llamar a Colegio San Joaquin por consulta C-2026-0091", otId: "", fecha: "2026-06-25", prioridad: "alta", hecha: false },
+    { id: "tk2", empresaId: E, usuarioId: "u1", titulo: "Enviar carta oferta a Vina Valle del Elqui", otId: "", fecha: "2026-06-25", prioridad: "media", hecha: false },
+    { id: "tk3", empresaId: E, usuarioId: "u1", titulo: "Confirmar arte aprobado OT-3393", otId: "ot3", fecha: "2026-06-24", prioridad: "alta", hecha: true },
+    { id: "tk4", empresaId: E, usuarioId: "u5", titulo: "Liberar calidad OT-3391", otId: "ot1", fecha: "2026-06-25", prioridad: "alta", hecha: false },
+    { id: "tk5", empresaId: E, usuarioId: "u5", titulo: "Cargar lona en Plotter Epson", otId: "ot2", fecha: "2026-06-25", prioridad: "media", hecha: false },
+    { id: "tk6", empresaId: E, usuarioId: "u2", titulo: "Cotizar pendones Gimnasio Energy", otId: "", fecha: "2026-06-25", prioridad: "media", hecha: false },
+  ]);
+
+  // Listas de precios (las reales de la cuenta Gráfika)
+  await db.insert(schema.listasPrecios).values([
+    { id: "lp1", empresaId: E, nombre: "Tela valor m2", descripcion: "Sublimacion textil por metro cuadrado", activa: true, items: [
+      { producto: "Tela banderas", valor: 8900 }, { producto: "Tela poliester", valor: 7200 }, { producto: "Microfibra", valor: 9800 } ] },
+    { id: "lp2", empresaId: E, nombre: "DTF UV / TEXTIL M2", descripcion: "Impresion DTF por metro cuadrado", activa: true, items: [
+      { producto: "DTF Textil", valor: 14500 }, { producto: "DTF UV", valor: 18900 } ] },
+    { id: "lp3", empresaId: E, nombre: "Adhesivos valor M2", descripcion: "Vinilos y adhesivos por metro cuadrado", activa: true, items: [
+      { producto: "Vinilo brillante", valor: 7900 }, { producto: "Vinilo mate", valor: 8200 }, { producto: "Vinilo transparente", valor: 9100 }, { producto: "Vinilo microperforado", valor: 12400 } ] },
+    { id: "lp4", empresaId: E, nombre: "Don Jorge precios", descripcion: "Lista especial cliente mayorista", activa: false, items: [
+      { producto: "Tarjetas millar", valor: 18000 }, { producto: "Volantes millar", valor: 42000 } ] },
+  ]);
+
+  // Monedas
+  await db.insert(schema.monedas).values([
+    { id: "mo1", empresaId: E, codigo: "CLP", nombre: "Peso chileno", decimales: 0, cambioVenta: 1, cambioCompra: 1, auto: false },
+    { id: "mo2", empresaId: E, codigo: "USD", nombre: "Dolar estadounidense", decimales: 2, cambioVenta: 968.5, cambioCompra: 965.2, auto: true },
+    { id: "mo3", empresaId: E, codigo: "UF", nombre: "Unidad de fomento", decimales: 0, cambioVenta: 39512, cambioCompra: 39512, auto: true },
+  ]);
+
+  // Tokens API (integraciones) — token de muestra, no real
+  await db.insert(schema.tokensApi).values([
+    { id: "tok1", empresaId: E, nombre: "Integracion web (formulario)", token: "pk_live_demo_3f9a2c81", vence: "2027-06-25", ultimoUso: "2026-06-24", estado: "activo" },
+    { id: "tok2", empresaId: E, nombre: "Conector contable", token: "pk_live_demo_a71b04ee", vence: "2026-12-31", ultimoUso: "2026-06-20", estado: "activo" },
+  ]);
+
+  // Enriquecer productos existentes (codigo, precio neto, exencion IVA, tienda)
+  const prodUpd: Record<string, { codigo: string; precio: number; exento: boolean; tienda: boolean }> = {
+    pr1: { codigo: "TAL-AUTO", precio: 3200, exento: false, tienda: true },
+    pr2: { codigo: "TARJ-PRES", precio: 22000, exento: false, tienda: true },
+    pr3: { codigo: "CRED-PVC", precio: 1200, exento: false, tienda: true },
+    pr4: { codigo: "PEND-ROLL", precio: 28000, exento: false, tienda: true },
+    pr5: { codigo: "FOLL-DIP", precio: 95000, exento: false, tienda: true },
+    pr6: { codigo: "ADH-VINIL", precio: 7900, exento: false, tienda: true },
+    pr7: { codigo: "AFICHE", precio: 480, exento: false, tienda: false },
+    pr8: { codigo: "TIMB-AUTO", precio: 14900, exento: false, tienda: false },
+  };
+  for (const [id, v] of Object.entries(prodUpd)) {
+    const [p] = await db.select().from(schema.productos).where(eq(schema.productos.id, id));
+    if (p) await db.update(schema.productos).set({ codigo: v.codigo, precioNeto: v.precio, exentoIva: v.exento, enTienda: v.tienda }).where(eq(schema.productos.id, id));
+  }
+
+  // Enriquecer encuestas existentes (OT, vendedor, estado)
+  const encUpd: Record<string, { ot: string; vend: string; est: string }> = {
+    s1: { ot: "OT-3391", vend: "Carla Diaz", est: "contestada" },
+    s2: { ot: "OT-3393", vend: "Carla Diaz", est: "contestada" },
+    s3: { ot: "OT-3398", vend: "Marco Leon", est: "contestada" },
+    s4: { ot: "OT-3395", vend: "Marco Leon", est: "contestada" },
+    s5: { ot: "OT-3392", vend: "Carla Diaz", est: "contestada" },
+  };
+  for (const [id, v] of Object.entries(encUpd)) {
+    const [e] = await db.select().from(schema.encuestas).where(eq(schema.encuestas.id, id));
+    if (e) await db.update(schema.encuestas).set({ ot: v.ot, vendedor: v.vend, estado: v.est }).where(eq(schema.encuestas.id, id));
+  }
+  // Encuestas pendientes (no contestadas / en proceso)
+  await db.insert(schema.encuestas).values([
+    { id: "s6", empresaId: E, cliente: "Ferreteria El Faro", score: 0, comentario: "", fecha: "2026-06-23", ot: "OT-3397", vendedor: "Marco Leon", estado: "no-contestada" },
+    { id: "s7", empresaId: E, cliente: "Camila Rojas", score: 0, comentario: "", fecha: "2026-06-24", ot: "OT-3396", vendedor: "Marco Leon", estado: "en-proceso" },
+  ]);
+  } // fin seed comercial/operaciones/mi-empresa
+
+  return fresh || sinFinanzas || sinComercial;
 }

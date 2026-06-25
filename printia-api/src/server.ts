@@ -3,18 +3,37 @@ import { cors } from "hono/cors";
 import { serve } from "@hono/node-server";
 import { sign, verify } from "hono/jwt";
 import bcrypt from "bcryptjs";
-import { eq, and } from "drizzle-orm";
+import { eq } from "drizzle-orm";
 import { db, schema } from "./db/client";
 
 const SECRET = process.env.JWT_SECRET || "printia-demo-secret-change-in-prod";
 const PORT = Number(process.env.PORT || 8787);
 
+// Modulos por rol (baseline). Los permisos granulares por usuario lo afinan.
 const ACCESO: Record<string, string[]> = {
-  admin: ["resumen", "cotizador", "cotizaciones", "produccion", "planificacion", "despacho", "clientes", "inventario", "finanzas", "contabilidad", "pagos", "proveedores", "indicadores", "config"],
-  vendedor: ["resumen", "cotizador", "cotizaciones", "clientes"],
-  produccion: ["resumen", "produccion", "planificacion", "despacho", "inventario", "indicadores"],
-  finanzas: ["resumen", "finanzas", "contabilidad", "pagos", "proveedores", "clientes", "cotizaciones", "indicadores"],
+  admin: [
+    "resumen", "cotizador", "cotizaciones", "consultas", "crm", "ecommerce", "clientes", "satisfaccion",
+    "produccion", "tablero", "planificacion", "despacho", "inventario", "proveedores", "visto-bueno",
+    "agenda", "tareas", "finanzas", "pagos", "contabilidad", "indicadores", "config",
+  ],
+  vendedor: ["resumen", "cotizador", "cotizaciones", "consultas", "crm", "ecommerce", "clientes", "satisfaccion", "agenda", "tareas"],
+  produccion: ["resumen", "produccion", "tablero", "planificacion", "despacho", "inventario", "proveedores", "visto-bueno", "agenda", "tareas", "indicadores"],
+  finanzas: ["resumen", "finanzas", "pagos", "contabilidad", "proveedores", "clientes", "cotizaciones", "indicadores"],
 };
+
+// Acceso efectivo = baseline del rol + overrides de permisos granulares.
+function accesoDe(u: any): string[] {
+  const base = ACCESO[u.rol] || ["resumen"];
+  const p = (u.permisos || {}) as Record<string, string>;
+  if (!p || Object.keys(p).length === 0) return base;
+  const set = new Set(base);
+  for (const [mod, lvl] of Object.entries(p)) {
+    if (lvl === "inactivo") set.delete(mod);
+    else set.add(mod);
+  }
+  set.add("resumen");
+  return [...set];
+}
 
 const app = new Hono();
 app.use("*", cors());
@@ -37,16 +56,36 @@ async function auth(c: any, next: any) {
   }
 }
 
-// Single-tenant: la empresa siempre es la del usuario logueado.
 function empresaDe(c: any): string {
   const claims = c.get("claims") as Claims;
   return claims.empresaId;
 }
 
-// Numero correlativo simple basado en la cantidad existente.
 async function nextNumero(table: any, eid: string, fmt: (n: number) => string) {
   const rows = await db.select().from(table).where(eq(table.empresaId, eid));
   return fmt(rows.length);
+}
+
+// CRUD generico (POST/PATCH/DELETE) para colecciones simples por empresa.
+function crud(path: string, table: any) {
+  app.post(`/api/${path}`, auth, async (c) => {
+    const b = await c.req.json();
+    const row = { ...b, id: b.id || uid(), empresaId: empresaDe(c) };
+    await db.insert(table).values(row);
+    return c.json(row, 201);
+  });
+  app.patch(`/api/${path}/:id`, auth, async (c) => {
+    const id = c.req.param("id");
+    const patch = await c.req.json();
+    await db.update(table).set(patch).where(eq(table.id, id));
+    const [row] = await db.select().from(table).where(eq(table.id, id));
+    return c.json(row);
+  });
+  app.delete(`/api/${path}/:id`, auth, async (c) => {
+    const id = c.req.param("id");
+    await db.delete(table).where(eq(table.id, id));
+    return c.json({ ok: true });
+  });
 }
 
 app.get("/", (c) => c.json({ ok: true, service: "printia-api" }));
@@ -60,20 +99,18 @@ app.post("/api/auth/login", async (c) => {
   }
   const token = await sign({ uid: u.id, empresaId: u.empresaId, rol: u.rol } as Claims, SECRET, "HS256");
   const { passwordHash, ...usuario } = u;
-  return c.json({ token, usuario, acceso: ACCESO[u.rol] });
+  return c.json({ token, usuario, acceso: accesoDe(u) });
 });
 
-// Login rapido por id (solo demo, para el selector de usuarios)
 app.post("/api/auth/demo-login", async (c) => {
   const { usuarioId } = await c.req.json();
   const [u] = await db.select().from(schema.usuarios).where(eq(schema.usuarios.id, String(usuarioId)));
   if (!u) return c.json({ error: "Usuario no existe" }, 404);
   const token = await sign({ uid: u.id, empresaId: u.empresaId, rol: u.rol } as Claims, SECRET, "HS256");
   const { passwordHash, ...usuario } = u;
-  return c.json({ token, usuario, acceso: ACCESO[u.rol] });
+  return c.json({ token, usuario, acceso: accesoDe(u) });
 });
 
-// Lista publica para el selector del login (sin secretos)
 app.get("/api/login-options", async (c) => {
   const rows = (await db.select().from(schema.usuarios)).map((u) => ({
     id: u.id, nombre: u.nombre, cargo: u.cargo, rol: u.rol, iniciales: u.iniciales, color: u.color, email: u.email,
@@ -95,14 +132,13 @@ app.get("/api/me", auth, async (c) => {
   const [u] = await db.select().from(schema.usuarios).where(eq(schema.usuarios.id, claims.uid));
   if (!u) return c.json({ error: "no encontrado" }, 404);
   const { passwordHash, ...usuario } = u;
-  return c.json({ usuario, acceso: ACCESO[u.rol] });
+  return c.json({ usuario, acceso: accesoDe(u) });
 });
 
 // --- Bootstrap: toda la data de la empresa actual en una llamada ---
 app.get("/api/bootstrap", auth, async (c) => {
   const eid = empresaDe(c);
-  // Secuencial a proposito: PGlite (dev) usa una sola conexion y no admite
-  // consultas concurrentes. En Postgres (prod) tambien funciona bien.
+  // Secuencial: PGlite (dev) usa una conexion y no admite consultas concurrentes.
   const byEmp = (t: any) => db.select().from(t).where(eq(t.empresaId, eid));
   const clientes = await byEmp(schema.clientes);
   const materiales = await byEmp(schema.materiales);
@@ -120,6 +156,14 @@ app.get("/api/bootstrap", auth, async (c) => {
   const eerr = await byEmp(schema.eerrLineas);
   const balance = await byEmp(schema.balanceLineas);
   const finanzasArr = await byEmp(schema.finanzasResumen);
+  const consultas = await byEmp(schema.consultas);
+  const leads = await byEmp(schema.leads);
+  const estadosProduccion = await byEmp(schema.estadosProduccion);
+  const agendamientos = await byEmp(schema.agendamientos);
+  const tareas = await byEmp(schema.tareas);
+  const listasPrecios = await byEmp(schema.listasPrecios);
+  const monedas = await byEmp(schema.monedas);
+  const tokensApi = await byEmp(schema.tokensApi);
   const empresas = await db.select().from(schema.empresas);
   const usuarios = await db.select().from(schema.usuarios);
   return c.json({
@@ -128,6 +172,7 @@ app.get("/api/bootstrap", auth, async (c) => {
     clientes, materiales, maquinas, productos, cotizaciones, ots, documentos, cobros, encuestas,
     proveedores, cuentasBancarias, pagos, asientos, eerr, balance,
     finanzas: finanzasArr[0] ?? null,
+    consultas, leads, estadosProduccion, agendamientos, tareas, listasPrecios, monedas, tokensApi,
   });
 });
 
@@ -173,7 +218,7 @@ app.post("/api/clientes", auth, async (c) => {
   return c.json(row, 201);
 });
 
-// --- Inventario: ajuste de stock (OC) ---
+// --- Inventario: ajuste de stock ---
 app.patch("/api/materiales/:id", auth, async (c) => {
   const id = c.req.param("id");
   const { delta } = await c.req.json();
@@ -243,6 +288,68 @@ app.post("/api/asientos", auth, async (c) => {
   await db.insert(schema.asientos).values(row);
   return c.json(row, 201);
 });
+
+// --- Consultas (numero correlativo) ---
+app.post("/api/consultas", auth, async (c) => {
+  const b = await c.req.json();
+  const eid = empresaDe(c);
+  const numero = await nextNumero(schema.consultas, eid, (n) => `C-2026-${String(92 + n).padStart(4, "0")}`);
+  const row = { ...b, id: uid(), empresaId: eid, numero };
+  await db.insert(schema.consultas).values(row);
+  return c.json(row, 201);
+});
+app.patch("/api/consultas/:id", auth, async (c) => {
+  const id = c.req.param("id");
+  const patch = await c.req.json();
+  await db.update(schema.consultas).set(patch).where(eq(schema.consultas.id, id));
+  const [row] = await db.select().from(schema.consultas).where(eq(schema.consultas.id, id));
+  return c.json(row);
+});
+
+// --- Usuarios: permisos / estado ---
+app.patch("/api/usuarios/:id", auth, async (c) => {
+  const id = c.req.param("id");
+  const patch = await c.req.json();
+  delete patch.passwordHash;
+  await db.update(schema.usuarios).set(patch).where(eq(schema.usuarios.id, id));
+  const [u] = await db.select().from(schema.usuarios).where(eq(schema.usuarios.id, id));
+  const { passwordHash, ...usuario } = u;
+  return c.json(usuario);
+});
+
+// --- Empresa: configuraciones ---
+app.patch("/api/empresas/:id", auth, async (c) => {
+  const id = c.req.param("id");
+  const patch = await c.req.json();
+  await db.update(schema.empresas).set(patch).where(eq(schema.empresas.id, id));
+  const [row] = await db.select().from(schema.empresas).where(eq(schema.empresas.id, id));
+  return c.json(row);
+});
+
+// --- Productos ---
+app.post("/api/productos", auth, async (c) => {
+  const b = await c.req.json();
+  const row = { ...b, id: b.id || uid(), empresaId: empresaDe(c) };
+  await db.insert(schema.productos).values(row);
+  return c.json(row, 201);
+});
+app.patch("/api/productos/:id", auth, async (c) => {
+  const id = c.req.param("id");
+  const patch = await c.req.json();
+  await db.update(schema.productos).set(patch).where(eq(schema.productos.id, id));
+  const [row] = await db.select().from(schema.productos).where(eq(schema.productos.id, id));
+  return c.json(row);
+});
+
+// --- Colecciones simples (CRUD generico) ---
+crud("leads", schema.leads);
+crud("agendamientos", schema.agendamientos);
+crud("tareas", schema.tareas);
+crud("estados-produccion", schema.estadosProduccion);
+crud("listas-precios", schema.listasPrecios);
+crud("monedas", schema.monedas);
+crud("tokens-api", schema.tokensApi);
+crud("encuestas", schema.encuestas);
 
 serve({ fetch: app.fetch, port: PORT }, (info) => {
   console.log(`Printia API en http://localhost:${info.port}`);

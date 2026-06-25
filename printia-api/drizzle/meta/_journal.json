@@ -15,6 +15,13 @@
       "when": 1782403456919,
       "tag": "0001_puzzling_lake",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1782406615882,
+      "tag": "0002_fase2_3_4",
+      "breakpoints": true
     }
   ]
 }
