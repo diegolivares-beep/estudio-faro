@@ -104,6 +104,9 @@
   .pvbar .pv.on{ background:#fff; color:#0d0d0f; border-color:#fff; }
   .pvbar .div{ width:1px; height:20px; background:#3a3a40; flex-shrink:0; }
   body.haspv .wrap{ padding-top:46px; }
+  .choosercta{ position:fixed; left:0; right:0; bottom:0; z-index:60; display:flex; align-items:center; justify-content:space-between; gap:12px; padding:12px 18px; background:#0d0d0f; color:#fff; }
+  .choosercta span{ font-size:13px; }
+  .choosercta .btn2{ background:#22c55e; color:#fff; border:none; border-radius:10px; padding:11px 20px; font-weight:700; font-size:14px; cursor:pointer; }
   .temagrid{ display:grid; grid-template-columns:repeat(2,1fr); gap:8px; margin-bottom:12px; }
   @media(min-width:560px){ .temagrid{ grid-template-columns:repeat(5,1fr); } }
   .temaopt{ display:flex; align-items:center; gap:7px; border:1px solid var(--line); background:#fff; border-radius:10px; padding:8px 10px; font-size:13px; font-weight:600; color:#1c1917; }
@@ -209,17 +212,22 @@ function applyTheme(t, accentOverride){
   (t.cls||[]).forEach(c=>document.body.classList.add(c));
 }
 
-// =================== PUBLICO ===================
-async function renderPublic(slug){
+// =================== PUBLICO / CHOOSER ===================
+async function renderPublic(slug, chooser=false){
   let carta;
-  try{ carta = await pb.collection("cartas").getFirstListItem(`slug="${slug}" && publicada=true`); }
+  try{
+    carta = chooser
+      ? await pb.collection("cartas").getFirstListItem(`slug="${slug}"`)      // dueno autenticado (ve aunque no este publicada)
+      : await pb.collection("cartas").getFirstListItem(`slug="${slug}" && publicada=true`);
+  }
   catch(e){ app.className=""; app.innerHTML = `<div class="center">Esta carta no existe o no esta publicada.</div>`; return; }
+  CARTA = carta;
   document.title = carta.nombre + " · Carta";
   const secs = await pb.collection("secciones").getFullList({ filter:`carta="${carta.id}"`, sort:"orden,nombre" });
   const prods = await pb.collection("productos").getFullList({ filter:`carta="${carta.id}"`, sort:"orden,nombre" });
   const bySec = {}; secs.forEach(s=>bySec[s.id]=[]); prods.forEach(p=>{ (bySec[p.seccion]=bySec[p.seccion]||[]).push(p); });
 
-  const preview = new URLSearchParams(location.search).has("estilos");
+  const preview = chooser || new URLSearchParams(location.search).has("estilos");
   let tema = (THEMES[carta.tema] ? carta.tema : "cafe");
   let conFotos = carta.plan === "fotos";
   document.body.classList.toggle("haspv", preview);
@@ -248,7 +256,8 @@ async function renderPublic(slug){
             </div>
           </div>`).join("") || `<div class="muted" style="padding:6px">Pronto...</div>`}
       </section>`).join("");
-    const wa = carta.whatsapp ? `<a class="wabtn" href="https://wa.me/${esc(carta.whatsapp.replace(/\D/g,""))}" target="_blank">Pedir por WhatsApp</a>` : "";
+    const wa = (!chooser && carta.whatsapp) ? `<a class="wabtn" href="https://wa.me/${esc(carta.whatsapp.replace(/\D/g,""))}" target="_blank">Pedir por WhatsApp</a>` : "";
+    const cta = chooser ? `<div class="choosercta"><span>Estilo elegido: <b>${THEMES[tema].nombre}</b></span><button class="btn2" onclick="usarEstilo('${tema}')">Usar este estilo</button></div>` : "";
     const pvbar = preview ? `<div class="pvbar">
       <span class="lbl">Estilo</span>
       ${TEMA_ORDER.map(id=>`<button class="pv ${id===tema?"on":""}" data-t="${id}">${THEMES[id].nombre}</button>`).join("")}
@@ -269,7 +278,7 @@ async function renderPublic(slug){
         <div class="made">Carta digital por Estudio Faro</div>
       </div>
       ${wa}
-    </div>`;
+    </div>${cta}`;
 
     document.querySelectorAll(".chip").forEach(c=>c.onclick=()=>{ document.getElementById("sec-"+c.dataset.s)?.scrollIntoView({behavior:"smooth",block:"start"}); });
     if(preview){
@@ -314,6 +323,7 @@ let CARTA=null, SECS=[], PRODS=[];
 async function renderEditor(slug){
   try{ CARTA = await pb.collection("cartas").getFirstListItem(`slug="${slug}"`); }
   catch(e){ app.className=""; app.innerHTML=`<div class="center">No tienes acceso a esta carta. <button class="btn ghost" onclick="logout()">Salir</button></div>`; return; }
+  if(!CARTA.estiloElegido){ return renderPublic(slug, true); }   // primera vez: elegir estilo
   SECS = await pb.collection("secciones").getFullList({ filter:`carta="${CARTA.id}"`, sort:"orden,nombre" });
   PRODS = await pb.collection("productos").getFullList({ filter:`carta="${CARTA.id}"`, sort:"orden,nombre" });
   drawEditor(slug);
@@ -414,6 +424,7 @@ async function guardarCarta(){
 }
 async function togglePub(){ CARTA = await pb.collection("cartas").update(CARTA.id,{ publicada:!CARTA.publicada }); drawEditor(route().slug); }
 async function setTema(id){ CARTA = await pb.collection("cartas").update(CARTA.id,{ tema:id }); drawEditor(route().slug); toast("Estilo: "+THEMES[id].nombre); }
+async function usarEstilo(id){ CARTA = await pb.collection("cartas").update(CARTA.id,{ tema:id, estiloElegido:true }); document.body.classList.remove("haspv"); toast("Estilo aplicado: "+THEMES[id].nombre); renderEditor(route().slug); }
 async function addSeccion(){ const n=val("newsec").trim(); if(!n) return; const r=await pb.collection("secciones").create({ carta:CARTA.id, nombre:n, orden:SECS.length+1 }); SECS.push(r); document.getElementById("newsec").value=""; drawSecs(); toast("Seccion creada"); }
 async function renSeccion(id,n){ await pb.collection("secciones").update(id,{nombre:n}); const s=SECS.find(x=>x.id===id); if(s)s.nombre=n; toast("Guardado"); }
 async function delSeccion(id){ if(!confirm("Eliminar la seccion y sus productos?")) return; await pb.collection("secciones").delete(id); SECS=SECS.filter(x=>x.id!==id); PRODS=PRODS.filter(p=>p.seccion!==id); drawSecs(); toast("Seccion eliminada"); }
