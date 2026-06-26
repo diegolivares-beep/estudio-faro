@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Carta digital</title>
+<meta name="robots" content="noindex" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/pocketbase@0.21.5/dist/pocketbase.umd.js"></script>
+<style>
+  :root{ --accent:#2f5d3a; --ink:#1c1917; --muted:#78716c; --line:#ece9e4; --bg:#faf8f5; --card:#fff; }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  body{ font-family:Inter,system-ui,sans-serif; color:var(--ink); background:var(--bg); -webkit-font-smoothing:antialiased; }
+  .wrap{ max-width:680px; margin:0 auto; min-height:100dvh; }
+  .serif{ font-family:Fraunces,Georgia,serif; }
+  .tnum{ font-variant-numeric:tabular-nums; }
+  img{ display:block; max-width:100%; }
+  button{ font:inherit; cursor:pointer; }
+  a{ color:inherit; }
+
+  /* ---- publico ---- */
+  .hero{ padding:34px 22px 20px; text-align:center; background:var(--card); border-bottom:1px solid var(--line); }
+  .logo{ width:74px; height:74px; border-radius:18px; object-fit:cover; margin:0 auto 12px; box-shadow:0 6px 18px rgba(0,0,0,.08); }
+  .logo.ph{ display:grid; place-items:center; color:#fff; font-family:Fraunces,serif; font-size:30px; font-weight:700; }
+  .hero h1{ font-family:Fraunces,serif; font-size:27px; font-weight:600; letter-spacing:-.01em; }
+  .hero p{ color:var(--muted); font-size:14px; margin-top:5px; }
+  .meta{ display:flex; gap:14px; justify-content:center; margin-top:12px; font-size:12.5px; color:var(--muted); flex-wrap:wrap; }
+  .meta a{ display:inline-flex; align-items:center; gap:5px; text-decoration:none; }
+  .navchips{ position:sticky; top:0; z-index:5; display:flex; gap:7px; overflow-x:auto; padding:11px 16px; background:rgba(250,248,245,.92); backdrop-filter:blur(8px); border-bottom:1px solid var(--line); scrollbar-width:none; }
+  .navchips::-webkit-scrollbar{ display:none; }
+  .chip{ white-space:nowrap; border:1px solid var(--line); background:#fff; border-radius:999px; padding:6px 13px; font-size:13px; font-weight:600; color:var(--muted); }
+  .chip.on{ background:var(--accent); border-color:var(--accent); color:#fff; }
+  .sec{ padding:24px 16px 4px; }
+  .sec h2{ font-family:Fraunces,serif; font-size:19px; font-weight:600; padding:0 6px 10px; }
+  .item{ display:flex; gap:13px; padding:13px 6px; border-bottom:1px solid var(--line); align-items:flex-start; }
+  .item:last-child{ border-bottom:none; }
+  .item .ph-img{ width:78px; height:78px; border-radius:13px; object-fit:cover; flex-shrink:0; background:#f0ece6; }
+  .item .body{ flex:1; min-width:0; }
+  .item .nm{ font-weight:600; font-size:15px; }
+  .item .ds{ color:var(--muted); font-size:13px; margin-top:2px; line-height:1.4; }
+  .item .pr{ font-weight:700; font-size:15px; margin-top:6px; }
+  .item.off{ opacity:.45; }
+  .item .badge-off{ font-size:11px; font-weight:700; color:#b91c1c; background:#fee2e2; border-radius:6px; padding:1px 7px; }
+  .wabtn{ position:fixed; left:50%; transform:translateX(-50%); bottom:18px; z-index:20; display:inline-flex; align-items:center; gap:8px; background:#22c55e; color:#fff; font-weight:700; font-size:15px; padding:13px 22px; border-radius:999px; box-shadow:0 8px 22px rgba(34,197,94,.4); text-decoration:none; }
+  .foot{ text-align:center; color:var(--muted); font-size:12px; padding:34px 16px 96px; }
+  .foot .made{ margin-top:6px; opacity:.7; }
+
+  /* ---- editor ---- */
+  .ed{ max-width:720px; margin:0 auto; padding:18px 16px 80px; }
+  .edtop{ display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:18px; }
+  .edtop h1{ font-family:Fraunces,serif; font-size:22px; font-weight:600; }
+  .card{ background:#fff; border:1px solid var(--line); border-radius:16px; padding:16px; margin-bottom:14px; }
+  .card h3{ font-size:13px; text-transform:uppercase; letter-spacing:.04em; color:var(--muted); margin-bottom:12px; font-weight:700; }
+  label.f{ display:block; margin-bottom:10px; }
+  label.f span{ font-size:12px; color:var(--muted); }
+  .in{ width:100%; margin-top:3px; border:1px solid var(--line); border-radius:10px; padding:9px 11px; font:inherit; font-size:14px; outline:none; background:#fff; }
+  .in:focus{ border-color:var(--accent); }
+  .row{ display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+  .btn{ border:none; border-radius:10px; padding:9px 15px; font-weight:600; font-size:14px; background:var(--accent); color:#fff; display:inline-flex; align-items:center; gap:6px; }
+  .btn.ghost{ background:#fff; border:1px solid var(--line); color:var(--ink); }
+  .btn.sm{ padding:6px 11px; font-size:13px; }
+  .btn.danger{ background:#fff; border:1px solid #fecaca; color:#dc2626; }
+  .prod{ display:flex; gap:10px; align-items:center; padding:10px 0; border-bottom:1px solid var(--line); }
+  .prod:last-child{ border-bottom:none; }
+  .prod .thumb{ width:46px; height:46px; border-radius:9px; object-fit:cover; background:#f0ece6; flex-shrink:0; }
+  .prod .pn{ font-weight:600; font-size:14px; }
+  .prod .pd{ color:var(--muted); font-size:12.5px; }
+  .toggle{ width:40px; height:23px; border-radius:999px; background:#d6d3d1; position:relative; flex-shrink:0; border:none; }
+  .toggle.on{ background:var(--accent); }
+  .toggle b{ position:absolute; top:2px; left:2px; width:19px; height:19px; border-radius:50%; background:#fff; transition:.15s; }
+  .toggle.on b{ left:19px; }
+  .login{ max-width:380px; margin:8vh auto; padding:0 18px; }
+  .login .box{ background:#fff; border:1px solid var(--line); border-radius:18px; padding:26px; }
+  .center{ min-height:100dvh; display:grid; place-items:center; color:var(--muted); font-size:14px; }
+  .pill{ font-size:11px; font-weight:700; border-radius:999px; padding:3px 9px; }
+  .pill.fotos{ background:#ecfdf5; color:#047857; } .pill.texto{ background:#f1f5f9; color:#475569; }
+  .pill.pub{ background:#ecfdf5; color:#047857; } .pill.nopub{ background:#fef3c7; color:#92400e; }
+  .toast{ position:fixed; bottom:20px; left:50%; transform:translateX(-50%); background:#1c1917; color:#fff; padding:11px 18px; border-radius:12px; font-size:14px; z-index:50; box-shadow:0 8px 24px rgba(0,0,0,.25); }
+  .muted{ color:var(--muted); font-size:13px; }
+  .hide{ display:none; }
+
+  /* ---- solicitar (venta) ---- */
+  .solic{ max-width:760px; margin:0 auto; padding:46px 18px 80px; text-align:center; }
+  .solic h1{ font-family:Fraunces,serif; font-size:30px; font-weight:600; }
+  .solic .sub{ color:var(--muted); font-size:15px; margin-top:8px; max-width:460px; margin-left:auto; margin-right:auto; }
+  .plans{ display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:30px 0 18px; text-align:left; }
+  @media(max-width:560px){ .plans{ grid-template-columns:1fr; } }
+  .plan{ position:relative; background:#fff; border:1px solid var(--line); border-radius:18px; padding:22px; display:flex; flex-direction:column; }
+  .plan.dest{ border:2px solid var(--accent); box-shadow:0 12px 30px rgba(47,93,58,.12); }
+  .plan .tag{ position:absolute; top:-11px; left:22px; background:var(--accent); color:#fff; font-size:11px; font-weight:700; padding:3px 11px; border-radius:999px; }
+  .plan .pname{ font-weight:700; font-size:16px; }
+  .plan .pprice{ font-family:Fraunces,serif; font-size:34px; font-weight:600; margin:6px 0 2px; }
+  .plan .pprice span{ font-family:Inter,sans-serif; font-size:14px; color:var(--muted); font-weight:500; }
+  .plan ul{ list-style:none; margin:14px 0 18px; display:flex; flex-direction:column; gap:8px; }
+  .plan li{ font-size:14px; color:var(--ink); padding-left:22px; position:relative; }
+  .plan li::before{ content:"✓"; position:absolute; left:0; color:var(--accent); font-weight:700; }
+  .plan .wa{ margin-top:auto; display:inline-flex; align-items:center; justify-content:center; gap:8px; background:#22c55e; color:#fff; font-weight:700; padding:12px; border-radius:12px; text-decoration:none; }
+</style>
+</head>
+<body>
+<div id="app" class="center">Cargando...</div>
+
+<script>
+const PB_URL = "https://c796uegsehkken8hrlcfejfk.195.200.7.236.sslip.io";
+const FARO_WHATSAPP = "56900000000"; // <-- REEMPLAZAR por el WhatsApp real de Estudio Faro
+const pb = new PocketBase(PB_URL);
+const app = document.getElementById("app");
+const clp = (n) => "$" + Math.round(n||0).toLocaleString("es-CL");
+const esc = (s) => (s||"").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const fileUrl = (col, rec, name, thumb) => name ? `${PB_URL}/api/files/${col}/${rec}/${name}${thumb?`?thumb=${thumb}`:""}` : "";
+function toast(m){ const t=document.createElement("div"); t.className="toast"; t.textContent=m; document.body.appendChild(t); setTimeout(()=>t.remove(),2600); }
+
+// ---- routing: /carta/<slug>[/editar]  o  /carta/#/<slug>[/editar] ----
+function route(){
+  let path = location.pathname.replace(/^\/carta\/?/,"");
+  if(!path && location.hash) path = location.hash.replace(/^#\/?/,"");
+  const seg = path.split("/").filter(Boolean);
+  return { slug: seg[0] || "", editar: seg[1] === "editar" };
+}
+
+async function start(){
+  const { slug, editar } = route();
+  if(!slug){ return renderSolicitar(""); }              // /carta -> pagina de venta
+  if(editar){ return renderEditorGate(slug); }
+  return renderPublic(slug);
+}
+
+// =================== SOLICITAR (venta) ===================
+function waLink(plan){
+  const txt = `Hola Estudio Faro! Quiero una carta digital ${plan} para mi negocio. Mi local se llama: `;
+  return `https://wa.me/${FARO_WHATSAPP}?text=${encodeURIComponent(txt)}`;
+}
+function renderSolicitar(slug){
+  document.documentElement.style.setProperty("--accent", "#2f5d3a");
+  document.title = "Carta digital · Estudio Faro";
+  app.className = "";
+  const plan = (label, precio, feats, dest, planTxt) => `
+    <div class="plan ${dest?"dest":""}">
+      ${dest?'<div class="tag">Mas vendido</div>':""}
+      <div class="pname">${label}</div>
+      <div class="pprice tnum">${precio}<span>/ano</span></div>
+      <ul>${feats.map(f=>`<li>${f}</li>`).join("")}</ul>
+      <a class="wa" href="${waLink(planTxt)}" target="_blank">Solicitar por WhatsApp</a>
+    </div>`;
+  app.innerHTML = `<div class="solic">
+    <h1>Tu carta digital</h1>
+    <p class="sub">Tus clientes la ven escaneando un QR en la mesa. Tu la editas cuando quieras, desde el celular. Sin apps, sin imprimir.</p>
+    <div class="plans">
+      ${plan("Solo texto", "$10.000", ["Secciones y productos ilimitados","Precios y descripciones","Boton de pedido por WhatsApp","QR para la mesa","Tu mismo la editas online"], false, "sin foto")}
+      ${plan("Con fotos", "$30.000", ["Todo lo del plan solo texto","Una foto por producto","Se ve mucho mas vendedor (ideal comida)","Fotos optimizadas automaticamente"], true, "con foto")}
+    </div>
+    <p class="sub">Eliges tu plan, coordinamos por WhatsApp y apenas confirmas el pago te creamos la cuenta y te enviamos tu link para editar.</p>
+    ${slug ? `<button class="btn ghost" style="margin-top:14px" onclick="renderLogin('${slug}')">Ya tengo cuenta</button>` : ""}
+  </div>`;
+}
+
+// =================== PUBLICO ===================
+async function renderPublic(slug){
+  let carta;
+  try{
+    const r = await pb.collection("cartas").getFirstListItem(`slug="${slug}" && publicada=true`);
+    carta = r;
+  }catch(e){ app.className=""; app.innerHTML = `<div class="center">Esta carta no existe o no esta publicada.</div>`; return; }
+  const accent = carta.color || "#2f5d3a";
+  document.documentElement.style.setProperty("--accent", accent);
+  document.title = carta.nombre + " · Carta";
+  const conFotos = carta.plan === "fotos";
+  const secs = (await pb.collection("secciones").getFullList({ filter:`carta="${carta.id}"`, sort:"orden,nombre" }));
+  const prods = (await pb.collection("productos").getFullList({ filter:`carta="${carta.id}"`, sort:"orden,nombre" }));
+  const bySec = {}; secs.forEach(s=>bySec[s.id]=[]); prods.forEach(p=>{ (bySec[p.seccion]=bySec[p.seccion]||[]).push(p); });
+
+  const logo = carta.logo
+    ? `<img class="logo" src="${fileUrl("cartas",carta.id,carta.logo,"200x200")}" alt="">`
+    : `<div class="logo ph" style="background:${accent}">${esc(carta.nombre.charAt(0))}</div>`;
+  const meta = [];
+  if(carta.direccion) meta.push(`<span>📍 ${esc(carta.direccion)}</span>`);
+  if(carta.instagram) meta.push(`<a href="https://instagram.com/${esc(carta.instagram)}" target="_blank">@${esc(carta.instagram)}</a>`);
+
+  const chips = secs.map((s,i)=>`<button class="chip ${i===0?"on":""}" data-s="${s.id}">${esc(s.nombre)}</button>`).join("");
+  const body = secs.map(s=>`
+    <section class="sec" id="sec-${s.id}">
+      <h2>${esc(s.nombre)}</h2>
+      ${(bySec[s.id]||[]).map(p=>`
+        <div class="item ${p.disponible===false?"off":""}">
+          ${conFotos ? (p.foto?`<img class="ph-img" src="${fileUrl("productos",p.id,p.foto,"400x300")}" alt="">`:`<div class="ph-img"></div>`) : ""}
+          <div class="body">
+            <div class="nm">${esc(p.nombre)} ${p.disponible===false?'<span class="badge-off">Agotado</span>':""}</div>
+            ${p.descripcion?`<div class="ds">${esc(p.descripcion)}</div>`:""}
+            ${p.precio?`<div class="pr tnum" style="color:${accent}">${clp(p.precio)}</div>`:""}
+          </div>
+        </div>`).join("") || `<div class="muted" style="padding:6px">Pronto...</div>`}
+    </section>`).join("");
+
+  const wa = carta.whatsapp ? `<a class="wabtn" href="https://wa.me/${esc(carta.whatsapp.replace(/\D/g,""))}" target="_blank">Pedir por WhatsApp</a>` : "";
+
+  app.className="";
+  app.innerHTML = `<div class="wrap">
+    <header class="hero">${logo}<h1 class="serif">${esc(carta.nombre)}</h1>
+      ${carta.descripcion?`<p>${esc(carta.descripcion)}</p>`:""}
+      ${meta.length?`<div class="meta">${meta.join("")}</div>`:""}
+    </header>
+    ${secs.length>1?`<nav class="navchips">${chips}</nav>`:""}
+    ${body}
+    <div class="foot">${esc(carta.nombre)}${carta.direccion?` · ${esc(carta.direccion)}`:""}
+      <div class="made">Carta digital por Estudio Faro</div>
+    </div>
+    ${wa}
+  </div>`;
+
+  // chips scroll + scrollspy
+  document.querySelectorAll(".chip").forEach(c=>c.onclick=()=>{ document.getElementById("sec-"+c.dataset.s)?.scrollIntoView({behavior:"smooth",block:"start"}); });
+  const obs = new IntersectionObserver((es)=>{ es.forEach(e=>{ if(e.isIntersecting){ document.querySelectorAll(".chip").forEach(c=>c.classList.toggle("on", c.dataset.s===e.target.id.replace("sec-",""))); } }); }, { rootMargin:"-45% 0px -50% 0px" });
+  secs.forEach(s=>{ const el=document.getElementById("sec-"+s.id); if(el) obs.observe(el); });
+}
+
+// =================== EDITOR ===================
+async function renderEditorGate(slug){
+  if(!pb.authStore.isValid) return renderLogin(slug);
+  return renderEditor(slug);
+}
+function renderLogin(slug){
+  app.className="";
+  app.innerHTML = `<div class="login"><div class="box">
+    <h1 class="serif" style="font-size:22px;margin-bottom:4px">Editar tu carta</h1>
+    <p class="muted" style="margin-bottom:18px">Ingresa para editar <b>${esc(slug)}</b></p>
+    <label class="f"><span>Email</span><input class="in" id="le" type="email" autocomplete="username"></label>
+    <label class="f"><span>Contrasena</span><input class="in" id="lp" type="password" autocomplete="current-password"></label>
+    <button class="btn" id="lb" style="width:100%;justify-content:center;margin-top:6px">Entrar</button>
+    <div id="lerr" class="muted" style="color:#dc2626;margin-top:10px"></div>
+    <div style="text-align:center;margin-top:16px;padding-top:16px;border-top:1px solid var(--line)">
+      <div class="muted" style="margin-bottom:8px">No tienes cuenta todavia?</div>
+      <button class="btn ghost" style="width:100%;justify-content:center" onclick="renderSolicitar('${esc(slug)}')">Solicitar mi carta</button>
+    </div>
+  </div></div>`;
+  document.getElementById("lb").onclick = async ()=>{
+    try{
+      await pb.collection("duenos").authWithPassword(document.getElementById("le").value.trim(), document.getElementById("lp").value);
+      renderEditor(slug);
+    }catch(e){ document.getElementById("lerr").textContent = "Email o contrasena incorrectos."; }
+  };
+  document.getElementById("lp").addEventListener("keydown",e=>{ if(e.key==="Enter") document.getElementById("lb").click(); });
+}
+
+let CARTA=null, SECS=[], PRODS=[];
+async function renderEditor(slug){
+  try{ CARTA = await pb.collection("cartas").getFirstListItem(`slug="${slug}"`); }
+  catch(e){ app.className=""; app.innerHTML=`<div class="center">No tienes acceso a esta carta. <button class="btn ghost" onclick="logout()">Salir</button></div>`; return; }
+  SECS = await pb.collection("secciones").getFullList({ filter:`carta="${CARTA.id}"`, sort:"orden,nombre" });
+  PRODS = await pb.collection("productos").getFullList({ filter:`carta="${CARTA.id}"`, sort:"orden,nombre" });
+  drawEditor(slug);
+}
+function drawEditor(slug){
+  const conFotos = CARTA.plan==="fotos";
+  app.className="";
+  app.innerHTML = `<div class="ed">
+    <div class="edtop">
+      <div><h1 class="serif">${esc(CARTA.nombre)}</h1>
+        <div style="margin-top:5px;display:flex;gap:6px;align-items:center">
+          <span class="pill ${conFotos?"fotos":"texto"}">${conFotos?"Con fotos":"Solo texto"}</span>
+          <span class="pill ${CARTA.publicada?"pub":"nopub"}">${CARTA.publicada?"Publicada":"Oculta"}</span>
+          <a class="muted" href="/carta/${esc(slug)}" target="_blank" style="text-decoration:underline">ver publica</a>
+        </div>
+      </div>
+      <button class="btn ghost sm" onclick="logout()">Salir</button>
+    </div>
+
+    <div class="card">
+      <h3>Datos del local</h3>
+      <label class="f"><span>Nombre</span><input class="in" id="c_nombre" value="${esc(CARTA.nombre)}"></label>
+      <label class="f"><span>Descripcion</span><input class="in" id="c_desc" value="${esc(CARTA.descripcion||"")}"></label>
+      <div class="row">
+        <label class="f"><span>WhatsApp (ej 56961234567)</span><input class="in" id="c_wa" value="${esc(CARTA.whatsapp||"")}"></label>
+        <label class="f"><span>Color</span><input class="in" id="c_color" type="color" value="${esc(CARTA.color||"#2f5d3a")}" style="height:38px;padding:3px"></label>
+      </div>
+      <div class="row">
+        <label class="f"><span>Direccion</span><input class="in" id="c_dir" value="${esc(CARTA.direccion||"")}"></label>
+        <label class="f"><span>Instagram (sin @)</span><input class="in" id="c_ig" value="${esc(CARTA.instagram||"")}"></label>
+      </div>
+      <label class="f"><span>Logo</span><input class="in" id="c_logo" type="file" accept="image/*"></label>
+      <div style="display:flex;gap:10px;align-items:center;margin-top:4px">
+        <button class="btn" onclick="guardarCarta()">Guardar datos</button>
+        <button class="toggle ${CARTA.publicada?"on":""}" id="t_pub" onclick="togglePub()"><b></b></button>
+        <span class="muted">${CARTA.publicada?"Visible al publico":"Oculta"}</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Secciones y productos</h3>
+      <div id="seclist"></div>
+      <div style="display:flex;gap:8px;margin-top:12px">
+        <input class="in" id="newsec" placeholder="Nueva seccion (ej. Bebidas)" style="flex:1">
+        <button class="btn" onclick="addSeccion()">+ Seccion</button>
+      </div>
+    </div>
+    <p class="muted" style="text-align:center">El plan (texto / con fotos) lo define Estudio Faro.</p>
+  </div>`;
+  drawSecs();
+}
+function drawSecs(){
+  const conFotos = CARTA.plan==="fotos";
+  const cont = document.getElementById("seclist");
+  cont.innerHTML = SECS.map(s=>{
+    const items = PRODS.filter(p=>p.seccion===s.id);
+    return `<div style="border:1px solid var(--line);border-radius:13px;padding:12px;margin-bottom:10px">
+      <div style="display:flex;gap:8px;align-items:center;margin-bottom:6px">
+        <input class="in" style="flex:1;font-weight:600" value="${esc(s.nombre)}" onchange="renSeccion('${s.id}',this.value)">
+        <button class="btn danger sm" onclick="delSeccion('${s.id}')">Eliminar</button>
+      </div>
+      ${items.map(p=>`<div class="prod">
+        ${conFotos?(p.foto?`<img class="thumb" src="${fileUrl("productos",p.id,p.foto,"100x100")}">`:`<label class="thumb" style="display:grid;place-items:center;cursor:pointer;font-size:10px;color:var(--muted)">+foto<input type="file" accept="image/*" class="hide" onchange="subirFoto('${p.id}',this.files[0])"></label>`):""}
+        <div style="flex:1;min-width:0">
+          <div class="pn">${esc(p.nombre)}</div>
+          <div class="pd">${p.precio?clp(p.precio):"sin precio"}${p.descripcion?" · "+esc(p.descripcion):""}</div>
+        </div>
+        <button class="toggle ${p.disponible!==false?"on":""}" onclick="toggleDisp('${p.id}',${p.disponible!==false})"><b></b></button>
+        <button class="btn ghost sm" onclick="editProd('${p.id}')">Editar</button>
+        <button class="btn danger sm" onclick="delProd('${p.id}')">x</button>
+      </div>`).join("")}
+      <button class="btn ghost sm" style="margin-top:8px" onclick="addProd('${s.id}')">+ Producto</button>
+    </div>`;
+  }).join("") || `<p class="muted">Aun no tienes secciones. Crea la primera abajo.</p>`;
+}
+
+// ---- acciones editor ----
+async function guardarCarta(){
+  try{
+    CARTA = await pb.collection("cartas").update(CARTA.id, {
+      nombre:val("c_nombre"), descripcion:val("c_desc"), whatsapp:val("c_wa"),
+      color:val("c_color"), direccion:val("c_dir"), instagram:val("c_ig").replace(/^@/,"")
+    });
+    const lf = document.getElementById("c_logo");
+    if(lf.files[0]){ const fd=new FormData(); fd.append("logo",lf.files[0]); CARTA = await pb.collection("cartas").update(CARTA.id, fd); }
+    toast("Datos guardados");
+  }catch(e){ toast("Error al guardar"); }
+}
+async function togglePub(){ CARTA = await pb.collection("cartas").update(CARTA.id,{ publicada:!CARTA.publicada }); drawEditor(route().slug); }
+async function addSeccion(){ const n=val("newsec").trim(); if(!n) return; const r=await pb.collection("secciones").create({ carta:CARTA.id, nombre:n, orden:SECS.length+1 }); SECS.push(r); document.getElementById("newsec").value=""; drawSecs(); toast("Seccion creada"); }
+async function renSeccion(id,n){ await pb.collection("secciones").update(id,{nombre:n}); const s=SECS.find(x=>x.id===id); if(s)s.nombre=n; toast("Guardado"); }
+async function delSeccion(id){ if(!confirm("Eliminar la seccion y sus productos?")) return; await pb.collection("secciones").delete(id); SECS=SECS.filter(x=>x.id!==id); PRODS=PRODS.filter(p=>p.seccion!==id); drawSecs(); toast("Seccion eliminada"); }
+async function addProd(secId){
+  const nombre = prompt("Nombre del producto:"); if(!nombre) return;
+  const precio = Number((prompt("Precio (solo numeros):","")||"").replace(/\D/g,"")) || 0;
+  const r = await pb.collection("productos").create({ carta:CARTA.id, seccion:secId, nombre, precio, disponible:true, orden:PRODS.length+1 });
+  PRODS.push(r); drawSecs(); toast("Producto agregado");
+}
+async function editProd(id){
+  const p = PRODS.find(x=>x.id===id); if(!p) return;
+  const nombre = prompt("Nombre:", p.nombre); if(nombre===null) return;
+  const descripcion = prompt("Descripcion:", p.descripcion||"")||"";
+  const precio = Number((prompt("Precio:", p.precio||"")||"").replace(/\D/g,"")) || 0;
+  const r = await pb.collection("productos").update(id,{ nombre, descripcion, precio });
+  Object.assign(p,r); drawSecs(); toast("Producto actualizado");
+}
+async function toggleDisp(id,cur){ const r=await pb.collection("productos").update(id,{ disponible:!cur }); const p=PRODS.find(x=>x.id===id); if(p)p.disponible=r.disponible; drawSecs(); }
+async function subirFoto(id,file){ if(!file) return; const fd=new FormData(); fd.append("foto",file); const r=await pb.collection("productos").update(id,fd); const p=PRODS.find(x=>x.id===id); if(p)p.foto=r.foto; drawSecs(); toast("Foto subida"); }
+async function delProd(id){ if(!confirm("Eliminar producto?")) return; await pb.collection("productos").delete(id); PRODS=PRODS.filter(x=>x.id!==id); drawSecs(); toast("Eliminado"); }
+function logout(){ pb.authStore.clear(); renderLogin(route().slug); }
+function val(id){ return document.getElementById(id).value; }
+
+window.addEventListener("hashchange", start);
+start();
+</script>
+</body>
+</html>
