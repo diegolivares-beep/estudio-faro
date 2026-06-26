@@ -6,14 +6,15 @@
 <title>Carta digital</title>
 <meta name="robots" content="noindex" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=Caveat:wght@500;700&family=Playfair+Display:wght@500;600;700&family=Bebas+Neue&family=Space+Grotesk:wght@500;600;700&family=Cormorant+Garamond:wght@500;600;700&family=Poppins:wght@500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet" />
 <script src="https://cdn.jsdelivr.net/npm/pocketbase@0.21.5/dist/pocketbase.umd.js"></script>
 <style>
-  :root{ --accent:#2f5d3a; --ink:#1c1917; --muted:#78716c; --line:#ece9e4; --bg:#faf8f5; --card:#fff; }
+  :root{ --accent:#2f5d3a; --ink:#1c1917; --muted:#78716c; --line:#ece9e4; --bg:#faf8f5; --card:#fff; --fh:"Fraunces",Georgia,serif; --fb:"Inter",system-ui,sans-serif; --rad:16px; }
   *{ box-sizing:border-box; margin:0; padding:0; }
-  body{ font-family:Inter,system-ui,sans-serif; color:var(--ink); background:var(--bg); -webkit-font-smoothing:antialiased; }
+  body{ font-family:var(--fb); color:var(--ink); background:var(--bg); -webkit-font-smoothing:antialiased; }
   .wrap{ max-width:680px; margin:0 auto; min-height:100dvh; }
-  .serif{ font-family:Fraunces,Georgia,serif; }
+  .serif{ font-family:var(--fh); }
   .tnum{ font-variant-numeric:tabular-nums; }
   img{ display:block; max-width:100%; }
   button{ font:inherit; cursor:pointer; }
@@ -23,7 +24,7 @@
   .hero{ padding:34px 22px 20px; text-align:center; background:var(--card); border-bottom:1px solid var(--line); }
   .logo{ width:74px; height:74px; border-radius:18px; object-fit:cover; margin:0 auto 12px; box-shadow:0 6px 18px rgba(0,0,0,.08); }
   .logo.ph{ display:grid; place-items:center; color:#fff; font-family:Fraunces,serif; font-size:30px; font-weight:700; }
-  .hero h1{ font-family:Fraunces,serif; font-size:27px; font-weight:600; letter-spacing:-.01em; }
+  .hero h1{ font-family:var(--fh); font-size:28px; font-weight:600; letter-spacing:-.01em; }
   .hero p{ color:var(--muted); font-size:14px; margin-top:5px; }
   .meta{ display:flex; gap:14px; justify-content:center; margin-top:12px; font-size:12.5px; color:var(--muted); flex-wrap:wrap; }
   .meta a{ display:inline-flex; align-items:center; gap:5px; text-decoration:none; }
@@ -32,7 +33,9 @@
   .chip{ white-space:nowrap; border:1px solid var(--line); background:#fff; border-radius:999px; padding:6px 13px; font-size:13px; font-weight:600; color:var(--muted); }
   .chip.on{ background:var(--accent); border-color:var(--accent); color:#fff; }
   .sec{ padding:24px 16px 4px; }
-  .sec h2{ font-family:Fraunces,serif; font-size:19px; font-weight:600; padding:0 6px 10px; }
+  .sec h2{ font-family:var(--fh); font-size:20px; font-weight:600; padding:0 6px 10px; }
+  .item .ph-img{ border-radius:var(--rad); }
+  .hero .logo{ border-radius:var(--rad); }
   .item{ display:flex; gap:13px; padding:13px 6px; border-bottom:1px solid var(--line); align-items:flex-start; }
   .item:last-child{ border-bottom:none; }
   .item .ph-img{ width:78px; height:78px; border-radius:13px; object-fit:cover; flex-shrink:0; background:#f0ece6; }
@@ -79,6 +82,33 @@
   .toast{ position:fixed; bottom:20px; left:50%; transform:translateX(-50%); background:#1c1917; color:#fff; padding:11px 18px; border-radius:12px; font-size:14px; z-index:50; box-shadow:0 8px 24px rgba(0,0,0,.25); }
   .muted{ color:var(--muted); font-size:13px; }
   .hide{ display:none; }
+
+  /* ---- variantes de tema ---- */
+  .chip{ background:var(--card); }
+  .navchips{ background:color-mix(in srgb, var(--bg) 90%, transparent); }
+  body.t-dark .hero{ background:var(--card); }
+  body.t-dark .chip{ background:var(--card); border-color:#3a3a3e; }
+  body.t-dark .item .ph-img{ background:#26262b; }
+  body.t-brutal .hero, body.t-brutal .navchips{ border-bottom:2px solid var(--ink); }
+  body.t-brutal .hero .logo, body.t-brutal .item .ph-img{ border:2px solid var(--ink); box-shadow:4px 4px 0 var(--ink); }
+  body.t-brutal .chip{ border:2px solid var(--ink); border-radius:6px; }
+  body.t-brutal .chip.on{ background:var(--accent); color:#fff; }
+  body.t-brutal .wabtn{ border-radius:6px; border:2px solid #14532d; box-shadow:4px 4px 0 #14532d; }
+  body.t-rounded .chip, body.t-rounded .wabtn{ border-radius:999px; }
+
+  /* ---- barra de previsualizacion (demo) ---- */
+  .pvbar{ position:fixed; top:0; left:0; right:0; z-index:60; background:#0d0d0f; color:#fff; display:flex; gap:7px; align-items:center; padding:8px 12px; overflow-x:auto; scrollbar-width:none; }
+  .pvbar::-webkit-scrollbar{ display:none; }
+  .pvbar .lbl{ font-family:Inter,sans-serif; font-weight:700; font-size:11px; letter-spacing:.04em; text-transform:uppercase; opacity:.55; white-space:nowrap; }
+  .pvbar .pv{ white-space:nowrap; border:1px solid #3a3a40; background:transparent; color:#fff; border-radius:999px; padding:5px 12px; font-size:12.5px; font-weight:600; }
+  .pvbar .pv.on{ background:#fff; color:#0d0d0f; border-color:#fff; }
+  .pvbar .div{ width:1px; height:20px; background:#3a3a40; flex-shrink:0; }
+  body.haspv .wrap{ padding-top:46px; }
+  .temagrid{ display:grid; grid-template-columns:repeat(2,1fr); gap:8px; margin-bottom:12px; }
+  @media(min-width:560px){ .temagrid{ grid-template-columns:repeat(5,1fr); } }
+  .temaopt{ display:flex; align-items:center; gap:7px; border:1px solid var(--line); background:#fff; border-radius:10px; padding:8px 10px; font-size:13px; font-weight:600; color:#1c1917; }
+  .temaopt.on{ border-color:#2f5d3a; box-shadow:0 0 0 1px #2f5d3a inset; }
+  .temaopt .sw{ width:14px; height:14px; border-radius:50%; flex-shrink:0; border:1px solid rgba(0,0,0,.1); }
 
   /* ---- solicitar (venta) ---- */
   .solic{ max-width:760px; margin:0 auto; padding:46px 18px 80px; text-align:center; }
@@ -146,6 +176,7 @@ function renderSolicitar(slug){
   app.innerHTML = `<div class="solic">
     <h1>Tu carta digital</h1>
     <p class="sub">Tus clientes la ven escaneando un QR en la mesa. Tu la editas cuando quieras, desde el celular. Sin apps, sin imprimir.</p>
+    <a class="btn" href="/carta/jardin-del-cafe?estilos=1" style="margin-top:6px;text-decoration:none">Ver demo en vivo (10 estilos)</a>
     <div class="plans">
       ${plan("Solo texto", "$10.000", ["Secciones y productos ilimitados","Precios y descripciones","Boton de pedido por WhatsApp","QR para la mesa","Tu mismo la editas online"], false, "sin foto")}
       ${plan("Con fotos", "$30.000", ["Todo lo del plan solo texto","Una foto por producto","Se ve mucho mas vendedor (ideal comida)","Fotos optimizadas automaticamente"], true, "con foto")}
@@ -155,63 +186,100 @@ function renderSolicitar(slug){
   </div>`;
 }
 
+// =================== TEMAS ===================
+const THEMES = {
+  casero:   { nombre:"Casero",        vars:{ accent:"#8a5a2b", ink:"#3a3226", muted:"#8a7f6b", line:"#e9e1d2", bg:"#faf5ea", card:"#fffdf8", fh:"'Caveat',cursive", fb:"'Inter',sans-serif", rad:"14px" } },
+  barrio:   { nombre:"Almacen",       vars:{ accent:"#ea580c", ink:"#1c1917", muted:"#78716c", line:"#eee7dd", bg:"#fffdf7", card:"#ffffff", fh:"'Inter',sans-serif", fb:"'Inter',sans-serif", rad:"8px" } },
+  cafe:     { nombre:"Cafeteria",     vars:{ accent:"#2f5d3a", ink:"#1c1917", muted:"#78716c", line:"#ece9e4", bg:"#faf8f5", card:"#ffffff", fh:"'Fraunces',serif", fb:"'Inter',sans-serif", rad:"16px" } },
+  soda:     { nombre:"Fuente de soda",vars:{ accent:"#c0392b", ink:"#2a2422", muted:"#8a7d6b", line:"#efe6da", bg:"#fff8ef", card:"#ffffff", fh:"'Bebas Neue',sans-serif", fb:"'Inter',sans-serif", rad:"6px" } },
+  bistro:   { nombre:"Bistro",        vars:{ accent:"#1f2937", ink:"#111827", muted:"#6b7280", line:"#e5e7eb", bg:"#ffffff", card:"#ffffff", fh:"'Space Grotesk',sans-serif", fb:"'Inter',sans-serif", rad:"10px" } },
+  elegante: { nombre:"Elegante",      vars:{ accent:"#9a7b4f", ink:"#2b2620", muted:"#8a8074", line:"#e8e2d6", bg:"#f7f3ec", card:"#fffdf9", fh:"'Playfair Display',serif", fb:"'Inter',sans-serif", rad:"8px" } },
+  minimal:  { nombre:"Minimal",       vars:{ accent:"#1c1917", ink:"#1c1917", muted:"#9ca3af", line:"#eeeeee", bg:"#ffffff", card:"#ffffff", fh:"'Cormorant Garamond',serif", fb:"'Inter',sans-serif", rad:"0px" } },
+  premium:  { nombre:"Premium",       vars:{ accent:"#c9a227", ink:"#f5f3ee", muted:"#a8a29e", line:"#2a2a2e", bg:"#0f0f10", card:"#18181b", fh:"'Playfair Display',serif", fb:"'Inter',sans-serif", rad:"12px" }, cls:["t-dark"] },
+  brutal:   { nombre:"Brutalista",    vars:{ accent:"#dc2626", ink:"#111111", muted:"#555555", line:"#111111", bg:"#fde047", card:"#ffffff", fh:"'Space Grotesk',sans-serif", fb:"'JetBrains Mono',monospace", rad:"0px" }, cls:["t-brutal"] },
+  tropical: { nombre:"Tropical",      vars:{ accent:"#db2777", ink:"#1f2937", muted:"#6b7280", line:"#fde4d3", bg:"#fff7ed", card:"#ffffff", fh:"'Poppins',sans-serif", fb:"'Poppins',sans-serif", rad:"22px" }, cls:["t-rounded"] },
+};
+const TEMA_ORDER = ["casero","barrio","cafe","soda","bistro","elegante","minimal","premium","brutal","tropical"];
+function applyTheme(t, accentOverride){
+  const r=document.documentElement.style, v=t.vars;
+  r.setProperty("--accent", accentOverride || v.accent); r.setProperty("--ink",v.ink); r.setProperty("--muted",v.muted);
+  r.setProperty("--line",v.line); r.setProperty("--bg",v.bg); r.setProperty("--card",v.card);
+  r.setProperty("--fh",v.fh); r.setProperty("--fb",v.fb); r.setProperty("--rad",v.rad);
+  document.body.classList.remove("t-dark","t-brutal","t-rounded");
+  (t.cls||[]).forEach(c=>document.body.classList.add(c));
+}
+
 // =================== PUBLICO ===================
 async function renderPublic(slug){
   let carta;
-  try{
-    const r = await pb.collection("cartas").getFirstListItem(`slug="${slug}" && publicada=true`);
-    carta = r;
-  }catch(e){ app.className=""; app.innerHTML = `<div class="center">Esta carta no existe o no esta publicada.</div>`; return; }
-  const accent = carta.color || "#2f5d3a";
-  document.documentElement.style.setProperty("--accent", accent);
+  try{ carta = await pb.collection("cartas").getFirstListItem(`slug="${slug}" && publicada=true`); }
+  catch(e){ app.className=""; app.innerHTML = `<div class="center">Esta carta no existe o no esta publicada.</div>`; return; }
   document.title = carta.nombre + " · Carta";
-  const conFotos = carta.plan === "fotos";
-  const secs = (await pb.collection("secciones").getFullList({ filter:`carta="${carta.id}"`, sort:"orden,nombre" }));
-  const prods = (await pb.collection("productos").getFullList({ filter:`carta="${carta.id}"`, sort:"orden,nombre" }));
+  const secs = await pb.collection("secciones").getFullList({ filter:`carta="${carta.id}"`, sort:"orden,nombre" });
+  const prods = await pb.collection("productos").getFullList({ filter:`carta="${carta.id}"`, sort:"orden,nombre" });
   const bySec = {}; secs.forEach(s=>bySec[s.id]=[]); prods.forEach(p=>{ (bySec[p.seccion]=bySec[p.seccion]||[]).push(p); });
 
-  const logo = carta.logo
-    ? `<img class="logo" src="${fileUrl("cartas",carta.id,carta.logo,"200x200")}" alt="">`
-    : `<div class="logo ph" style="background:${accent}">${esc(carta.nombre.charAt(0))}</div>`;
-  const meta = [];
-  if(carta.direccion) meta.push(`<span>📍 ${esc(carta.direccion)}</span>`);
-  if(carta.instagram) meta.push(`<a href="https://instagram.com/${esc(carta.instagram)}" target="_blank">@${esc(carta.instagram)}</a>`);
+  const preview = new URLSearchParams(location.search).has("estilos");
+  let tema = (THEMES[carta.tema] ? carta.tema : "cafe");
+  let conFotos = carta.plan === "fotos";
+  document.body.classList.toggle("haspv", preview);
 
-  const chips = secs.map((s,i)=>`<button class="chip ${i===0?"on":""}" data-s="${s.id}">${esc(s.nombre)}</button>`).join("");
-  const body = secs.map(s=>`
-    <section class="sec" id="sec-${s.id}">
-      <h2>${esc(s.nombre)}</h2>
-      ${(bySec[s.id]||[]).map(p=>`
-        <div class="item ${p.disponible===false?"off":""}">
-          ${conFotos ? (p.foto?`<img class="ph-img" src="${fileUrl("productos",p.id,p.foto,"400x300")}" alt="">`:`<div class="ph-img"></div>`) : ""}
-          <div class="body">
-            <div class="nm">${esc(p.nombre)} ${p.disponible===false?'<span class="badge-off">Agotado</span>':""}</div>
-            ${p.descripcion?`<div class="ds">${esc(p.descripcion)}</div>`:""}
-            ${p.precio?`<div class="pr tnum" style="color:${accent}">${clp(p.precio)}</div>`:""}
-          </div>
-        </div>`).join("") || `<div class="muted" style="padding:6px">Pronto...</div>`}
-    </section>`).join("");
+  function paint(){
+    // en preview se muestran los temas puros; en real, el color del dueno manda sobre el tema
+    applyTheme(THEMES[tema], preview ? null : (carta.color||null));
+    app.className="";
+    const logo = carta.logo
+      ? `<img class="logo" src="${fileUrl("cartas",carta.id,carta.logo,"200x200")}" alt="">`
+      : `<div class="logo ph" style="background:var(--accent)">${esc(carta.nombre.charAt(0))}</div>`;
+    const meta = [];
+    if(carta.direccion) meta.push(`<span>📍 ${esc(carta.direccion)}</span>`);
+    if(carta.instagram) meta.push(`<a href="https://instagram.com/${esc(carta.instagram)}" target="_blank">@${esc(carta.instagram)}</a>`);
+    const chips = secs.map((s,i)=>`<button class="chip ${i===0?"on":""}" data-s="${s.id}">${esc(s.nombre)}</button>`).join("");
+    const body = secs.map(s=>`
+      <section class="sec" id="sec-${s.id}">
+        <h2>${esc(s.nombre)}</h2>
+        ${(bySec[s.id]||[]).map(p=>`
+          <div class="item ${p.disponible===false?"off":""}">
+            ${conFotos ? (p.foto?`<img class="ph-img" src="${fileUrl("productos",p.id,p.foto,"400x300")}" alt="">`:`<div class="ph-img"></div>`) : ""}
+            <div class="body">
+              <div class="nm">${esc(p.nombre)} ${p.disponible===false?'<span class="badge-off">Agotado</span>':""}</div>
+              ${p.descripcion?`<div class="ds">${esc(p.descripcion)}</div>`:""}
+              ${p.precio?`<div class="pr tnum" style="color:var(--accent)">${clp(p.precio)}</div>`:""}
+            </div>
+          </div>`).join("") || `<div class="muted" style="padding:6px">Pronto...</div>`}
+      </section>`).join("");
+    const wa = carta.whatsapp ? `<a class="wabtn" href="https://wa.me/${esc(carta.whatsapp.replace(/\D/g,""))}" target="_blank">Pedir por WhatsApp</a>` : "";
+    const pvbar = preview ? `<div class="pvbar">
+      <span class="lbl">Estilo</span>
+      ${TEMA_ORDER.map(id=>`<button class="pv ${id===tema?"on":""}" data-t="${id}">${THEMES[id].nombre}</button>`).join("")}
+      <span class="div"></span>
+      <span class="lbl">Fotos</span>
+      <button class="pv ${conFotos?"on":""}" data-f="1">Con fotos</button>
+      <button class="pv ${!conFotos?"on":""}" data-f="0">Solo texto</button>
+    </div>` : "";
 
-  const wa = carta.whatsapp ? `<a class="wabtn" href="https://wa.me/${esc(carta.whatsapp.replace(/\D/g,""))}" target="_blank">Pedir por WhatsApp</a>` : "";
+    app.innerHTML = `${pvbar}<div class="wrap">
+      <header class="hero">${logo}<h1 class="serif">${esc(carta.nombre)}</h1>
+        ${carta.descripcion?`<p>${esc(carta.descripcion)}</p>`:""}
+        ${meta.length?`<div class="meta">${meta.join("")}</div>`:""}
+      </header>
+      ${secs.length>1?`<nav class="navchips">${chips}</nav>`:""}
+      ${body}
+      <div class="foot">${esc(carta.nombre)}${carta.direccion?` · ${esc(carta.direccion)}`:""}
+        <div class="made">Carta digital por Estudio Faro</div>
+      </div>
+      ${wa}
+    </div>`;
 
-  app.className="";
-  app.innerHTML = `<div class="wrap">
-    <header class="hero">${logo}<h1 class="serif">${esc(carta.nombre)}</h1>
-      ${carta.descripcion?`<p>${esc(carta.descripcion)}</p>`:""}
-      ${meta.length?`<div class="meta">${meta.join("")}</div>`:""}
-    </header>
-    ${secs.length>1?`<nav class="navchips">${chips}</nav>`:""}
-    ${body}
-    <div class="foot">${esc(carta.nombre)}${carta.direccion?` · ${esc(carta.direccion)}`:""}
-      <div class="made">Carta digital por Estudio Faro</div>
-    </div>
-    ${wa}
-  </div>`;
-
-  // chips scroll + scrollspy
-  document.querySelectorAll(".chip").forEach(c=>c.onclick=()=>{ document.getElementById("sec-"+c.dataset.s)?.scrollIntoView({behavior:"smooth",block:"start"}); });
-  const obs = new IntersectionObserver((es)=>{ es.forEach(e=>{ if(e.isIntersecting){ document.querySelectorAll(".chip").forEach(c=>c.classList.toggle("on", c.dataset.s===e.target.id.replace("sec-",""))); } }); }, { rootMargin:"-45% 0px -50% 0px" });
-  secs.forEach(s=>{ const el=document.getElementById("sec-"+s.id); if(el) obs.observe(el); });
+    document.querySelectorAll(".chip").forEach(c=>c.onclick=()=>{ document.getElementById("sec-"+c.dataset.s)?.scrollIntoView({behavior:"smooth",block:"start"}); });
+    if(preview){
+      document.querySelectorAll(".pv[data-t]").forEach(b=>b.onclick=()=>{ tema=b.dataset.t; paint(); });
+      document.querySelectorAll(".pv[data-f]").forEach(b=>b.onclick=()=>{ conFotos=b.dataset.f==="1"; paint(); });
+    }
+    const obs = new IntersectionObserver((es)=>{ es.forEach(e=>{ if(e.isIntersecting){ document.querySelectorAll(".chip").forEach(c=>c.classList.toggle("on", c.dataset.s===e.target.id.replace("sec-",""))); } }); }, { rootMargin:"-45% 0px -50% 0px" });
+    secs.forEach(s=>{ const el=document.getElementById("sec-"+s.id); if(el) obs.observe(el); });
+  }
+  paint();
 }
 
 // =================== EDITOR ===================
@@ -251,6 +319,8 @@ async function renderEditor(slug){
   drawEditor(slug);
 }
 function drawEditor(slug){
+  document.body.classList.remove("haspv","t-dark","t-brutal","t-rounded");
+  applyTheme(THEMES.cafe);
   const conFotos = CARTA.plan==="fotos";
   app.className="";
   app.innerHTML = `<div class="ed">
@@ -283,6 +353,14 @@ function drawEditor(slug){
         <button class="toggle ${CARTA.publicada?"on":""}" id="t_pub" onclick="togglePub()"><b></b></button>
         <span class="muted">${CARTA.publicada?"Visible al publico":"Oculta"}</span>
       </div>
+    </div>
+
+    <div class="card">
+      <h3>Estilo de la carta</h3>
+      <div class="temagrid">
+        ${TEMA_ORDER.map(id=>`<button class="temaopt ${ (CARTA.tema||"cafe")===id ? "on":"" }" onclick="setTema('${id}')"><span class="sw" style="background:${THEMES[id].vars.accent}"></span>${THEMES[id].nombre}</button>`).join("")}
+      </div>
+      <a class="muted" href="/carta/${esc(slug)}?estilos=1" target="_blank" style="text-decoration:underline">Ver mi carta en todos los estilos</a>
     </div>
 
     <div class="card">
@@ -335,6 +413,7 @@ async function guardarCarta(){
   }catch(e){ toast("Error al guardar"); }
 }
 async function togglePub(){ CARTA = await pb.collection("cartas").update(CARTA.id,{ publicada:!CARTA.publicada }); drawEditor(route().slug); }
+async function setTema(id){ CARTA = await pb.collection("cartas").update(CARTA.id,{ tema:id }); drawEditor(route().slug); toast("Estilo: "+THEMES[id].nombre); }
 async function addSeccion(){ const n=val("newsec").trim(); if(!n) return; const r=await pb.collection("secciones").create({ carta:CARTA.id, nombre:n, orden:SECS.length+1 }); SECS.push(r); document.getElementById("newsec").value=""; drawSecs(); toast("Seccion creada"); }
 async function renSeccion(id,n){ await pb.collection("secciones").update(id,{nombre:n}); const s=SECS.find(x=>x.id===id); if(s)s.nombre=n; toast("Guardado"); }
 async function delSeccion(id){ if(!confirm("Eliminar la seccion y sus productos?")) return; await pb.collection("secciones").delete(id); SECS=SECS.filter(x=>x.id!==id); PRODS=PRODS.filter(p=>p.seccion!==id); drawSecs(); toast("Seccion eliminada"); }
