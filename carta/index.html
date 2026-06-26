@@ -96,6 +96,28 @@
   body.t-brutal .wabtn{ border-radius:6px; border:2px solid #14532d; box-shadow:4px 4px 0 #14532d; }
   body.t-rounded .chip, body.t-rounded .wabtn{ border-radius:999px; }
 
+  /* layout: centrado (editorial) */
+  body.t-center .sec h2{ text-align:center; }
+  body.t-center .navchips{ justify-content:center; }
+  .item.ic{ flex-direction:column; align-items:center; text-align:center; gap:3px; padding:15px 6px; }
+  .item.ic .ds{ max-width:44ch; }
+  .item.ic .pr{ margin-top:3px; }
+  /* layout: leader (linea de puntos hacia el precio) */
+  .item.il{ align-items:flex-start; }
+  .item.il .ilimg{ flex-shrink:0; }
+  .item.il .lrow{ display:flex; align-items:baseline; gap:7px; }
+  .item.il .lrow .nm{ flex-shrink:0; }
+  .item.il .dots{ flex:1; border-bottom:1.5px dotted var(--muted); opacity:.45; transform:translateY(-3px); min-width:16px; }
+  .item.il .lrow .pr{ flex-shrink:0; margin:0; }
+  /* layout: grilla (foto arriba) */
+  .grid2{ display:grid; grid-template-columns:1fr 1fr; gap:10px; padding:0 4px; }
+  .item.ig{ display:block; padding:0; overflow:hidden; background:var(--card); border:1px solid var(--line); border-radius:var(--rad); }
+  .item.ig .gimg{ width:100%; aspect-ratio:4/3; object-fit:cover; display:block; background:#efe9e1; }
+  .item.ig .gbody{ padding:10px 12px; }
+  .item.ig .nm{ font-size:14px; }
+  .item.ig .ds{ font-size:12px; }
+  body.t-brutal .item.ig{ box-shadow:3px 3px 0 var(--ink); }
+
   /* ---- barra de previsualizacion (demo) ---- */
   .pvbar{ position:fixed; top:0; left:0; right:0; z-index:60; background:#0d0d0f; color:#fff; display:flex; gap:7px; align-items:center; padding:8px 12px; overflow-x:auto; scrollbar-width:none; }
   .pvbar::-webkit-scrollbar{ display:none; }
@@ -191,16 +213,16 @@ function renderSolicitar(slug){
 
 // =================== TEMAS ===================
 const THEMES = {
-  casero:   { nombre:"Casero",        vars:{ accent:"#8a5a2b", ink:"#3a3226", muted:"#8a7f6b", line:"#e9e1d2", bg:"#faf5ea", card:"#fffdf8", fh:"'Caveat',cursive", fb:"'Inter',sans-serif", rad:"14px" } },
-  barrio:   { nombre:"Almacen",       vars:{ accent:"#ea580c", ink:"#1c1917", muted:"#78716c", line:"#eee7dd", bg:"#fffdf7", card:"#ffffff", fh:"'Inter',sans-serif", fb:"'Inter',sans-serif", rad:"8px" } },
-  cafe:     { nombre:"Cafeteria",     vars:{ accent:"#2f5d3a", ink:"#1c1917", muted:"#78716c", line:"#ece9e4", bg:"#faf8f5", card:"#ffffff", fh:"'Fraunces',serif", fb:"'Inter',sans-serif", rad:"16px" } },
-  soda:     { nombre:"Fuente de soda",vars:{ accent:"#c0392b", ink:"#2a2422", muted:"#8a7d6b", line:"#efe6da", bg:"#fff8ef", card:"#ffffff", fh:"'Bebas Neue',sans-serif", fb:"'Inter',sans-serif", rad:"6px" } },
-  bistro:   { nombre:"Bistro",        vars:{ accent:"#1f2937", ink:"#111827", muted:"#6b7280", line:"#e5e7eb", bg:"#ffffff", card:"#ffffff", fh:"'Space Grotesk',sans-serif", fb:"'Inter',sans-serif", rad:"10px" } },
-  elegante: { nombre:"Elegante",      vars:{ accent:"#9a7b4f", ink:"#2b2620", muted:"#8a8074", line:"#e8e2d6", bg:"#f7f3ec", card:"#fffdf9", fh:"'Playfair Display',serif", fb:"'Inter',sans-serif", rad:"8px" } },
-  minimal:  { nombre:"Minimal",       vars:{ accent:"#1c1917", ink:"#1c1917", muted:"#9ca3af", line:"#eeeeee", bg:"#ffffff", card:"#ffffff", fh:"'Cormorant Garamond',serif", fb:"'Inter',sans-serif", rad:"0px" } },
-  premium:  { nombre:"Premium",       vars:{ accent:"#c9a227", ink:"#f5f3ee", muted:"#a8a29e", line:"#2a2a2e", bg:"#0f0f10", card:"#18181b", fh:"'Playfair Display',serif", fb:"'Inter',sans-serif", rad:"12px" }, cls:["t-dark"] },
-  brutal:   { nombre:"Brutalista",    vars:{ accent:"#dc2626", ink:"#111111", muted:"#555555", line:"#111111", bg:"#fde047", card:"#ffffff", fh:"'Space Grotesk',sans-serif", fb:"'JetBrains Mono',monospace", rad:"0px" }, cls:["t-brutal"] },
-  tropical: { nombre:"Tropical",      vars:{ accent:"#db2777", ink:"#1f2937", muted:"#6b7280", line:"#fde4d3", bg:"#fff7ed", card:"#ffffff", fh:"'Poppins',sans-serif", fb:"'Poppins',sans-serif", rad:"22px" }, cls:["t-rounded"] },
+  casero:   { nombre:"Casero",        layout:"leader",  vars:{ accent:"#8a5a2b", ink:"#3a3226", muted:"#8a7f6b", line:"#ddd0b8", bg:"#faf5ea", card:"#fffdf8", fh:"'Caveat',cursive", fb:"'Inter',sans-serif", rad:"14px" } },
+  barrio:   { nombre:"Almacen",       layout:"tarjeta", vars:{ accent:"#ea580c", ink:"#1c1917", muted:"#78716c", line:"#eee7dd", bg:"#fffdf7", card:"#ffffff", fh:"'Inter',sans-serif", fb:"'Inter',sans-serif", rad:"8px" } },
+  cafe:     { nombre:"Cafeteria",     layout:"tarjeta", vars:{ accent:"#2f5d3a", ink:"#1c1917", muted:"#78716c", line:"#ece9e4", bg:"#faf8f5", card:"#ffffff", fh:"'Fraunces',serif", fb:"'Inter',sans-serif", rad:"16px" } },
+  soda:     { nombre:"Fuente de soda",layout:"leader",  vars:{ accent:"#c0392b", ink:"#2a2422", muted:"#8a7d6b", line:"#e7d3b8", bg:"#fff8ef", card:"#ffffff", fh:"'Bebas Neue',sans-serif", fb:"'Inter',sans-serif", rad:"6px" } },
+  bistro:   { nombre:"Bistro",        layout:"leader",  vars:{ accent:"#1f2937", ink:"#111827", muted:"#6b7280", line:"#e5e7eb", bg:"#ffffff", card:"#ffffff", fh:"'Space Grotesk',sans-serif", fb:"'Inter',sans-serif", rad:"10px" } },
+  elegante: { nombre:"Elegante",      layout:"centrado",vars:{ accent:"#9a7b4f", ink:"#2b2620", muted:"#8a8074", line:"#e8e2d6", bg:"#f7f3ec", card:"#fffdf9", fh:"'Playfair Display',serif", fb:"'Inter',sans-serif", rad:"8px" }, cls:["t-center"] },
+  minimal:  { nombre:"Minimal",       layout:"centrado",vars:{ accent:"#1c1917", ink:"#1c1917", muted:"#9ca3af", line:"#eeeeee", bg:"#ffffff", card:"#ffffff", fh:"'Cormorant Garamond',serif", fb:"'Inter',sans-serif", rad:"0px" }, cls:["t-center"] },
+  premium:  { nombre:"Premium",       layout:"leader",  vars:{ accent:"#c9a227", ink:"#f5f3ee", muted:"#a8a29e", line:"#2a2a2e", bg:"#0f0f10", card:"#18181b", fh:"'Playfair Display',serif", fb:"'Inter',sans-serif", rad:"12px" }, cls:["t-dark","t-center"] },
+  brutal:   { nombre:"Brutalista",    layout:"grilla",  vars:{ accent:"#dc2626", ink:"#111111", muted:"#555555", line:"#111111", bg:"#fde047", card:"#ffffff", fh:"'Space Grotesk',sans-serif", fb:"'JetBrains Mono',monospace", rad:"0px" }, cls:["t-brutal"] },
+  tropical: { nombre:"Tropical",      layout:"grilla",  vars:{ accent:"#db2777", ink:"#1f2937", muted:"#6b7280", line:"#fde4d3", bg:"#fff7ed", card:"#ffffff", fh:"'Poppins',sans-serif", fb:"'Poppins',sans-serif", rad:"22px" }, cls:["t-rounded"] },
 };
 const TEMA_ORDER = ["casero","barrio","cafe","soda","bistro","elegante","minimal","premium","brutal","tropical"];
 function applyTheme(t, accentOverride){
@@ -227,9 +249,10 @@ async function renderPublic(slug, chooser=false){
   const prods = await pb.collection("productos").getFullList({ filter:`carta="${carta.id}"`, sort:"orden,nombre" });
   const bySec = {}; secs.forEach(s=>bySec[s.id]=[]); prods.forEach(p=>{ (bySec[p.seccion]=bySec[p.seccion]||[]).push(p); });
 
-  const preview = chooser || new URLSearchParams(location.search).has("estilos");
-  let tema = (THEMES[carta.tema] ? carta.tema : "cafe");
-  let conFotos = carta.plan === "fotos";
+  const qp = new URLSearchParams(location.search);
+  const preview = chooser || qp.has("estilos");
+  let tema = (THEMES[qp.get("tema")] ? qp.get("tema") : (THEMES[carta.tema] ? carta.tema : "cafe"));
+  let conFotos = qp.has("fotos") ? qp.get("fotos")!=="0" : (carta.plan === "fotos");
   document.body.classList.toggle("haspv", preview);
 
   function paint(){
@@ -242,20 +265,29 @@ async function renderPublic(slug, chooser=false){
     const meta = [];
     if(carta.direccion) meta.push(`<span>📍 ${esc(carta.direccion)}</span>`);
     if(carta.instagram) meta.push(`<a href="https://instagram.com/${esc(carta.instagram)}" target="_blank">@${esc(carta.instagram)}</a>`);
+    const lay = THEMES[tema].layout || "tarjeta";
     const chips = secs.map((s,i)=>`<button class="chip ${i===0?"on":""}" data-s="${s.id}">${esc(s.nombre)}</button>`).join("");
-    const body = secs.map(s=>`
-      <section class="sec" id="sec-${s.id}">
-        <h2>${esc(s.nombre)}</h2>
-        ${(bySec[s.id]||[]).map(p=>`
-          <div class="item ${p.disponible===false?"off":""}">
-            ${conFotos ? (p.foto?`<img class="ph-img" src="${fileUrl("productos",p.id,p.foto,"400x300")}" alt="">`:`<div class="ph-img"></div>`) : ""}
-            <div class="body">
-              <div class="nm">${esc(p.nombre)} ${p.disponible===false?'<span class="badge-off">Agotado</span>':""}</div>
-              ${p.descripcion?`<div class="ds">${esc(p.descripcion)}</div>`:""}
-              ${p.precio?`<div class="pr tnum" style="color:var(--accent)">${clp(p.precio)}</div>`:""}
-            </div>
-          </div>`).join("") || `<div class="muted" style="padding:6px">Pronto...</div>`}
-      </section>`).join("");
+    const agot = (p)=> p.disponible===false?'<span class="badge-off">Agotado</span>':"";
+    const desc = (p)=> p.descripcion?`<div class="ds">${esc(p.descripcion)}</div>`:"";
+    const pr = (p)=> p.precio?`<div class="pr tnum" style="color:var(--accent)">${clp(p.precio)}</div>`:"";
+    const imgL = (p)=> conFotos ? (p.foto?`<img class="ph-img" src="${fileUrl("productos",p.id,p.foto,"400x300")}" alt="">`:`<div class="ph-img"></div>`) : "";
+    const imgT = (p)=> conFotos ? (p.foto?`<img class="gimg" src="${fileUrl("productos",p.id,p.foto,"600x400")}" alt="">`:`<div class="gimg"></div>`) : "";
+    function itemHTML(p){
+      const off = p.disponible===false?"off":"";
+      if(lay==="centrado") return `<div class="item ic ${off}">
+        <div class="nm">${esc(p.nombre)} ${agot(p)}</div>${desc(p)}${pr(p)}</div>`;
+      if(lay==="grilla") return `<div class="item ig ${off}">${imgT(p)}
+        <div class="gbody"><div class="nm">${esc(p.nombre)} ${agot(p)}</div>${desc(p)}${pr(p)}</div></div>`;
+      if(lay==="leader") return `<div class="item il ${off}">${conFotos?`<div class="ilimg">${imgL(p)}</div>`:""}
+        <div class="body"><div class="lrow"><span class="nm">${esc(p.nombre)}</span><span class="dots"></span>${p.precio?`<span class="pr tnum" style="color:var(--accent)">${clp(p.precio)}</span>`:""}</div>${desc(p)}${p.disponible===false?`<div>${agot(p)}</div>`:""}</div></div>`;
+      // tarjeta (default)
+      return `<div class="item ${off}">${imgL(p)}
+        <div class="body"><div class="nm">${esc(p.nombre)} ${agot(p)}</div>${desc(p)}${pr(p)}</div></div>`;
+    }
+    const body = secs.map(s=>{
+      const items = (bySec[s.id]||[]).map(itemHTML).join("") || `<div class="muted" style="padding:6px">Pronto...</div>`;
+      return `<section class="sec" id="sec-${s.id}"><h2>${esc(s.nombre)}</h2>${lay==="grilla"?`<div class="grid2">${items}</div>`:items}</section>`;
+    }).join("");
     const wa = (!chooser && carta.whatsapp) ? `<a class="wabtn" href="https://wa.me/${esc(carta.whatsapp.replace(/\D/g,""))}" target="_blank">Pedir por WhatsApp</a>` : "";
     const cta = chooser ? `<div class="choosercta"><span>Estilo elegido: <b>${THEMES[tema].nombre}</b></span><button class="btn2" onclick="usarEstilo('${tema}')">Usar este estilo</button></div>` : "";
     const pvbar = preview ? `<div class="pvbar">
