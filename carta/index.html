@@ -7,7 +7,7 @@
 <meta name="robots" content="noindex" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=Caveat:wght@500;700&family=Playfair+Display:wght@500;600;700&family=Bebas+Neue&family=Space+Grotesk:wght@500;600;700&family=Cormorant+Garamond:wght@500;600;700&family=Poppins:wght@500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=Caveat:wght@500;700&family=Playfair+Display:wght@500;600;700&family=Bebas+Neue&family=Space+Grotesk:wght@500;600;700&family=Cormorant+Garamond:wght@500;600;700&family=Poppins:wght@500;600;700&family=Oswald:wght@500;600;700&family=Anton&display=swap" rel="stylesheet" />
 <script src="https://cdn.jsdelivr.net/npm/pocketbase@0.21.5/dist/pocketbase.umd.js"></script>
 <style>
   :root{ --accent:#2f5d3a; --ink:#1c1917; --muted:#78716c; --line:#ece9e4; --bg:#faf8f5; --card:#fff; --fh:"Fraunces",Georgia,serif; --fb:"Inter",system-ui,sans-serif; --rad:16px; }
@@ -194,7 +194,7 @@ function renderSolicitar(slug){
     <div class="plan ${dest?"dest":""}">
       ${dest?'<div class="tag">Mas vendido</div>':""}
       <div class="pname">${label}</div>
-      <div class="pprice tnum">${precio}<span>/ano</span></div>
+      <div class="pprice tnum">${precio}<span>/año</span></div>
       <ul>${feats.map(f=>`<li>${f}</li>`).join("")}</ul>
       <a class="wa" href="${waLink(planTxt)}" target="_blank">Solicitar por WhatsApp</a>
     </div>`;
@@ -213,16 +213,16 @@ function renderSolicitar(slug){
 
 // =================== TEMAS ===================
 const THEMES = {
-  casero:   { nombre:"Casero",        layout:"leader",  vars:{ accent:"#8a5a2b", ink:"#3a3226", muted:"#8a7f6b", line:"#ddd0b8", bg:"#faf5ea", card:"#fffdf8", fh:"'Caveat',cursive", fb:"'Inter',sans-serif", rad:"14px" } },
-  barrio:   { nombre:"Almacen",       layout:"tarjeta", vars:{ accent:"#ea580c", ink:"#1c1917", muted:"#78716c", line:"#eee7dd", bg:"#fffdf7", card:"#ffffff", fh:"'Inter',sans-serif", fb:"'Inter',sans-serif", rad:"8px" } },
-  cafe:     { nombre:"Cafeteria",     layout:"tarjeta", vars:{ accent:"#2f5d3a", ink:"#1c1917", muted:"#78716c", line:"#ece9e4", bg:"#faf8f5", card:"#ffffff", fh:"'Fraunces',serif", fb:"'Inter',sans-serif", rad:"16px" } },
-  soda:     { nombre:"Fuente de soda",layout:"leader",  vars:{ accent:"#c0392b", ink:"#2a2422", muted:"#8a7d6b", line:"#e7d3b8", bg:"#fff8ef", card:"#ffffff", fh:"'Bebas Neue',sans-serif", fb:"'Inter',sans-serif", rad:"6px" } },
-  bistro:   { nombre:"Bistro",        layout:"leader",  vars:{ accent:"#1f2937", ink:"#111827", muted:"#6b7280", line:"#e5e7eb", bg:"#ffffff", card:"#ffffff", fh:"'Space Grotesk',sans-serif", fb:"'Inter',sans-serif", rad:"10px" } },
-  elegante: { nombre:"Elegante",      layout:"centrado",vars:{ accent:"#9a7b4f", ink:"#2b2620", muted:"#8a8074", line:"#e8e2d6", bg:"#f7f3ec", card:"#fffdf9", fh:"'Playfair Display',serif", fb:"'Inter',sans-serif", rad:"8px" }, cls:["t-center"] },
-  minimal:  { nombre:"Minimal",       layout:"centrado",vars:{ accent:"#1c1917", ink:"#1c1917", muted:"#9ca3af", line:"#eeeeee", bg:"#ffffff", card:"#ffffff", fh:"'Cormorant Garamond',serif", fb:"'Inter',sans-serif", rad:"0px" }, cls:["t-center"] },
-  premium:  { nombre:"Premium",       layout:"leader",  vars:{ accent:"#c9a227", ink:"#f5f3ee", muted:"#a8a29e", line:"#2a2a2e", bg:"#0f0f10", card:"#18181b", fh:"'Playfair Display',serif", fb:"'Inter',sans-serif", rad:"12px" }, cls:["t-dark","t-center"] },
-  brutal:   { nombre:"Brutalista",    layout:"grilla",  vars:{ accent:"#dc2626", ink:"#111111", muted:"#555555", line:"#111111", bg:"#fde047", card:"#ffffff", fh:"'Space Grotesk',sans-serif", fb:"'JetBrains Mono',monospace", rad:"0px" }, cls:["t-brutal"] },
-  tropical: { nombre:"Tropical",      layout:"grilla",  vars:{ accent:"#db2777", ink:"#1f2937", muted:"#6b7280", line:"#fde4d3", bg:"#fff7ed", card:"#ffffff", fh:"'Poppins',sans-serif", fb:"'Poppins',sans-serif", rad:"22px" }, cls:["t-rounded"] },
+  casero:   { nombre:"Casero",        layout:"centrado",vars:{ accent:"#a6332e", ink:"#5a4632", muted:"#8c857a", line:"#ddd0b8", bg:"#f3eee3", card:"#fffdf8", fh:"'Caveat',cursive", fb:"'Inter',sans-serif", rad:"14px" }, cls:["t-center"] },
+  barrio:   { nombre:"Almacen",       layout:"tarjeta", vars:{ accent:"#d9531e", ink:"#2b2b2b", muted:"#7a7268", line:"#e8ddc9", bg:"#f4ecdc", card:"#ffffff", fh:"'Oswald',sans-serif", fb:"'Inter',sans-serif", rad:"8px" } },
+  cafe:     { nombre:"Cafeteria",     layout:"tarjeta", vars:{ accent:"#2f5d3a", ink:"#1e1b17", muted:"#8a7b66", line:"#e3dccf", bg:"#ede7da", card:"#ffffff", fh:"'Fraunces',serif", fb:"'Inter',sans-serif", rad:"16px" } },
+  soda:     { nombre:"Fuente de soda",layout:"leader",  vars:{ accent:"#b73225", ink:"#2a2422", muted:"#8a7d6b", line:"#e7d3b8", bg:"#fff8ef", card:"#ffffff", fh:"'Bebas Neue',sans-serif", fb:"'Inter',sans-serif", rad:"6px" } },
+  bistro:   { nombre:"Bistro",        layout:"leader",  vars:{ accent:"#21314a", ink:"#21314a", muted:"#6b7280", line:"#e2dccc", bg:"#f4f0e6", card:"#ffffff", fh:"'Cormorant Garamond',serif", fb:"'Inter',sans-serif", rad:"10px" }, cls:["t-center"] },
+  elegante: { nombre:"Elegante",      layout:"centrado",vars:{ accent:"#b8923c", ink:"#2b2620", muted:"#8a8074", line:"#e3dac6", bg:"#f2ebdd", card:"#fffdf9", fh:"'Playfair Display',serif", fb:"'Inter',sans-serif", rad:"8px" }, cls:["t-center"] },
+  minimal:  { nombre:"Minimal",       layout:"centrado",vars:{ accent:"#1c1917", ink:"#1f1f1d", muted:"#6f6f6a", line:"#cfc9bb", bg:"#f4f1ea", card:"#ffffff", fh:"'Cormorant Garamond',serif", fb:"'Inter',sans-serif", rad:"0px" }, cls:["t-center"] },
+  premium:  { nombre:"Premium",       layout:"leader",  vars:{ accent:"#c79a3b", ink:"#f2f4f8", muted:"#9fb0c8", line:"#1d2a4a", bg:"#0a1a3f", card:"#15234e", fh:"'Playfair Display',serif", fb:"'Inter',sans-serif", rad:"12px" }, cls:["t-dark","t-center"] },
+  brutal:   { nombre:"Brutalista",    layout:"grilla",  vars:{ accent:"#c81e16", ink:"#1a1a1a", muted:"#555555", line:"#1a1a1a", bg:"#fde047", card:"#ffffff", fh:"'Anton',sans-serif", fb:"'Inter',sans-serif", rad:"0px" }, cls:["t-brutal"] },
+  tropical: { nombre:"Tropical",      layout:"grilla",  vars:{ accent:"#e6177f", ink:"#1f2937", muted:"#6b7280", line:"#fde4d3", bg:"#fbf6ec", card:"#ffffff", fh:"'Poppins',sans-serif", fb:"'Poppins',sans-serif", rad:"22px" }, cls:["t-rounded"] },
 };
 const TEMA_ORDER = ["casero","barrio","cafe","soda","bistro","elegante","minimal","premium","brutal","tropical"];
 function applyTheme(t, accentOverride){
