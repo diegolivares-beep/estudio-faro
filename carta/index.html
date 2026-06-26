@@ -67,6 +67,9 @@
   .prod{ display:flex; gap:10px; align-items:center; padding:10px 0; border-bottom:1px solid var(--line); }
   .prod:last-child{ border-bottom:none; }
   .prod .thumb{ width:46px; height:46px; border-radius:9px; object-fit:cover; background:#f0ece6; flex-shrink:0; }
+  .thumblbl{ width:46px; height:46px; border-radius:9px; overflow:hidden; flex-shrink:0; cursor:pointer; display:grid; place-items:center; background:#f0ece6; border:1px dashed #cbb; }
+  .thumblbl img{ width:100%; height:100%; object-fit:cover; }
+  .thumblbl .addf{ font-size:9px; color:#9a8f80; text-align:center; line-height:1.1; }
   .prod .pn{ font-weight:600; font-size:14px; }
   .prod .pd{ color:var(--muted); font-size:12.5px; }
   .toggle{ width:40px; height:23px; border-radius:999px; background:#d6d3d1; position:relative; flex-shrink:0; border:none; }
@@ -311,15 +314,15 @@ async function renderPublic(slug, chooser=false){
     const agot = (p)=> p.disponible===false?'<span class="badge-off">Agotado</span>':"";
     const desc = (p)=> p.descripcion?`<div class="ds">${esc(p.descripcion)}</div>`:"";
     const pr = (p)=> p.precio?`<div class="pr tnum" style="color:var(--accent)">${clp(p.precio)}</div>`:"";
-    const imgL = (p)=> conFotos ? (p.foto?`<img class="ph-img" src="${fileUrl("productos",p.id,p.foto,"400x300")}" alt="">`:`<div class="ph-img"></div>`) : "";
-    const imgT = (p)=> conFotos ? (p.foto?`<img class="gimg" src="${fileUrl("productos",p.id,p.foto,"600x400")}" alt="">`:`<div class="gimg"></div>`) : "";
+    const imgL = (p)=> (conFotos && p.foto) ? `<img class="ph-img" src="${fileUrl("productos",p.id,p.foto,"400x300")}" alt="">` : "";
+    const imgT = (p)=> (conFotos && p.foto) ? `<img class="gimg" src="${fileUrl("productos",p.id,p.foto,"600x400")}" alt="">` : "";
     function itemHTML(p){
       const off = p.disponible===false?"off":"";
       if(lay==="centrado") return `<div class="item ic ${off}">
         <div class="nm">${esc(p.nombre)} ${agot(p)}</div>${desc(p)}${pr(p)}</div>`;
       if(lay==="grilla") return `<div class="item ig ${off}">${imgT(p)}
         <div class="gbody"><div class="nm">${esc(p.nombre)} ${agot(p)}</div>${desc(p)}${pr(p)}</div></div>`;
-      if(lay==="leader") return `<div class="item il ${off}">${conFotos?`<div class="ilimg">${imgL(p)}</div>`:""}
+      if(lay==="leader") return `<div class="item il ${off}">${(conFotos && p.foto)?`<div class="ilimg">${imgL(p)}</div>`:""}
         <div class="body"><div class="lrow"><span class="nm">${esc(p.nombre)}</span><span class="dots"></span>${p.precio?`<span class="pr tnum" style="color:var(--accent)">${clp(p.precio)}</span>`:""}</div>${desc(p)}${p.disponible===false?`<div>${agot(p)}</div>`:""}</div></div>`;
       // tarjeta (default)
       return `<div class="item ${off}">${imgL(p)}
@@ -338,7 +341,7 @@ async function renderPublic(slug, chooser=false){
     } else if(lay==="revista"){
       body = secs.map(s=>`<section class="sec" id="sec-${s.id}"><h2 class="rmag">${esc(s.nombre)}</h2>
         ${(bySec[s.id]||[]).map((p,i)=>`<div class="ritem ${i%2?"rev":""} ${p.disponible===false?"off":""}">
-          ${conFotos?(p.foto?`<img class="rimg" src="${fileUrl("productos",p.id,p.foto,"800x0")}" alt="">`:`<div class="rimg"></div>`):""}
+          ${(conFotos && p.foto)?`<img class="rimg" src="${fileUrl("productos",p.id,p.foto,"800x0")}" alt="">`:""}
           <div class="rbody"><div class="rtop"><span class="nm">${esc(p.nombre)}</span>${p.precio?`<span class="pr tnum" style="color:var(--accent)">${clp(p.precio)}</span>`:""}</div>${desc(p)}${p.disponible===false?`<div>${agot(p)}</div>`:""}</div>
         </div>`).join("") || `<div class="muted">Pronto...</div>`}
       </section>`).join("");
@@ -532,7 +535,7 @@ function drawSecs(){
         <button class="btn danger sm" onclick="delSeccion('${s.id}')">Eliminar</button>
       </div>
       ${items.map(p=>`<div class="prod">
-        ${conFotos?(p.foto?`<img class="thumb" src="${fileUrl("productos",p.id,p.foto,"100x100")}">`:`<label class="thumb" style="display:grid;place-items:center;cursor:pointer;font-size:10px;color:var(--muted)">+foto<input type="file" accept="image/*" class="hide" onchange="subirFoto('${p.id}',this.files[0])"></label>`):""}
+        ${conFotos?`<label class="thumblbl" title="${p.foto?"Cambiar foto":"Agregar foto"}">${p.foto?`<img src="${fileUrl("productos",p.id,p.foto,"100x100")}">`:`<span class="addf">+ foto</span>`}<input type="file" accept="image/*" class="hide" onchange="subirFoto('${p.id}',this.files[0])"></label>`:""}
         <div style="flex:1;min-width:0">
           <div class="pn">${esc(p.nombre)}</div>
           <div class="pd">${p.precio?clp(p.precio):"sin precio"}${p.descripcion?" · "+esc(p.descripcion):""}</div>
