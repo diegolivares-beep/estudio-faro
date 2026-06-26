@@ -118,6 +118,24 @@
   .item.ig .ds{ font-size:12px; }
   body.t-brutal .item.ig{ box-shadow:3px 3px 0 var(--ink); }
 
+  /* estructura: clasica (enmarcada, cinta, 2 columnas) */
+  .marco{ padding:12px; }
+  .marco-in{ border:1px solid var(--accent); outline:1px solid var(--accent); outline-offset:5px; padding:26px 20px 18px; }
+  .secclas{ padding:0; }
+  .ribbon{ position:relative; text-align:center; margin:26px 0 14px; padding:0; font-family:var(--fh); font-size:21px; font-weight:600; }
+  .secclas:first-child .ribbon{ margin-top:4px; }
+  .ribbon span{ position:relative; z-index:1; padding:0 16px; background:var(--bg); text-transform:uppercase; letter-spacing:.04em; }
+  .ribbon::before{ content:""; position:absolute; left:6%; right:6%; top:54%; border-top:1px solid var(--accent); opacity:.45; }
+  .cols2{ columns:2; column-gap:30px; }
+  @media(max-width:560px){ .cols2{ columns:1; } }
+  .clitem{ break-inside:avoid; padding:8px 0; }
+  .clitem .lrow{ display:flex; align-items:baseline; gap:6px; }
+  .clitem .nm{ font-weight:600; font-size:14.5px; flex-shrink:0; }
+  .clitem .dots{ flex:1; border-bottom:1px dotted var(--muted); opacity:.4; transform:translateY(-3px); min-width:14px; }
+  .clitem .pr{ flex-shrink:0; color:var(--accent); font-weight:700; }
+  .clitem .ds{ font-size:12px; color:var(--muted); margin-top:1px; line-height:1.35; }
+  .clitem.off{ opacity:.45; }
+
   /* ---- barra de previsualizacion (demo) ---- */
   .pvbar{ position:fixed; top:0; left:0; right:0; z-index:60; background:#0d0d0f; color:#fff; display:flex; gap:7px; align-items:center; padding:8px 12px; overflow-x:auto; scrollbar-width:none; }
   .pvbar::-webkit-scrollbar{ display:none; }
@@ -217,10 +235,10 @@ const THEMES = {
   barrio:   { nombre:"Almacen",       layout:"tarjeta", vars:{ accent:"#d9531e", ink:"#2b2b2b", muted:"#7a7268", line:"#e8ddc9", bg:"#f4ecdc", card:"#ffffff", fh:"'Oswald',sans-serif", fb:"'Inter',sans-serif", rad:"8px" } },
   cafe:     { nombre:"Cafeteria",     layout:"tarjeta", vars:{ accent:"#2f5d3a", ink:"#1e1b17", muted:"#8a7b66", line:"#e3dccf", bg:"#ede7da", card:"#ffffff", fh:"'Fraunces',serif", fb:"'Inter',sans-serif", rad:"16px" } },
   soda:     { nombre:"Fuente de soda",layout:"leader",  vars:{ accent:"#b73225", ink:"#2a2422", muted:"#8a7d6b", line:"#e7d3b8", bg:"#fff8ef", card:"#ffffff", fh:"'Bebas Neue',sans-serif", fb:"'Inter',sans-serif", rad:"6px" } },
-  bistro:   { nombre:"Bistro",        layout:"leader",  vars:{ accent:"#21314a", ink:"#21314a", muted:"#6b7280", line:"#e2dccc", bg:"#f4f0e6", card:"#ffffff", fh:"'Cormorant Garamond',serif", fb:"'Inter',sans-serif", rad:"10px" }, cls:["t-center"] },
-  elegante: { nombre:"Elegante",      layout:"centrado",vars:{ accent:"#b8923c", ink:"#2b2620", muted:"#8a8074", line:"#e3dac6", bg:"#f2ebdd", card:"#fffdf9", fh:"'Playfair Display',serif", fb:"'Inter',sans-serif", rad:"8px" }, cls:["t-center"] },
+  bistro:   { nombre:"Bistro",        layout:"clasica", vars:{ accent:"#21314a", ink:"#21314a", muted:"#6b7280", line:"#e2dccc", bg:"#f4f0e6", card:"#ffffff", fh:"'Cormorant Garamond',serif", fb:"'Inter',sans-serif", rad:"10px" }, cls:["t-center"] },
+  elegante: { nombre:"Elegante",      layout:"clasica", vars:{ accent:"#b8923c", ink:"#2b2620", muted:"#8a8074", line:"#e3dac6", bg:"#f2ebdd", card:"#fffdf9", fh:"'Playfair Display',serif", fb:"'Inter',sans-serif", rad:"8px" }, cls:["t-center"] },
   minimal:  { nombre:"Minimal",       layout:"centrado",vars:{ accent:"#1c1917", ink:"#1f1f1d", muted:"#6f6f6a", line:"#cfc9bb", bg:"#f4f1ea", card:"#ffffff", fh:"'Cormorant Garamond',serif", fb:"'Inter',sans-serif", rad:"0px" }, cls:["t-center"] },
-  premium:  { nombre:"Premium",       layout:"leader",  vars:{ accent:"#c79a3b", ink:"#f2f4f8", muted:"#9fb0c8", line:"#1d2a4a", bg:"#0a1a3f", card:"#15234e", fh:"'Playfair Display',serif", fb:"'Inter',sans-serif", rad:"12px" }, cls:["t-dark","t-center"] },
+  premium:  { nombre:"Premium",       layout:"clasica", vars:{ accent:"#c79a3b", ink:"#f2f4f8", muted:"#9fb0c8", line:"#1d2a4a", bg:"#0a1a3f", card:"#15234e", fh:"'Playfair Display',serif", fb:"'Inter',sans-serif", rad:"12px" }, cls:["t-dark","t-center"] },
   brutal:   { nombre:"Brutalista",    layout:"grilla",  vars:{ accent:"#c81e16", ink:"#1a1a1a", muted:"#555555", line:"#1a1a1a", bg:"#fde047", card:"#ffffff", fh:"'Anton',sans-serif", fb:"'Inter',sans-serif", rad:"0px" }, cls:["t-brutal"] },
   tropical: { nombre:"Tropical",      layout:"grilla",  vars:{ accent:"#e6177f", ink:"#1f2937", muted:"#6b7280", line:"#fde4d3", bg:"#fbf6ec", card:"#ffffff", fh:"'Poppins',sans-serif", fb:"'Poppins',sans-serif", rad:"22px" }, cls:["t-rounded"] },
 };
@@ -284,10 +302,22 @@ async function renderPublic(slug, chooser=false){
       return `<div class="item ${off}">${imgL(p)}
         <div class="body"><div class="nm">${esc(p.nombre)} ${agot(p)}</div>${desc(p)}${pr(p)}</div></div>`;
     }
-    const body = secs.map(s=>{
-      const items = (bySec[s.id]||[]).map(itemHTML).join("") || `<div class="muted" style="padding:6px">Pronto...</div>`;
-      return `<section class="sec" id="sec-${s.id}"><h2>${esc(s.nombre)}</h2>${lay==="grilla"?`<div class="grid2">${items}</div>`:items}</section>`;
-    }).join("");
+    let body;
+    if(lay==="clasica"){
+      const itemClas = (p)=>`<div class="clitem ${p.disponible===false?"off":""}">
+        <div class="lrow"><span class="nm">${esc(p.nombre)}</span><span class="dots"></span>${p.precio?`<span class="pr tnum">${clp(p.precio)}</span>`:""}</div>
+        ${p.descripcion?`<div class="ds">${esc(p.descripcion)}</div>`:""}${p.disponible===false?`<div>${agot(p)}</div>`:""}</div>`;
+      body = `<div class="marco"><div class="marco-in">` + secs.map(s=>`
+        <section class="sec secclas" id="sec-${s.id}">
+          <h2 class="ribbon"><span>${esc(s.nombre)}</span></h2>
+          <div class="cols2">${(bySec[s.id]||[]).map(itemClas).join("") || `<div class="muted">Pronto...</div>`}</div>
+        </section>`).join("") + `</div></div>`;
+    } else {
+      body = secs.map(s=>{
+        const items = (bySec[s.id]||[]).map(itemHTML).join("") || `<div class="muted" style="padding:6px">Pronto...</div>`;
+        return `<section class="sec" id="sec-${s.id}"><h2>${esc(s.nombre)}</h2>${lay==="grilla"?`<div class="grid2">${items}</div>`:items}</section>`;
+      }).join("");
+    }
     const wa = (!chooser && carta.whatsapp) ? `<a class="wabtn" href="https://wa.me/${esc(carta.whatsapp.replace(/\D/g,""))}" target="_blank">Pedir por WhatsApp</a>` : "";
     const cta = chooser ? `<div class="choosercta"><span>Estilo elegido: <b>${THEMES[tema].nombre}</b></span><button class="btn2" onclick="usarEstilo('${tema}')">Usar este estilo</button></div>` : "";
     const pvbar = preview ? `<div class="pvbar">
