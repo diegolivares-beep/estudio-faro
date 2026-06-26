@@ -256,8 +256,8 @@ async function renderPublic(slug, chooser=false){
   document.body.classList.toggle("haspv", preview);
 
   function paint(){
-    // en preview se muestran los temas puros; en real, el color del dueno manda sobre el tema
-    applyTheme(THEMES[tema], preview ? null : (carta.color||null));
+    // en preview / ?tema se muestran los temas puros; en real, el color del dueno manda sobre el tema
+    applyTheme(THEMES[tema], (preview || qp.has("tema")) ? null : (carta.color||null));
     app.className="";
     const logo = carta.logo
       ? `<img class="logo" src="${fileUrl("cartas",carta.id,carta.logo,"200x200")}" alt="">`
