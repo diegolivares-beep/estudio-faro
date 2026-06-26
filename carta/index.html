@@ -477,6 +477,18 @@ function drawEditor(slug){
     </div>
 
     <div class="card">
+      <h3>Codigo QR para la mesa</h3>
+      <div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap">
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=240x240&margin=8&data=${encodeURIComponent(location.origin+'/carta/'+slug)}" alt="QR" style="width:120px;height:120px;border:1px solid var(--line);border-radius:10px" />
+        <div style="flex:1;min-width:190px">
+          <div class="muted" style="margin-bottom:8px">Imprimelo y ponlo en la mesa. Lleva a tu carta publica.</div>
+          <button class="btn" onclick="descargarQR()">Descargar QR</button>
+          <div class="muted" style="margin-top:8px;word-break:break-all">${location.origin}/carta/${esc(slug)}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
       <h3>Modo de carta</h3>
       <div style="display:flex;gap:8px;margin-bottom:10px">
         <button class="temaopt ${(CARTA.modo||"plantilla")!=="pdf"?"on":""}" onclick="setModo('plantilla')">Usar plantilla</button>
@@ -542,7 +554,7 @@ async function guardarCarta(){
       color:val("c_color"), direccion:val("c_dir"), instagram:val("c_ig").replace(/^@/,"")
     });
     const lf = document.getElementById("c_logo");
-    if(lf.files[0]){ const fd=new FormData(); fd.append("logo",lf.files[0]); CARTA = await pb.collection("cartas").update(CARTA.id, fd); }
+    if(lf && lf.files[0]){ CARTA = await uploadFile("cartas", CARTA.id, "logo", lf.files[0]); }
     toast("Datos guardados");
   }catch(e){ toast("Error al guardar"); }
 }
@@ -550,7 +562,7 @@ async function togglePub(){ CARTA = await pb.collection("cartas").update(CARTA.i
 async function setTema(id){ CARTA = await pb.collection("cartas").update(CARTA.id,{ tema:id }); drawEditor(route().slug); toast("Estilo: "+THEMES[id].nombre); }
 async function usarEstilo(id){ CARTA = await pb.collection("cartas").update(CARTA.id,{ tema:id, estiloElegido:true }); document.body.classList.remove("haspv"); toast("Estilo aplicado: "+THEMES[id].nombre); renderEditor(route().slug); }
 async function setModo(m){ CARTA = await pb.collection("cartas").update(CARTA.id,{ modo:m }); drawEditor(route().slug); toast(m==="pdf"?"Modo PDF activado":"Modo plantilla activado"); }
-async function subirPdf(){ const f=document.getElementById("c_pdf"); if(!f||!f.files[0]){ toast("Elige un archivo PDF","warn"); return; } const fd=new FormData(); fd.append("pdf",f.files[0]); CARTA = await pb.collection("cartas").update(CARTA.id, fd); drawEditor(route().slug); toast("PDF subido y publicado"); }
+async function subirPdf(){ const f=document.getElementById("c_pdf"); if(!f||!f.files[0]){ toast("Elige un archivo PDF","warn"); return; } toast("Subiendo PDF..."); try{ CARTA = await uploadFile("cartas", CARTA.id, "pdf", f.files[0]); drawEditor(route().slug); toast("PDF subido y publicado"); }catch(e){ console.error(e); toast("No se pudo subir el PDF"); } }
 async function addSeccion(){ const n=val("newsec").trim(); if(!n) return; const r=await pb.collection("secciones").create({ carta:CARTA.id, nombre:n, orden:SECS.length+1 }); SECS.push(r); document.getElementById("newsec").value=""; drawSecs(); toast("Seccion creada"); }
 async function renSeccion(id,n){ await pb.collection("secciones").update(id,{nombre:n}); const s=SECS.find(x=>x.id===id); if(s)s.nombre=n; toast("Guardado"); }
 async function delSeccion(id){ if(!confirm("Eliminar la seccion y sus productos?")) return; await pb.collection("secciones").delete(id); SECS=SECS.filter(x=>x.id!==id); PRODS=PRODS.filter(p=>p.seccion!==id); drawSecs(); toast("Seccion eliminada"); }
@@ -569,8 +581,20 @@ async function editProd(id){
   Object.assign(p,r); drawSecs(); toast("Producto actualizado");
 }
 async function toggleDisp(id,cur){ const r=await pb.collection("productos").update(id,{ disponible:!cur }); const p=PRODS.find(x=>x.id===id); if(p)p.disponible=r.disponible; drawSecs(); }
-async function subirFoto(id,file){ if(!file) return; const fd=new FormData(); fd.append("foto",file); const r=await pb.collection("productos").update(id,fd); const p=PRODS.find(x=>x.id===id); if(p)p.foto=r.foto; drawSecs(); toast("Foto subida"); }
+async function uploadFile(col,id,field,file){
+  const fd=new FormData(); fd.append(field,file);
+  const res=await fetch(`${PB_URL}/api/collections/${col}/records/${id}`,{ method:"PATCH", headers:{ Authorization: pb.authStore.token }, body: fd });
+  if(!res.ok) throw new Error(await res.text());
+  return res.json();
+}
+async function subirFoto(id,file){ if(!file) return; toast("Subiendo foto..."); try{ const r=await uploadFile("productos",id,"foto",file); const p=PRODS.find(x=>x.id===id); if(p)p.foto=r.foto; drawSecs(); toast("Foto subida"); }catch(e){ console.error(e); toast("No se pudo subir la foto"); } }
 async function delProd(id){ if(!confirm("Eliminar producto?")) return; await pb.collection("productos").delete(id); PRODS=PRODS.filter(x=>x.id!==id); drawSecs(); toast("Eliminado"); }
+async function descargarQR(){
+  const url = location.origin + "/carta/" + (CARTA?.slug || route().slug);
+  const api = "https://api.qrserver.com/v1/create-qr-code/?size=1000x1000&margin=20&data=" + encodeURIComponent(url);
+  try{ const r=await fetch(api); const b=await r.blob(); const a=document.createElement("a"); a.href=URL.createObjectURL(b); a.download="qr-"+(CARTA?.slug||"carta")+".png"; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(a.href); toast("QR descargado"); }
+  catch(e){ window.open(api,"_blank"); }
+}
 function logout(){ pb.authStore.clear(); renderLogin(route().slug); }
 function val(id){ return document.getElementById(id).value; }
 
