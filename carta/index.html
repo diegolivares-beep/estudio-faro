@@ -85,6 +85,11 @@
   .toast{ position:fixed; bottom:20px; left:50%; transform:translateX(-50%); background:#1c1917; color:#fff; padding:11px 18px; border-radius:12px; font-size:14px; z-index:50; box-shadow:0 8px 24px rgba(0,0,0,.25); }
   .muted{ color:var(--muted); font-size:13px; }
   .hide{ display:none; }
+  .ovl{ position:fixed; inset:0; background:rgba(0,0,0,.45); display:grid; place-items:center; z-index:90; padding:18px; }
+  .ovbox{ background:#fff; border-radius:16px; padding:20px; width:100%; max-width:420px; box-shadow:0 20px 50px rgba(0,0,0,.3); }
+  .ovbox h3{ font-size:16px; margin-bottom:12px; color:#1c1917; font-weight:700; }
+  .ovbox .in{ color:#1c1917; }
+  .ovbox textarea.in{ resize:vertical; }
 
   /* ---- variantes de tema ---- */
   .chip{ background:var(--card); }
@@ -569,20 +574,45 @@ async function subirPdf(){ const f=document.getElementById("c_pdf"); if(!f||!f.f
 async function addSeccion(){ const n=val("newsec").trim(); if(!n) return; const r=await pb.collection("secciones").create({ carta:CARTA.id, nombre:n, orden:SECS.length+1 }); SECS.push(r); document.getElementById("newsec").value=""; drawSecs(); toast("Seccion creada"); }
 async function renSeccion(id,n){ await pb.collection("secciones").update(id,{nombre:n}); const s=SECS.find(x=>x.id===id); if(s)s.nombre=n; toast("Guardado"); }
 async function delSeccion(id){ if(!confirm("Eliminar la seccion y sus productos?")) return; await pb.collection("secciones").delete(id); SECS=SECS.filter(x=>x.id!==id); PRODS=PRODS.filter(p=>p.seccion!==id); drawSecs(); toast("Seccion eliminada"); }
-async function addProd(secId){
-  const nombre = prompt("Nombre del producto:"); if(!nombre) return;
-  const precio = Number((prompt("Precio (solo numeros):","")||"").replace(/\D/g,"")) || 0;
-  const r = await pb.collection("productos").create({ carta:CARTA.id, seccion:secId, nombre, precio, disponible:true, orden:PRODS.length+1 });
-  PRODS.push(r); drawSecs(); toast("Producto agregado");
+async function pbFetch(method,path,body){
+  const res=await fetch(PB_URL+path,{ method, headers:{ Authorization: pb.authStore.token, "Content-Type":"application/json" }, body: JSON.stringify(body) });
+  if(!res.ok) throw new Error(await res.text());
+  return res.json();
 }
-async function editProd(id){
-  const p = PRODS.find(x=>x.id===id); if(!p) return;
-  const nombre = prompt("Nombre:", p.nombre); if(nombre===null) return;
-  const descripcion = prompt("Descripcion:", p.descripcion||"")||"";
-  const precio = Number((prompt("Precio:", p.precio||"")||"").replace(/\D/g,"")) || 0;
-  const r = await pb.collection("productos").update(id,{ nombre, descripcion, precio });
-  Object.assign(p,r); drawSecs(); toast("Producto actualizado");
+function prodModal(p, isNew, secId){
+  const ov=document.createElement("div"); ov.className="ovl";
+  ov.innerHTML=`<div class="ovbox" id="ovbox">
+    <h3>${isNew?"Nuevo producto":"Editar producto"}</h3>
+    <label class="f"><span>Nombre</span><input class="in" id="ep_n" value="${esc(p?.nombre||"")}" placeholder="Ej. Churrasco italiano"></label>
+    <label class="f"><span>Descripcion / ingredientes</span><textarea class="in" id="ep_d" rows="2" placeholder="Ej. lomo, palta, tomate, mayo">${esc(p?.descripcion||"")}</textarea></label>
+    <label class="f"><span>Precio</span><input class="in" id="ep_p" type="number" inputmode="numeric" value="${p?.precio||""}" placeholder="6500"></label>
+    <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:8px">
+      <button class="btn ghost" id="ep_x">Cancelar</button>
+      <button class="btn" id="ep_s">Guardar</button>
+    </div></div>`;
+  ov.addEventListener("click",(e)=>{ if(e.target===ov) ov.remove(); });
+  document.body.appendChild(ov);
+  document.getElementById("ep_x").onclick=()=>ov.remove();
+  document.getElementById("ep_s").onclick=async()=>{
+    const nombre=document.getElementById("ep_n").value.trim();
+    const descripcion=document.getElementById("ep_d").value.trim();
+    const precio=Number((document.getElementById("ep_p").value||"").replace(/\D/g,""))||0;
+    if(!nombre){ toast("Falta el nombre","warn"); return; }
+    try{
+      if(isNew){
+        const r=await pbFetch("POST","/api/collections/productos/records",{ carta:CARTA.id, seccion:secId, nombre, descripcion, precio, disponible:true, orden:PRODS.length+1 });
+        PRODS.push(r);
+      } else {
+        const r=await pbFetch("PATCH",`/api/collections/productos/records/${p.id}`,{ nombre, descripcion, precio });
+        Object.assign(p,r);
+      }
+      ov.remove(); drawSecs(); toast(isNew?"Producto agregado":"Producto actualizado");
+    }catch(e){ console.error(e); toast("No se pudo guardar"); }
+  };
+  document.getElementById("ep_n").focus();
 }
+function addProd(secId){ prodModal(null,true,secId); }
+function editProd(id){ const p=PRODS.find(x=>x.id===id); if(p) prodModal(p,false); }
 async function toggleDisp(id,cur){ const r=await pb.collection("productos").update(id,{ disponible:!cur }); const p=PRODS.find(x=>x.id===id); if(p)p.disponible=r.disponible; drawSecs(); }
 async function uploadFile(col,id,field,file){
   const fd=new FormData(); fd.append(field,file);
