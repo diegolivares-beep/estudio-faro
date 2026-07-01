@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>C-MAX · Presencia digital vs. la competencia — Estudio Faro</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: oklch(0.986 0.005 195); --surface: oklch(1 0 0); --surface-tint: oklch(0.968 0.012 195);
+    --ink: oklch(0.24 0.025 220); --ink-soft: oklch(0.44 0.02 220); --ink-faint: oklch(0.55 0.018 220);
+    --brand: oklch(0.52 0.11 197); --brand-deep: oklch(0.37 0.09 205);
+    --good: oklch(0.56 0.12 162); --good-bg: oklch(0.955 0.038 162);
+    --warn: oklch(0.64 0.13 70); --warn-bg: oklch(0.955 0.05 75);
+    --bad: oklch(0.56 0.15 28); --bad-bg: oklch(0.955 0.038 30);
+    --line: oklch(0.89 0.012 200); --line-strong: oklch(0.78 0.018 205);
+    --r: 4px; --maxw: 1240px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 32px}
+  h1,h2,h3{color:var(--ink);line-height:1.12;overflow-wrap:break-word}
+  a{color:var(--brand-deep);text-decoration:none;border-bottom:1px solid oklch(0.52 0.11 197 / 0.32);transition:border-color .15s,color .15s}
+  a:hover{border-color:var(--brand);color:var(--brand)}
+
+  .cover{border-top:3px solid var(--brand);padding:40px 0 0}
+  .cover h1{font-size:clamp(1.9rem,4.6vw,3rem);font-weight:800;letter-spacing:-0.032em;margin:4px 0 0;max-width:none}
+  .cover .lead{font-size:clamp(1.02rem,1.7vw,1.18rem);color:var(--ink-soft);margin-top:16px;max-width:92ch}
+  .metabar{display:flex;flex-wrap:wrap;gap:0;margin-top:30px;border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+  .metabar div{flex:1 1 180px;padding:13px 18px;border-right:1px solid var(--line)}
+  .metabar div:last-child{border-right:none}
+  .metabar dt{font-size:0.68rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-faint)}
+  .metabar dd{font-size:0.9rem;font-weight:600;color:var(--ink);margin-top:3px}
+
+  section{padding:46px 0}
+  .shead{display:grid;grid-template-columns:auto 1fr;align-items:baseline;gap:16px;padding-bottom:14px;margin-bottom:26px;border-bottom:2px solid var(--ink)}
+  .snum{font-size:0.92rem;font-weight:800;color:var(--brand);font-variant-numeric:tabular-nums}
+  .shead h2{font-size:clamp(1.4rem,2.8vw,1.95rem);font-weight:800;letter-spacing:-0.028em}
+  .sdesc{grid-column:1 / -1;margin-top:4px;font-size:1rem;color:var(--ink-soft)}
+  p{text-wrap:pretty}
+  .subhead{font-size:0.78rem;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;color:var(--brand-deep);margin:30px 0 12px}
+
+  .table-frame{border:1px solid var(--line-strong);border-radius:var(--r);overflow:hidden;background:var(--surface)}
+  .scroll{overflow-x:auto}
+  table{width:100%;border-collapse:collapse;min-width:1140px}
+  thead th{font-size:0.69rem;font-weight:800;text-align:left;letter-spacing:0.05em;text-transform:uppercase;padding:12px 16px;background:var(--ink);color:oklch(0.9 0.01 195);white-space:nowrap}
+  thead th:first-child{color:oklch(0.96 0.01 195)}
+  tbody td{padding:13px 16px;border-bottom:1px solid var(--line);font-size:0.9rem;vertical-align:middle}
+  tbody tr:last-child td{border-bottom:none}
+  .c-name{font-weight:700}
+  .c-name a{border-bottom-color:transparent;color:var(--ink)}
+  .c-name a:hover{color:var(--brand);border-bottom-color:var(--brand)}
+  .c-loc{font-size:0.77rem;color:var(--ink-faint);font-weight:500;margin-top:2px}
+  .c-stack{font-size:0.73rem;color:var(--brand-deep);font-weight:600;margin-top:3px}
+  tr.you{background:oklch(0.955 0.028 195)}
+  tr.you .c-name a{color:var(--brand-deep)}
+  .youtag{display:inline-block;margin-left:7px;font-size:0.6rem;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;color:var(--surface);background:var(--brand);padding:2px 6px;border-radius:3px;vertical-align:middle}
+  .sector{font-size:0.74rem;font-weight:600;color:var(--ink-soft)}
+  .sector.peri{color:oklch(0.46 0.09 60)} .sector.coq{color:oklch(0.42 0.1 250)}
+
+  .pill{display:inline-flex;align-items:center;gap:6px;font-size:0.76rem;font-weight:600;padding:3px 9px;border-radius:3px;white-space:nowrap}
+  .pill::before{content:"";width:7px;height:7px;border-radius:50%}
+  .pill.ok{background:var(--good-bg);color:oklch(0.36 0.1 162)} .pill.ok::before{background:var(--good)}
+  .pill.no{background:var(--bad-bg);color:oklch(0.41 0.13 28)} .pill.no::before{background:var(--bad)}
+  .pill.mid{background:var(--warn-bg);color:oklch(0.44 0.11 60)} .pill.mid::before{background:var(--warn)}
+  .pill.na{background:var(--surface-tint);color:var(--ink-faint)} .pill.na::before{background:var(--line-strong)}
+
+  .rating{display:flex;align-items:center;gap:8px;font-weight:700;font-variant-numeric:tabular-nums}
+  .rating a{border-bottom:none;color:var(--brand-deep);display:inline-flex;align-items:center;gap:8px}
+  .rating a::after{content:"↗";font-size:0.8rem;color:var(--brand);font-weight:800;margin-left:1px}
+  .rating a:hover,.rating a:hover .num,.rating a:hover .nd{color:var(--brand)}
+  .rating .num{color:var(--brand-deep)}
+  .rating.top .num{color:oklch(0.42 0.1 162)}
+  .bar{width:46px;height:6px;border-radius:2px;background:var(--line);overflow:hidden}
+  .bar i{display:block;height:100%;background:var(--brand)}
+  .rating.low i{background:var(--bad)} .rating.top i{background:var(--good)}
+  .rating .nd{color:var(--brand-deep);font-weight:600;font-size:0.81rem}
+
+  .ig{font-weight:700;font-variant-numeric:tabular-nums;color:var(--brand-deep)}
+  .ig a{border-bottom-color:transparent;color:var(--brand-deep)}
+  .ig a:hover{color:var(--brand);border-bottom-color:var(--brand)}
+  .ig .sd{font-weight:500;color:var(--ink-faint);font-size:0.82rem}
+  tr.you .ig a{color:oklch(0.42 0.1 162)}
+
+  .tnote{font-size:0.85rem;color:var(--ink-soft);margin-top:14px;padding-left:2px}
+
+  .callout{margin-top:18px;border:1px solid var(--line-strong);border-radius:var(--r);background:var(--surface);padding:20px 24px;display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  .callout .co-h{grid-column:1/-1;font-size:0.72rem;font-weight:800;letter-spacing:0.07em;text-transform:uppercase;color:var(--brand-deep);margin-bottom:-4px}
+  .stat .n{font-size:1.5rem;font-weight:800;letter-spacing:-0.02em;font-variant-numeric:tabular-nums}
+  .stat .l{font-size:0.8rem;color:var(--ink-faint);margin-top:2px}
+
+  .split{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line-strong);border-radius:var(--r);overflow:hidden;background:var(--surface)}
+  .split>div{padding:26px 28px}
+  .split>div:first-child{border-right:1px solid var(--line-strong)}
+  .col-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-bottom:12px;border-bottom:1px solid var(--line);margin-bottom:16px}
+  .col-head .k{font-size:0.72rem;font-weight:800;letter-spacing:0.07em;text-transform:uppercase;color:var(--ink-faint)}
+  .col-head h3{font-size:1.16rem;font-weight:800;letter-spacing:-0.02em}
+  .verdict{font-size:0.73rem;font-weight:800;padding:3px 9px;border-radius:3px;text-transform:uppercase;letter-spacing:0.03em}
+  .verdict.behind{background:var(--warn-bg);color:oklch(0.44 0.11 60)}
+  .verdict.free{background:var(--good-bg);color:oklch(0.36 0.1 162)}
+  .split ul{list-style:none;display:flex;flex-direction:column;gap:13px}
+  .split li{display:flex;gap:11px;font-size:0.92rem;color:var(--ink-soft)}
+  .split li b{color:var(--ink);font-weight:600}
+  .mk{flex-shrink:0;width:18px;height:18px;border-radius:3px;display:grid;place-items:center;font-size:11px;font-weight:800;margin-top:2px}
+  .basic .mk{background:var(--warn-bg);color:oklch(0.44 0.11 60)}
+  .adv .mk{background:var(--good-bg);color:oklch(0.36 0.1 162)}
+  .adv{background:linear-gradient(180deg,oklch(0.975 0.016 195),var(--surface))}
+  .synthesis{margin-top:18px;border:1px solid var(--line-strong);border-left:4px solid var(--brand);border-radius:var(--r);background:var(--surface-tint);padding:18px 22px;font-size:0.96rem;color:var(--ink)}
+  .synthesis b{color:var(--brand-deep)}
+
+  .sys{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line-strong);border-radius:var(--r);overflow:hidden;background:var(--surface)}
+  .sys>div{padding:26px 28px}
+  .sys>div:first-child{border-right:1px solid var(--line-strong)}
+  .sys .k{font-size:0.72rem;font-weight:800;letter-spacing:0.07em;text-transform:uppercase;color:var(--brand-deep)}
+  .sys h3{margin:7px 0 16px;font-size:1.16rem;font-weight:800;letter-spacing:-0.02em}
+  .sys.diff{background:linear-gradient(180deg,oklch(0.975 0.016 195),var(--surface))}
+  .modules{display:flex;flex-wrap:wrap;gap:8px}
+  .mod{font-size:0.85rem;font-weight:600;color:var(--ink);background:var(--surface-tint);border:1px solid var(--line);padding:7px 12px;border-radius:3px}
+  .diff .mod{background:oklch(0.95 0.034 195);border-color:oklch(0.84 0.06 197);color:var(--brand-deep)}
+  .sys p{font-size:0.9rem;color:var(--ink-soft);margin-top:15px;max-width:48ch}
+
+  .invest{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line-strong);border-radius:var(--r);overflow:hidden;background:var(--surface)}
+  .tier{padding:26px;border-right:1px solid var(--line-strong);display:flex;flex-direction:column}
+  .tier:last-child{border-right:none}
+  .tier.featured{background:var(--surface-tint)}
+  .tier .phase{font-size:0.72rem;font-weight:800;text-transform:uppercase;letter-spacing:0.06em;color:var(--brand-deep);display:flex;align-items:center;gap:8px}
+  .tier .phase .star{font-size:0.6rem;background:var(--brand);color:#fff;padding:2px 7px;border-radius:3px}
+  .tier h3{margin:11px 0 4px;font-size:1.1rem;font-weight:800;letter-spacing:-0.02em}
+  .tier .desc{font-size:0.87rem;color:var(--ink-soft);margin-bottom:18px;flex:1}
+  .price{font-size:1.5rem;font-weight:800;letter-spacing:-0.03em;font-variant-numeric:tabular-nums}
+  .price small{display:block;font-size:0.77rem;font-weight:500;color:var(--ink-faint);margin-top:3px}
+  .disclaimer{margin-top:16px;font-size:0.84rem;color:var(--ink-soft);display:flex;gap:10px}
+  .disclaimer b{color:var(--ink)}
+
+  .files{border:1px solid var(--line-strong);border-radius:var(--r);overflow:hidden;background:var(--surface)}
+  .file{display:grid;grid-template-columns:210px 1fr;gap:20px;padding:18px 24px;border-bottom:1px solid var(--line)}
+  .file:last-child{border-bottom:none}
+  .file.you{background:oklch(0.97 0.02 195)}
+  .file.lead{background:oklch(0.975 0.02 162)}
+  .file .fn{font-weight:800;font-size:0.98rem}
+  .file .fmeta{font-size:0.82rem;color:var(--ink-faint);margin-top:5px;line-height:1.7}
+  .file .fmeta b{color:var(--ink-soft);font-weight:600}
+  .file .links{display:flex;flex-wrap:wrap;gap:7px 15px;font-size:0.84rem;margin-top:6px}
+  .file .links span{color:var(--ink-faint)}
+  .method{margin-top:16px;font-size:0.81rem;color:var(--ink-faint);line-height:1.7}
+
+  footer{border-top:2px solid var(--ink);margin-top:14px}
+  footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;align-items:center;padding-top:22px;padding-bottom:48px;color:var(--ink-faint);font-size:0.84rem}
+  footer b{color:var(--ink-soft)}
+
+  @keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+  .cover>.wrap>*{animation:rise .6s cubic-bezier(.2,.7,.2,1) both}
+  .cover .lead{animation-delay:.05s}.cover .metabar{animation-delay:.1s}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+  @media (max-width:820px){
+    .wrap{padding:0 20px}
+    section{padding:36px 0}
+    .split,.sys,.invest{grid-template-columns:1fr}
+    .split>div:first-child,.sys>div:first-child{border-right:none;border-bottom:1px solid var(--line-strong)}
+    .tier{border-right:none;border-bottom:1px solid var(--line-strong)} .tier:last-child{border-bottom:none}
+    .callout{grid-template-columns:1fr 1fr}
+    .file{grid-template-columns:1fr}
+    .cover h1{font-size:clamp(1.6rem,6.2vw,2.2rem)}
+  }
+  @media print{
+    body{background:#fff}
+    section{padding:20px 0;break-inside:avoid}
+    .table-frame,.split,.sys,.invest,.metabar,.files,.callout{break-inside:avoid}
+    a{color:var(--brand-deep);border-bottom:none}
+    .adv,.sys.diff,.tier.featured,.file.you,.file.lead{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  }
+</style>
+</head>
+<body>
+
+<header class="cover">
+  <div class="wrap">
+    <h1>C-MAX en el mapa digital de la radiología dental de La Serena</h1>
+    <p class="lead">Comparamos la presencia digital de <b>C-MAX</b> con la del resto de los centros de radiología dental de La Serena y Coquimbo: web, ficha de Google, agenda y entrega de imágenes. Cada dato enlaza a su fuente.</p>
+    <dl class="metabar">
+      <div><dt>Preparado para</dt><dd>C-MAX</dd></div>
+      <div><dt>Fecha</dt><dd>Junio 2026</dd></div>
+      <div><dt>Cobertura</dt><dd>11 centros + 2 clínicas con radiología</dd></div>
+      <div><dt>Fuentes</dt><dd>Google Maps · sitios web · DNS · Instagram · directorios</dd></div>
+    </dl>
+  </div>
+</header>
+
+<main>
+
+  <section>
+    <div class="wrap">
+      <div class="shead">
+        <span class="snum">01</span>
+        <h2>Su posición</h2>
+        <p class="sdesc">Comparamos la presencia <b>digital</b> de C-MAX con la del resto de los centros de radiología dental de La Serena y Coquimbo. Es una foto de lo online —web, ficha de Google, agenda y entrega de imágenes—, no de la calidad clínica de cada centro.</p>
+      </div>
+      <div class="split">
+        <div class="adv">
+          <div class="col-head"><div><div class="k">Lo que C-MAX ya tiene</div><h3>Ya pagaron su lugar en internet</h3></div><span class="verdict free">A favor</span></div>
+          <ul>
+          <li><span class="mk">+</span><span><b>Dominio propio.</b> cmax.cl está registrado a su nombre y vigente hasta 2030.</span></li>
+          <li><span class="mk">+</span><span><b>Equipos Sirona.</b> Tecnología a la par de los líderes del cuadro.</span></li>
+          <li><span class="mk">+</span><span><b>Ficha en Google.</b> Ya existen en el mapa: es una base sobre la que construir.</span></li>
+          </ul>
+        </div>
+        <div class="basic">
+          <div class="col-head"><div><div class="k">El hueco y la oportunidad</div><h3>El dominio está comprado, pero apagado</h3></div><span class="verdict behind">Por hacer</span></div>
+          <ul>
+          <li><span class="mk">!</span><span><b>Sin sitio web.</b> cmax.cl no muestra nada; quien los busca no encuentra información.</span></li>
+          <li><span class="mk">!</span><span><b>Correo en Gmail.</b> Usan contacto.cmax@gmail.com pudiendo tener un correo @cmax.cl.</span></li>
+          <li><span class="mk">!</span><span><b>Sin agenda ni entrega online.</b> El contacto y la entrega de imágenes son manuales.</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="synthesis">C-MAX es el caso más rápido de resolver del cuadro: <b>el dominio ya es suyo</b>. Levantar el sitio en cmax.cl y activar el correo con su nombre no requiere comprar nada, solo ponerlo a trabajar.</div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="shead">
+        <span class="snum">02</span>
+        <h2>El mapa competitivo</h2>
+        <p class="sdesc">Centros de radiología dental y maxilofacial de La Serena–Coquimbo, ordenados por reputación en Google. Toca una calificación o un Instagram para ir a su fuente.</p>
+      </div>
+
+      <div class="subhead">Centros de radiología dental (competencia directa)</div>
+      <div class="table-frame">
+        <div class="scroll">
+          <table>
+            <thead><tr><th>Centro</th><th>Sector</th><th>Sitio web</th><th>Agenda online</th><th>Entrega online</th><th>Reseña Google</th><th>Ficha Google</th><th>Instagram</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><div class="c-name"><a href="https://www.google.com/maps/search/Centro+Radiologico+Penuelas+Regimiento+Arica+1641+Coquimbo" target="_blank" rel="noopener">Centro Radiológico Peñuelas</a></div><div class="c-loc">Regimiento Arica 1641</div><div class="c-stack">Sin web propia · solo Instagram</div></td>
+                <td><span class="sector coq">Coquimbo</span></td>
+                <td><span class="pill no">Solo IG</span></td>
+                <td><span class="pill na">Sin dato</span></td>
+                <td><span class="pill na">Sin dato</span></td>
+                <td><div class="rating top"><a href="https://www.google.com/maps/search/Centro+Radiologico+Penuelas+Regimiento+Arica+1641+Coquimbo" target="_blank" rel="noopener"><span class="num">5,0</span><span class="bar"><i style="width:100%"></i></span></a></div></td>
+                <td><span class="pill ok">Reclamada</span></td>
+                <td><span class="ig"><span class="sd">IG · s/d</span></span></td>
+              </tr>
+              <tr>
+                <td><div class="c-name"><a href="https://lascarradiologia.cl/" target="_blank" rel="noopener">Láscar Radiología Oral y Maxilofacial</a></div><div class="c-loc">Amunátegui 489</div><div class="c-stack">Acceso online a resultados · 14 clínicas asociadas</div></td>
+                <td><span class="sector">Centro</span></td>
+                <td><a href="https://lascarradiologia.cl/" target="_blank" rel="noopener"><span class="pill ok">Activo</span></a></td>
+                <td><span class="pill na">Sin dato</span></td>
+                <td><span class="pill ok">Portal</span></td>
+                <td><div class="rating top"><a href="https://www.google.com/maps/search/Lascar+Radiologia+Oral+Maxilofacial+Amunategui+489+La+Serena" target="_blank" rel="noopener"><span class="num">4,9</span><span class="bar"><i style="width:98%"></i></span></a></div></td>
+                <td><span class="pill ok">Reclamada</span></td>
+                <td><span class="ig"><a href="https://www.instagram.com/lascar_radiologiaoral/" target="_blank" rel="noopener">IG</a> <span class="sd">· marginal</span></span></td>
+              </tr>
+              <tr>
+                <td><div class="c-name"><a href="https://focusrad.cl/" target="_blank" rel="noopener">FocusRad</a></div><div class="c-loc">Amunátegui 785, Of. 225 · nacional</div><div class="c-stack">Sección Odontólogos · teleradiología · DICOM</div></td>
+                <td><span class="sector">Centro</span></td>
+                <td><a href="https://focusrad.cl/" target="_blank" rel="noopener"><span class="pill ok">Activo</span></a></td>
+                <td><span class="pill mid">Parcial</span></td>
+                <td><span class="pill mid">Parcial</span></td>
+                <td><div class="rating top"><a href="https://www.google.com/maps/search/FocusRad+Radiologia+Dental+La+Serena+Amunategui+785" target="_blank" rel="noopener"><span class="num">4,6</span><span class="bar"><i style="width:92%"></i></span></a></div></td>
+                <td><span class="pill ok">Reclamada</span></td>
+                <td><span class="ig"><a href="https://www.instagram.com/focusrad/" target="_blank" rel="noopener">1.412</a></span></td>
+              </tr>
+              <tr>
+                <td><div class="c-name"><a href="https://scandent3d.cl/" target="_blank" rel="noopener">Scan Dent</a></div><div class="c-loc">Ánima de Diego 590</div><div class="c-stack">Equipos Sirona + MyRay · reserva AgendaPro</div></td>
+                <td><span class="sector">Centro</span></td>
+                <td><a href="https://scandent3d.cl/" target="_blank" rel="noopener"><span class="pill ok">Activo</span></a></td>
+                <td><a href="https://agendapro.com/mp/cl/pl/scan-dent-centro-radiologico-dental-la-serena/35619" target="_blank" rel="noopener"><span class="pill ok">Sí</span></a></td>
+                <td><span class="pill no">Manual</span></td>
+                <td><div class="rating"><a href="https://www.google.com/maps/search/Scan+Dent+Centro+Radiologico+Dental+Anima+de+Diego+590+La+Serena" target="_blank" rel="noopener"><span class="num">4,0</span><span class="bar"><i style="width:80%"></i></span></a></div></td>
+                <td><span class="pill no">Sin reclamar</span></td>
+                <td><span class="ig"><a href="https://www.instagram.com/scandent3d/" target="_blank" rel="noopener">566</a></span></td>
+              </tr>
+              <tr>
+                <td><div class="c-name"><a href="https://dentorads.cl/" target="_blank" rel="noopener">DentoRads</a></div><div class="c-loc">Amunátegui 785, Of. 322</div><div class="c-stack">Reserva: WhatsApp</div></td>
+                <td><span class="sector">Centro</span></td>
+                <td><a href="https://dentorads.cl/" target="_blank" rel="noopener"><span class="pill ok">Activo</span></a></td>
+                <td><span class="pill mid">WhatsApp</span></td>
+                <td><span class="pill no">Manual</span></td>
+                <td><div class="rating"><a href="https://www.google.com/maps/search/DentoRads+La+Serena+Amunategui+785" target="_blank" rel="noopener"><span class="num">4,0</span><span class="bar"><i style="width:80%"></i></span></a></div></td>
+                <td><span class="pill ok">Reclamada</span></td>
+                <td><span class="ig"><span class="sd">s/d</span></span></td>
+              </tr>
+              <tr>
+                <td><div class="c-name"><a href="https://radiologialaserena.cl/" target="_blank" rel="noopener">Radiología La Serena</a></div><div class="c-loc">Juan Cisternas 2497, Of. 309</div><div class="c-stack">Médica + dental · resultados online (telerradiología)</div></td>
+                <td><span class="sector">Centro</span></td>
+                <td><a href="https://radiologialaserena.cl/" target="_blank" rel="noopener"><span class="pill ok">Activo</span></a></td>
+                <td><span class="pill ok">Sí</span></td>
+                <td><span class="pill ok">Portal</span></td>
+                <td><div class="rating"><a href="https://www.google.com/maps/search/Radiologia+La+Serena+Juan+Cisternas+2497" target="_blank" rel="noopener"><span class="num">3,9</span><span class="bar"><i style="width:78%"></i></span></a></div></td>
+                <td><span class="pill ok">Reclamada</span></td>
+                <td><span class="ig"><a href="https://www.instagram.com/radiologialaserena/" target="_blank" rel="noopener">6.928</a></span></td>
+              </tr>
+              <tr>
+                <td><div class="c-name"><a href="https://www.instagram.com/radiologia_arenas_coquimbo/" target="_blank" rel="noopener">Radiología Arenas</a></div><div class="c-loc">Av. Videla 340</div><div class="c-stack">Solo Instagram · WhatsApp</div></td>
+                <td><span class="sector coq">Coquimbo</span></td>
+                <td><span class="pill no">Sin sitio</span></td>
+                <td><span class="pill mid">WhatsApp</span></td>
+                <td><span class="pill no">Manual</span></td>
+                <td><div class="rating"><a href="https://www.google.com/maps/search/Radiologia+Dental+Arenas+Coquimbo+Videla+340" target="_blank" rel="noopener"><span class="num">3,8</span><span class="bar"><i style="width:76%"></i></span></a></div></td>
+                <td><span class="pill ok">Reclamada</span></td>
+                <td><span class="ig"><a href="https://www.instagram.com/radiologia_arenas_coquimbo/" target="_blank" rel="noopener">1.662</a></span></td>
+              </tr>
+              <tr>
+                <td><div class="c-name"><a href="https://www.instagram.com/dimex.radiologia.laserena/" target="_blank" rel="noopener">Dimex</a></div><div class="c-loc">Juan Cisternas 1960, Edificio Vita</div><div class="c-stack">Solo Instagram activo</div></td>
+                <td><span class="sector">Centro</span></td>
+                <td><span class="pill no">Caído</span></td>
+                <td><span class="pill no">No</span></td>
+                <td><span class="pill no">Manual</span></td>
+                <td><div class="rating low"><a href="https://www.google.com/maps/search/Dimex+Radiologia+Maxilofacial+Juan+Cisternas+1960+La+Serena" target="_blank" rel="noopener"><span class="num">3,0</span><span class="bar"><i style="width:60%"></i></span></a></div></td>
+                <td><span class="pill no">Sin reclamar</span></td>
+                <td><span class="ig"><a href="https://www.instagram.com/dimex.radiologia.laserena/" target="_blank" rel="noopener">2.063</a></span></td>
+              </tr>
+              <tr>
+                <td><div class="c-name"><a href="https://www.instagram.com/clinicaradiologicadap/" target="_blank" rel="noopener">Clínica Radiológica DAP</a></div><div class="c-loc">Abraham Lincoln 1627</div><div class="c-stack">Solo FB/IG · convenios Isapres · MyRay</div></td>
+                <td><span class="sector">Centro</span></td>
+                <td><span class="pill no">Solo redes</span></td>
+                <td><span class="pill na">Sin dato</span></td>
+                <td><span class="pill na">Sin dato</span></td>
+                <td><div class="rating low"><a href="https://www.google.com/maps/search/Clinica+Radiologica+DAP+Abraham+Lincoln+1627+La+Serena" target="_blank" rel="noopener"><span class="num">2,6</span><span class="bar"><i style="width:52%"></i></span></a></div></td>
+                <td><span class="pill no">Sin reclamar</span></td>
+                <td><span class="ig"><a href="https://www.instagram.com/clinicaradiologicadap/" target="_blank" rel="noopener">IG</a></span></td>
+              </tr>
+              <tr>
+                <td><div class="c-name"><a href="https://www.sinergia3d.cl/" target="_blank" rel="noopener">Sinergia 3D</a></div><div class="c-loc">Juan Cisternas 2497, Local 002</div><div class="c-stack">Reserva: HealthAtom · sitio de 2022</div></td>
+                <td><span class="sector">Centro</span></td>
+                <td><a href="https://www.sinergia3d.cl/" target="_blank" rel="noopener"><span class="pill ok">Activo</span></a></td>
+                <td><a href="https://www.sinergia3d.cl/" target="_blank" rel="noopener"><span class="pill ok">Sí</span></a></td>
+                <td><span class="pill no">Manual</span></td>
+                <td><div class="rating"><a href="https://www.google.com/maps/search/Sinergia+3D+Juan+Cisternas+2497+La+Serena" target="_blank" rel="noopener"><span class="nd">Sin reseñas</span></a></div></td>
+                <td><span class="pill ok">Reclamada</span></td>
+                <td><span class="ig"><span class="sd">s/d</span></span></td>
+              </tr>
+              <tr class="you">
+                <td><div class="c-name"><a href="https://www.google.com/maps/search/C-MAX+Centro+Imagenologia+Maxilofacial+La+Serena" target="_blank" rel="noopener">C-MAX</a><span class="youtag">Su centro</span></div><div class="c-loc">La Serena</div><div class="c-stack">cmax.cl propio, sin sitio · Facebook · Sirona</div></td>
+                <td><span class="sector">Centro</span></td>
+                <td><span class="pill no">Caído</span></td>
+                <td><span class="pill na">Sin dato</span></td>
+                <td><span class="pill na">Sin dato</span></td>
+                <td><div class="rating"><a href="https://www.google.com/maps/search/C-MAX+Centro+Imagenologia+Maxilofacial+La+Serena" target="_blank" rel="noopener"><span class="nd">Sin reseñas</span></a></div></td>
+                <td><span class="pill ok">Reclamada</span></td>
+                <td><span class="ig"><span class="sd">s/d</span></span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <p class="tnote">El campo lo lideran Peñuelas (5,0), Láscar (4,9) y FocusRad (4,6). Pero el básico está sorprendentemente abandonado: <b>6 de los 13 centros no tienen sitio web funcionando</b> — dominio propio comprado pero sin sitio (C-MAX), páginas sin conectar (Cerro Grande) o solo redes sin dominio (Dimex, Peñuelas, DAP, Arenas). Quienes sí tienen web y agenda (Láscar, FocusRad, Sinergia, Scan Dent) son los que van ganando. Y en entrega de imágenes, <b>solo Láscar tiene un portal online</b>; el resto va a mano.</p>
+
+      <div class="subhead">Clínicas dentales que también hacen radiología (competencia indirecta)</div>
+      <div class="table-frame">
+        <div class="scroll">
+          <table>
+            <thead><tr><th>Clínica</th><th>Sector</th><th>Sitio web</th><th>Agenda online</th><th>Entrega online</th><th>Reseña Google</th><th>Radiología</th><th>Instagram</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><div class="c-name"><a href="https://www.google.com/maps/search/Clinica+Cerro+Grande+Cuatro+Esquinas+1617+La+Serena" target="_blank" rel="noopener">Clínica Cerro Grande</a></div><div class="c-loc">Cuatro Esquinas 1617 + Peñuelas</div><div class="c-stack">Wix sin conectar · IG @clinicacerrogrande · FB 5.511</div></td>
+                <td><span class="sector peri">Periferia</span></td>
+                <td><span class="pill no">Sin sitio</span></td>
+                <td><span class="pill ok">Sí (AgendaPro)</span></td>
+                <td><span class="pill na">Interna</span></td>
+                <td><div class="rating top"><a href="https://www.google.com/maps/search/Clinica+Cerro+Grande+Cuatro+Esquinas+1617+La+Serena" target="_blank" rel="noopener"><span class="num">4,8</span><span class="bar"><i style="width:96%"></i></span></a></div></td>
+                <td><span class="pill mid">Interna</span></td>
+                <td><span class="ig"><span class="sd">s/d</span></span></td>
+              </tr>
+              <tr>
+                <td><div class="c-name"><a href="https://agendapro.com/mp/cl/pl/clinica-dental-uno-salud-la-serena/35558" target="_blank" rel="noopener">Clínica Dental Uno Salud</a></div><div class="c-loc">Av. Balmaceda 555</div></td>
+                <td><span class="sector">Centro</span></td>
+                <td><span class="pill ok">Activo</span></td>
+                <td><span class="pill ok">Sí (AgendaPro)</span></td>
+                <td><span class="pill na">Interna</span></td>
+                <td><div class="rating"><a href="https://www.google.com/maps/search/Clinica+Dental+Uno+Salud+Balmaceda+555+La+Serena" target="_blank" rel="noopener"><span class="num">4,4</span><span class="bar"><i style="width:88%"></i></span></a></div></td>
+                <td><span class="pill mid">Interna</span></td>
+                <td><span class="ig"><span class="sd">s/d</span></span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="callout">
+        <div class="co-h">El campo de un vistazo · datos verificados jun-2026</div>
+        <div class="stat"><div class="n">5,0★</div><div class="l">la mejor reseña (Peñuelas)</div></div>
+        <div class="stat"><div class="n">8 de 15</div><div class="l">sin sitio web funcionando</div></div>
+        <div class="stat"><div class="n">1</div><div class="l">con portal de resultados (Láscar)</div></div>
+        <div class="stat"><div class="n">0</div><div class="l">con el portal completo de derivadores</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="shead">
+        <span class="snum">03</span>
+        <h2>Dos capas de competencia</h2>
+        <p class="sdesc">La mayoría pelea en lo básico. La capa que fideliza a los dentistas derivadores recién empieza a moverse, y la marcan los líderes.</p>
+      </div>
+      <div class="split">
+        <div class="basic">
+          <div class="col-head"><div><div class="k">Capa básica</div><h3>Ya compiten casi todos</h3></div><span class="verdict behind">Casi todos atrás</span></div>
+          <ul>
+            <li><span class="mk">!</span><span><b>Sitio web vivo.</b> Lo tienen Láscar, FocusRad, Scan Dent, Sinergia 3D y DentoRads. Llamativamente muchos no: C-MAX (dominio propio comprado pero sin sitio), Dimex, Peñuelas y DAP (sin dominio, solo redes) y Cerro Grande (página sin conectar).</span></li>
+            <li><span class="mk">!</span><span><b>Agenda online.</b> Sinergia (HealthAtom), Scan Dent (AgendaPro) y las clínicas ya reservan por internet.</span></li>
+            <li><span class="mk">!</span><span><b>Reputación.</b> Los líderes van de 4,6 a 5,0; el más bajo de los activos está en 3,0 y con la ficha sin reclamar.</span></li>
+          </ul>
+        </div>
+        <div class="adv">
+          <div class="col-head"><div><div class="k">Capa avanzada</div><h3>Recién la tocan los líderes</h3></div><span class="verdict free">Ventana abierta</span></div>
+          <ul>
+            <li><span class="mk">+</span><span><b>Láscar</b> ya ofrece acceso online a resultados para sus dentistas y trabaja con 14 clínicas asociadas.</span></li>
+            <li><span class="mk">+</span><span><b>FocusRad</b> tiene sección "Odontólogos" con teleradiología y órdenes digitales (acceso con clave).</span></li>
+            <li><span class="mk">+</span><span>Pero <b>nadie ofrece aún el portal completo</b>: derivador + visor DICOM web + descarga + informe + órdenes, todo integrado.</span></li>
+          </ul>
+        </div>
+      </div>
+      <p class="synthesis">El terreno avanzado no está vacío, está <b>empezando a ocuparse, y lo ocupan los líderes</b> (Láscar, FocusRad), no el resto. La ventaja todavía es construible, pero la ventana se cierra: <b>el que arme el portal completo de derivadores primero deja de competir por reputación y empieza a competir por dependencia.</b> Un dentista que recibe sus imágenes por un portal propio no se cambia de centro.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="shead">
+        <span class="snum">04</span>
+        <h2>Por qué la presencia digital pesa hoy</h2>
+        <p class="sdesc">No es solo competir mejor: el estándar del mercado y las obligaciones legales empujan en la misma dirección.</p>
+      </div>
+      <div class="split">
+        <div class="adv">
+          <div class="col-head"><div><div class="k">El estándar ya se movió</div><h3>El mercado entrega online</h3></div></div>
+          <ul>
+            <li><span class="mk">+</span><span><b>Centros líderes de Santiago</b> (3D Imagen, 3DRay) ya dan a los dentistas derivadores acceso digital a imágenes e informes.</span></li>
+            <li><span class="mk">+</span><span>El estándar técnico es <b>DICOM</b>; la entrega ya es digital, pero hoy se hace casi siempre por correo informal (Gmail), no por un portal.</span></li>
+            <li><span class="mk">+</span><span>Varios centros todavía entregan por medios manuales y sin sitio web: parten desde atrás de ese estándar.</span></li>
+          </ul>
+        </div>
+        <div class="basic">
+          <div class="col-head"><div><div class="k">Y hay reglas que cumplir</div><h3>Obligaciones que un sistema cubre</h3></div></div>
+          <ul>
+            <li><span class="mk">!</span><span><b>Ficha clínica (Ley 20.584):</b> debe conservarse 15 años y registrar quién accede a cada paciente. Un sistema lo hace solo; planillas y carpetas, no.</span></li>
+            <li><span class="mk">!</span><span><b>Las imágenes son datos sensibles.</b> Hoy se entregan casi siempre por Gmail o WhatsApp, sin control ni trazabilidad: justo el riesgo. Un portal con acceso registrado es la forma correcta.</span></li>
+            <li><span class="mk">!</span><span><b>Nuevas leyes, ya con fecha.</b> La Ley 21.719 de datos personales rige desde dic-2026 (datos de salud exigen consentimiento y avisar brechas, con multas), y la Ley 21.663 declara al sector salud "servicio esencial" en ciberseguridad.</span></li>
+          </ul>
+        </div>
+      </div>
+      <p class="synthesis">Un sistema propio no es un lujo: es la forma de <b>cumplir y, de paso, liderar.</b> Ni siquiera el software de gestión dental más usado del país integra un portal de derivadores; el espacio sigue abierto.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="shead">
+        <span class="snum">05</span>
+        <h2>Ficha y fuentes por centro</h2>
+        <p class="sdesc">El dato detrás de cada fila, con su enlace. Verificación: estado de sitio por DNS y carga real, calificaciones por ficha de Google en vivo, redes por perfil público.</p>
+      </div>
+      <div class="files">
+        <div class="file lead">
+          <div><div class="fn">Láscar Radiología <span class="youtag" style="background:var(--good)">Líder</span></div><div class="fmeta"><b>El más fuerte.</b> 4,9★, acceso online a resultados para dentistas y 14 clínicas asociadas: el modelo de red de derivadores ya en marcha. Curiosamente, casi sin redes (FB con 3 me gusta): su fuerza es reputación y portal, no social.</div></div>
+          <div><div class="fmeta">Amunátegui 489, Of. 205, La Serena · +56 9 8754 8426 · contacto@lascarradiologia.cl · login de dentistas en /_adminlascarra/.</div><div class="links"><span>Fuentes:</span><a href="https://lascarradiologia.cl/" target="_blank" rel="noopener">Sitio</a><a href="https://www.instagram.com/lascar_radiologiaoral/" target="_blank" rel="noopener">Instagram</a><a href="https://www.google.com/maps/search/Lascar+Radiologia+Amunategui+489+La+Serena" target="_blank" rel="noopener">Google Maps</a></div></div>
+        </div>
+        <div class="file">
+          <div><div class="fn">Centro Radiológico Peñuelas</div><div class="fmeta"><b>Mejor reputación (5,0).</b> En el sector Peñuelas, Coquimbo: fuera del centro de La Serena.</div></div>
+          <div><div class="fmeta">Regimiento Arica 1641, Coquimbo · tel 9 3934 4657 · radiología odontológica. Su "sitio web" en Google es solo Instagram: no tiene página propia pese a su 5,0.</div><div class="links"><span>Fuentes:</span><a href="https://www.google.com/maps/search/Centro+Radiologico+Penuelas+Regimiento+Arica+1641+Coquimbo" target="_blank" rel="noopener">Google Maps</a></div></div>
+        </div>
+        <div class="file">
+          <div><div class="fn">FocusRad</div><div class="fmeta"><b>Cadena nacional, 4,6.</b> El más avanzado en lo digital de los puros de radiología.</div></div>
+          <div><div class="fmeta">Amunátegui 785, Of. 225, La Serena · +56 51 240 6214 · WhatsApp +56 9 5868 1122 · IG @focusrad (1.412 seg.) · entrega DICOM, teleradiología, guías quirúrgicas. Sección "Odontólogos" con órdenes digitales (acceso con clave); pagos Transbank; sin reserva online ni precios públicos.</div><div class="links"><span>Fuentes:</span><a href="https://focusrad.cl/" target="_blank" rel="noopener">Sitio</a><a href="https://focusrad.cl/orden-la-serena" target="_blank" rel="noopener">Órdenes</a><a href="https://www.instagram.com/focusrad/" target="_blank" rel="noopener">Instagram</a></div></div>
+        </div>
+        <div class="file">
+        <div class="file">
+          <div><div class="fn">Scan Dent (Scandent 3D)</div><div class="fmeta"><b>Sitio + agenda, 4,0.</b> Buen equipamiento, pero ficha de Google sin reclamar.</div></div>
+          <div><div class="fmeta">Ánima de Diego 590, La Serena · +56 9 3336 3234 · IG @scandent3d (566 seg.) · equipos Sirona Orthophos y MyRay Hyperion X9 Pro. Reserva vía AgendaPro. Sin portal de imágenes.</div><div class="links"><span>Fuentes:</span><a href="https://scandent3d.cl/" target="_blank" rel="noopener">Sitio</a><a href="https://agendapro.com/mp/cl/pl/scan-dent-centro-radiologico-dental-la-serena/35619" target="_blank" rel="noopener">AgendaPro</a><a href="https://www.instagram.com/scandent3d/" target="_blank" rel="noopener">Instagram</a></div></div>
+        </div>
+        <div class="file">
+          <div><div class="fn">DentoRads</div><div class="fmeta"><b>Mismo edificio que FocusRad, 4,0.</b> Sitio propio, reserva por WhatsApp.</div></div>
+          <div><div class="fmeta">Amunátegui 785, Of. 322 (Edificio Arenas de Amunátegui), La Serena · +56 9 6740 6178 · entrega digital presencial, sin portal ni DICOM. Sin redes indexadas.</div><div class="links"><span>Fuentes:</span><a href="https://dentorads.cl/" target="_blank" rel="noopener">Sitio</a><a href="https://www.google.com/maps/search/DentoRads+La+Serena" target="_blank" rel="noopener">Google Maps</a></div></div>
+        </div>
+        <div class="file">
+          <div><div class="fn">Radiología La Serena</div><div class="fmeta"><b>Médica + dental, 3,9.</b> El mayor Instagram de la zona (6.928). Es radiología general, pero ya entrega resultados online vía telerradiología.</div></div>
+          <div><div class="fmeta">Av. Juan Cisternas 2497, Of. 309, La Serena · reserva en línea · IG @radiologialaserena (6.928 seg.) · portal de resultados (cima.telerradiologia.cl).</div><div class="links"><span>Fuentes:</span><a href="https://radiologialaserena.cl/" target="_blank" rel="noopener">Sitio</a><a href="https://www.instagram.com/radiologialaserena/" target="_blank" rel="noopener">Instagram</a><a href="https://www.google.com/maps/search/Radiologia+La+Serena+Cisternas+2497" target="_blank" rel="noopener">Maps</a></div></div>
+        </div>
+        <div class="file">
+          <div><div class="fn">Sinergia 3D · C-MAX</div><div class="fmeta"><b>Vecino y caído.</b> Sinergia 3D (vecino de Dimex, agenda HealthAtom, sin reseñas ni IG). C-MAX: dominio sin sitio operativo (junio 2026).</div></div>
+          <div><div class="fmeta">Sinergia: Juan Cisternas 2497, Local 002 · tel 9 3789 5955. C-MAX: La Serena, con ficha de Google pero sin web ni redes indexadas.</div><div class="links"><span>Fuentes:</span><a href="https://www.sinergia3d.cl/" target="_blank" rel="noopener">Sinergia</a><a href="https://www.google.com/maps/search/C-MAX+imagenologia+maxilofacial+La+Serena" target="_blank" rel="noopener">C-MAX Maps</a></div></div>
+        </div>
+        <div class="file">
+          <div><div class="fn">Dimex</div><div class="fmeta"><b>Fuerte en Instagram, ausente en lo demás.</b> 2.063 seguidores (el mayor IG dental del campo), pero sin web, sin agenda online y ficha sin reclamar en 3,0: la más baja del campo activo.</div></div>
+          <div><div class="fmeta">Av. Juan Cisternas 1960, Edificio Vita, Piso 3, Of. 32, La Serena · +56 51 243 3187 · dimexradiologia@gmail.com · Dr. Guillermo Ortiz.</div><div class="links"><span>Fuentes:</span><a href="https://www.instagram.com/dimex.radiologia.laserena/" target="_blank" rel="noopener">Instagram</a><a href="https://www.facebook.com/dimex.radiologia.dental.maxilofacial/" target="_blank" rel="noopener">Facebook</a><a href="https://www.google.com/maps/search/Dimex+Radiologia+Maxilofacial+La+Serena" target="_blank" rel="noopener">Google Maps</a></div></div>
+        </div>
+      </div>
+      <p class="method">Metodología: cada sitio fue cargado e inspeccionado directamente (junio 2026); las calificaciones se tomaron de la ficha de Google en vivo; el estado de los dominios se verificó por DNS y carga real en navegador (así se confirmó que Peñuelas funciona solo con Instagram y que clinicacerrogrande.cl es una página sin conectar). Conteos de Instagram: del perfil público (el de Dimex verificado por captura, el resto del perfil público). Donde no se pudo confirmar un dato con fuente directa se marca "sin dato" (s/d) en lugar de estimarlo. Se descartaron los centros sin operación real: Adonay (está en Santiago, comuna La Florida, no en La Serena) y dos centros sin actividad verificados en terreno (sin atención en la dirección). C-MAX tiene dominio propio (cmax.cl, comprado hasta 2030) pero sin sitio arriba, y Facebook activo.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span><b>Estudio Faro</b> · Sitios web y sistemas para centros de salud · WhatsApp +56 9 7146 6930 · estudiofaro.cl</span>
+    <span>Benchmark competitivo · Radiología dental La Serena–Coquimbo · Junio 2026</span>
+  </div>
+</footer>
+
+</body>
+</html>
