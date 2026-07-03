@@ -11,7 +11,7 @@
 :root{
   /* Cálido / familiar: crema + teal suave + coral/durazno */
   --bg:#fffdfb; --cream:#fff6ef; --cream-2:#fdeee3; --ink:#243b3c; --ink-2:#5e7273; --line:#f0e2d6;
-  --teal:#36b3ad; --teal-deep:#258c87; --teal-soft:#d3efed; --teal-tint:#e9f7f6;
+  --teal:#ff8a6b; --teal-deep:#f06a48; --teal-soft:#ffe2d8; --teal-tint:#fff1eb;
   --coral:#ff8a6b; --coral-deep:#f06a48; --coral-soft:#ffe2d8; --coral-tint:#fff1eb;
   --petrol:#0c282f; --wa:#25d366;
   --r:14px; --r-lg:20px; --r-xl:28px; --r-pill:999px;
@@ -96,12 +96,12 @@ a{color:inherit}
 .hero-copy .eyebrow{margin-bottom:.7rem;display:inline-flex;align-items:center;gap:.45rem;background:var(--coral-tint);color:var(--coral-deep);padding:.34rem .85rem;border-radius:var(--r-pill)}
 .hero-copy .eyebrow .heart{width:14px;height:14px}
 .hero h1{font-size:clamp(2.4rem,6vw,4.3rem);max-width:14ch;margin-bottom:1rem}
-.hero h1 em{font-style:normal;color:var(--teal-deep)}
+.hero h1 em{font-style:normal;color:inherit;font-weight:inherit}
 .hero p.sub{font-size:clamp(1.05rem,2vw,1.26rem);max-width:46ch;color:var(--ink-2);font-weight:500}
 .hero-cta{display:flex;flex-wrap:wrap;gap:.8rem;margin:1.7rem 0 1.6rem}
 .hero-badges{display:flex;flex-wrap:wrap;gap:.55rem .9rem;align-items:center;font-weight:600;font-size:.92rem;color:var(--ink-2)}
 .hero-badges .b{display:inline-flex;align-items:center;gap:.4rem}
-.hero-badges .star{color:#f0a830;font-weight:700}
+.hero-badges .star{color:#f06a48;font-weight:700}
 .hero-badges .dot{width:5px;height:5px;border-radius:50%;background:var(--coral);display:inline-block}
 .hero-media{position:relative}
 .hero-media .photo{border-radius:var(--r-xl);overflow:hidden;box-shadow:var(--shadow-soft);aspect-ratio:4/5;border:6px solid #fff}
@@ -117,9 +117,9 @@ a{color:inherit}
 /* ===== CONVENIOS ===== */
 .convenios{background:var(--teal-deep);color:#dff6f4}
 .convenios-inner{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:.5rem 1rem;padding:1.05rem 0;text-align:center}
-.convenios .lbl{font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#9fe0db}
+.convenios .lbl{font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#ffcdbd}
 .convenios .conv-line{font-size:.98rem;font-weight:600;color:#f1fcfb}
-.convenios svg{width:18px;height:18px;color:#bff0ec;flex-shrink:0}
+.convenios svg{width:18px;height:18px;color:#ffcdbd;flex-shrink:0}
 
 /* ===== SECTION SHELL ===== */
 section{position:relative}
@@ -139,7 +139,7 @@ section{position:relative}
 .why-card .ic svg{width:28px;height:28px}
 .why-card.c1 .ic{background:var(--coral-tint);color:var(--coral-deep)}
 .why-card.c2 .ic{background:var(--teal-tint);color:var(--teal-deep)}
-.why-card.c3 .ic{background:#fff3d6;color:#c98a18}
+.why-card.c3 .ic{background:#fff1eb;color:#c98a18}
 .why-card h3{font-size:1.22rem;margin-bottom:.45rem}
 .why-card p{color:var(--ink-2);font-size:.96rem}
 
@@ -217,7 +217,7 @@ section{position:relative}
 .test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:2.4rem}
 .test-card{background:#fff;border:1px solid var(--line);border-radius:var(--r-xl);padding:1.6rem;display:flex;flex-direction:column;gap:.8rem;position:relative}
 .test-card .quote{position:absolute;top:1rem;right:1.2rem;font-family:"Bricolage Grotesque";font-size:3rem;color:var(--coral-soft);line-height:1}
-.test-card .stars{color:#f0a830;font-size:1rem;letter-spacing:.1em}
+.test-card .stars{color:#f06a48;font-size:1rem;letter-spacing:.1em}
 .test-card p{color:var(--ink);font-size:1rem;flex:1}
 .test-card .who{display:flex;align-items:center;gap:.7rem;margin-top:.4rem}
 .test-card .who img{width:46px;height:46px;border-radius:50%;object-fit:cover}
@@ -407,14 +407,7 @@ section{position:relative}
         <a class="btn btn-primary btn-lg" href="#agendar">Agendar hora</a>
         <a class="btn btn-ghost btn-lg" href="#familia">Atención para niños</a>
       </div>
-      <div class="hero-badges">
-        <span class="b"><span class="star">★</span> 4.9 en Google</span>
-        <span class="dot"></span>
-        <span class="b">Trato cercano garantizado</span>
-        <span class="dot"></span>
-        <span class="b">Niños y adultos</span>
       </div>
-    </div>
     <div class="hero-media">
       <div class="photo">
         <img src="../../assets/dental/d09.jpg" width="640" height="800" alt="Paciente sonriendo tranquila después de su atención en Dental Art" loading="eager">
@@ -424,7 +417,7 @@ section{position:relative}
         Sin miedo al dentista
       </div>
       <div class="float">
-        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 3v6c0 5-3.5 8.5-8 11-4.5-2.5-8-6-8-11V5z"/><path d="M9 12l2 2 4-4"/></svg></span>
         <div><b>Atendemos isapres</b><span>y Fonasa · te ayudamos con el bono</span></div>
       </div>
     </div>
@@ -434,7 +427,6 @@ section{position:relative}
 <!-- ===== CONVENIOS ===== -->
 <section class="convenios" id="convenios">
   <div class="wrap convenios-inner">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
     <span class="lbl">Convenios</span>
     <span class="conv-line">Atendemos las principales isapres y Fonasa · te orientamos con el bono y el reembolso</span>
   </div>
@@ -526,8 +518,8 @@ section{position:relative}
   <div class="wrap">
     <div class="res-grid">
       <div class="ba" id="ba">
-        <img class="before" src="../../assets/dental/d09.jpg" width="600" height="450" alt="Paciente antes del tratamiento dental" loading="lazy">
-        <img class="after" id="baAfter" src="../../assets/dental/d03.jpg" width="600" height="450" alt="Sonrisa del paciente después del tratamiento" loading="lazy">
+        <img class="before" src="../../assets/dental/d03_before.jpg" width="600" height="450" alt="Paciente antes del tratamiento dental" loading="lazy">
+        <img class="after" id="baAfter" src="../../assets/dental/d03_after.jpg" width="600" height="450" alt="Sonrisa del paciente después del tratamiento" loading="lazy">
         <span class="tag-ba tag-before">Antes</span>
         <span class="tag-ba tag-after">Después</span>
         <div class="divider" id="baDivider"></div>
@@ -540,10 +532,6 @@ section{position:relative}
         <p class="eyebrow">Sonrisas reales</p>
         <h2>El cambio que se nota… y se siente</h2>
         <p>Cada sonrisa es un plan pensado paciente a paciente, con cariño y al detalle. Arrastra el control para ver el antes y el después de un caso real de nuestra clínica.</p>
-        <div class="res-stats">
-          <div class="s"><b>+3.000</b><span>pacientes felices</span></div>
-          <div class="s"><b>7</b><span>especialidades</span></div>
-          <div class="s"><b>4.9★</b><span>valoración Google</span></div>
         </div>
       </div>
     </div>

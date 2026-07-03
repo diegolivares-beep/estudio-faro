@@ -95,7 +95,7 @@ a{color:inherit}
 .hero-inner{position:relative;display:grid;grid-template-columns:1.04fr .96fr;gap:clamp(1.6rem,4vw,3.8rem);align-items:center;padding:clamp(2.6rem,6vw,5.4rem) 0 clamp(2.8rem,6vw,5.4rem)}
 .hero-copy .eyebrow{margin-bottom:1rem;display:block}
 .hero h1{font-size:clamp(2.5rem,6.2vw,4.6rem);max-width:14ch;margin-bottom:1.1rem;font-weight:600}
-.hero h1 em{font-style:italic;color:var(--gold);font-weight:700}
+.hero h1 em{font-style:normal;color:inherit;font-weight:inherit}
 .hero p.sub{font-size:clamp(1.05rem,2vw,1.26rem);max-width:46ch;color:var(--cream-2);font-weight:400}
 .hero-cta{display:flex;flex-wrap:wrap;gap:.8rem;margin:1.9rem 0 1.8rem}
 .hero-badges{display:flex;flex-wrap:wrap;gap:.5rem 1rem;align-items:center;font-weight:600;font-size:.9rem;color:var(--cream-2)}
@@ -399,17 +399,10 @@ section{position:relative}
         <a class="btn btn-primary btn-lg" href="#agendar">Agendar evaluación</a>
         <a class="btn btn-ghost btn-lg" href="#estetica">Ver diseño de sonrisa</a>
       </div>
-      <div class="hero-badges">
-        <span class="b"><span class="star">★</span> 4.9 en Google</span>
-        <span class="dot"></span>
-        <span class="b">+3.000 pacientes</span>
-        <span class="dot"></span>
-        <span class="b">Ed. Dentimed, La Serena</span>
       </div>
-    </div>
     <div class="hero-media">
       <div class="frame">
-        <img src="../../assets/dental/d03.jpg" width="640" height="800" alt="Primer plano de una sonrisa luminosa tras diseño de sonrisa" loading="eager">
+        <img src="../../assets/dental/d03_after.jpg" width="640" height="800" alt="Primer plano de una sonrisa luminosa tras diseño de sonrisa" loading="eager">
       </div>
       <div class="float">
         <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 6.5L21 9l-5 4.4L17.5 21 12 17.3 6.5 21 8 13.4 3 9l6.6-.5z"/></svg></span>
@@ -433,7 +426,7 @@ section{position:relative}
     <div class="est-grid">
       <div class="est-media">
         <span class="seal">Estética dental</span>
-        <img src="../../assets/dental/d03.jpg" width="560" height="700" alt="Sonrisa armónica resultado de diseño de sonrisa y carillas" loading="lazy">
+        <img src="../../assets/dental/d03_after.jpg" width="560" height="700" alt="Sonrisa armónica resultado de diseño de sonrisa y carillas" loading="lazy">
       </div>
       <div class="est-copy">
         <span class="eyebrow"><span class="gold-rule"></span>Nuestro foco</span>
@@ -528,8 +521,8 @@ section{position:relative}
   <div class="wrap">
     <div class="res-grid">
       <div class="ba" id="ba">
-        <img class="before" src="../../assets/dental/d09.jpg" width="600" height="450" alt="Paciente antes del tratamiento estético" loading="lazy">
-        <img class="after" id="baAfter" src="../../assets/dental/d03.jpg" width="600" height="450" alt="Resultado de la sonrisa después del diseño de sonrisa" loading="lazy">
+        <img class="before" src="../../assets/dental/d03_before.jpg" width="600" height="450" alt="Paciente antes del tratamiento estético" loading="lazy">
+        <img class="after" id="baAfter" src="../../assets/dental/d03_after.jpg" width="600" height="450" alt="Resultado de la sonrisa después del diseño de sonrisa" loading="lazy">
         <span class="tag-ba tag-before">Antes</span>
         <span class="tag-ba tag-after">Después</span>
         <div class="divider" id="baDivider"></div>
@@ -542,10 +535,6 @@ section{position:relative}
         <span class="eyebrow"><span class="gold-rule"></span>Casos reales</span>
         <h2>Resultados que transforman</h2>
         <p>Cada sonrisa es un plan pensado paciente a paciente, con previsualización antes de comenzar. Arrastra el control para ver el antes y el después de un caso real de diseño de sonrisa.</p>
-        <div class="res-stats">
-          <div class="s"><b>+3.000</b><span>pacientes atendidos</span></div>
-          <div class="s"><b>7</b><span>especialidades</span></div>
-          <div class="s"><b>4.9★</b><span>valoración Google</span></div>
         </div>
       </div>
     </div>
@@ -721,7 +710,7 @@ section{position:relative}
 
         <div class="form-success" id="agendaSuccess" aria-live="polite">
           <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div>
-          <h3>✓ Hora solicitada</h3>
+          <h3>Hora solicitada</h3>
           <p id="successMsg">Te confirmamos por WhatsApp a la brevedad. ¡Gracias por preferir Dental Art!</p>
           <button type="button" class="btn btn-ghost" id="agendaReset">Agendar otra hora</button>
         </div>
