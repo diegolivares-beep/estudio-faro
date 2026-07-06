@@ -141,6 +141,56 @@
 
   .wafloat{position:fixed;right:16px;bottom:16px;z-index:60;background:var(--wa);color:#fff;border-radius:6px;padding:12px 16px;font-weight:700;box-shadow:0 8px 24px rgba(37,211,102,.4);display:flex;align-items:center;gap:9px}
   .wafloat svg{width:20px;height:20px;stroke:#fff;fill:none;stroke-width:1.9}
+
+  /* reserva online */
+  dialog.bkg{border:0;border-radius:var(--r);padding:0;width:min(560px,calc(100vw - 32px));max-height:min(92vh,760px);box-shadow:0 24px 70px rgba(13,39,64,.35)}
+  dialog.bkg::backdrop{background:rgba(9,26,43,.55)}
+  .bk-head{display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--navy);color:#fff;padding:16px 20px}
+  .bk-head b{font-family:'Barlow';font-size:18px;font-weight:800}
+  .bk-head span{display:block;font-size:12.5px;color:#9fb6cb;font-weight:500;margin-top:1px}
+  .bk-x{background:rgba(255,255,255,.12);border:0;color:#fff;width:32px;height:32px;border-radius:4px;cursor:pointer;font-size:16px;line-height:1}
+  .bk-x:hover{background:rgba(255,255,255,.22)}
+  .bk-steps{display:flex;border-bottom:1px solid var(--line);background:#fff}
+  .bk-steps .s{flex:1;text-align:center;font-family:'Barlow';font-size:12.5px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;color:var(--ink-3);padding:11px 4px;border-bottom:2px solid transparent}
+  .bk-steps .s.on{color:var(--blue);border-bottom-color:var(--blue)}
+  .bk-steps .s.done{color:var(--ink-2)}
+  .bk-body{padding:20px;overflow-y:auto;max-height:calc(92vh - 175px);background:#fff}
+  .bk-body h4{font-family:'Barlow';font-size:16.5px;font-weight:700;color:var(--ink);margin-bottom:13px}
+  .bk-ex{display:flex;flex-direction:column;gap:8px}
+  .bk-ex label{display:flex;align-items:center;gap:12px;border:1.5px solid var(--line);border-radius:4px;padding:12px 14px;cursor:pointer;transition:.12s}
+  .bk-ex label:hover{border-color:#b9cede}
+  .bk-ex input{accent-color:var(--blue);width:17px;height:17px;flex:0 0 auto}
+  .bk-ex label.sel{border-color:var(--blue);background:var(--blue-l)}
+  .bk-ex .nm{flex:1;font-weight:600;font-size:14.5px;color:var(--ink)}
+  .bk-ex .nm small{display:block;font-weight:500;font-size:12.5px;color:var(--ink-3)}
+  .bk-ex .pr{font-family:'Barlow';font-weight:700;font-size:14.5px;color:var(--navy);white-space:nowrap}
+  .bk-note{font-size:12.5px;color:var(--ink-3);margin-top:12px}
+  .bk-days{display:flex;gap:7px;overflow-x:auto;padding-bottom:6px;margin-bottom:16px}
+  .bk-days button{flex:0 0 auto;border:1.5px solid var(--line);background:#fff;border-radius:4px;padding:8px 12px;cursor:pointer;text-align:center;font-family:'Inter'}
+  .bk-days button.sel{border-color:var(--blue);background:var(--blue-l)}
+  .bk-days .dw{display:block;font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-3)}
+  .bk-days .dn{display:block;font-family:'Barlow';font-weight:800;font-size:17px;color:var(--ink)}
+  .bk-days .dm2{display:block;font-size:11px;color:var(--ink-3)}
+  .bk-slots{display:grid;grid-template-columns:repeat(auto-fill,minmax(86px,1fr));gap:7px}
+  .bk-slots button{border:1.5px solid var(--line);background:#fff;border-radius:4px;padding:9px 4px;font-weight:600;font-size:13.5px;color:var(--ink);cursor:pointer;font-family:'Inter'}
+  .bk-slots button:disabled{color:#c2cdd7;text-decoration:line-through;cursor:default;background:#f7fafc}
+  .bk-slots button.sel{border-color:var(--blue);background:var(--blue);color:#fff}
+  .bk-form{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .bk-form .full{grid-column:1/-1}
+  .bk-form label{display:block;font-size:12.5px;font-weight:700;color:var(--ink-2);margin-bottom:5px}
+  .bk-form input,.bk-form select{width:100%;border:1.5px solid var(--line);border-radius:4px;padding:10px 12px;font-size:14.5px;font-family:'Inter';color:var(--ink);background:#fff}
+  .bk-form input:focus,.bk-form select:focus{outline:none;border-color:var(--blue)}
+  .bk-form input.err{border-color:#c0392b}
+  .bk-sum{border:1px solid var(--line);border-radius:4px;background:var(--bg);padding:14px 16px;margin-bottom:16px;font-size:14px;color:var(--ink-2)}
+  .bk-sum b{color:var(--ink)}
+  .bk-foot{display:flex;justify-content:space-between;gap:10px;padding:14px 20px;border-top:1px solid var(--line);background:#fff}
+  .bk-ok{text-align:center;padding:14px 6px 6px}
+  .bk-ok .okic{width:56px;height:56px;border-radius:50%;background:var(--blue-l);color:var(--blue);display:grid;place-items:center;margin:0 auto 14px}
+  .bk-ok .okic svg{width:28px;height:28px;stroke:currentColor;stroke-width:2.2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+  .bk-ok h4{font-size:20px;margin-bottom:4px}
+  .bk-ok .folio{font-family:'Barlow';font-weight:800;color:var(--blue);font-size:15px;letter-spacing:.04em}
+  .bk-ok p{font-size:14px;color:var(--ink-2);margin-top:10px}
+  @media(max-width:560px){.bk-form{grid-template-columns:1fr}.bk-body{padding:16px}}
 </style>
 </head>
 <body>
@@ -152,7 +202,7 @@
   </nav>
   <span class="sp"></span>
   <span class="navtel">(51) 2 345 678</span>
-  <a class="btn btn-blue" href="#contacto">Agenda aquí</a>
+  <button class="btn btn-blue js-book" type="button">Agenda aquí</button>
 </div></header>
 
 <section class="hero">
@@ -164,7 +214,7 @@
     <div class="fonasa"><span class="a">Fonasa</span><span class="b">Isapres · Particulares</span></div>
     <p class="hfeat">Entrega digital&nbsp;&nbsp;·&nbsp;&nbsp;Baja radiación&nbsp;&nbsp;·&nbsp;&nbsp;Informe de especialista</p>
     <div class="cta">
-      <a class="btn btn-white" href="#contacto">Reserva tu examen</a>
+      <button class="btn btn-white js-book" type="button">Reserva tu examen</button>
       <a class="btn btn-wa" href="https://wa.me/56900000000" target="_blank" rel="noopener">WhatsApp</a>
     </div>
   </div></div>
@@ -252,8 +302,8 @@
       <div class="r"><div class="ic"><svg viewBox="0 0 24 24" class="ico"><path d="M6 3h4l2 5-3 2a11 11 0 0 0 5 5l2-3 5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 4 5a2 2 0 0 1 2-2z"/></svg></div><div><b>Teléfono / WhatsApp</b><span>(51) 2 345 678 · +56 9 0000 0000</span></div></div>
       <div class="r"><div class="ic"><svg viewBox="0 0 24 24" class="ico"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M3 7l9 6 9-6"/></svg></div><div><b>Correo</b><span>contacto@radent.cl</span></div></div>
       <div class="cta">
+        <button class="btn btn-blue js-book" type="button">Reservar hora online</button>
         <a class="btn btn-wa" href="https://wa.me/56900000000" target="_blank" rel="noopener">Escribir por WhatsApp</a>
-        <a class="btn btn-ol-d" href="#dentistas">Generar orden online</a>
       </div>
     </div>
     <div class="cmap"><div id="dmap"></div></div>
@@ -270,7 +320,156 @@
 
 <a class="wafloat" href="https://wa.me/56900000000" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M4 20l1.6-4A8 8 0 1 1 9 18.4z"/></svg>WhatsApp</a>
 
+<dialog class="bkg" id="bk">
+  <div class="bk-head">
+    <div><b>Reserva tu hora</b><span>Confirmación inmediata · sin llamar</span></div>
+    <button class="bk-x" type="button" onclick="bkClose()" aria-label="Cerrar">✕</button>
+  </div>
+  <div class="bk-steps" id="bkSteps">
+    <div class="s on">1 · Examen</div><div class="s">2 · Fecha y hora</div><div class="s">3 · Tus datos</div>
+  </div>
+  <div class="bk-body" id="bkBody"></div>
+  <div class="bk-foot" id="bkFoot"></div>
+</dialog>
+
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function(){
+  const EX=[
+    {n:"Radiografía panorámica",d:"Arcadas completas, ATM y senos maxilares",p:15000},
+    {n:"Cone Beam 3D (CBCT)",d:"Tomografía 3D para implantes y cirugía",p:45000},
+    {n:"Teleradiografía y cefalometría",d:"Lateral o frontal de cráneo con trazados",p:14000},
+    {n:"Scanner intraoral 3D",d:"Impresión digital sin cubetas, archivo STL",p:35000},
+    {n:"Periapical y bitewing",d:"Detalle fino por pieza dental",p:8000},
+    {n:"ATM y vía aérea",d:"Estudio articular y de vía aérea en 3D",p:48000}
+  ];
+  const DOW=["Dom","Lun","Mar","Mié","Jue","Vie","Sáb"];
+  const MES=["ene","feb","mar","abr","may","jun","jul","ago","sep","oct","nov","dic"];
+  const clp=v=>"$"+v.toLocaleString("es-CL");
+  let step=1, sel={ex:null,day:null,slot:null};
+
+  const bk=document.getElementById("bk"), body=document.getElementById("bkBody"),
+        foot=document.getElementById("bkFoot"), stepsEl=document.getElementById("bkSteps");
+
+  function days(){
+    const out=[]; const t=new Date();
+    for(let i=1;out.length<12;i++){
+      const d=new Date(t.getFullYear(),t.getMonth(),t.getDate()+i);
+      if(d.getDay()===0) continue;               // domingo cerrado
+      out.push(d);
+    }
+    return out;
+  }
+  function slots(d){
+    const sab=d.getDay()===6, out=[];
+    const from=sab?9*60:8*60+30, to=sab?12*60+30:18*60+30;
+    for(let m=from;m<=to;m+=30){
+      const h=String(Math.floor(m/60)).padStart(2,"0")+":"+String(m%60).padStart(2,"0");
+      // ocupación determinista (~1 de cada 4)
+      const taken=((d.getDate()*7+m/30)%4)===0;
+      out.push({h,taken});
+    }
+    return out;
+  }
+  function setStep(n){
+    step=n;
+    [...stepsEl.children].forEach((el,i)=>{
+      el.className="s"+(i+1===n?" on":(i+1<n?" done":""));
+    });
+  }
+  function nav(back,next,nextLbl){
+    foot.innerHTML="";
+    if(back){const b=document.createElement("button");b.className="btn btn-ol-d";b.type="button";b.textContent="Volver";b.onclick=back;foot.appendChild(b);}
+    else foot.appendChild(document.createElement("span"));
+    if(next){const b=document.createElement("button");b.className="btn btn-blue";b.type="button";b.textContent=nextLbl;b.onclick=next;foot.appendChild(b);}
+  }
+
+  function paso1(){
+    setStep(1);
+    body.innerHTML='<h4>¿Qué examen necesitas?</h4><div class="bk-ex" id="exl"></div>'+
+      '<p class="bk-note">Valores particulares de referencia. Con bono Fonasa o isapre el valor puede variar. Si tienes orden de tu dentista, tráela o adjúntala al llegar.</p>';
+    const l=document.getElementById("exl");
+    EX.forEach((e,i)=>{
+      const lb=document.createElement("label");
+      if(sel.ex===i) lb.className="sel";
+      lb.innerHTML='<input type="radio" name="ex" '+(sel.ex===i?"checked":"")+'><span class="nm">'+e.n+'<small>'+e.d+'</small></span><span class="pr">'+clp(e.p)+'</span>';
+      lb.onclick=()=>{sel.ex=i;[...l.children].forEach(c=>c.classList.remove("sel"));lb.classList.add("sel");lb.querySelector("input").checked=true;};
+      l.appendChild(lb);
+    });
+    nav(null,()=>{ if(sel.ex===null){alert("Elige un examen para continuar.");return;} paso2(); },"Elegir fecha y hora");
+  }
+
+  function paso2(){
+    setStep(2);
+    const ds=days();
+    if(sel.day===null) sel.day=0;
+    body.innerHTML='<h4>Elige el día</h4><div class="bk-days" id="dl"></div><h4>Horas disponibles</h4><div class="bk-slots" id="sl"></div>';
+    const dl=document.getElementById("dl"), slel=document.getElementById("sl");
+    function paintSlots(){
+      const d=ds[sel.day]; slel.innerHTML="";
+      slots(d).forEach(s=>{
+        const b=document.createElement("button"); b.type="button"; b.textContent=s.h; b.disabled=s.taken;
+        if(sel.slot===s.h && !s.taken) b.className="sel";
+        b.onclick=()=>{sel.slot=s.h;[...slel.children].forEach(c=>c.classList.remove("sel"));b.classList.add("sel");};
+        slel.appendChild(b);
+      });
+    }
+    ds.forEach((d,i)=>{
+      const b=document.createElement("button"); b.type="button";
+      if(sel.day===i) b.className="sel";
+      b.innerHTML='<span class="dw">'+DOW[d.getDay()]+'</span><span class="dn">'+d.getDate()+'</span><span class="dm2">'+MES[d.getMonth()]+'</span>';
+      b.onclick=()=>{sel.day=i;sel.slot=null;[...dl.children].forEach(c=>c.classList.remove("sel"));b.classList.add("sel");paintSlots();};
+      dl.appendChild(b);
+    });
+    paintSlots();
+    nav(paso1,()=>{ if(!sel.slot){alert("Elige una hora disponible.");return;} sel.fecha=ds[sel.day]; paso3(); },"Continuar");
+  }
+
+  function paso3(){
+    setStep(3);
+    const e=EX[sel.ex], d=sel.fecha;
+    body.innerHTML=
+      '<div class="bk-sum"><b>'+e.n+'</b> · '+DOW[d.getDay()]+' '+d.getDate()+' de '+MES[d.getMonth()]+' · '+sel.slot+' hrs · <b>'+clp(e.p)+'</b></div>'+
+      '<h4>Tus datos</h4>'+
+      '<div class="bk-form">'+
+        '<div class="full"><label>Nombre y apellido</label><input id="f-nom" autocomplete="name" placeholder="Ej: Carolina Rojas"></div>'+
+        '<div><label>RUT</label><input id="f-rut" placeholder="12.345.678-9"></div>'+
+        '<div><label>Teléfono</label><input id="f-tel" autocomplete="tel" placeholder="+56 9 …"></div>'+
+        '<div class="full"><label>Correo (recibirás la confirmación)</label><input id="f-mail" type="email" autocomplete="email" placeholder="tucorreo@…"></div>'+
+        '<div><label>Previsión</label><select id="f-prev"><option>Fonasa</option><option>Isapre</option><option>Particular</option></select></div>'+
+        '<div><label>Dentista que deriva (opcional)</label><input id="f-den" placeholder="Dr./Dra. …"></div>'+
+      '</div>';
+    nav(paso2,()=>{
+      let ok=true;
+      ["f-nom","f-rut","f-tel"].forEach(id=>{const i=document.getElementById(id);i.classList.toggle("err",!i.value.trim());if(!i.value.trim())ok=false;});
+      const m=document.getElementById("f-mail"); m.classList.toggle("err",!/^\S+@\S+\.\S+$/.test(m.value)); if(m.classList.contains("err"))ok=false;
+      if(!ok) return;
+      confirmar();
+    },"Confirmar reserva");
+  }
+
+  function confirmar(){
+    const e=EX[sel.ex], d=sel.fecha;
+    const folio="RD-"+String(d.getDate()).padStart(2,"0")+String(d.getMonth()+1).padStart(2,"0")+"-"+String(Math.floor(1000+((d.getDate()*37+sel.slot.charCodeAt(0)*13)%9000)));
+    try{localStorage.setItem("radent_reserva",JSON.stringify({folio,ex:e.n,fecha:d.toISOString(),hora:sel.slot}));}catch(_){}
+    stepsEl.style.display="none";
+    body.innerHTML='<div class="bk-ok">'+
+      '<div class="okic"><svg viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5"/></svg></div>'+
+      '<h4>Hora reservada</h4><div class="folio">Folio '+folio+'</div>'+
+      '<p><b>'+e.n+'</b><br>'+DOW[d.getDay()]+' '+d.getDate()+' de '+MES[d.getMonth()]+' · '+sel.slot+' hrs<br>Av. Francisco de Aguirre 234, Of. 41, La Serena</p>'+
+      '<p>Te enviamos la confirmación por correo y WhatsApp.<br>Si necesitas cambiarla, respóndenos por cualquiera de los dos.</p></div>';
+    foot.innerHTML="";
+    const b=document.createElement("button"); b.className="btn btn-blue"; b.type="button"; b.textContent="Listo"; b.style.marginLeft="auto";
+    b.onclick=bkClose; foot.appendChild(b);
+  }
+
+  window.bkClose=function(){ bk.close(); };
+  document.querySelectorAll(".js-book").forEach(el=>el.addEventListener("click",()=>{
+    step=1; sel={ex:null,day:null,slot:null}; stepsEl.style.display="flex"; paso1(); bk.showModal();
+  }));
+  bk.addEventListener("click",e=>{ if(e.target===bk) bk.close(); });
+})();
+</script>
 <script>
   const dm=L.map('dmap',{zoomControl:true,scrollWheelZoom:false}).setView([-29.9032,-71.2531],15);
   L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',{maxZoom:20,subdomains:'abcd',attribution:'© OpenStreetMap © CARTO'}).addTo(dm);
