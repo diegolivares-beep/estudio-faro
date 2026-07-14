@@ -2,9 +2,21 @@
   "updated": "2026-07-14",
   "intro": "En qué está trabajando Diego, qué avanzó y qué murió. Se actualiza cada semana desde su sistema de registro; lo que dice acá es la realidad, incluidos los descartes.",
   "semana": [
-    { "dias": "Sáb, dom y feriados", "que": "Líder", "detalle": "trabajo formal" },
-    { "dias": "2 días / semana", "que": "Turismo Raíces del Sur", "detalle": "gestión Meta Business" },
-    { "dias": "3 días / semana", "que": "Proyectos propios", "detalle": "experimentos y encargos" }
+    {
+      "detalle": "trabajo formal",
+      "dias": "Sáb, dom y feriados",
+      "que": "Líder"
+    },
+    {
+      "detalle": "gestión Meta Business",
+      "dias": "2 días / semana",
+      "que": "Turismo Raíces del Sur"
+    },
+    {
+      "detalle": "experimentos y encargos",
+      "dias": "3 días / semana",
+      "que": "Proyectos propios"
+    }
   ],
   "proyectos": [
     {
@@ -13,7 +25,10 @@
       "tag": "cliente estable",
       "estado": "activo",
       "que": "Gestión de Meta Business para una agencia de viajes con 3 sucursales (La Serena, Ovalle, Monte Patria): campañas, pauta y medición. No es community management: es aprender a vender por Meta con presupuesto real.",
-      "novedad": { "fecha": "2026-07-13", "texto": "Terminó la primera campaña Click-to-WhatsApp (viaje a Caldera, desde Monte Patria)." },
+      "novedad": {
+        "fecha": "2026-07-13",
+        "texto": "Terminó la primera campaña Click-to-WhatsApp (viaje a Caldera, desde Monte Patria)."
+      },
       "siguiente": "Revisar resultados de la campaña y formalizar el acuerdo mensual por escrito."
     },
     {
@@ -22,7 +37,10 @@
       "tag": "experimento",
       "estado": "activo",
       "que": "Personal shopper de básicos: validar si la gente paga por no ir al súper. Elegido porque la demanda se prueba rápido y barato con un anuncio; si no funciona, se desecha.",
-      "novedad": { "fecha": "2026-07-12", "texto": "Nombre y fundamentos definidos. Creando los perfiles de Facebook e Instagram." },
+      "novedad": {
+        "fecha": "2026-07-12",
+        "texto": "Nombre y fundamentos definidos. Creando los perfiles de Facebook e Instagram."
+      },
       "siguiente": "Publicar el anuncio de validación de demanda y medir pedidos reales."
     },
     {
@@ -31,7 +49,10 @@
       "tag": "encargo UCN",
       "estado": "activo",
       "que": "Revisor del instrumento VINCULAB: evaluación de 33 proyectos postulados, con nota fundamentada por criterio.",
-      "novedad": { "fecha": "2026-07-14", "texto": "Los 33 evaluados en borrador; profundizando la justificación criterio por criterio." },
+      "novedad": {
+        "fecha": "2026-07-14",
+        "texto": "Los 33 evaluados en borrador; profundizando la justificación criterio por criterio."
+      },
       "siguiente": "Pasar las notas al panel oficial antes del 22 de julio."
     },
     {
@@ -40,7 +61,10 @@
       "tag": "trabajo TROMO",
       "estado": "activo",
       "que": "App de comandas para restaurantes, en producción con cliente real. Rol: desarrollo y operación.",
-      "novedad": { "fecha": "2026-07-05", "texto": "Marca del patrocinio Corfo agregada a la app; watchdog automático contra caídas del proxy funcionando." },
+      "novedad": {
+        "fecha": "2026-07-05",
+        "texto": "Marca del patrocinio Corfo agregada a la app; watchdog automático contra caídas del proxy funcionando."
+      },
       "siguiente": "Mantenimiento y mejoras según pilotaje."
     },
     {
@@ -49,7 +73,10 @@
       "tag": "exploración",
       "estado": "activo",
       "que": "Posible herramienta para una contadora, vía hermano contador. Primer candidato a software pagado tras descartar el ERP clínico.",
-      "novedad": { "fecha": "2026-07-14", "texto": "Apareció la oportunidad; todavía no hay alcance definido." },
+      "novedad": {
+        "fecha": "2026-07-14",
+        "texto": "Apareció la oportunidad; todavía no hay alcance definido."
+      },
       "siguiente": "Conversación de descubrimiento: qué hace hoy, dónde pierde horas, cuánto pagaría. Nada de código antes de eso."
     },
     {
@@ -58,7 +85,10 @@
       "tag": "agencia propia",
       "estado": "activo",
       "que": "Webs y presencia digital para PYMEs de La Serena y Coquimbo. Clientes: Central Arranque, Jardín del Café (contenido recurrente), Raíces del Sur.",
-      "novedad": { "fecha": "2026-07-06", "texto": "Catálogo autoadministrable de Central Arranque entregado y funcionando en producción." },
+      "novedad": {
+        "fecha": "2026-07-06",
+        "texto": "Catálogo autoadministrable de Central Arranque entregado y funcionando en producción."
+      },
       "siguiente": "Cerrar o descartar los prospectos abiertos (dental, restaurantes)."
     },
     {
@@ -67,7 +97,10 @@
       "tag": "universidad",
       "estado": "activo",
       "que": "Último ramo activo del semestre: presentaciones de tareas del texto Paar & Pelzl.",
-      "novedad": { "fecha": "2026-07-10", "texto": "Presentada la Tarea 7 (Diffie-Hellman y ElGamal)." },
+      "novedad": {
+        "fecha": "2026-07-10",
+        "texto": "Presentada la Tarea 7 (Diffie-Hellman y ElGamal)."
+      },
       "siguiente": "Tarea 8 (curvas elípticas) el 22 de julio y Tarea 9 el 24."
     },
     {
@@ -76,7 +109,10 @@
       "tag": "startup",
       "estado": "pausa",
       "que": "App de finanzas personales que lee la cartola desde el correo. Producto congelado; la infraestructura se mantiene sana.",
-      "novedad": { "fecha": "2026-07-07", "texto": "Backups cifrados verificados con restauración de punta a punta; VPS endurecido." }
+      "novedad": {
+        "fecha": "2026-07-07",
+        "texto": "Backups cifrados verificados con restauración de punta a punta; VPS endurecido."
+      }
     },
     {
       "id": "printia",
@@ -84,7 +120,10 @@
       "tag": "producto",
       "estado": "pausa",
       "que": "Sistema de gestión para la imprenta Gráfika, con derecho a generalizarlo a otras imprentas. Demo y producto base en vivo, a la espera del descubrimiento con el cliente.",
-      "novedad": { "fecha": "2026-06-25", "texto": "De demo a producto real desplegado." }
+      "novedad": {
+        "fecha": "2026-06-25",
+        "texto": "De demo a producto real desplegado."
+      }
     },
     {
       "id": "pueblo-vivo",
@@ -92,7 +131,10 @@
       "tag": "personal",
       "estado": "pausa",
       "que": "Mod propio: 297 criaturas con niveles, habilidades y progresión. Proyecto de fin de semana, sin apuro.",
-      "novedad": { "fecha": "2026-06-28", "texto": "Compila y carga en servidor dedicado; falta playtest de combate." }
+      "novedad": {
+        "fecha": "2026-06-28",
+        "texto": "Compila y carga en servidor dedicado; falta playtest de combate."
+      }
     },
     {
       "id": "central-arranque",
@@ -138,19 +180,103 @@
     }
   ],
   "hitos": [
-    { "fecha": "2026-07-14", "tipo": "decision", "proyecto": "Estrategia", "texto": "Descartado el ERP clínico. Rumbo cash-first: caja estable (Líder + Raíces del Sur) y experimentos rápidos mientras aprendo." },
-    { "fecha": "2026-07-13", "tipo": "hito", "proyecto": "Science Up", "texto": "33 de 33 proyectos evaluados en borrador, con nota fundamentada por criterio." },
-    { "fecha": "2026-07-12", "tipo": "hito", "proyecto": "Canasto", "texto": "Nombre y fundamentos definidos; parte la creación de perfiles." },
-    { "fecha": "2026-07-09", "tipo": "venta", "proyecto": "Raíces del Sur", "texto": "Acuerdo mensual cerrado y primera campaña Click-to-WhatsApp publicada." },
-    { "fecha": "2026-07-08", "tipo": "hito", "proyecto": "Tesis", "texto": "Defensa oral rendida en el Salón de Conferencias ECIEM." },
-    { "fecha": "2026-07-06", "tipo": "entrega", "proyecto": "Central Arranque", "texto": "Catálogo autoadministrable en producción: el dueño edita sus productos sin depender de nadie." },
-    { "fecha": "2026-07-01", "tipo": "hito", "proyecto": "LaComanda", "texto": "Encontrada la causa raíz de las caídas recurrentes; watchdog automático desplegado en el servidor." },
-    { "fecha": "2026-06-26", "tipo": "venta", "proyecto": "Central Arranque", "texto": "Venta cerrada: web más catálogo para la casa de repuestos." },
-    { "fecha": "2026-06-25", "tipo": "hito", "proyecto": "Printia", "texto": "El sistema para la imprenta pasó de demo a producto real desplegado." },
-    { "fecha": "2026-06-23", "tipo": "hito", "proyecto": "Estudio Faro", "texto": "estudiofaro.cl en vivo con SSL, más un panel CRM propio con 77 prospectos." },
-    { "fecha": "2026-06-21", "tipo": "hito", "proyecto": "Estudio Faro", "texto": "Máquina de prospección: 1.222 negocios del centro de La Serena mapeados, top 50 auditado con evidencia." },
-    { "fecha": "2026-06-11", "tipo": "venta", "proyecto": "Jardín del Café", "texto": "Primer cliente recurrente de contenido: publicaciones de Instagram dos veces por semana." },
-    { "fecha": "2026-05-26", "tipo": "hito", "proyecto": "MonkeyMoney", "texto": "Postulación enviada a CORFO Semilla Inicia 2026 Coquimbo." },
-    { "fecha": "2026-04-30", "tipo": "hito", "proyecto": "MonkeyMoney", "texto": "Postulación enviada a Platanus Ventures." }
+    {
+      "fecha": "2026-07-14",
+      "tipo": "decision",
+      "proyecto": "Estrategia",
+      "slug": "",
+      "texto": "Descartado el ERP clínico. Rumbo cash-first: caja estable (Líder + Raíces del Sur) y experimentos rápidos mientras aprendo."
+    },
+    {
+      "fecha": "2026-07-13",
+      "tipo": "hito",
+      "proyecto": "Science Up",
+      "slug": "science-up",
+      "texto": "33 de 33 proyectos evaluados en borrador, con nota fundamentada por criterio."
+    },
+    {
+      "fecha": "2026-07-12",
+      "tipo": "hito",
+      "proyecto": "Canasto",
+      "slug": "canasto",
+      "texto": "Nombre y fundamentos definidos; parte la creación de perfiles."
+    },
+    {
+      "fecha": "2026-07-09",
+      "tipo": "venta",
+      "proyecto": "Raíces del Sur",
+      "slug": "raices-del-sur",
+      "texto": "Acuerdo mensual cerrado y primera campaña Click-to-WhatsApp publicada."
+    },
+    {
+      "fecha": "2026-07-08",
+      "tipo": "hito",
+      "proyecto": "Tesis",
+      "slug": "tesis",
+      "texto": "Defensa oral rendida en el Salón de Conferencias ECIEM."
+    },
+    {
+      "fecha": "2026-07-06",
+      "tipo": "entrega",
+      "proyecto": "Central Arranque",
+      "slug": "central-arranque",
+      "texto": "Catálogo autoadministrable en producción: el dueño edita sus productos sin depender de nadie."
+    },
+    {
+      "fecha": "2026-07-01",
+      "tipo": "hito",
+      "proyecto": "LaComanda",
+      "slug": "lacomanda",
+      "texto": "Encontrada la causa raíz de las caídas recurrentes; watchdog automático desplegado en el servidor."
+    },
+    {
+      "fecha": "2026-06-26",
+      "tipo": "venta",
+      "proyecto": "Central Arranque",
+      "slug": "central-arranque",
+      "texto": "Venta cerrada: web más catálogo para la casa de repuestos."
+    },
+    {
+      "fecha": "2026-06-25",
+      "tipo": "hito",
+      "proyecto": "Printia",
+      "slug": "printia",
+      "texto": "El sistema para la imprenta pasó de demo a producto real desplegado."
+    },
+    {
+      "fecha": "2026-06-23",
+      "tipo": "hito",
+      "proyecto": "Estudio Faro",
+      "slug": "estudio-faro",
+      "texto": "estudiofaro.cl en vivo con SSL, más un panel CRM propio con 77 prospectos."
+    },
+    {
+      "fecha": "2026-06-21",
+      "tipo": "hito",
+      "proyecto": "Estudio Faro",
+      "slug": "estudio-faro",
+      "texto": "Máquina de prospección: 1.222 negocios del centro de La Serena mapeados, top 50 auditado con evidencia."
+    },
+    {
+      "fecha": "2026-06-11",
+      "tipo": "venta",
+      "proyecto": "Jardín del Café",
+      "slug": "estudio-faro",
+      "texto": "Primer cliente recurrente de contenido: publicaciones de Instagram dos veces por semana."
+    },
+    {
+      "fecha": "2026-05-26",
+      "tipo": "hito",
+      "proyecto": "MonkeyMoney",
+      "slug": "monkeymoney",
+      "texto": "Postulación enviada a CORFO Semilla Inicia 2026 Coquimbo."
+    },
+    {
+      "fecha": "2026-04-30",
+      "tipo": "hito",
+      "proyecto": "MonkeyMoney",
+      "slug": "monkeymoney",
+      "texto": "Postulación enviada a Platanus Ventures."
+    }
   ]
 }
