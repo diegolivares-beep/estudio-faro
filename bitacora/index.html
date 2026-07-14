@@ -141,6 +141,14 @@ h2:first-of-type{margin-top:0}
 .row .d{color:var(--muted);font-size:.88rem;max-width:62ch}
 .row .f{font-size:.78rem;font-weight:600;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
 @media (max-width:680px){ .row{grid-template-columns:1fr auto} .row .d{grid-column:1 / -1} }
+.estado-row{grid-template-columns:minmax(150px,210px) 92px 1fr auto}
+.estado-row .badge{justify-self:start;align-self:start;margin-top:.1rem}
+h2 .conteo{font-weight:600;font-size:.8rem;color:var(--muted);margin-left:.55rem}
+@media (max-width:680px){
+  .estado-row{grid-template-columns:1fr auto}
+  .estado-row .badge{grid-row:1;grid-column:2;justify-self:end}
+  .estado-row .f{display:none}
+}
 .morelink{display:inline-block;margin-top:.7rem;font-size:.86rem;font-weight:600}
 
 /* timeline */
@@ -310,25 +318,37 @@ function hitosHTML(hitos, linkProyecto){
   `).join("") + `</div>`;
 }
 
+function estadoLinea(p){
+  if(p.novedad) return p.novedad.texto;
+  return p.que.split(". ")[0] + (p.que.includes(". ") ? "." : "");
+}
+
 function vistaResumen(){
-  const activos = DATA.proyectos.filter(p => p.estado === "activo");
+  const orden = ["activo","pausa","entregado","descartado"];
+  const todos = orden.flatMap(e => DATA.proyectos.filter(p => p.estado === e));
+  const conteo = orden
+    .map(e => ({e, n: DATA.proyectos.filter(p => p.estado === e).length}))
+    .filter(x => x.n)
+    .map(x => `${x.n} ${ {activo:"activos", pausa:"en pausa", entregado:"entregados", descartado:"descartados"}[x.e] }`)
+    .join(" · ");
   return `
     <div class="pagehead"><h1>Resumen</h1></div>
     <p class="pagesub">${esc(DATA.intro)}</p>
+    <h2>Estado de los proyectos <span class="conteo">${esc(conteo)}</span></h2>
+    <div class="rows">${todos.map(p => `
+      <a class="row estado-row" href="#p/${esc(p.id)}">
+        <span class="n">${esc(p.nombre)}<small>${esc(p.tag)}</small></span>
+        <span class="badge ${esc(p.estado)}">${esc(p.estado)}</span>
+        <span class="d">${esc(estadoLinea(p))}</span>
+        <span class="f">${p.novedad ? fShort(p.novedad.fecha) : ""}</span>
+      </a>
+    `).join("")}</div>
     <h2>La semana</h2>
     <div class="semana">${DATA.semana.map(s => `
       <div><div class="dias">${esc(s.dias)}</div><div class="que">${esc(s.que)}</div><div class="det">${esc(s.detalle)}</div></div>
     `).join("")}</div>
-    <h2>Activos ahora</h2>
-    <div class="rows">${activos.map(p => `
-      <a class="row" href="#p/${esc(p.id)}">
-        <span class="n">${esc(p.nombre)}<small>${esc(p.tag)}</small></span>
-        <span class="d">${p.novedad ? esc(p.novedad.texto) : esc(p.que)}</span>
-        <span class="f">${p.novedad ? fShort(p.novedad.fecha) : ""}</span>
-      </a>
-    `).join("")}</div>
     <h2>Últimos hitos</h2>
-    ${hitosHTML(DATA.hitos.slice(0,5), true)}
+    ${hitosHTML(DATA.hitos.slice(0,8), true)}
     <a class="morelink" href="#timeline">Ver la línea de tiempo completa</a>
   `;
 }
