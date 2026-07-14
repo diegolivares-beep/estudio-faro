@@ -12,16 +12,17 @@
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Hanken+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#0E2F36;
-  --bg-deep:#0A242A;
-  --surface:#143A42;
-  --line:rgba(242,237,225,.12);
-  --line-2:rgba(242,237,225,.22);
-  --ink:#F2EDE1;
-  --muted:#AEC8C6;
-  --beam:#F5B65C;
-  --beam-hot:#FFD89B;
-  --teal:#4FB6B0;
+  --bg:#ffffff;
+  --bg-soft:#faf8f3;
+  --surface:#ffffff;
+  --line:rgba(15,38,44,.12);
+  --line-2:rgba(15,38,44,.2);
+  --ink:#0f262c;
+  --muted:#51666b;
+  --beam:#c97e16;
+  --beam-deep:#8a611a;
+  --beam-soft:#f5b65c;
+  --teal:#1e6f68;
   --font-d:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;
   --font-b:"Hanken Grotesk",system-ui,sans-serif;
   --r:14px;
@@ -33,7 +34,7 @@ body{
   font-family:var(--font-b);font-size:1.02rem;line-height:1.62;
   -webkit-font-smoothing:antialiased;
 }
-::selection{background:var(--beam);color:var(--bg-deep)}
+::selection{background:var(--beam-soft);color:var(--ink)}
 :focus-visible{outline:2px solid var(--beam);outline-offset:3px;border-radius:6px}
 a{color:var(--teal)}
 
@@ -42,17 +43,17 @@ a{color:var(--teal)}
 /* ---- header ---- */
 header{
   position:relative;overflow:hidden;
-  background:var(--bg-deep);
+  background:var(--bg-soft);
   border-bottom:1px solid var(--line);
   padding:clamp(2.6rem,7vw,4.5rem) 0 clamp(2rem,5vw,3rem);
 }
 header::before{ /* haz del faro, sutil */
   content:"";position:absolute;inset:0;pointer-events:none;
   background:
-    radial-gradient(58% 90% at 82% -18%, rgba(245,182,92,.17), transparent 62%),
-    radial-gradient(40% 55% at 88% -8%, rgba(255,216,155,.10), transparent 70%);
+    radial-gradient(58% 90% at 82% -18%, rgba(245,182,92,.28), transparent 62%),
+    radial-gradient(40% 55% at 88% -8%, rgba(201,126,22,.12), transparent 70%);
 }
-.brandline{display:flex;align-items:baseline;gap:.7rem;margin-bottom:clamp(1.6rem,4vw,2.4rem)}
+.brandline{display:flex;align-items:baseline;gap:.7rem;margin-bottom:clamp(1.6rem,4vw,2.4rem);position:relative}
 .brandline .faro{font-family:var(--font-d);font-weight:800;font-size:1.02rem;letter-spacing:-.01em}
 .brandline .sep{color:var(--line-2)}
 .brandline .priv{font-size:.85rem;color:var(--muted)}
@@ -68,10 +69,10 @@ h1 .dot{color:var(--beam)}
 }
 .updated{
   display:inline-flex;align-items:center;gap:.5rem;margin-top:1.4rem;
-  font-size:.9rem;font-weight:600;color:var(--beam);position:relative;
+  font-size:.9rem;font-weight:700;color:var(--beam-deep);position:relative;
 }
-.updated .pulse{width:8px;height:8px;border-radius:50%;background:var(--beam);box-shadow:0 0 0 0 rgba(245,182,92,.5);animation:pulse 2.6s ease-out infinite}
-@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(245,182,92,.45)}70%{box-shadow:0 0 0 9px rgba(245,182,92,0)}100%{box-shadow:0 0 0 0 rgba(245,182,92,0)}}
+.updated .pulse{width:8px;height:8px;border-radius:50%;background:var(--beam);box-shadow:0 0 0 0 rgba(201,126,22,.4);animation:pulse 2.6s ease-out infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(201,126,22,.35)}70%{box-shadow:0 0 0 9px rgba(201,126,22,0)}100%{box-shadow:0 0 0 0 rgba(201,126,22,0)}}
 
 /* ---- semana ---- */
 .semana{
@@ -80,8 +81,8 @@ h1 .dot{color:var(--beam)}
   gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);
   overflow:hidden;margin-top:clamp(1.8rem,4vw,2.6rem);
 }
-.semana>div{background:var(--bg-deep);padding:1rem 1.15rem}
-.semana .dias{font-size:.82rem;font-weight:600;color:var(--beam);letter-spacing:.02em}
+.semana>div{background:var(--bg);padding:1rem 1.15rem}
+.semana .dias{font-size:.82rem;font-weight:700;color:var(--beam-deep);letter-spacing:.02em}
 .semana .que{font-family:var(--font-d);font-weight:700;font-size:1.06rem;margin-top:.2rem}
 .semana .det{font-size:.88rem;color:var(--muted)}
 
@@ -100,27 +101,28 @@ h2{
   background:var(--surface);border:1px solid var(--line);border-radius:var(--r);
   padding:1.25rem 1.35rem;
   display:grid;grid-template-columns:1fr;gap:.55rem;
+  box-shadow:0 1px 2px rgba(15,38,44,.04);
 }
 .pro .top{display:flex;flex-wrap:wrap;align-items:baseline;gap:.6rem}
 .pro h3{font-family:var(--font-d);font-weight:700;font-size:1.18rem;letter-spacing:-.01em}
 .tag{
   font-size:.74rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
-  color:var(--beam);border:1px solid rgba(245,182,92,.35);border-radius:99px;
+  color:var(--beam-deep);border:1px solid rgba(201,126,22,.4);border-radius:99px;
   padding:.12rem .6rem;white-space:nowrap;
 }
 .pro .que{color:var(--muted);font-size:.95rem;max-width:68ch}
 .pro .nov{font-size:.95rem;max-width:68ch}
-.pro .nov b{font-weight:700;color:var(--beam-hot)}
+.pro .nov b{font-weight:700;color:var(--beam-deep)}
 .pro .nov time{color:var(--muted);font-size:.85rem;font-weight:600}
 .pro .next{
   display:flex;gap:.55rem;align-items:baseline;
   font-size:.95rem;color:var(--ink);max-width:68ch;
-  border-top:1px dashed var(--line);padding-top:.7rem;margin-top:.25rem;
+  border-top:1px dashed var(--line-2);padding-top:.7rem;margin-top:.25rem;
 }
 .pro .next .arrow{color:var(--teal);font-weight:700;flex:none}
 
 /* ---- timeline ---- */
-#timeline{background:var(--bg-deep);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+#timeline{background:var(--bg-soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .tl{position:relative;padding-left:1.6rem}
 .tl::before{content:"";position:absolute;left:5px;top:6px;bottom:6px;width:2px;background:var(--line)}
 .mes{
@@ -133,18 +135,18 @@ h2{
 .evt:last-child{padding-bottom:0}
 .evt::before{
   content:"";position:absolute;left:-1.6rem;top:.5em;width:12px;height:12px;border-radius:50%;
-  background:var(--bg-deep);border:2.5px solid var(--muted);
+  background:var(--bg-soft);border:2.5px solid var(--muted);
 }
 .evt[data-tipo="venta"]::before{border-color:var(--beam);background:var(--beam)}
 .evt[data-tipo="entrega"]::before{border-color:var(--teal);background:var(--teal)}
-.evt[data-tipo="decision"]::before{border-color:var(--beam-hot)}
+.evt[data-tipo="decision"]::before{border-color:var(--beam)}
 .evt .meta{display:flex;flex-wrap:wrap;gap:.6rem;align-items:baseline;font-size:.84rem}
 .evt .meta time{color:var(--muted);font-weight:600;font-variant-numeric:tabular-nums}
 .evt .meta .p{font-weight:700;color:var(--ink)}
 .evt .meta .t{font-weight:700;letter-spacing:.04em;text-transform:uppercase;font-size:.72rem}
-.evt[data-tipo="venta"] .meta .t{color:var(--beam)}
+.evt[data-tipo="venta"] .meta .t{color:var(--beam-deep)}
 .evt[data-tipo="entrega"] .meta .t{color:var(--teal)}
-.evt[data-tipo="decision"] .meta .t{color:var(--beam-hot)}
+.evt[data-tipo="decision"] .meta .t{color:var(--beam-deep)}
 .evt[data-tipo="hito"] .meta .t{display:none}
 .evt p{color:var(--muted);font-size:.96rem;max-width:64ch;margin-top:.1rem}
 
@@ -160,8 +162,8 @@ h2{
   border-radius:99px;padding:.14rem .62rem;white-space:nowrap;
 }
 .badge.pausa{color:var(--muted);border:1px solid var(--line-2)}
-.badge.entregado{color:var(--bg-deep);background:var(--teal)}
-.badge.descartado{color:var(--muted);border:1px solid var(--line);opacity:.85}
+.badge.entregado{color:#fff;background:var(--teal)}
+.badge.descartado{color:var(--muted);border:1px solid var(--line);opacity:.9}
 .arch{border-top:1px solid var(--line)}
 .arch li{
   list-style:none;display:grid;grid-template-columns:minmax(150px,220px) 1fr;gap:.4rem 1.4rem;
@@ -178,12 +180,12 @@ h2{
 
 /* ---- footer ---- */
 footer{
-  border-top:1px solid var(--line);background:var(--bg-deep);
+  border-top:1px solid var(--line);background:var(--bg-soft);
   padding:1.8rem 0 2.2rem;color:var(--muted);font-size:.88rem;
 }
 footer .wrap{display:flex;flex-wrap:wrap;gap:.5rem 1.5rem;justify-content:space-between;align-items:baseline}
 footer a{color:var(--muted)}
-footer a:hover{color:var(--beam)}
+footer a:hover{color:var(--beam-deep)}
 
 /* ---- estados de carga ---- */
 #estado-carga{padding:3rem 0;color:var(--muted)}
@@ -247,9 +249,10 @@ footer a:hover{color:var(--beam)}
   </div>
 </footer>
 
-<noscript><div class="wrap" style="padding:2rem 0">Esta página necesita JavaScript para mostrar los datos de <code>data.json</code>.</div></noscript>
+<noscript><div class="wrap" style="padding:2rem 0">Esta página necesita JavaScript para mostrar los datos.</div></noscript>
 
 <script>
+const PB = "https://panel.estudiofaro.cl/api/collections";
 const MESES = ["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"];
 const TIPO_LABEL = { venta:"Venta", entrega:"Entrega", decision:"Decisión", hito:"" };
 
@@ -257,13 +260,41 @@ function fShort(iso){ const [y,m,d] = iso.split("-").map(Number); return `${d} $
 function fLong(iso){ const [y,m,d] = iso.split("-").map(Number); return `${d} de ${MESES[m-1]} de ${y}`; }
 function esc(s){ const el = document.createElement("span"); el.textContent = s; return el.innerHTML; }
 
+async function pbList(col, params){
+  const res = await fetch(`${PB}/${col}/records?perPage=200&${params}`, {cache:"no-store"});
+  if(!res.ok) throw new Error(`${col}: ${res.status}`);
+  return (await res.json()).items;
+}
+
+/* Fuente primaria: PocketBase (datos vivos). Fallback: data.json (última foto estática). */
+async function loadData(){
+  try{
+    const [cfg, pros, hitos] = await Promise.all([
+      pbList("bitacora_config",""),
+      pbList("bitacora_proyectos","sort=orden"),
+      pbList("bitacora_hitos","sort=-fecha"),
+    ]);
+    const c = cfg[0];
+    return {
+      updated: c.updated, intro: c.intro, semana: c.semana,
+      proyectos: pros.map(p => ({
+        id: p.slug, nombre: p.nombre, tag: p.tag, estado: p.estado, que: p.que,
+        novedad: p.novedad_texto ? { fecha: p.novedad_fecha, texto: p.novedad_texto } : null,
+        siguiente: p.siguiente || null,
+      })),
+      hitos: hitos.map(h => ({ fecha: h.fecha, tipo: h.tipo, proyecto: h.proyecto, texto: h.texto })),
+    };
+  }catch(e){
+    const res = await fetch("data.json", {cache:"no-store"});
+    if(!res.ok) throw e;
+    return await res.json();
+  }
+}
+
 async function init(){
   let data;
-  try{
-    const res = await fetch("data.json", {cache:"no-store"});
-    if(!res.ok) throw new Error(res.status);
-    data = await res.json();
-  }catch(e){
+  try{ data = await loadData(); }
+  catch(e){
     document.getElementById("estado-carga").textContent = "No se pudo cargar la bitácora. Recarga la página o avísale a Diego.";
     return;
   }
