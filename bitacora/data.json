@@ -86,17 +86,29 @@
       "estado": "activo",
       "que": "Webs y presencia digital para PYMEs de La Serena y Coquimbo. Clientes: Central Arranque, Jardín del Café (contenido recurrente), Raíces del Sur.",
       "novedad": {
-        "fecha": "2026-07-06",
-        "texto": "Catálogo autoadministrable de Central Arranque entregado y funcionando en producción."
+        "fecha": "2026-07-14",
+        "texto": "Nace esta bitácora: seguimiento de proyectos en vivo con datos estructurados."
       },
       "siguiente": "Cerrar o descartar los prospectos abiertos (dental, restaurantes)."
     },
     {
+      "id": "jardin-del-cafe",
+      "nombre": "Jardín del Café",
+      "tag": "cliente Estudio Faro",
+      "estado": "activo",
+      "que": "Cafetería de especialidad en El Milagro, La Serena. Servicio recurrente de contenido: dos publicaciones semanales en Instagram, más carta digital y material de marca.",
+      "novedad": {
+        "fecha": "2026-07-05",
+        "texto": "Banco de fotos de terreno recibido para el contenido del mes."
+      },
+      "siguiente": "Sumar historias de Instagram y automatizar la programación de publicaciones."
+    },
+    {
       "id": "ucn",
-      "nombre": "UCN, Criptografía",
+      "nombre": "UCN, semestre 2026-1",
       "tag": "universidad",
       "estado": "activo",
-      "que": "Último ramo activo del semestre: presentaciones de tareas del texto Paar & Pelzl.",
+      "que": "Cierre del semestre: Finanzas Corporativas aprobado, tesis defendida (ficha aparte) y Criptografía en curso con presentaciones de tareas.",
       "novedad": {
         "fecha": "2026-07-10",
         "texto": "Presentada la Tarea 7 (Diffie-Hellman y ElGamal)."
@@ -137,6 +149,17 @@
       }
     },
     {
+      "id": "mision-peru",
+      "nombre": "Misión Perú",
+      "tag": "encargo",
+      "estado": "pausa",
+      "que": "Listado auditado de universidades peruanas con oficinas de innovación, para una misión comercial. La base de 104 fue entregada; la ampliación de contactos quedó en pausa.",
+      "novedad": {
+        "fecha": "2026-06-10",
+        "texto": "Listado de 104 universidades entregado, verificado contra registros oficiales."
+      }
+    },
+    {
       "id": "central-arranque",
       "nombre": "Central Arranque",
       "tag": "cliente Estudio Faro",
@@ -156,6 +179,13 @@
       "tag": "universidad",
       "estado": "entregado",
       "que": "Tesis grupal de Ingeniería Comercial. Defensa oral rendida el 8 de julio."
+    },
+    {
+      "id": "practica-tachi",
+      "nombre": "Práctica profesional (AgTech)",
+      "tag": "universidad",
+      "estado": "entregado",
+      "que": "Práctica profesional en una AgTech: 12 semanas y unas 470 horas entre enero y marzo. Informe final entregado a la UCN en abril."
     },
     {
       "id": "erp-clinico",
@@ -188,6 +218,13 @@
       "texto": "Descartado el ERP clínico. Rumbo cash-first: caja estable (Líder + Raíces del Sur) y experimentos rápidos mientras aprendo."
     },
     {
+      "fecha": "2026-07-14",
+      "tipo": "entrega",
+      "proyecto": "Estudio Faro",
+      "slug": "estudio-faro",
+      "texto": "Nace esta bitácora: seguimiento de proyectos en vivo con datos estructurados."
+    },
+    {
       "fecha": "2026-07-13",
       "tipo": "hito",
       "proyecto": "Science Up",
@@ -200,6 +237,20 @@
       "proyecto": "Canasto",
       "slug": "canasto",
       "texto": "Nombre y fundamentos definidos; parte la creación de perfiles."
+    },
+    {
+      "fecha": "2026-07-11",
+      "tipo": "hito",
+      "proyecto": "Canasto",
+      "slug": "canasto",
+      "texto": "Nace la idea: personal shopper de productos básicos, inicialmente llamado Súper a Casa."
+    },
+    {
+      "fecha": "2026-07-10",
+      "tipo": "entrega",
+      "proyecto": "UCN",
+      "slug": "ucn",
+      "texto": "Presentada la Tarea 7 de Criptografía (Diffie-Hellman, logaritmo discreto y ElGamal) en exposición grupal."
     },
     {
       "fecha": "2026-07-09",
@@ -216,11 +267,60 @@
       "texto": "Defensa oral rendida en el Salón de Conferencias ECIEM."
     },
     {
+      "fecha": "2026-07-07",
+      "tipo": "entrega",
+      "proyecto": "MonkeyMoney",
+      "slug": "monkeymoney",
+      "texto": "Backups cifrados diarios y hardening del servidor verificados de punta a punta."
+    },
+    {
       "fecha": "2026-07-06",
       "tipo": "entrega",
       "proyecto": "Central Arranque",
       "slug": "central-arranque",
       "texto": "Catálogo autoadministrable en producción: el dueño edita sus productos sin depender de nadie."
+    },
+    {
+      "fecha": "2026-07-06",
+      "tipo": "venta",
+      "proyecto": "Raíces del Sur",
+      "slug": "raices-del-sur",
+      "texto": "Visita al dueño de la agencia de viajes y cierre como cliente de redes y pauta."
+    },
+    {
+      "fecha": "2026-07-06",
+      "tipo": "entrega",
+      "proyecto": "LaComanda",
+      "slug": "lacomanda",
+      "texto": "Branding oficial con el patrocinio de Corfo desplegado en el login y el menú público."
+    },
+    {
+      "fecha": "2026-07-05",
+      "tipo": "hito",
+      "proyecto": "Science Up",
+      "slug": "science-up",
+      "texto": "Llega el encargo: revisar como evaluador los proyectos del instrumento VINCULAB."
+    },
+    {
+      "fecha": "2026-07-03",
+      "tipo": "entrega",
+      "proyecto": "Central Arranque",
+      "slug": "central-arranque",
+      "texto": "centralarranque.cl en vivo con SSL, presentado en persona al dueño en su local."
+    },
+    {
+      "fecha": "2026-07-03",
+      "tipo": "entrega",
+      "proyecto": "Jardín del Café",
+      "slug": "jardin-del-cafe",
+      "texto": "Visita a la dueña y entrega de la carta digital hecha a medida."
+    },
+    {
+      "fecha": "2026-07-02",
+      "tipo": "hito",
+      "proyecto": "UCN",
+      "slug": "ucn",
+      "texto": "Examen final de Finanzas Corporativas rendido; con eso el ramo queda aprobado."
     },
     {
       "fecha": "2026-07-01",
@@ -230,6 +330,20 @@
       "texto": "Encontrada la causa raíz de las caídas recurrentes; watchdog automático desplegado en el servidor."
     },
     {
+      "fecha": "2026-06-30",
+      "tipo": "decision",
+      "proyecto": "Estrategia",
+      "slug": "",
+      "texto": "Decisión de foco 100% software, dejando marketing y redes en segundo plano."
+    },
+    {
+      "fecha": "2026-06-29",
+      "tipo": "hito",
+      "proyecto": "Pueblo Vivo",
+      "slug": "pueblo-vivo",
+      "texto": "Nace el mod de Minecraft: sistema de combate y magia, bestiario animado y progresión por niveles."
+    },
+    {
       "fecha": "2026-06-26",
       "tipo": "venta",
       "proyecto": "Central Arranque",
@@ -237,11 +351,25 @@
       "texto": "Venta cerrada: web más catálogo para la casa de repuestos."
     },
     {
+      "fecha": "2026-06-26",
+      "tipo": "hito",
+      "proyecto": "Estudio Faro",
+      "slug": "estudio-faro",
+      "texto": "Nace la carta digital como producto vendible: menú QR para restaurantes con doce estilos."
+    },
+    {
       "fecha": "2026-06-25",
       "tipo": "hito",
       "proyecto": "Printia",
       "slug": "printia",
       "texto": "El sistema para la imprenta pasó de demo a producto real desplegado."
+    },
+    {
+      "fecha": "2026-06-24",
+      "tipo": "hito",
+      "proyecto": "Printia",
+      "slug": "printia",
+      "texto": "Nace Printia: SaaS de gestión para la imprenta Gráfika, del nombre a producto desplegado."
     },
     {
       "fecha": "2026-06-23",
@@ -258,11 +386,102 @@
       "texto": "Máquina de prospección: 1.222 negocios del centro de La Serena mapeados, top 50 auditado con evidencia."
     },
     {
+      "fecha": "2026-06-19",
+      "tipo": "hito",
+      "proyecto": "Estudio Faro",
+      "slug": "estudio-faro",
+      "texto": "Nace la marca: nombre Estudio Faro, dominio registrado e identidad visual definida."
+    },
+    {
+      "fecha": "2026-06-18",
+      "tipo": "entrega",
+      "proyecto": "LaComanda",
+      "slug": "lacomanda",
+      "texto": "Manual de usuario de la plataforma generado como entregable CORFO, con capturas por rol."
+    },
+    {
+      "fecha": "2026-06-17",
+      "tipo": "hito",
+      "proyecto": "MonkeyMoney",
+      "slug": "monkeymoney",
+      "texto": "Presentado en el bootcamp Nómada de USQAI como empresa de base tecnológica con producto en operación real."
+    },
+    {
+      "fecha": "2026-06-16",
+      "tipo": "entrega",
+      "proyecto": "Tesis",
+      "slug": "tesis",
+      "texto": "Informe final de la tesis terminado y entregado, con bibliografía y gráficos cerrados."
+    },
+    {
+      "fecha": "2026-06-16",
+      "tipo": "entrega",
+      "proyecto": "UCN",
+      "slug": "ucn",
+      "texto": "Trabajo final de Finanzas Corporativas entregado y presentado el mismo día, con buen resultado."
+    },
+    {
+      "fecha": "2026-06-12",
+      "tipo": "decision",
+      "proyecto": "Estudio Faro",
+      "slug": "estudio-faro",
+      "texto": "Pivote a agencia digital: vender páginas web a PYMEs de La Serena, con modelo de precios definido."
+    },
+    {
       "fecha": "2026-06-11",
       "tipo": "venta",
       "proyecto": "Jardín del Café",
-      "slug": "estudio-faro",
+      "slug": "jardin-del-cafe",
       "texto": "Primer cliente recurrente de contenido: publicaciones de Instagram dos veces por semana."
+    },
+    {
+      "fecha": "2026-06-10",
+      "tipo": "entrega",
+      "proyecto": "Misión Perú",
+      "slug": "mision-peru",
+      "texto": "Entregado el listado auditado de 104 universidades peruanas con oficinas de innovación, verificado contra registros oficiales."
+    },
+    {
+      "fecha": "2026-06-09",
+      "tipo": "hito",
+      "proyecto": "LaComanda",
+      "slug": "lacomanda",
+      "texto": "Pilotaje interno con el equipo del cliente: servicio simulado con dos mesas y todos los roles."
+    },
+    {
+      "fecha": "2026-06-09",
+      "tipo": "entrega",
+      "proyecto": "LaComanda",
+      "slug": "lacomanda",
+      "texto": "Maratón post-pilotaje: cuatro sprints en un día con login de Google, fidelización y pagos parciales."
+    },
+    {
+      "fecha": "2026-06-02",
+      "tipo": "entrega",
+      "proyecto": "bybug",
+      "slug": "bybug",
+      "texto": "Cutover completo: dominio en Cloudflare, sitio online y correos corporativos restablecidos."
+    },
+    {
+      "fecha": "2026-06-02",
+      "tipo": "decision",
+      "proyecto": "MonkeyMoney",
+      "slug": "monkeymoney",
+      "texto": "Platanus no quedó; con usuarios estancados, la startup baja de prioridad y se replantea el producto."
+    },
+    {
+      "fecha": "2026-06-01",
+      "tipo": "entrega",
+      "proyecto": "bybug",
+      "slug": "bybug",
+      "texto": "Migración de emergencia del WordPress a un VPS propio con el hosting anterior caído; sitio de vuelta con SSL."
+    },
+    {
+      "fecha": "2026-05-27",
+      "tipo": "entrega",
+      "proyecto": "LaComanda",
+      "slug": "lacomanda",
+      "texto": "Ronda de mejoras en producción: quick wins, cuenta demo y sistema de respaldo con rollback."
     },
     {
       "fecha": "2026-05-26",
@@ -272,11 +491,81 @@
       "texto": "Postulación enviada a CORFO Semilla Inicia 2026 Coquimbo."
     },
     {
+      "fecha": "2026-05-23",
+      "tipo": "decision",
+      "proyecto": "Plataforma hiperlocal",
+      "slug": "plataforma-hiperlocal",
+      "texto": "Pivote: del marketplace hiperlocal hacia una agencia digital local; la plataforma queda como servicio del catálogo."
+    },
+    {
+      "fecha": "2026-05-18",
+      "tipo": "entrega",
+      "proyecto": "LaComanda",
+      "slug": "lacomanda",
+      "texto": "Primeras dos cartas de clientes reales en producción (Café Camelia y Espacio Libero), con QR de mesa."
+    },
+    {
+      "fecha": "2026-05-12",
+      "tipo": "entrega",
+      "proyecto": "MonkeyMoney",
+      "slug": "monkeymoney",
+      "texto": "Rebranding completo en producción: paleta azul y logo nuevo en monkeymoney.cl."
+    },
+    {
+      "fecha": "2026-05-12",
+      "tipo": "hito",
+      "proyecto": "MonkeyMoney",
+      "slug": "monkeymoney",
+      "texto": "Aceptado en el programa de preincubación Nómada de USQAI UCN, apoyado por CORFO."
+    },
+    {
+      "fecha": "2026-05-07",
+      "tipo": "hito",
+      "proyecto": "MonkeyMoney",
+      "slug": "monkeymoney",
+      "texto": "Viaje al Fintech Forum en Santiago: dos días de networking con contactos del ecosistema fintech."
+    },
+    {
+      "fecha": "2026-05-06",
+      "tipo": "entrega",
+      "proyecto": "bybug",
+      "slug": "bybug",
+      "texto": "Landing nueva de bybug.io en producción, bilingüe y reposicionada hacia salud animal."
+    },
+    {
       "fecha": "2026-04-30",
       "tipo": "hito",
       "proyecto": "MonkeyMoney",
       "slug": "monkeymoney",
       "texto": "Postulación enviada a Platanus Ventures."
+    },
+    {
+      "fecha": "2026-04-30",
+      "tipo": "entrega",
+      "proyecto": "LaComanda",
+      "slug": "lacomanda",
+      "texto": "Migración de lacomanda.cl a Coolify completada, con SSL activo."
+    },
+    {
+      "fecha": "2026-04-29",
+      "tipo": "entrega",
+      "proyecto": "Tesis",
+      "slug": "tesis",
+      "texto": "Primer avance de la tesis entregado al profesor guía dentro del plazo."
+    },
+    {
+      "fecha": "2026-04-28",
+      "tipo": "entrega",
+      "proyecto": "MonkeyMoney",
+      "slug": "monkeymoney",
+      "texto": "Landing de preinscripción en producción para captar interesados sin depender de la verificación de Google."
+    },
+    {
+      "fecha": "2026-04-26",
+      "tipo": "entrega",
+      "proyecto": "Práctica AgTech",
+      "slug": "practica-tachi",
+      "texto": "Informe final de la práctica profesional entregado a la UCN: 12 semanas y unas 470 horas en la AgTech."
     }
   ]
 }
