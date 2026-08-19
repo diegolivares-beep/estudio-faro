@@ -207,7 +207,7 @@ p{margin:0}
 .case .thumb{aspect-ratio:16/11;overflow:hidden;background:var(--bg-soft);border-bottom:1px solid var(--line)}
 .case .thumb img{width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .4s var(--ease)}
 .case:hover .thumb img{transform:scale(1.04)}
-.case .ph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;
+.case .ph,.work-card .ph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;
   background:linear-gradient(135deg,var(--dark),var(--dark-soft));color:var(--beam-soft);font-family:var(--font-d);font-weight:800;font-size:1.4rem;letter-spacing:-.02em}
 .case .info{padding:1.2rem;display:flex;flex-direction:column;gap:.45rem;flex:1}
 .case .info .pill{align-self:flex-start;margin:0}
